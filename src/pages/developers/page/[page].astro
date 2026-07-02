@@ -1,0 +1,57 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DeveloperCard from '../../../components/DeveloperCard.astro';
+import Pagination from '../../../components/Pagination.astro';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allDevelopers = await getCollection('developers');
+  const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+
+  const siteCounts = new Map<string, number>();
+  for (const site of allSites) {
+    const slug = site.data.company_slug;
+    siteCounts.set(slug, (siteCounts.get(slug) ?? 0) + 1);
+  }
+
+  const developersWithCounts = allDevelopers.map((dev) => ({
+    ...dev,
+    sitesCount: siteCounts.get(dev.data.slug) ?? 0,
+  }));
+
+  const sortedDevelopers = developersWithCounts
+    .sort((a, b) => {
+      const countDiff = b.sitesCount - a.sitesCount;
+      if (countDiff !== 0) return countDiff;
+      return new Date(b.data.latest_revision_created_at).getTime() -
+             new Date(a.data.latest_revision_created_at).getTime();
+    });
+
+  return paginate(sortedDevelopers, { pageSize: 12 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={`Developers - Page ${page.currentPage}`}>
+  <div class="content-width">
+    <div class="banner">
+      <h1>Developers</h1>
+    </div>
+
+    <div class="grid-float">
+      {page.data.map((dev: any) => (
+        <DeveloperCard
+          title={dev.data.title}
+          url={dev.data.url}
+          logoUrl={dev.data.logo_url}
+          location={dev.data.location}
+          sitesCount={dev.sitesCount ?? 0}
+        />
+      ))}
+    </div>
+
+    <Pagination page={page} />
+  </div>
+</BaseLayout>

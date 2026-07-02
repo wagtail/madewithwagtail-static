@@ -1,0 +1,115 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteCard from '../../components/SiteCard.astro';
+import Icon from '../../components/Icon.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+export const getStaticPaths = (async () => {
+  const developers = await getCollection('developers');
+  return developers
+    .filter((d) => d.data.live !== false)
+    .map((d) => ({
+      params: { slug: d.data.slug },
+      props: { developer: d },
+    }));
+}) satisfies GetStaticPaths;
+
+const { developer } = Astro.props;
+
+const devSites = await getCollection('sites', ({ data }) =>
+  data.company_slug === developer.data.slug
+);
+
+const allDevelopers = await getCollection('developers');
+const devMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
+
+const { Content } = await render(developer);
+---
+
+<BaseLayout title={developer.data.title} description={developer.data.location ?? undefined}>
+  <div class="site-content content-width">
+    <Breadcrumbs ancestors={[{ title: 'Developers', url: '/developers/' }]} />
+
+    <div class="company grid-float">
+      {developer.data.logo_url && (
+        <div>
+          <div class="company__logo">
+            <img
+              src={developer.data.logo_url}
+              alt={developer.data.title}
+              title={developer.data.title}
+            />
+          </div>
+        </div>
+      )}
+      <div class="company__details">
+        <h1 class="company__title">{developer.data.title}</h1>
+        <ul class="company__info">
+          {developer.data.location && (
+            <li class="company__info__item">
+              <span class="icon-text">
+                <Icon name="location" />
+                {developer.data.location}
+              </span>
+            </li>
+          )}
+          {developer.data.company_url && (
+            <li class="company__info__item">
+              <a class="icon-text" href={developer.data.company_url}>
+                <Icon name="link" class="i--hover" />
+                {developer.data.company_url}
+              </a>
+            </li>
+          )}
+          {developer.data.twitter_url && (
+            <li class="company__info__item">
+              <a class="icon-text" href={developer.data.twitter_url}>
+                <Icon name="twitter" class="i--hover" />
+                {developer.data.twitter_handler}
+              </a>
+            </li>
+          )}
+          {developer.data.github_url && (
+            <li class="company__info__item">
+              <a class="icon-text" href={developer.data.github_url}>
+                <Icon name="github" class="i--hover" />
+                {developer.data.github_user}
+              </a>
+            </li>
+          )}
+        </ul>
+      </div>
+    </div>
+
+    {developer.body && (
+      <div class="company__description">
+        <Content />
+      </div>
+    )}
+
+    <div class="company__sites">
+      <div class="grid grid-stack site-listing">
+        {devSites.map((site) => (
+          <SiteCard
+            title={site.data.title}
+            url={site.data.url}
+            developerName={developer.data.title}
+            developerUrl={developer.data.url}
+            screenshotUrl={site.data.site_screenshot_url}
+            siteUrl={site.data.site_url}
+            inCooperationWith={site.data.in_cooperation_with_slug
+              ? devMap.get(site.data.in_cooperation_with_slug)?.data.title ?? null
+              : null
+            }
+            inCooperationWithUrl={site.data.in_cooperation_with_slug
+              ? devMap.get(site.data.in_cooperation_with_slug)?.data.url ?? null
+              : null
+            }
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

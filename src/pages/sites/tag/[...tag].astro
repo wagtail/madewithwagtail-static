@@ -1,0 +1,70 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteCard from '../../../components/SiteCard.astro';
+
+export const getStaticPaths = (async () => {
+  const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+  const allDevelopers = await getCollection('developers');
+  const devMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
+
+  const tagSet = new Set<string>();
+  for (const site of allSites) {
+    for (const tag of site.data.tags) {
+      tagSet.add(tag.toLowerCase());
+    }
+  }
+
+  return Array.from(tagSet).map((tag) => ({
+    params: { tag },
+  }));
+}) satisfies GetStaticPaths;
+
+const tag = Astro.params.tag as string;
+
+const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+const allDevelopers = await getCollection('developers');
+const devMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
+
+const filteredSites = allSites.filter((site) =>
+  site.data.tags.some((t: string) => t.toLowerCase() === tag)
+);
+
+const displayName = filteredSites.length > 0
+  ? filteredSites[0].data.tags.find((t: string) => t.toLowerCase() === tag) ?? tag
+  : tag;
+---
+
+<BaseLayout title={`Sites tagged "${displayName}"`}>
+  <div class="content-width">
+    <div class="banner">
+      <h1>Sites tagged with &ldquo;{displayName}&rdquo;</h1>
+      <a href="/">Show all sites</a>
+    </div>
+
+    <div class="grid grid-stack site-listing">
+      {filteredSites.map((site) => {
+        const dev = devMap.get(site.data.company_slug);
+        return (
+          <SiteCard
+            title={site.data.title}
+            url={site.data.url}
+            developerName={dev?.data.title ?? 'A Wagtail developer'}
+            developerUrl={dev?.data.url ?? '/developers/'}
+            screenshotUrl={site.data.site_screenshot_url}
+            siteUrl={site.data.site_url}
+            inCooperationWith={site.data.in_cooperation_with_slug
+              ? devMap.get(site.data.in_cooperation_with_slug)?.data.title ?? null
+              : null
+            }
+            inCooperationWithUrl={site.data.in_cooperation_with_slug
+              ? devMap.get(site.data.in_cooperation_with_slug)?.data.url ?? null
+              : null
+            }
+          />
+        );
+      })}
+    </div>
+  </div>
+</BaseLayout>

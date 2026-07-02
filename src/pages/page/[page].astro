@@ -1,0 +1,70 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteCard from '../../components/SiteCard.astro';
+import Pagination from '../../components/Pagination.astro';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+  const allDevelopers = await getCollection('developers');
+
+  const developerMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
+
+  const sortedSites = allSites
+    .sort((a, b) =>
+      new Date(b.data.latest_revision_created_at).getTime() -
+      new Date(a.data.latest_revision_created_at).getTime()
+    );
+
+  return paginate(sortedSites, {
+    pageSize: 12,
+    props: { developers: Object.fromEntries(developerMap) },
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const developerMap = new Map<string, any>(
+  Object.entries(page.data.length > 0 ? Astro.props.developers as Record<string, any> : {})
+);
+
+interface DevData {
+  slug: string;
+  title: string;
+  url: string;
+  [key: string]: unknown;
+}
+---
+
+<BaseLayout>
+  <div class="content-width">
+    <div class="banner">
+      <h1>Made with Wagtail</h1>
+      <div class="intro">
+        <p>
+          A showcase of sites and applications made with{' '}
+          <a href="https://wagtail.org">Wagtail CMS</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-stack site-listing">
+      {page.data.map((site: any) => {
+        const dev = developerMap.get(site.data.company_slug) as any;
+        const devData = dev?.data as DevData | undefined;
+        return (
+          <SiteCard
+            title={site.data.title}
+            url={site.data.url}
+            developerName={devData?.title ?? 'A Wagtail developer'}
+            developerUrl={devData?.url ?? '/developers/'}
+            screenshotUrl={site.data.site_screenshot_url}
+            siteUrl={site.data.site_url}
+          />
+        );
+      })}
+    </div>
+
+    <Pagination page={page} />
+  </div>
+</BaseLayout>

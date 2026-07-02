@@ -1,0 +1,28 @@
+---
+id: 1055
+slug: góði-hirðirinn
+title: Góði Hirðirinn
+url: /developers/overcast/góði-hirðirinn/
+live: true
+first_published_at: "2024-08-07T02:47:25.363955+12:00"
+latest_revision_created_at: "2024-08-07T02:47:25.165628+12:00"
+company_slug: overcast
+site_url: https://godihirdirinn.is/
+site_screenshot_url: /images/godihirdirinn.2e16d0ba.fill-1200x996.webp
+site_screenshot_title: null
+in_cooperation_with_slug: null
+tags:
+  - online store
+  - second-hand
+  - mobile-first design
+  - recycle
+  - products
+  - User-friendly
+  - responsive
+---
+
+Góði Hirðirinn is a nonprofit secondhand market owned by Sorpa, a waste management and recycling center.
+
+The goal for Góði Hirðirinn's Wagtail website was to create a user-friendly, mobile-responsive online store with a simple purchase flow. The website was designed with a mobile-first approach, aligning with the Góði Hirðirinn brand and focusing on simplicity, joy, and user experience. The online store offers users an effortless purchase process for unique secondhand gems.
+
+As a fast-paced online store where every product is unique, Góði Hirðirinn required a system that allows employees to quickly and efficiently add products with images and information. A customized Wagtail solution for ‘quick content insertion’ enables employees to use a smartphone to create product listings fast, snap product pictures, and either complete the product card on a smartphone or on a computer.

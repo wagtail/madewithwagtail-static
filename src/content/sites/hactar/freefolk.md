@@ -1,0 +1,23 @@
+---
+id: 707
+slug: freefolk
+title: Freefolk
+url: /developers/hactar/freefolk/
+live: true
+first_published_at: "2019-09-23T11:26:03.668885+12:00"
+latest_revision_created_at: "2019-09-23T11:26:03.629175+12:00"
+company_slug: hactar
+site_url: http://freefolk.com
+site_screenshot_url: /images/screenshot_eQZOqwj.2e16d0ba.fill-1200x996.webp
+site_screenshot_title: null
+in_cooperation_with_slug: null
+tags:
+  - portfolio
+  - catalog
+  - film
+  - video
+---
+
+Freefolk is a new brand formed from the merger between Finish - a London-based, globally renowned post production house - and Realise Studios, a New York CG business. Freefolk needed a beautiful and intuitive website to support the launch of their new brand. The new site needed to provide an impactful destination for press, as well as remarkable resource for future and existing clients.
+
+As Finish had over a decade of footage to catalogue we felt that the site should not only act as a portfolio, but give the internal teams the power and control to create client specific pages with content managed reels. Using a bunch of smart loading techniques, and by extending the Wagtail CMS to make the things nicely intuitive for the content creator Freefolk got a little more than they bargained for. In a good way.

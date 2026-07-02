@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteCard from '../components/SiteCard.astro';
+import Pagination from '../components/Pagination.astro';
+import TagPills from '../components/TagPills.astro';
+
+const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+const allDevelopers = await getCollection('developers');
+
+const developerMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
+
+const PAGE_SIZE = 12;
+
+const sortedSites = allSites
+  .sort((a, b) =>
+    new Date(b.data.latest_revision_created_at).getTime() -
+    new Date(a.data.latest_revision_created_at).getTime()
+  );
+
+const totalPages = Math.ceil(sortedSites.length / PAGE_SIZE);
+const pageSites = sortedSites.slice(0, PAGE_SIZE);
+
+const tagCounts = new Map<string, number>();
+for (const site of allSites) {
+  for (const tag of site.data.tags) {
+    const key = tag.toLowerCase();
+    tagCounts.set(key, (tagCounts.get(key) ?? 0) + 1);
+  }
+}
+const tags = Array.from(tagCounts.entries())
+  .map(([slug, count]) => ({
+    name: allSites.find((s) => s.data.tags.some((t) => t.toLowerCase() === slug))?.data.tags.find((t) => t.toLowerCase() === slug) ?? slug,
+    slug,
+    count,
+  }))
+  .sort((a, b) => b.count - a.count);
+---
+
+<BaseLayout>
+  <div class="content-width">
+    <div class="banner">
+      <h1>Made with Wagtail</h1>
+      <div class="intro">
+        <p>
+          A showcase of sites and applications made with{' '}
+          <a href="https://wagtail.org">Wagtail CMS</a>, a popular Django content management system.
+          Submit your own site to be featured here!
+        </p>
+      </div>
+    </div>
+
+    <div class="content-width vertical-bottom-l">
+      <TagPills tags={tags.slice(0, 10)} />
+    </div>
+
+    <div class="grid grid-stack site-listing">
+      {pageSites.map((site) => {
+        const dev = developerMap.get(site.data.company_slug);
+        return (
+          <SiteCard
+            title={site.data.title}
+            url={site.data.url}
+            developerName={dev?.data.title ?? 'A Wagtail developer'}
+            developerUrl={dev?.data.url ?? '/developers/'}
+            screenshotUrl={site.data.site_screenshot_url}
+            siteUrl={site.data.site_url}
+            inCooperationWith={site.data.in_cooperation_with_slug
+              ? developerMap.get(site.data.in_cooperation_with_slug)?.data.title
+              : null
+            }
+            inCooperationWithUrl={site.data.in_cooperation_with_slug
+              ? developerMap.get(site.data.in_cooperation_with_slug)?.data.url
+              : null
+            }
+          />
+        );
+      })}
+    </div>
+
+    {totalPages > 1 && (
+      <Pagination
+        page={{
+          currentPage: 1,
+          lastPage: totalPages,
+          total: sortedSites.length,
+          url: {
+            current: '/',
+            prev: undefined,
+            next: '/page/2',
+            first: undefined,
+            last: `/page/${totalPages}`,
+          },
+        }}
+      />
+    )}
+  </div>
+</BaseLayout>

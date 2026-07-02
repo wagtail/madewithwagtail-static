@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  logoUrl: string | null;
+  location: string | null;
+  sitesCount: number;
+}
+
+const { title, url, logoUrl, location, sitesCount } = Astro.props;
+---
+
+<div class="one-half--medium one-third--large company-listing__column">
+  <a class="company-listing link-ghost" href={url}>
+    <div class="media__image">
+      {logoUrl ? (
+        <img src={logoUrl} alt={title} loading="lazy" width="80" height="80" />
+      ) : (
+        <div class="company__placeholder"></div>
+      )}
+    </div>
+    <div class="media__body">
+      <h4 class="company-listing__title">{title}</h4>
+      {location && (
+        <p class="company-listing__location truncate">{location}</p>
+      )}
+      {sitesCount > 0 && (
+        <p class="company-listing__site-count">
+          {sitesCount} site{sitesCount !== 1 ? 's' : ''}
+        </p>
+      )}
+    </div>
+  </a>
+</div>

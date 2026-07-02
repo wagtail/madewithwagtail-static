@@ -1,0 +1,71 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  page: {
+    currentPage: number;
+    lastPage: number;
+    url: {
+      current: string;
+      prev: string | undefined;
+      next: string | undefined;
+      first: string | undefined;
+      last: string | undefined;
+    };
+    total: number;
+  };
+}
+
+const { page } = Astro.props;
+
+if (page.lastPage <= 1) return null;
+---
+
+<ul class="pagination">
+  <li class="pagination__item">
+    {page.url.prev ? (
+      <a href={page.url.prev} class="pagination__link">
+        <Icon name="arrow-left" class="pagination__arrow" />
+      </a>
+    ) : (
+      <span class="pagination__inactive">
+        <Icon name="arrow-left" class="pagination__arrow" />
+      </span>
+    )}
+  </li>
+
+  {Array.from({ length: page.lastPage }, (_, i) => i + 1)
+    .filter((n) => {
+      const pagesBefore = 2;
+      const pagesAfter = 2;
+      const start = Math.max(1, page.currentPage - pagesBefore);
+      const end = Math.min(page.lastPage, page.currentPage + pagesAfter);
+      return n >= start && n <= end;
+    })
+    .map((n) => (
+      <li class="pagination__item">
+        {n === page.currentPage ? (
+          <span class="pagination__current">{n}</span>
+        ) : (
+          <a
+            href={page.url.first && n === 1 ? page.url.first : page.url.current.replace(/\/\d+$/, `/${n}`)}
+            class="pagination__link"
+          >
+            {n}
+          </a>
+        )}
+      </li>
+    ))}
+
+  <li class="pagination__item">
+    {page.url.next ? (
+      <a href={page.url.next} class="pagination__link">
+        <Icon name="arrow-right" class="pagination__arrow" />
+      </a>
+    ) : (
+      <span class="pagination__inactive">
+        <Icon name="arrow-right" class="pagination__arrow" />
+      </span>
+    )}
+  </li>
+</ul>

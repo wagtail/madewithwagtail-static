@@ -1,0 +1,48 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  url: string;
+  developerName: string;
+  developerUrl: string;
+  screenshotUrl: string | null;
+  siteUrl: string | null;
+  inCooperationWith?: string | null;
+  inCooperationWithUrl?: string | null;
+}
+
+const { title, url, developerName, developerUrl, screenshotUrl, siteUrl, inCooperationWith, inCooperationWithUrl } = Astro.props;
+---
+
+<div class="one-half--medium one-third--large">
+  <div class="card card--link">
+    <a href={url} class="project-image">
+      {screenshotUrl && (
+        <img src={screenshotUrl} alt={title} loading="lazy" />
+      )}
+    </a>
+    <div class="project__links">
+      <a class="project__info" href={url}>
+        <span class="u-sr-only">Project info</span>
+        <Icon name="info" class="i--hover" />
+      </a>
+      {siteUrl && (
+        <a class="project__visit" href={siteUrl}>
+          <span class="u-sr-only">Project link</span>
+          <Icon name="visit" class="i--hover" />
+        </a>
+      )}
+    </div>
+  </div>
+  <h4 class="project-title">{title}</h4>
+  <p class="project-author">
+    <a href={developerUrl}>{developerName}</a>
+    {inCooperationWith && (
+      <span class="project-featuring">
+        &mdash; in cooperation with{' '}
+        <a href={inCooperationWithUrl ?? '#'}>{inCooperationWith}</a>
+      </span>
+    )}
+  </p>
+</div>

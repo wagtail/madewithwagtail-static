@@ -1,0 +1,90 @@
+/*============================================================================
+  SVG icons
+==============================================================================*/
+
+
+$spacing-icon: .25em;
+
+.i {
+    display: inline-block;
+    width: rem(20);
+    height: rem(20);
+    background-size: cover;
+}
+
+    .icon-text {
+        > svg {
+            vertical-align: middle;
+            margin-top: -0.125em;
+            margin-right: $spacing-icon / 1.5;
+
+            &:last-child {
+                margin-right: 0;
+                margin-left: $spacing-icon / 2;
+            }
+        }
+    }
+
+    svg > use {
+        fill: currentColor;
+    }
+
+    .i--black > use {
+        fill: #000;
+    }
+
+    .i--white > use {
+        fill: #fff;
+    }
+
+    .i--grey > use {
+        fill: #767676;
+    }
+
+    .i--teal > use {
+        fill: #43B1B0;
+    }
+
+    .i--hover:hover > use,
+    a:hover .i--hover > use {
+        fill: #358c8b;
+    }
+
+    .i--no-fill > use {
+        fill: none;
+    }
+
+
+
+/* custom icon sizes */
+.i--small {
+    width: rem(16);
+    height: rem(16);
+}
+
+.made-with-wagtail {
+    @extend %inline-block;
+    width: rem(205);
+    height: rem(32);
+
+    > use {
+        fill: #231F20;
+    }
+}
+.wagtail {
+    @extend %inline-block;
+    background-size: cover;
+    width: rem(70);
+    height: rem(22);
+}
+
+.springload,
+.springload-dark {
+    @extend %inline-block;
+    background-size: cover;
+    width: rem(93);
+    height: rem(15);
+}
+
+
+

@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  ancestors: { title: string; url: string }[];
+}
+
+const { ancestors } = Astro.props;
+---
+
+<ol class="breadcrumb">
+  <li>
+    <a href="/">Home</a>
+    <Icon name="arrow-right" />
+  </li>
+  {ancestors.map((ancestor) => (
+    <li>
+      <a href={ancestor.url}>{ancestor.title}</a>
+      <Icon name="arrow-right" />
+    </li>
+  ))}
+</ol>

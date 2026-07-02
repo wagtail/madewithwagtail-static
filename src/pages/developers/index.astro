@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DeveloperCard from '../../components/DeveloperCard.astro';
+
+const allDevelopers = await getCollection('developers');
+const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+
+const siteCounts = new Map<string, number>();
+for (const site of allSites) {
+  const slug = site.data.company_slug;
+  siteCounts.set(slug, (siteCounts.get(slug) ?? 0) + 1);
+}
+
+const developersWithCounts = allDevelopers.map((dev) => ({
+  ...dev,
+  sitesCount: siteCounts.get(dev.data.slug) ?? 0,
+}));
+
+const sortedDevelopers = developersWithCounts
+  .sort((a, b) => {
+    const countDiff = b.sitesCount - a.sitesCount;
+    if (countDiff !== 0) return countDiff;
+    return new Date(b.data.latest_revision_created_at).getTime() -
+           new Date(a.data.latest_revision_created_at).getTime();
+  });
+
+const PAGE_SIZE = 12;
+const pageDevelopers = sortedDevelopers.slice(0, PAGE_SIZE);
+const totalPages = Math.ceil(sortedDevelopers.length / PAGE_SIZE);
+---
+
+<BaseLayout title="Developers">
+  <div class="content-width">
+    <div class="banner">
+      <h1>Developers</h1>
+      <div class="intro">
+        <p>
+          Companies and developers building sites with Wagtail.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-float">
+      {pageDevelopers.map((dev) => (
+        <DeveloperCard
+          title={dev.data.title}
+          url={dev.data.url}
+          logoUrl={dev.data.logo_url}
+          location={dev.data.location}
+          sitesCount={dev.sitesCount}
+        />
+      ))}
+    </div>
+
+    {totalPages > 1 && (
+      <ul class="pagination">
+        <li class="pagination__item">
+          <span class="pagination__inactive">
+            <svg class="i pagination__arrow"><use href="#i-arrow-left"/></svg>
+          </span>
+        </li>
+        {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => i + 1).map((n) => (
+          <li class="pagination__item">
+            {n === 1 ? (
+              <span class="pagination__current">1</span>
+            ) : (
+              <a href={`/developers/page/${n}`} class="pagination__link">{n}</a>
+            )}
+          </li>
+        ))}
+        <li class="pagination__item">
+          <a href="/developers/page/2" class="pagination__link">
+            <svg class="i pagination__arrow"><use href="#i-arrow-right"/></svg>
+          </a>
+        </li>
+      </ul>
+    )}
+  </div>
+</BaseLayout>

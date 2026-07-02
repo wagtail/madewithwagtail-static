@@ -1,0 +1,109 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+export const getStaticPaths = (async () => {
+  const sites = await getCollection('sites', ({ data }) => data.live !== false);
+  const developers = await getCollection('developers');
+  const devMap = new Map(developers.map((d) => [d.data.slug, d]));
+
+  return sites
+    .filter((site) => {
+      const dev = devMap.get(site.data.company_slug);
+      return dev && dev.data.live !== false;
+    })
+    .map((site) => ({
+      params: {
+        company: site.data.company_slug,
+        site: site.data.slug,
+      },
+      props: { siteEntry: site },
+    }));
+}) satisfies GetStaticPaths;
+
+const { siteEntry } = Astro.props;
+const { Content } = await render(siteEntry);
+
+const developers = await getCollection('developers');
+const devMap = new Map(developers.map((d) => [d.data.slug, d]));
+
+const parentDev = devMap.get(siteEntry.data.company_slug);
+const coopDev = siteEntry.data.in_cooperation_with_slug
+  ? devMap.get(siteEntry.data.in_cooperation_with_slug)
+  : null;
+---
+
+<BaseLayout title={siteEntry.data.title}>
+  <div class="site-content content-width">
+    <Breadcrumbs
+      ancestors={[
+        { title: 'Developers', url: '/developers/' },
+        ...(parentDev
+          ? [{ title: parentDev.data.title, url: parentDev.data.url }]
+          : []),
+      ]}
+    />
+
+    <div class="grid-float">
+      <div class="two-thirds--medium">
+        <div class="card">
+          <div class="project-big-image">
+            {siteEntry.data.site_screenshot_url && (
+              <img
+                src={siteEntry.data.site_screenshot_url}
+                alt={siteEntry.data.title}
+                title={siteEntry.data.title}
+                class="img--responsive"
+              />
+            )}
+          </div>
+        </div>
+      </div>
+      <div class="one-third--medium">
+        <h2>{siteEntry.data.title}</h2>
+        <p class="project-author project-author--block">
+          Made by{' '}
+          {parentDev ? (
+            <a href={parentDev.data.url}>{parentDev.data.title}</a>
+          ) : (
+            'A Wagtail developer'
+          )}
+          {coopDev && (
+            <span class="project-featuring">
+              &mdash; in cooperation with{' '}
+              <a href={coopDev.data.url}>{coopDev.data.title}</a>
+            </span>
+          )}
+        </p>
+
+        <div class="text">
+          <Content />
+        </div>
+
+        {siteEntry.data.site_url && (
+          <a
+            href={siteEntry.data.site_url}
+            title={siteEntry.data.title}
+            class="btn -small icon-text"
+          >
+            <Icon name="visit" class="i--small u-middle" />
+            <span>Visit site</span>
+          </a>
+        )}
+
+        <hr />
+
+        <div class="btn-group">
+          {siteEntry.data.tags.map((tag: string) => (
+            <a href={`/sites/tag/${tag.toLowerCase()}/`} class="btn -tag">
+              {tag}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
