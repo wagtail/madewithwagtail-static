@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../helpers.ts';
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -55,10 +56,10 @@ interface DevData {
         return (
           <SiteCard
             title={site.data.title}
-            url={site.data.url}
+            url={withBase(site.data.url)}
             developerName={devData?.title ?? 'A Wagtail developer'}
-            developerUrl={devData?.url ?? '/developers/'}
-            screenshotUrl={site.data.site_screenshot_url}
+            developerUrl={withBase(devData?.url ?? '/developers/')}
+            screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
             siteUrl={site.data.site_url}
           />
         );

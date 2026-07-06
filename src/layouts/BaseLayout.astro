@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../helpers.ts';
 import '../styles/screen.scss';
 
 export interface Props {
@@ -29,7 +30,7 @@ const pageDescription = description ?? 'A showcase of sites made with Wagtail, t
   <meta property="og:type" content="website" />
   {ogImage && <meta property="og:image" content={ogImage} />}
 
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href={withBase('/images/favicon.ico')} />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,800" rel="stylesheet" type="text/css" />
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
 </head>
@@ -97,16 +98,16 @@ const pageDescription = description ?? 'A showcase of sites made with Wagtail, t
     <div class="content-width">
       <div class="grid">
         <div class="one-whole--small one-third">
-          <a href="/" class="logo">
+          <a href={withBase('/')} class="logo">
             <span class="u-sr-only">Made with Wagtail</span>
             <svg class="made-with-wagtail i--no-fill"><use href="#i-made-with-wagtail-logo"></use></svg>
           </a>
         </div>
         <div class="one-whole--upto-medium two-thirds">
           <ul class="nav">
-            <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
-            <li class="nav__item"><a href="/developers/" class="nav__link">Developers</a></li>
-            <li class="nav__item"><a href="/submit-your-site/" class="nav__link">Submit a site</a></li>
+            <li class="nav__item"><a href={withBase('/')} class="nav__link">Home</a></li>
+            <li class="nav__item"><a href={withBase('/developers/')} class="nav__link">Developers</a></li>
+            <li class="nav__item"><a href={withBase('/submit-your-site/')} class="nav__link">Submit a site</a></li>
           </ul>
         </div>
       </div>

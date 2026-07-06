@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../helpers.ts';
+
 interface Props {
   tags: { name: string; slug: string; count: number }[];
   activeTag?: string | null;
@@ -10,7 +12,7 @@ const { tags, activeTag } = Astro.props;
 <div class="btn-group">
   {tags.map((tag) => (
     <a
-      href={activeTag === tag.slug ? '/' : `/sites/tag/${tag.slug}/`}
+      href={activeTag === tag.slug ? withBase('/') : withBase(`/sites/tag/${tag.slug}/`)}
       class={`btn -tag${activeTag === tag.slug ? ' is-active' : ''}`}
     >
       {tag.name}

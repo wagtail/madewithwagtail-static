@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../../helpers.ts';
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
@@ -44,8 +45,8 @@ const { page } = Astro.props;
       {page.data.map((dev: any) => (
         <DeveloperCard
           title={dev.data.title}
-          url={dev.data.url}
-          logoUrl={dev.data.logo_url}
+          url={withBase(dev.data.url)}
+          logoUrl={dev.data.logo_url ? withBase(dev.data.logo_url) : null}
           location={dev.data.location}
           sitesCount={dev.sitesCount ?? 0}
         />

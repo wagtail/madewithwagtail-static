@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../helpers.ts';
 import type { GetStaticPaths } from 'astro';
 import { getCollection, getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -30,14 +31,14 @@ const { Content } = await render(developer);
 
 <BaseLayout title={developer.data.title} description={developer.data.location ?? undefined}>
   <div class="site-content content-width">
-    <Breadcrumbs ancestors={[{ title: 'Developers', url: '/developers/' }]} />
+    <Breadcrumbs ancestors={[{ title: 'Developers', url: withBase('/developers/') }]} />
 
     <div class="company grid-float">
       {developer.data.logo_url && (
         <div>
           <div class="company__logo">
             <img
-              src={developer.data.logo_url}
+              src={withBase(developer.data.logo_url)}
               alt={developer.data.title}
               title={developer.data.title}
             />
@@ -94,17 +95,19 @@ const { Content } = await render(developer);
         {devSites.map((site) => (
           <SiteCard
             title={site.data.title}
-            url={site.data.url}
+            url={withBase(site.data.url)}
             developerName={developer.data.title}
-            developerUrl={developer.data.url}
-            screenshotUrl={site.data.site_screenshot_url}
+            developerUrl={withBase(developer.data.url)}
+            screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
             siteUrl={site.data.site_url}
             inCooperationWith={site.data.in_cooperation_with_slug
               ? devMap.get(site.data.in_cooperation_with_slug)?.data.title ?? null
               : null
             }
             inCooperationWithUrl={site.data.in_cooperation_with_slug
-              ? devMap.get(site.data.in_cooperation_with_slug)?.data.url ?? null
+              ? devMap.get(site.data.in_cooperation_with_slug)?.data.url
+                ? withBase(devMap.get(site.data.in_cooperation_with_slug)!.data.url)
+                : null
               : null
             }
           />

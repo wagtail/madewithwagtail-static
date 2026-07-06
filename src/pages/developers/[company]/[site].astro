@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../../helpers.ts';
 import type { GetStaticPaths } from 'astro';
 import { getCollection, getEntry, render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
@@ -40,9 +41,9 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
   <div class="site-content content-width">
     <Breadcrumbs
       ancestors={[
-        { title: 'Developers', url: '/developers/' },
+        { title: 'Developers', url: withBase('/developers/') },
         ...(parentDev
-          ? [{ title: parentDev.data.title, url: parentDev.data.url }]
+          ? [{ title: parentDev.data.title, url: withBase(parentDev.data.url) }]
           : []),
       ]}
     />
@@ -53,7 +54,7 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
           <div class="project-big-image">
             {siteEntry.data.site_screenshot_url && (
               <img
-                src={siteEntry.data.site_screenshot_url}
+                src={withBase(siteEntry.data.site_screenshot_url)}
                 alt={siteEntry.data.title}
                 title={siteEntry.data.title}
                 class="img--responsive"
@@ -67,14 +68,14 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
         <p class="project-author project-author--block">
           Made by{' '}
           {parentDev ? (
-            <a href={parentDev.data.url}>{parentDev.data.title}</a>
+            <a href={withBase(parentDev.data.url)}>{parentDev.data.title}</a>
           ) : (
             'A Wagtail developer'
           )}
           {coopDev && (
             <span class="project-featuring">
               &mdash; in cooperation with{' '}
-              <a href={coopDev.data.url}>{coopDev.data.title}</a>
+              <a href={withBase(coopDev.data.url)}>{coopDev.data.title}</a>
             </span>
           )}
         </p>
@@ -98,7 +99,7 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
 
         <div class="btn-group">
           {siteEntry.data.tags.map((tag: string) => (
-            <a href={`/sites/tag/${tag.toLowerCase()}/`} class="btn -tag">
+            <a href={withBase(`/sites/tag/${tag.toLowerCase()}/`)} class="btn -tag">
               {tag}
             </a>
           ))}
