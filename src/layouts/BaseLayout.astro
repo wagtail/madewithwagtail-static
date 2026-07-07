@@ -11,6 +11,16 @@ export interface Props {
 const { title, description, ogImage } = Astro.props;
 const pageTitle = title ? `${title} | Made with Wagtail` : 'Made with Wagtail';
 const pageDescription = description ?? 'A showcase of sites made with Wagtail, the popular Django CMS.';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+function navIsActive(path: string): boolean {
+  const target = withBase(path).replace(/\/$/, '') || '/';
+  if (path === '/') {
+    return currentPath === target || currentPath.startsWith(`${target}/page/`) || currentPath.startsWith(`${target}/sites/tag/`);
+  }
+  return currentPath === target || currentPath.startsWith(`${target}/`);
+}
 ---
 
 <!DOCTYPE html>
@@ -100,14 +110,20 @@ const pageDescription = description ?? 'A showcase of sites made with Wagtail, t
         <div class="one-whole--small one-third">
           <a href={withBase('/')} class="logo">
             <span class="u-sr-only">Made with Wagtail</span>
-            <svg class="made-with-wagtail i--no-fill"><use href="#i-made-with-wagtail-logo"></use></svg>
+            <svg class="i made-with-wagtail i--no-fill"><use href="#i-made-with-wagtail-logo"></use></svg>
           </a>
         </div>
         <div class="one-whole--upto-medium two-thirds">
           <ul class="nav">
-            <li class="nav__item"><a href={withBase('/')} class="nav__link">Home</a></li>
-            <li class="nav__item"><a href={withBase('/developers/')} class="nav__link">Developers</a></li>
-            <li class="nav__item"><a href={withBase('/submit-your-site/')} class="nav__link">Submit a site</a></li>
+            <li class="nav__item">
+              <a href={withBase('/')} class:list={['nav__link', { 'is-active': navIsActive('/') }]}>Browse</a>
+            </li>
+            <li class="nav__item">
+              <a href={withBase('/developers/')} class:list={['nav__link', { 'is-active': navIsActive('/developers/') }]}>Developers</a>
+            </li>
+            <li class="nav__item">
+              <a href={withBase('/submit-your-site/')} class:list={['nav__link', { 'is-active': navIsActive('/submit-your-site/') }]}>Submit a site</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -120,6 +136,34 @@ const pageDescription = description ?? 'A showcase of sites made with Wagtail, t
 
   <div class="site-footer">
     <div class="grid content-width grid-stack">
+      <div class="one-half--medium">
+        <h4>Get your Wagtail site featured on Made with Wagtail</h4>
+        <a class="btn -inverse -small" href={withBase('/submit-your-site/')}>Submit a Wagtail site</a>
+
+        <h4>Want to get your hands dirty?</h4>
+        <a class="btn -inverse -small" href="https://wagtail.org/">Get Wagtail</a>
+      </div>
+
+      <div class="one-half--medium">
+        <h4>Wagtail developers</h4>
+        <ul class="list-none">
+          <li>
+            <p>
+              <a href="https://torchbox.com/" class="site-footer-link link">Torchbox</a><br />
+              <span>Oxford and Bristol, UK</span>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://www.springload.co.nz/" class="site-footer-link link">Springload</a><br />
+              <span>Wellington, NZ</span>
+            </p>
+          </li>
+          <li>
+            <a class="link" href={withBase('/developers/')}>See all developers</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="text block--dark">
@@ -129,7 +173,7 @@ const pageDescription = description ?? 'A showcase of sites made with Wagtail, t
         <span class="logo--inline">
           <a href="https://www.springload.co.nz/">
             <span class="u-sr-only">Springload</span>
-            <svg class="springload"><use href="#i-springload-logo-dark"></use></svg>
+            <svg class="i springload"><use href="#i-springload-logo-dark"></use></svg>
           </a>
         </span>
       </p>

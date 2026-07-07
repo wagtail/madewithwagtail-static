@@ -39,22 +39,21 @@ const tags = Array.from(tagCounts.entries())
 ---
 
 <BaseLayout>
+  <div class="banner content-width">
+    <h1>A showcase of sites and apps made with Wagtail CMS</h1>
+    <div class="intro">
+      <p>
+        <a href="https://wagtail.org/">Wagtail</a> is an easy to use, open source Django content management system, made by{' '}
+        <a href="https://torchbox.com/">Torchbox</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="content-width vertical-bottom-l">
+    <TagPills tags={tags.slice(0, 10)} />
+  </div>
+
   <div class="content-width">
-    <div class="banner">
-      <h1>Made with Wagtail</h1>
-      <div class="intro">
-        <p>
-          A showcase of sites and applications made with{' '}
-          <a href="https://wagtail.org">Wagtail CMS</a>, a popular Django content management system.
-          Submit your own site to be featured here!
-        </p>
-      </div>
-    </div>
-
-    <div class="content-width vertical-bottom-l">
-      <TagPills tags={tags.slice(0, 10)} />
-    </div>
-
     <div class="grid grid-stack site-listing">
       {pageSites.map((site) => {
         const dev = developerMap.get(site.data.company_slug);
