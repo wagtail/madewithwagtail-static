@@ -6,7 +6,7 @@
     // text-justify: distribute-all-lines;
 }
     .grid > * {
-        @extend %inline-block;
+        display: inline-block;
         vertical-align: top;
         text-align: left;
         font-size: medium;    // Font-size medium reset the block to the context of body (ie, 16px)
@@ -15,7 +15,7 @@
         width: 100%;
     }
     .grid:after {
-        @extend %inline-block;
+        display: inline-block;
         content: '';
         height: 0;
         width:100%;
