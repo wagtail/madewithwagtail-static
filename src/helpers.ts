@@ -4,5 +4,7 @@ export function withBase(path: string): string {
     return path;
   }
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  return `${base}${normalizedPath}`;
+  const normalizedBase = base.startsWith('/') ? base.slice(base.length) : base;
+  console.log(normalizedBase, normalizedPath);
+  return `${normalizedBase}${normalizedPath}`;
 }
