@@ -6,9 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://wagtail.github.io',
-  base: '/madewithwagtail-static',
-  // site: 'https://madewithwagtail.org',
+  site: 'https://madewithwagtail.org',
   integrations: [react(), sitemap()],
   vite: {
     css: {
