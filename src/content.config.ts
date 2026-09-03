@@ -35,10 +35,17 @@ const developers = defineCollection({
 });
 
 const sites = defineCollection({
-  loader: glob({ base: './src/content/sites', pattern: '**/*.md' }),
+  // Site entries live inside their developer directory:
+  // <dev>/<site>/index.md. IDs are '<dev>/<site>', which keeps site slugs
+  // unique across developers.
+  loader: glob({ base: './src/content/developers', pattern: '*/*/index.md' }),
   schema: z.object({
     id: z.number(),
-    slug: z.string(),
+    // Optional: when absent, the slug is derived from the entry ID
+    // ('<company>/<site>' -> the site segment). Kept optional so the two
+    // 'fertighausde' sites (christian-peters and fertighaus) can share the
+    // same visible slug under different companies.
+    slug: z.string().optional(),
     title: z.string(),
     url: z.string(),
     live: z.boolean().default(true),

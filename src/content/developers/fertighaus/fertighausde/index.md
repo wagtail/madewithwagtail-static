@@ -1,6 +1,5 @@
 ---
 id: 943
-slug: fertighausde
 title: Fertighaus.de
 url: /developers/fertighaus/fertighausde/
 live: true

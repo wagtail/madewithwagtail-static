@@ -1,6 +1,5 @@
 ---
 id: 380
-slug: fertighausde
 title: Fertighaus.de
 url: /developers/christian-peters/fertighausde/
 live: true

@@ -19,7 +19,9 @@ export const getStaticPaths = (async () => {
     .map((site) => ({
       params: {
         company: site.data.company_slug,
-        site: site.data.slug,
+        // Entries without a slug frontmatter derive it from the last segment
+        // of their ID ('<company>/<site>').
+        site: site.data.slug ?? site.id.split('/').at(-1) ?? site.data.company_slug,
       },
       props: { siteEntry: site },
     }));
