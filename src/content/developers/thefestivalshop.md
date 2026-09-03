@@ -22,4 +22,3 @@ site_slugs:
 - thefestivalshop
 api_only_site_slugs: []
 ---
-

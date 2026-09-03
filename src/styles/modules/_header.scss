@@ -1,13 +1,9 @@
-
 .site-header {
-//    @extend %vertical-top;
-    @extend %vertical-top-l;
-    @extend %vertical;
-}
-
-.site-header__logo {
+  //    @extend %vertical-top;
+  @extend %vertical-top-l;
+  @extend %vertical;
 }
 
 .site-header__intro {
-    @extend %vertical-top;
+  @extend %vertical-top;
 }

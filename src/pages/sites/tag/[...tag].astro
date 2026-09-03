@@ -1,9 +1,9 @@
 ---
-import { withBase } from '../../../helpers.ts';
-import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import type { GetStaticPaths } from 'astro';
 import SiteCard from '../../../components/SiteCard.astro';
+import { withBase } from '../../../helpers.ts';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
   const allSites = await getCollection('sites', ({ data }) => data.live !== false);
@@ -29,12 +29,17 @@ const allDevelopers = await getCollection('developers');
 const devMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
 
 const filteredSites = allSites.filter((site) =>
-  site.data.tags.some((t: string) => t.toLowerCase() === tag)
+  site.data.tags.some((t: string) => t.toLowerCase() === tag),
 );
 
-const displayName = filteredSites.length > 0
-  ? filteredSites[0].data.tags.find((t: string) => t.toLowerCase() === tag) ?? tag
-  : tag;
+const displayName =
+  filteredSites.length > 0
+    ? (filteredSites[0].data.tags.find((t: string) => t.toLowerCase() === tag) ?? tag)
+    : tag;
+
+function getCooperator(cooperatorSlug: string) {
+  return devMap.get(cooperatorSlug);
+}
 ---
 
 <BaseLayout title={`Sites tagged "${displayName}"`}>
@@ -56,13 +61,12 @@ const displayName = filteredSites.length > 0
             screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
             siteUrl={site.data.site_url}
             inCooperationWith={site.data.in_cooperation_with_slug
-              ? devMap.get(site.data.in_cooperation_with_slug)?.data.title ?? null
+              ? getCooperator(site.data.in_cooperation_with_slug)?.data.title ?? null
               : null
             }
-            inCooperationWithUrl={site.data.in_cooperation_with_slug
-              ? devMap.get(site.data.in_cooperation_with_slug)?.data.url
-                ? withBase(devMap.get(site.data.in_cooperation_with_slug)!.data.url)
-                : null
+            inCooperationWithUrl={
+              site.data.in_cooperation_with_slug
+                ? withBase(getCooperator(site.data.in_cooperation_with_slug)?.data.url ?? '/developers/')
               : null
             }
           />

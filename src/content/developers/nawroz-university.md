@@ -22,4 +22,3 @@ site_slugs:
 - nawroz-university
 api_only_site_slugs: []
 ---
-

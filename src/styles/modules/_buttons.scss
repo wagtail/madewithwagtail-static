@@ -1,134 +1,119 @@
+@use 'sass:color';
+
 button {
-    overflow: visible;
+  overflow: visible;
 }
 
 button[disabled],
 html input[disabled] {
-    cursor: default;
+  cursor: default;
 }
 
 %btn {
-    display: inline-block;
+  display: inline-block;
+  padding: rem(8) rem(24);
+  line-height: 1.4;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 0;
+  background-color: $color-base-link;
+  user-select: none;
+  appearance: none;
+  color: $color-base-font-invert;
 
-    padding:  .5em 1.5em;
-    line-height: 1.4;
-
-    text-decoration: none;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 0;
-    background-color: $color-base-link;
-    user-select: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-
-    color: #fff;
-
-    p + & {
-        margin-top: $spacing;
-    }
-
+  p + & {
+    margin-top: $spacing;
+  }
 }
-
 
 .btn {
-    @extend %btn;
-
-    @include hover(background-color, $color-base-link-hover, false);
-    @include hover(color, #fff, false);
-
+  @extend %btn;
+  @include hover(background-color, $color-base-link-hover, false);
+  @include hover(color, $color-base-font-invert, false);
 }
 
-
 %theme--invert {
-    .link {
-        &:hover {
-            text-decoration: underline;
-            color: lighten($color-base-link-hover, 30%);
-        }
+  .link {
+    &:hover {
+      text-decoration: underline;
+      color: color.adjust($color-base-link-hover, $lightness: 30%);
     }
+  }
 }
 
 .btn--large {
-    padding:  1em 2.5em;
-    line-height: 1.6;
+  padding: rem(16) rem(40);
+  line-height: 1.6;
 }
-
-
 
 .btn {
-    &.-inverse {
-        font-weight: 400;
-        border: 0;
-        background: #fff;
-        color: $color-base-font;
+  &.-inverse {
+    font-weight: $font-weight-normal;
+    border: 0;
+    background: $color-base-font-invert;
+    color: $color-base-font;
 
-        &:hover,
-        &:active {
-            background: #333;
-            color: #fff;
-        }
+    &:hover,
+    &:active {
+      background: #333;
+      color: $color-base-font-invert;
+    }
+  }
+
+  &.-tag {
+    background: $color-tags;
+    line-height: 1.4;
+    font-size: rem(12);
+    color: $color-base-font-invert;
+    position: relative;
+    border-radius: 0.25em;
+    margin-inline: rem(8);
+    margin-bottom: rem(12);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      inset-inline-end: 100%;
+      margin-inline-end: rem(-1);
+      border: solid transparent 1.2em;
+      border-inline-end: solid 0.6em $color-tags;
     }
 
-
-    &.-tag {
-        background: $color-tags;
-        line-height: 1.4;
-        font-size: .75rem;
-        color: #fff;
-        position: relative;
-        border-radius: .25em;
-        margin-left: .5em;
-        margin-right: .5em;
-        margin-bottom: .75em;
-        text-transform: capitalize;
-
-        &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 100%;
-            margin-right: -1px;
-            border: solid transparent 1.2em;
-            border-right: solid .6em $color-tags;
-        }
-
-        &:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: 100%;
-            width: 5px;
-            height: 5px;
-            background: lighten($color-tags, 10%);
-            border-radius: 20em;
-            margin-top: -3px;
-            margin-right: -10px;
-        }
-
-        &:hover {
-            background: darken($color-tags, 10%);
-            color: #fff;
-
-            &:before {
-                border-right-color: darken($color-tags, 10%);
-            }
-        }
-
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      inset-inline-end: 100%;
+      width: 5px;
+      height: 5px;
+      background: color.adjust($color-tags, $lightness: 10%);
+      border-radius: 20em;
+      margin-top: rem(-3);
+      margin-inline-end: rem(-10);
     }
 
-    &.-small {
-        font-size: .875rem;
+    &:hover {
+      background: color.adjust($color-tags, $lightness: -10%);
+      color: $color-base-font-invert;
+
+      &::before {
+        border-inline-end-color: color.adjust($color-tags, $lightness: -10%);
+      }
     }
-    &.-full {
-        width: 100%;
-    }
+  }
+
+  &.-small {
+    font-size: rem(14);
+  }
+
+  &.-full {
+    width: 100%;
+  }
 }
 
-
-
 .btn-group > .btn {
-    margin-bottom: 1.5em;
+  margin-bottom: rem(24);
 }

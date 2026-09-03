@@ -22,4 +22,3 @@ site_slugs:
 - fertighausde
 api_only_site_slugs: []
 ---
-

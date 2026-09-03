@@ -1,10 +1,10 @@
 ---
-import { withBase } from '../../../helpers.ts';
-import type { GetStaticPaths } from 'astro';
 import { getCollection, getEntry, render } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Icon from '../../../components/Icon.astro';
+import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Icon from '../../../components/Icon.astro';
+import { withBase } from '../../../helpers.ts';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
   const sites = await getCollection('sites', ({ data }) => data.live !== false);
@@ -95,7 +95,7 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
           </a>
         )}
 
-        <hr />
+        <hr>
 
         <div class="btn-group">
           {siteEntry.data.tags.map((tag: string) => (

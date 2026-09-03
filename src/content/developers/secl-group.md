@@ -22,4 +22,3 @@ site_slugs:
 - it-tourist
 api_only_site_slugs: []
 ---
-

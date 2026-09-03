@@ -22,4 +22,3 @@ site_slugs:
 - cours-usine-logicielle
 api_only_site_slugs: []
 ---
-

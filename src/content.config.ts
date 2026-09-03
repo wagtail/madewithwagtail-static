@@ -9,8 +9,12 @@ const developers = defineCollection({
     title: z.string(),
     url: z.string(),
     live: z.boolean().default(true),
-    first_published_at: z.union([z.string(), z.date(), z.null()]).transform((v) => (v instanceof Date ? v.toISOString() : v ?? '')),
-    latest_revision_created_at: z.union([z.string(), z.date(), z.null()]).transform((v) => (v instanceof Date ? v.toISOString() : v ?? '')),
+    first_published_at: z
+      .union([z.string(), z.date(), z.null()])
+      .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
+    latest_revision_created_at: z
+      .union([z.string(), z.date(), z.null()])
+      .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
     company_page_html_missing: z.boolean().default(false),
     logo_url: z.string().nullable().default(null),
     logo_title: z.string().nullable().default(null),
@@ -36,8 +40,12 @@ const sites = defineCollection({
     title: z.string(),
     url: z.string(),
     live: z.boolean().default(true),
-    first_published_at: z.union([z.string(), z.date(), z.null()]).transform((v) => (v instanceof Date ? v.toISOString() : v ?? '')),
-    latest_revision_created_at: z.union([z.string(), z.date(), z.null()]).transform((v) => (v instanceof Date ? v.toISOString() : v ?? '')),
+    first_published_at: z
+      .union([z.string(), z.date(), z.null()])
+      .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
+    latest_revision_created_at: z
+      .union([z.string(), z.date(), z.null()])
+      .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
     company_slug: z.string(),
     site_url: z.string().nullable().default(null),
     site_screenshot_url: z.string().nullable().default(null),

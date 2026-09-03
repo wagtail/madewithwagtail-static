@@ -27,31 +27,32 @@ Float an image to the left, with a clearfixed block of content to the right.
 */
 
 .media {
-    @extend %clearfix;
+  @extend %clearfix;
 }
 
-    .media__image {
-        float: left;
-        margin-right: $spacing;
-    }
+.media__image {
+  float: inline-start;
+  margin-inline-end: $spacing;
+}
 
-    .media__body {
-        @extend %clearfix;
-        // @extend .overflow-hidden;
-    }
+.media__body {
+  @extend %clearfix;
+
+  // @extend .overflow-hidden;
+}
 
 /* Swap the image to the right */
 .media--rev {
-    @extend %clearfix;
+  @extend %clearfix;
 }
 
-    .media--rev > .media__image {
-        float: right;
-        margin-right: 0;
-        margin-left: $spacing;
-    }
+.media--rev > .media__image {
+  float: inline-end;
+  margin-inline: $spacing rem(0);
+}
 
-    .media--rev > .media__body{
-        @extend %clearfix;
-        // @extend .overflow-hidden;
-    }
+.media--rev > .media__body {
+  @extend %clearfix;
+
+  // @extend .overflow-hidden;
+}

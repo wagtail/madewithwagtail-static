@@ -1,10 +1,10 @@
 ---
-import { withBase } from '../helpers.ts';
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SiteCard from '../components/SiteCard.astro';
 import Pagination from '../components/Pagination.astro';
+import SiteCard from '../components/SiteCard.astro';
 import TagPills from '../components/TagPills.astro';
+import { withBase } from '../helpers.ts';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const allSites = await getCollection('sites', ({ data }) => data.live !== false);
 const allDevelopers = await getCollection('developers');
@@ -13,11 +13,11 @@ const developerMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
 
 const PAGE_SIZE = 12;
 
-const sortedSites = allSites
-  .sort((a, b) =>
+const sortedSites = allSites.sort(
+  (a, b) =>
     new Date(b.data.latest_revision_created_at).getTime() -
-    new Date(a.data.latest_revision_created_at).getTime()
-  );
+    new Date(a.data.latest_revision_created_at).getTime(),
+);
 
 const totalPages = Math.ceil(sortedSites.length / PAGE_SIZE);
 const pageSites = sortedSites.slice(0, PAGE_SIZE);
@@ -31,11 +31,18 @@ for (const site of allSites) {
 }
 const tags = Array.from(tagCounts.entries())
   .map(([slug, count]) => ({
-    name: allSites.find((s) => s.data.tags.some((t) => t.toLowerCase() === slug))?.data.tags.find((t) => t.toLowerCase() === slug) ?? slug,
+    name:
+      allSites
+        .find((s) => s.data.tags.some((t) => t.toLowerCase() === slug))
+        ?.data.tags.find((t) => t.toLowerCase() === slug) ?? slug,
     slug,
     count,
   }))
   .sort((a, b) => b.count - a.count);
+
+function getCooperator(cooperatorSlug: string) {
+  return developerMap.get(cooperatorSlug);
+}
 ---
 
 <BaseLayout>
@@ -43,7 +50,8 @@ const tags = Array.from(tagCounts.entries())
     <h1>A showcase of sites and apps made with Wagtail CMS</h1>
     <div class="intro">
       <p>
-        <a href="https://wagtail.org/">Wagtail</a> is an easy to use, open source Django content management system, made by{' '}
+        <a href="https://wagtail.org/">Wagtail</a>
+        is an easy to use, open source Django content management system, made by{' '}
         <a href="https://torchbox.com/">Torchbox</a>
       </p>
     </div>
@@ -66,13 +74,12 @@ const tags = Array.from(tagCounts.entries())
             screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
             siteUrl={site.data.site_url}
             inCooperationWith={site.data.in_cooperation_with_slug
-              ? developerMap.get(site.data.in_cooperation_with_slug)?.data.title
+              ? getCooperator(site.data.in_cooperation_with_slug)?.data.title
               : null
             }
-            inCooperationWithUrl={site.data.in_cooperation_with_slug
-              ? developerMap.get(site.data.in_cooperation_with_slug)?.data.url
-                ? withBase(developerMap.get(site.data.in_cooperation_with_slug)!.data.url)
-                : null
+            inCooperationWithUrl={
+              site.data.in_cooperation_with_slug
+                ? withBase(getCooperator(site.data.in_cooperation_with_slug)?.data.url ?? '/developers/')
               : null
             }
           />

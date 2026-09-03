@@ -22,4 +22,3 @@ site_slugs:
 - awesome-developers-ug
 api_only_site_slugs: []
 ---
-

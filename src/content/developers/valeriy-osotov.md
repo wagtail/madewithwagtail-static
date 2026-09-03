@@ -23,4 +23,3 @@ site_slugs:
 - privat-school-dobrinya-and-avrora
 api_only_site_slugs: []
 ---
-

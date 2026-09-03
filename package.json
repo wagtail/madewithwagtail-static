@@ -5,11 +5,23 @@
   "engines": {
     "node": ">=22.12.0"
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm"
+    }
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "lint": "npm run lint:format && npm run lint:css",
+    "lint:format": "biome check .",
+    "lint:css": "stylelint --report-needless-disables --report-unscoped-disables 'src/**/*.{css,scss}'",
+    "format": "npm run format:code && npm run format:css",
+    "format:code": "biome check --write .",
+    "format:css": "prettier --write 'src/**/*.{css,scss}'"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.0",
@@ -21,6 +33,12 @@
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
-    "sass": "^1.101.0"
+    "@astrojs/check": "^0.9.10",
+    "@biomejs/biome": "^2.5.12",
+    "@wagtail/stylelint-config-wagtail": "^2.0.0",
+    "prettier": "^3.9.6",
+    "sass": "^1.101.0",
+    "stylelint": "^17.14.1",
+    "typescript": "^6.0.3"
   }
 }

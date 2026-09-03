@@ -22,4 +22,3 @@ site_slugs:
 - learn-wagtail
 api_only_site_slugs: []
 ---
-

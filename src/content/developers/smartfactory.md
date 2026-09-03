@@ -23,4 +23,3 @@ site_slugs:
 - verkehrsbetriebe-biel-transports-publics-biennois
 api_only_site_slugs: []
 ---
-

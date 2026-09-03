@@ -1,128 +1,114 @@
 .company {
-    @extend %vertical;
-}
-
-.company__title {
-
+  @extend %vertical;
 }
 
 .company__logo {
-    width: 6em;
-    height: 6em;
-    margin-bottom: .5rem;
+  @include medium {
+    width: 7.5em;
+    height: 7.5em;
+  }
+  width: 6em;
+  height: 6em;
+  margin-bottom: rem(8);
 
-    > img {
-        width: 100%;
-    }
-
-    @include medium {
-        width: 7.5em;
-        height: 7.5em;
-    }
-
+  > img {
+    width: 100%;
+  }
 }
 
 .company__info {
-    @extend %nav;
+  @extend %nav;
 
-    @include small {
-        > li {
-            display: block;
-        }
+  @include small {
+    > li {
+      display: block;
     }
-
-
+  }
 }
+
 .company__info__item {
-    @extend %inline-block;
-    margin-right: 1rem;
-    margin-bottom: .5rem;
+  @extend %inline-block;
 
-    & .i {
-        @extend .i--grey;
-    }
+  margin-inline-end: rem(16);
+  margin-bottom: rem(8);
+
+  .i > use {
+    fill: $color-light-text;
+  }
 }
-
 
 .company__description {
-    @extend %vertical-top;
-    @extend %vertical-bottom;
-    @extend %nice-line-length;
+  @extend %vertical-top;
+  @extend %vertical-bottom;
+  @extend %nice-line-length;
 }
 
 .company__sites {
-    @extend %vertical-l;
-    border-top: solid 1px $color-hr;
+  @extend %vertical-l;
+
+  border-top: solid 1px $color-hr;
 }
 
 .company__details {
-    max-width: 38em;
-
-    @include medium {
-        width: 70%;
-    }
+  @include medium {
+    width: 70%;
+  }
+  max-width: 38em;
 }
-
-
 
 .company-listing {
-    display: block;
-    border-bottom: solid 1px $color-keyline;
-    padding-bottom: 1em;
-    margin-bottom: 1em;
+  display: block;
+  border-bottom: solid 1px $color-keyline;
+  padding-bottom: rem(16);
+  margin-bottom: rem(16);
 
-    > .media__image {
-        width: 80px;
-        height: 80px;
-        background: $color-placeholder;
+  > .media__image {
+    width: 80px;
+    height: 80px;
+    background: $color-placeholder;
+  }
+
+  &:hover {
+    h3,
+    h4 {
+      color: $color-base-link;
     }
 
-    &:hover {
-        h3,h4 {
-            color: $color-base-link;
-        }
+    .media__image {
+      position: relative;
 
-        .media__image {
-            position: relative;
-            &:after {
-                content: "";
-                outline: solid 4px $color-base-link;
-                // background-color: $color-base-link;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-            }
-        }
+      &::after {
+        content: '';
+        outline: solid 4px $color-base-link;
+
+        // background-color: $color-base-link;
+        position: absolute;
+        inset: 0;
+      }
     }
+  }
 }
 
-
-
 .company-listing__column {
-    // min-width: 320px;
-    width: 100%;
+  // min-width: 320px;
+  width: 100%;
 }
 
 .company-listing__title {
-    margin-top: 1em;
-    margin-bottom: .25em;
-
-    @include medium-upto-xlarge {
-        margin-top: 0;
-        line-height: 1.4em;
-    }
+  @include medium-upto-xlarge {
+    margin-top: rem(0);
+    line-height: 1.4em;
+  }
+  margin-top: rem(16);
+  margin-bottom: rem(4);
 }
 
 .company-listing__location,
 .company-listing__site-count {
-    color: $color-light-text;
-    margin-bottom: .25em;
-    margin-right: 0;
-
-    @include medium-upto-xlarge {
-        line-height: 1.4em;
-    }
+  @include medium-upto-xlarge {
+    line-height: 1.4em;
+  }
+  color: $color-light-text;
+  margin-bottom: rem(4);
+  margin-inline-end: rem(0);
 }
-

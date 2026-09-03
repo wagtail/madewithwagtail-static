@@ -1,4 +1,5 @@
 .site-content {
-    @extend %vertical-l;
-    background-color: $color-content-bg;
+  @extend %vertical-l;
+
+  background-color: $color-content-bg;
 }

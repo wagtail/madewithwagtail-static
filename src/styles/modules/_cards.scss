@@ -1,87 +1,81 @@
 .card {
-    background: $color-placeholder;
-    border: solid .75rem #fff;
-    display: block;
-    margin-bottom: 1rem;
-    border-radius: .125rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    position: relative;
+  background: $color-placeholder;
+  border: solid 0.75rem #fff;
+  display: block;
+  margin-bottom: rem(16);
+  border-radius: 0.125rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 5%);
+  position: relative;
 }
 
 .card--link {
-    &:hover {
-        img {
-            transform: translateY(-4%);
-        }
-        .project__links {
-            opacity: 1;
-        }
+  &:hover {
+    img {
+      transform: translateY(-4%);
     }
+
+    .project__links {
+      opacity: 1;
+    }
+  }
 }
 
 .project__links {
-    width: 100%;
-    background: rgba(255,255,255,1);
-    padding: 1rem .5rem 0;
-    position: absolute;
-    bottom: -1px;
-    opacity: 0;
-    text-align: left;
-    transition: opacity .5s  cubic-bezier(0.075, 0.820, 0.165, 1.000);
+  width: 100%;
+  background: rgb(255 255 255 / 100%);
+  padding: rem(16) rem(8) rem(0);
+  position: absolute;
+  bottom: -1px;
+  opacity: 0;
+  text-align: start;
+  transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-    > a {
-        display: inline-block;
-        margin-right: 1rem;
-    }
+  > a {
+    display: inline-block;
+    margin-inline-end: rem(16);
+  }
 }
 
-
-
 .project-big-image {
-    display: block;
-    width: 100%;
-    height: 0;
-    position: relative;
-    padding-bottom: 83%;
-
-    > img {
-
-    }
+  display: block;
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-bottom: 83%;
 }
 
 .project-image {
-    display: block;
-    width: 100%;
-    height: 0;
-    position: relative;
-    padding-bottom: 66%;
-    overflow: hidden;
-    outline: solid 1px #fff;
+  display: block;
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-bottom: 66%;
+  overflow: hidden;
+  outline: solid 1px #fff;
 
-    > img {
-        // position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        outline: solid 1px #fff;
-        transition: transform .5s cubic-bezier(0.075, 0.820, 0.165, 1.000);
-        transform: translateY(0);
-    }
+  > img {
+    // position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    outline: solid 1px #fff;
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translateY(0);
+  }
 }
 
-
 .project-title {
-    margin-bottom: .125rem;
+  margin-bottom: rem(2);
 }
 
 .project-author {
-    color: $color-light-text;
-    .project-featuring {
-        font-size: 0.875em;
-    }
+  color: $color-light-text;
+
+  .project-featuring {
+    font-size: rem(14);
+  }
 }
 
 .project-author--block {
-    margin-bottom: 2em;
+  margin-bottom: rem(32);
 }
-

@@ -1,9 +1,10 @@
 %block {
-    display: block;
-    @extend %vertical;
+  display: block;
+
+  @extend %vertical;
 }
 
 .block--dark {
-    @extend %theme--dark;
-    @extend %block;
+  @extend %theme--dark;
+  @extend %block;
 }

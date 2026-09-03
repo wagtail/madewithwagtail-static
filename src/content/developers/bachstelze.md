@@ -22,4 +22,3 @@ site_slugs:
 - wagtailtagging
 api_only_site_slugs: []
 ---
-

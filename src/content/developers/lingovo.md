@@ -22,4 +22,3 @@ site_slugs:
 - lingovo-übersetzungsbüro-translation-agency
 api_only_site_slugs: []
 ---
-

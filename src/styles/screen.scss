@@ -1,10 +1,12 @@
+@use 'sass:color';
 
 // ----------------------------------------------------------------------------
 // Variables
 // ----------------------------------------------------------------------------
 
 // font styles
-$font-stack-body: 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-stack-body:
+  'Open Sans', 'HelveticaNeue', 'Helvetica Neue', helvetica, arial, sans-serif;
 $font-stack-header: $font-stack-body;
 $font-size-base: 16px; // Henseforth known as 1em
 
@@ -12,56 +14,44 @@ $font-weight-normal: 400;
 $font-weight-medium: 600;
 $font-weight-bold: 800;
 
-
 // colours
 $color-html-bg: #fff;
-$color-content-bg: #E7EDED;
-
-$color-footer-bg: #364D4C;
-$color-block-dark-bg: darken($color-footer-bg, 10%);
-
-$color-hr: #D1D6D8;
-
-$color-base-font: #364D4C;
-$color-base-font-muted: #AEB7B7;
+$color-content-bg: #e7eded;
+$color-footer-bg: #364d4c;
+$color-block-dark-bg: color.adjust($color-footer-bg, $lightness: -10%);
+$color-hr: #d1d6d8;
+$color-base-font: #364d4c;
+$color-base-font-muted: #aeb7b7;
 $color-base-font-invert: #fff;
-$color-highlight: #43B1B0;
+$color-highlight: #43b1b0;
 
 // $color-light-text: #959A9E;
-$color-light-text: #797A7B;
-$color-placeholder: #A3B0B0;
-$color-tags: #91A3A2;
-
-
-
-$color-base-link: $color-highlight; //$color-base-font;
-$color-base-link-hover: darken($color-base-link, 10%);
-$color-base-link-invert-hover: lighten($color-base-link, 10%);
-
+$color-light-text: #797a7b;
+$color-placeholder: #a3b0b0;
+$color-tags: #91a3a2;
+$color-base-link: $color-highlight; // $color-base-font;
+$color-base-link-hover: color.adjust($color-base-link, $lightness: -10%);
+$color-base-link-invert-hover: color.adjust($color-base-link, $lightness: 10%);
 $color-nav-link: $color-highlight;
-$color-nav-link-hover: darken($color-base-link, 10%);
-$color-nav-link-invert-hover: lighten($color-nav-link, 10%);
+$color-nav-link-hover: color.adjust($color-base-link, $lightness: -10%);
+$color-nav-link-invert-hover: color.adjust($color-nav-link, $lightness: 10%);
 $color-nav-link-active: $color-base-font;
-
 $color-select: #e5e5e5;
-
-$color-image-border: #F1F1F1;
-
-$color-keyline: #D1D6D8;
-
-$opacity-muted: .85;
-
+$color-image-border: #f1f1f1;
+$color-keyline: #d1d6d8;
+$opacity-muted: 0.85;
 $color-button-border: $color-highlight;
+$color-error: #f00;
 
 // radii
-$radius-border: .25em;
+$radius-border: 0.25em;
 $radius-button: $radius-border;
-
 
 // Sizing variables
 $baseSpacingUnit: 1.5rem;
-//$gutter: $baseSpacingUnit;
-//$gridGutter: 1rem; // can be a %, but nested grids will have smaller margins because of it
+
+// $gutter: $baseSpacingUnit;
+// $gridGutter: 1rem; // can be a %, but nested grids will have smaller margins because of it
 $spacing-xxs: $baseSpacingUnit / 6;
 $spacing-xs: $baseSpacingUnit / 4;
 $spacing-s: $baseSpacingUnit / 2;
@@ -70,133 +60,124 @@ $spacing-l: $baseSpacingUnit * 2;
 $spacing-xl: $baseSpacingUnit * 3;
 $spacing-xxl: $baseSpacingUnit * 4;
 
-
 @import 'mixins';
 @import 'breakpoints';
-
 
 // ----------------------------------------------------------------------------
 // Elements
 // ----------------------------------------------------------------------------
-
-*, *:before, *:after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
-    background-color: $color-block-dark-bg;
-    // height: 100%;
+  background-color: $color-block-dark-bg;
+
+  // height: 100%;
 }
 
 body {
-    background-color: #fff;
-    font-size: $font-size-base;
-    color: $color-base-font;
-    text-rendering: optimizeLegibility;
-    margin: 0;
-    min-height: 100%;
+  background-color: $color-html-bg;
+  font-size: $font-size-base;
+  color: $color-base-font;
+  text-rendering: optimizelegibility;
+  margin: rem(0);
+  min-height: 100%;
 }
 
 @import 'typography';
 
 object,
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-width: 0;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-width: 0;
 }
 
 .img--responsive {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
-
 
 a {
-    color: $color-base-link;
-    text-decoration: none;
-    outline: none;
-
-    @include hover(color, $color-base-link-hover, false);
+  @include hover(color, $color-base-link-hover, false);
+  color: $color-base-link;
+  text-decoration: none;
+  outline: none;
 }
-
 
 // ----------------------------------------------------------------------------
 // Theming
 // ----------------------------------------------------------------------------
 
 %theme--invert {
-    color:$color-base-font-invert;
+  color: $color-base-font-invert;
 }
 
 %theme--dark {
-    color: $color-base-font-muted;
-    background-color: $color-block-dark-bg;
+  color: $color-base-font-muted;
+  background-color: $color-block-dark-bg;
 }
-
-
 
 // ----------------------------------------------------------------------------
 // Site layout
 // ----------------------------------------------------------------------------
 
 %sensible-maximum-width {
-    max-width: pxrem( 1400 );
-    margin-left: auto;
-    margin-right: auto;
+  max-width: pxrem(1400);
+  margin-inline: auto;
 }
+
 .sensible-maximum-width {
-    @extend %sensible-maximum-width;
+  @extend %sensible-maximum-width;
 }
 
 $gutter: 5%;
 $outer-margin: 8%;
 $outer-margin-small: 5%;
 %content-margins {
-    padding-left: $outer-margin-small;
-    padding-right: $outer-margin-small;
-    @include large {
-        padding-left: $outer-margin;
-        padding-right: $outer-margin;
-    }
+  @include large {
+    padding-inline: $outer-margin;
+  }
+  padding-inline: $outer-margin-small;
 }
-
 
 .content-width {
-    // @extend %sensible-maximum-width;
-    @extend %content-margins;
+  // @extend %sensible-maximum-width;
+  @extend %content-margins;
 
-    > :last-child {
-        margin-bottom: 0;
-    }
+  > :last-child {
+    margin-bottom: rem(0);
+  }
 }
+
 .content-width--full {
-    @extend %content-margins;
+  @extend %content-margins;
 }
 
 %nice-line-length {
-    max-width: rem(660);
-    .one-half & {
-        max-width: rem(500);
-    }
+  max-width: rem(660);
+
+  .one-half & {
+    max-width: rem(500);
+  }
 }
+
 .nice-line-length {
-    @extend %nice-line-length;
-}
-
-.logo {
-
+  @extend %nice-line-length;
 }
 
 .logo--inline {
-    @extend %inline-block;
-    vertical-align: sub;
+  @extend %inline-block;
+
+  vertical-align: sub;
 }
 
-
 .site-content {
-    min-height: 10em;
+  min-height: 10em;
 }
 
 // ----------------------------------------------------------------------------
@@ -217,189 +198,187 @@ $outer-margin-small: 5%;
 @import 'modules/cards';
 @import 'modules/home';
 @import 'modules/map';
-
 @import 'modules/forms';
 @import 'modules/search';
-
 @import 'modules/grid';
-
-
 
 // ----------------------------------------------------------------------------
 // Misc
 // ----------------------------------------------------------------------------
 
-
 // Sensible default spacing for the hr
 hr {
-    border: none;
-    height: 1px;
-    color: $color-hr;
-    background-color: $color-hr;
-    margin: $spacing-l auto 2rem;
-    &.hr--short {
-        width: rem(80);
-    }
-    h1 + & {
-        margin: $spacing-l auto;
-    }
+  border: 0;
+  height: 1px;
+  color: $color-hr;
+  background-color: $color-hr;
+  margin: $spacing-l auto rem(32);
+
+  &.hr--short {
+    width: rem(80);
+  }
+
+  h1 + & {
+    margin: $spacing-l auto;
+  }
 }
-
-
 
 .no-js .no-js__hide {
-    display: none !important;
+  display: none !important;
 }
+
 .no-js .no-js__show {
-    display: block !important;
+  display: block !important;
 }
+
 .no-js .no-js__inline {
-    display: inline !important;
+  display: inline !important;
 }
-
-
 
 %keyline-bottom {
-    border-bottom: solid 1px $color-keyline;
+  border-bottom: solid 1px $color-keyline;
 }
 %keyline-top {
-    border-top: solid 1px $color-keyline;
+  border-top: solid 1px $color-keyline;
 }
 
 .keyline-bottom {
-    @extend %keyline-bottom;
+  @extend %keyline-bottom;
 }
+
 .keyline-top {
-    @extend %keyline-top;
+  @extend %keyline-top;
 }
 
-
-%clearfix {
+%clearfix:before {
+  content: ' ';
+  display: table;
 }
-    %clearfix:before {
-        content: " ";
-        display: table;
-    }
-    %clearfix:after {
-        clear: both;
-        content: " ";
-        display: table;
-    }
+%clearfix:after {
+  clear: both;
+  content: ' ';
+  display: table;
+}
 
-
-/*============================================================================
+/* ============================================================================
   Utilities
-==============================================================================*/
+============================================================================== */
 
 .u-left {
-    text-align: left;
+  text-align: start;
 }
+
 .u-center {
-    text-align: center;
+  text-align: center;
 }
+
 .u-right {
-    text-align: right;
+  text-align: end;
 }
+
 .u-right--large {
-    @include large {
-        text-align: right;
-    }
+  @include large {
+    text-align: end;
+  }
 }
 
 .u-top {
-    vertical-align: top;
+  vertical-align: top;
 }
+
 .u-middle {
-    vertical-align: middle;
+  vertical-align: middle;
 }
+
 .u-bottom {
-    vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 %inline-block {
-    display: inline-block;
+  display: inline-block;
 }
 
 .u-inline-block {
-    @extend %inline-block;
-}
-.u-inline {
-    display: inline;
+  @extend %inline-block;
 }
 
-.u-uppercase {
-    text-transform: uppercase;
+.u-inline {
+  display: inline;
 }
 
 .u-underline {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .u-bold,
 strong {
-    font-weight: $font-weight-bold;
+  font-weight: $font-weight-bold;
 }
+
 .u-medium {
-    font-weight: $font-weight-medium;
+  font-weight: $font-weight-medium;
 }
 
 .u-small,
 small {
+  font-size: pxrem(16);
+
+  p,
+  li {
     font-size: pxrem(16);
-    & p, & li {
-        font-size: pxrem(16);
-    }
+  }
 }
 
 .u-tiny {
-    font-size: pxrem(13);
+  font-size: pxrem(13);
 }
 
 .u-muted {
-    color: $color-base-font-muted;
-//    opacity: $opacity-muted;
+  color: $color-base-font-muted;
+
+  //    opacity: $opacity-muted;
 }
 
 .u-sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: rem(0);
+  margin: rem(-1);
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
 }
 
 .u-overflow-hidden {
-    overflow: hidden;
+  overflow: hidden;
 }
-
 
 .u-show--small {
-    display: none;
-    @include small {
-        display: block;
-    }
+  @include small {
+    display: block;
+  }
+  display: none;
 }
+
 .u-hide {
-    display: none;
+  display: none;
 }
+
 .u-hide--small {
-    @include small {
-        display: none;
-    }
+  @include small {
+    display: none;
+  }
 }
+
 .u-hide--xsmall {
-    @include xsmall {
-        display: none;
-    }
+  @include xsmall {
+    display: none;
+  }
 }
+
 .u-hide--medium-only {
-    @include medium-only {
-        display: none;
-    }
+  @include medium-only {
+    display: none;
+  }
 }
-
-
-

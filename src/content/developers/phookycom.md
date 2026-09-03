@@ -22,4 +22,3 @@ site_slugs:
 - landsmannschaft-brandenburg
 api_only_site_slugs: []
 ---
-

@@ -15,34 +15,32 @@ interface Props {
     total: number;
   };
 }
-
 const { page } = Astro.props;
 
-if (page.lastPage <= 1) return null;
+const showPagination = page.lastPage > 1;
+
+const paginationWindow = Array.from({ length: page.lastPage }, (_, i) => i + 1).filter((n) => {
+  const start = Math.max(1, page.currentPage - 2);
+  const end = Math.min(page.lastPage, page.currentPage + 2);
+  return n >= start && n <= end;
+});
 ---
 
-<ul class="pagination">
-  <li class="pagination__item">
-    {page.url.prev ? (
-      <a href={page.url.prev} class="pagination__link">
-        <Icon name="arrow-left" class="pagination__arrow" />
-      </a>
-    ) : (
-      <span class="pagination__inactive">
-        <Icon name="arrow-left" class="pagination__arrow" />
-      </span>
-    )}
-  </li>
+{showPagination && (
+  <ul class="pagination">
+    <li class="pagination__item">
+      {page.url.prev ? (
+        <a href={page.url.prev} class="pagination__link">
+          <Icon name="arrow-left" class="pagination__arrow" />
+        </a>
+      ) : (
+        <span class="pagination__inactive">
+          <Icon name="arrow-left" class="pagination__arrow" />
+        </span>
+      )}
+    </li>
 
-  {Array.from({ length: page.lastPage }, (_, i) => i + 1)
-    .filter((n) => {
-      const pagesBefore = 2;
-      const pagesAfter = 2;
-      const start = Math.max(1, page.currentPage - pagesBefore);
-      const end = Math.min(page.lastPage, page.currentPage + pagesAfter);
-      return n >= start && n <= end;
-    })
-    .map((n) => (
+    {paginationWindow.map((n) => (
       <li class="pagination__item">
         {n === page.currentPage ? (
           <span class="pagination__current">{n}</span>
@@ -69,3 +67,4 @@ if (page.lastPage <= 1) return null;
     )}
   </li>
 </ul>
+)}

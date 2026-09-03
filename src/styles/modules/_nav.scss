@@ -1,179 +1,178 @@
-/*============================================================================
+/* ============================================================================
   Navigation
-==============================================================================*/
+============================================================================== */
 
 %nav {
-    @extend %clearfix;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  @extend %clearfix;
+
+  list-style: none;
+  margin: rem(0);
+  padding: rem(0);
 }
 %nav > li {
-    margin-top: 0;
+  margin-top: rem(0);
 }
 
-
 // main navigation
-
 .nav {
-    @extend %nav;
-    text-align: right;
-    margin-top: 0;
-    @include small {
-        margin-right: -4%;
-    }
-    @include upto-medium {
-        margin-top: $spacing-s;
-        text-align: left;
-    }
+  @include small {
+    margin-inline-end: -4%;
+  }
+
+  @include upto-medium {
+    margin-top: $spacing-s;
+    text-align: start;
+  }
+
+  text-align: end;
+  margin-top: rem(0);
+  @extend %nav;
 }
 
 .nav__item {
-    @extend %inline-block;
-    margin-right: .75em;
-    @include xsmall {
-        margin-right: 1.75em;
-        margin-bottom: .5em;
-    }
-    @include medium {
-        margin-right: 1em;
-    }
-    @include large {
-        margin-right: 2em;
-    }
-    &:last-child {
-        margin-right: 0;
-    }
+  @include xsmall {
+    margin-inline-end: rem(28);
+    margin-bottom: rem(8);
+  }
+
+  @include medium {
+    margin-inline-end: rem(16);
+  }
+
+  @include large {
+    margin-inline-end: rem(32);
+  }
+
+  margin-inline-end: rem(12);
+  @extend %inline-block;
+
+  &:last-child {
+    margin-inline-end: rem(0);
+  }
 }
 
 .nav__link {
-    color: $color-nav-link;
-    font-weight: $font-weight-medium;
-    @include hover(color, $color-nav-link-hover, false);
+  @include hover(color, $color-nav-link-hover, false);
+  color: $color-nav-link;
+  font-weight: $font-weight-medium;
 
-    &.is-active {
-        color: $color-nav-link-active;
-    }
+  &.is-active {
+    color: $color-nav-link-active;
+  }
 }
 
-
-/*============================================================================
+/* ============================================================================
   Pagination
-==============================================================================*/
-
+============================================================================== */
 
 .pagination {
-    @extend %nav;
+  @extend %nav;
 }
 
-
 .pagination__item {
-    @extend %inline-block;
+  @extend %inline-block;
 }
 
 .pagination__item + .pagination__item {
-    margin-left: .4em;
-//    @include small {
-//        margin-left: .5em;
-//    }
+  margin-inline-start: rem(6);
+
+  //    @include small {
+  //        margin-inline-start: .5em;
+  //    }
 }
 
 %pagination-circle {
-    @extend %inline-block;
-    border-radius: 50%;
-    font-size: rem(13);
-    font-weight: $font-weight-normal;
-    text-align: center;
-    width: rem(36);
-    height: rem(36);
-    color: $color-base-font;
-    padding-top: .5rem;
-    @include small {
-        width: rem(30);
-        height: rem(30);
-        padding-top: .3rem;
-    }
-    & .bigger {
-        font-size: rem(15);
-        line-height: 0;
-        font-weight: $font-weight-medium;
-    }
+  @include small {
+    width: rem(30);
+    height: rem(30);
+    padding-top: rem(5);
+  }
+
+  border-radius: 50%;
+  font-size: rem(13);
+  font-weight: $font-weight-normal;
+  text-align: center;
+  width: rem(36);
+  height: rem(36);
+  color: $color-base-font;
+  padding-top: rem(8);
+  @extend %inline-block;
+
+  .bigger {
+    font-size: rem(15);
+    line-height: 0;
+    font-weight: $font-weight-medium;
+  }
 }
 
 .pagination__link {
-    @extend %pagination-circle;
-    background-color: $color-nav-link;
-    transition: background-color .125s ease-in-out;
-    @include hover(background-color, $color-nav-link-hover, false);
-    @include hover(color, $color-base-font, false);
-}
-.pagination__inactive {
-    @extend %pagination-circle;
-    background-color: $color-nav-link;
-    opacity: .35;
-}
-.pagination__current {
-    @extend %pagination-circle;
-    background-color: #fff;
+  @include hover(background-color, $color-nav-link-hover, false);
+  @include hover(color, $color-base-font, false);
+
+  background-color: $color-nav-link;
+  transition: background-color 0.125s ease-in-out;
+  @extend %pagination-circle;
 }
 
+.pagination__inactive {
+  @extend %pagination-circle;
+
+  background-color: $color-nav-link;
+  opacity: 0.35;
+}
+
+.pagination__current {
+  @extend %pagination-circle;
+
+  background-color: $color-base-font-invert;
+}
 
 .pagination__arrow {
-    width: .625rem;
-    height: .625rem;
-    vertical-align: middle;
+  width: 0.625rem;
+  height: 0.625rem;
+  vertical-align: middle;
 }
-
-
 
 .breadcrumb {
-    list-style: none;
-    padding-left: 0;
-    // border-bottom: solid 1px #DBDFE0;
-    padding-bottom: .5rem;
-    margin-bottom: 1.5rem;
+  list-style: none;
+  padding-inline-start: rem(0);
 
-    a {
-        color: $color-light-text;
-        // letter-spacing: 1px;
-        // text-transform: uppercase;
+  // border-bottom: solid 1px #DBDFE0;
+  padding-bottom: rem(8);
+  margin-bottom: rem(24);
 
-        &:hover {
-            color:#333;
-        }
+  a {
+    color: $color-light-text;
+
+    // letter-spacing: 1px;
+    // text-transform: uppercase;
+    &:hover {
+      color: $color-base-font;
     }
+  }
 
-    > li {
-        font-size: 12px;
-        display: inline-block;
-    }
+  > li {
+    font-size: rem(12);
+    display: inline-block;
+  }
 
-    .i {
-        width: .5rem;
-        height: .5rem;
-        margin-left: .25rem;
-        margin-right: .25rem;
-    }
+  .i {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-inline: rem(4);
+  }
 }
 
-
-
-
-///*============================================================================
+/// *============================================================================
 //  Footer navigation
-//==============================================================================*/
-//
-//
-//.footer-nav {
+// ==============================================================================*/
+// .footer-nav {
 //    @extend %nav;
-//}
-//
-//
-//.footer-nav__item {
+// }
+// .footer-nav__item {
 //    @extend %inline-block;
 //    @extend %tiny-uppercase-text;
 //    font-weight: $font-weight-medium;
-//
 //    @include small {
 //        width: 100%;
 //        margin-bottom: $spacing;
@@ -182,24 +181,18 @@
 //        width: 32%;
 //        margin-bottom: $spacing;
 //    }
-//
-//}
-//
-//.footer-nav__item + .footer-nav__item {
-//    margin-left: 2em;
+// }
+// .footer-nav__item + .footer-nav__item {
+//    margin-inline-start: rem(32);
 //    @include small {
-//        margin-left: 0;
+//        margin-inline-start: 0;
 //    }
 //    @include medium-only {
-//        margin-left: 0;
+//        margin-inline-start: 0;
 //    }
-//
-//}
-//
-//
-//.footer-nav__link {
+// }
+// .footer-nav__link {
 //    opacity: $opacity-muted;
 //    transition: opacity .125s ease-in-out;
 //    @include hover(opacity, 1, true);
-//}
-//
+// }

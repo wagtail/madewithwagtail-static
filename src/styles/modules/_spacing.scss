@@ -1,136 +1,157 @@
-/*============================================================================
+/* ============================================================================
   # Spacing
-==============================================================================*/
+============================================================================== */
 
+$padding-factor-small: 0.75;
 
-$padding-factor-small: .75;
+$spacing-small: $spacing * $padding-factor-small;
+$spacing-s-small: $spacing-s * $padding-factor-small;
+$spacing-l-small: $spacing-l * $padding-factor-small;
+$spacing-xl-small: $spacing-xl * $padding-factor-small;
+$spacing-xxl-small: $spacing-xxl * $padding-factor-small;
 
 %vertical-top {
-    padding-top: $spacing;
-    @include small {
-        & {
-            padding-top: $spacing * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-top: $spacing-small;
+  }
+  padding-top: $spacing;
 }
 %vertical-bottom {
-    padding-bottom: $spacing;
-    @include small {
-        & {
-            padding-bottom: $spacing * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-bottom: $spacing-small;
+  }
+  padding-bottom: $spacing;
 }
 %vertical {
-    @extend %vertical-top;
-    @extend %vertical-bottom;
+  @extend %vertical-top;
+  @extend %vertical-bottom;
 }
 
-
-
 %vertical-top-l {
-    padding-top: $spacing-l;
-    @include small {
-        & {
-            padding-top: $spacing-l * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-top: $spacing-l-small;
+  }
+  padding-top: $spacing-l;
 }
 
 %vertical-bottom-l {
-    padding-bottom: $spacing-l;
-    @include small {
-        & {
-            padding-bottom: $spacing-l * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-bottom: $spacing-l-small;
+  }
+  padding-bottom: $spacing-l;
 }
 %vertical-l {
-    @extend %vertical-top-l;
-    @extend %vertical-bottom-l;
+  @extend %vertical-top-l;
+  @extend %vertical-bottom-l;
 }
 
 %vertical-top-xl {
-    padding-top: $spacing-xl;
-    @include small {
-        & {
-            padding-top: $spacing-xl * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-top: $spacing-xl-small;
+  }
+  padding-top: $spacing-xl;
 }
 %vertical-bottom-xl {
-    padding-bottom: $spacing-xl;
-    @include small {
-        & {
-            padding-bottom: $spacing-xl * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-bottom: $spacing-xl-small;
+  }
+  padding-bottom: $spacing-xl;
 }
 %vertical-xl {
-    @extend %vertical-top-xl;
-    @extend %vertical-bottom-xl;
+  @extend %vertical-top-xl;
+  @extend %vertical-bottom-xl;
 }
 
 %vertical-top-xxl {
-    padding-top: $spacing-xxl;
-    @include small {
-        & {
-            padding-top: $spacing-xxl * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-top: $spacing-xxl-small;
+  }
+  padding-top: $spacing-xxl;
 }
 %vertical-bottom-xxl {
-    padding-bottom: $spacing-xxl;
-    @include small {
-        & {
-            padding-bottom: $spacing-xxl * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-bottom: $spacing-xxl-small;
+  }
+  padding-bottom: $spacing-xxl;
 }
 %vertical-xxl {
-    @extend %vertical-top-xxl;
-    @extend %vertical-bottom-xxl;
+  @extend %vertical-top-xxl;
+  @extend %vertical-bottom-xxl;
 }
 
 %vertical-top-s {
-    padding-top: $spacing-s;
-    @include small {
-        & {
-            padding-top: $spacing-s * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-top: $spacing-s-small;
+  }
+  padding-top: $spacing-s;
 }
 %vertical-bottom-s {
-    padding-bottom: $spacing-s;
-    @include small {
-        & {
-            padding-bottom: $spacing-s * $padding-factor-small;
-        }
-    }
+  @include small {
+    padding-bottom: $spacing-s-small;
+  }
+  padding-bottom: $spacing-s;
 }
 %vertical-s {
-    @extend %vertical-top-s;
-    @extend %vertical-bottom-s;
+  @extend %vertical-top-s;
+  @extend %vertical-bottom-s;
 }
 
-.vertical-bottom { @extend %vertical-bottom; }
-.vertical-top { @extend %vertical-top; }
-.vertical { @extend %vertical; }
+.vertical-bottom {
+  @extend %vertical-bottom;
+}
 
-.vertical-bottom-l { @extend %vertical-bottom-l; }
-.vertical-top-l { @extend %vertical-top-l; }
-.vertical-l { @extend %vertical-l; }
+.vertical-top {
+  @extend %vertical-top;
+}
 
-.vertical-bottom-xl { @extend %vertical-bottom-xl; }
-.vertical-top-xl { @extend %vertical-top-xl; }
-.vertical-xl { @extend %vertical-xl; }
+.vertical {
+  @extend %vertical;
+}
 
-.vertical-bottom-xxl { @extend %vertical-bottom-xxl; }
-.vertical-top-xxl { @extend %vertical-top-xxl; }
-.vertical-xxl { @extend %vertical-xxl; }
+.vertical-bottom-l {
+  @extend %vertical-bottom-l;
+}
 
-.vertical-bottom-s { @extend %vertical-bottom-s; }
-.vertical-top-s { @extend %vertical-top-s; }
-.vertical-s { @extend %vertical-s; }
+.vertical-top-l {
+  @extend %vertical-top-l;
+}
 
+.vertical-l {
+  @extend %vertical-l;
+}
 
+.vertical-bottom-xl {
+  @extend %vertical-bottom-xl;
+}
+
+.vertical-top-xl {
+  @extend %vertical-top-xl;
+}
+
+.vertical-xl {
+  @extend %vertical-xl;
+}
+
+.vertical-bottom-xxl {
+  @extend %vertical-bottom-xxl;
+}
+
+.vertical-top-xxl {
+  @extend %vertical-top-xxl;
+}
+
+.vertical-xxl {
+  @extend %vertical-xxl;
+}
+
+.vertical-bottom-s {
+  @extend %vertical-bottom-s;
+}
+
+.vertical-top-s {
+  @extend %vertical-top-s;
+}
+
+.vertical-s {
+  @extend %vertical-s;
+}

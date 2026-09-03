@@ -1,10 +1,10 @@
 ---
-import { withBase } from '../../../helpers.ts';
-import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import type { GetStaticPaths } from 'astro';
 import DeveloperCard from '../../../components/DeveloperCard.astro';
 import Pagination from '../../../components/Pagination.astro';
+import { withBase } from '../../../helpers.ts';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const allDevelopers = await getCollection('developers');
@@ -21,18 +21,29 @@ export const getStaticPaths = (async ({ paginate }) => {
     sitesCount: siteCounts.get(dev.data.slug) ?? 0,
   }));
 
-  const sortedDevelopers = developersWithCounts
-    .sort((a, b) => {
-      const countDiff = b.sitesCount - a.sitesCount;
-      if (countDiff !== 0) return countDiff;
-      return new Date(b.data.latest_revision_created_at).getTime() -
-             new Date(a.data.latest_revision_created_at).getTime();
-    });
+  const sortedDevelopers = developersWithCounts.sort((a, b) => {
+    const countDiff = b.sitesCount - a.sitesCount;
+    if (countDiff !== 0) return countDiff;
+    return (
+      new Date(b.data.latest_revision_created_at).getTime() -
+      new Date(a.data.latest_revision_created_at).getTime()
+    );
+  });
 
   return paginate(sortedDevelopers, { pageSize: 12 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+
+interface PaginatedDeveloper {
+  data: {
+    title: string;
+    url: string;
+    logo_url: string | null;
+    location: string | null;
+  };
+  sitesCount?: number;
+}
 ---
 
 <BaseLayout title={`Developers - Page ${page.currentPage}`}>
@@ -40,9 +51,8 @@ const { page } = Astro.props;
     <div class="banner">
       <h1>Developers</h1>
     </div>
-
     <div class="grid-float">
-      {page.data.map((dev: any) => (
+      {page.data.map((dev: PaginatedDeveloper) => (
         <DeveloperCard
           title={dev.data.title}
           url={withBase(dev.data.url)}

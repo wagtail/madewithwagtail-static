@@ -22,4 +22,3 @@ site_slugs:
 - theaterhandwerk
 api_only_site_slugs: []
 ---
-

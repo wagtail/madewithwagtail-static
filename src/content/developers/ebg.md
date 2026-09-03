@@ -22,4 +22,3 @@ site_slugs:
 - komi-republican-perinatal-center
 api_only_site_slugs: []
 ---
-
