@@ -2,7 +2,9 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const developers = defineCollection({
-  loader: glob({ base: './src/content/developers', pattern: '**/*.md' }),
+  // One directory per developer; the profile page is <dev>/index.md, and
+  // sites they built live in <dev>/<site>/index.md (see the sites collection).
+  loader: glob({ base: './src/content/developers', pattern: '*/index.md' }),
   schema: z.object({
     id: z.number(),
     slug: z.string(),
