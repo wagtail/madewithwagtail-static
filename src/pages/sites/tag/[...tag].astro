@@ -6,9 +6,8 @@ import { withBase } from '../../../helpers.ts';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
-  const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+  const allSites = await getCollection('sites');
   const allDevelopers = await getCollection('developers');
-  const devMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
 
   const tagSet = new Set<string>();
   for (const site of allSites) {
@@ -24,14 +23,19 @@ export const getStaticPaths = (async () => {
 
 const tag = Astro.params.tag as string;
 
-const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+const allSites = await getCollection('sites');
 const allDevelopers = await getCollection('developers');
 const devMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
 
-const filteredSites = allSites.filter((site) =>
-  site.data.tags.some((t: string) => t.toLowerCase() === tag),
-);
-
+const filteredSites = allSites
+  .filter((site) => site.data.tags.some((t: string) => t.toLowerCase() === tag))
+  // Sort by the site slug (last ID segment) so the listing is deterministic
+  // regardless of filesystem enumeration order.
+  .sort(
+    (a, b) =>
+      (a.id.split('/').at(-1) ?? a.id).localeCompare(b.id.split('/').at(-1) ?? b.id) ||
+      a.id.localeCompare(b.id),
+  );
 const displayName =
   filteredSites.length > 0
     ? (filteredSites[0].data.tags.find((t: string) => t.toLowerCase() === tag) ?? tag)
@@ -51,13 +55,13 @@ function getCooperator(cooperatorSlug: string) {
 
     <div class="grid grid-stack site-listing">
       {filteredSites.map((site) => {
-        const dev = devMap.get(site.data.company_slug);
+        const dev = devMap.get(site.id.split('/')[0]);
         return (
           <SiteCard
             title={site.data.title}
-            url={withBase(site.data.url)}
+            url={withBase(`/developers/${site.id}/`)}
             developerName={dev?.data.title ?? 'A Wagtail developer'}
-            developerUrl={withBase(dev?.data.url ?? '/developers/')}
+            developerUrl={withBase(dev ? `/developers/${dev.data.slug}/` : '/developers/')}
             screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
             siteUrl={site.data.site_url}
             inCooperationWith={site.data.in_cooperation_with_slug
@@ -66,7 +70,11 @@ function getCooperator(cooperatorSlug: string) {
             }
             inCooperationWithUrl={
               site.data.in_cooperation_with_slug
-                ? withBase(getCooperator(site.data.in_cooperation_with_slug)?.data.url ?? '/developers/')
+                ? withBase(
+                    getCooperator(site.data.in_cooperation_with_slug)
+                      ? `/developers/${site.data.in_cooperation_with_slug}/`
+                      : '/developers/',
+                  )
               : null
             }
           />

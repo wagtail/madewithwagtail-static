@@ -1,16 +1,9 @@
 ---
-id: 381
-slug: gs
 title: GS
-url: /developers/gs/gs/
-live: true
 first_published_at: "2017-07-07T16:48:21.854953+12:00"
 latest_revision_created_at: "2017-07-10T11:58:38.299316+12:00"
-company_slug: gs
 site_url: https://www.gsdesign.com
 site_screenshot_url: /images/gsdesign.com-1440x1200.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - engagement
   - agency

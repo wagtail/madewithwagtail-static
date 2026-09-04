@@ -1,16 +1,9 @@
 ---
-id: 1050
-slug: newsouth-books
 title: NewSouth Books
-url: /developers/neon-jungle/newsouth-books/
-live: true
 first_published_at: "2024-06-12T17:52:41.491357+12:00"
 latest_revision_created_at: "2024-06-12T17:52:41.370106+12:00"
-company_slug: neon-jungle
 site_url: https://newsouthbooks.com.au/
 site_screenshot_url: /images/newsouthbooks.com.au_.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - data
   - publishing

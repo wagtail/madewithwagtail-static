@@ -1,16 +1,9 @@
 ---
-id: 366
-slug: qrcodegocom
 title: qrcodego.com
-url: /developers/qrcodego/qrcodegocom/
-live: true
 first_published_at: "2017-05-18T02:28:13.829659+12:00"
 latest_revision_created_at: "2017-05-18T02:28:13.785651+12:00"
-company_slug: qrcodego
 site_url: https://qrcodego.com
 site_screenshot_url: /images/qrcodego.com-1440x1200.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - multilingual
 ---

@@ -1,16 +1,9 @@
 ---
-id: 400
-slug: make-something-edmonton
 title: Make Something Edmonton
-url: /developers/lift-interactive/make-something-edmonton/
-live: true
 first_published_at: "2017-07-11T11:09:35.436114+12:00"
 latest_revision_created_at: "2017-07-11T11:09:35.387522+12:00"
-company_slug: lift-interactive
 site_url: https://www.makesomethingedmonton.ca/
 site_screenshot_url: /images/makesomethingedmonton.ca-1440x120.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - responsive
   - StreamField

@@ -1,16 +1,9 @@
 ---
-id: 707
-slug: freefolk
 title: Freefolk
-url: /developers/hactar/freefolk/
-live: true
 first_published_at: "2019-09-23T11:26:03.668885+12:00"
 latest_revision_created_at: "2019-09-23T11:26:03.629175+12:00"
-company_slug: hactar
 site_url: http://freefolk.com
 site_screenshot_url: /images/screenshot_eQZOqwj.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - portfolio
   - catalog

@@ -1,16 +1,9 @@
 ---
-id: 900
-slug: ki-entdecken
 title: KI ENTDECKEN
-url: /developers/helliwood/ki-entdecken/
-live: true
 first_published_at: "2021-12-04T12:18:12.480783+13:00"
 latest_revision_created_at: "2021-12-04T12:18:12.405408+13:00"
-company_slug: helliwood
 site_url: https://www.ki-entdecken.de/
 site_screenshot_url: /images/www.ki-entdecken.de_.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - learning
   - ai

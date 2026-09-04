@@ -1,16 +1,9 @@
 ---
-id: 555
-slug: 417-magazine
 title: 417 Magazine
-url: /developers/mostly-serious/417-magazine/
-live: true
 first_published_at: "2018-03-06T15:27:27.862743+13:00"
 latest_revision_created_at: "2018-03-06T15:27:27.820279+13:00"
-company_slug: mostly-serious
 site_url: http://www.417mag.com
 site_screenshot_url: /images/417mag.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - news
   - media

@@ -1,16 +1,9 @@
 ---
-id: 971
-slug: mellott-manufacturing-inc
 title: Mellott Manufacturing, Inc.
-url: /developers/shenberger-technology/mellott-manufacturing-inc/
-live: true
 first_published_at: "2022-01-11T04:10:34.136597+13:00"
 latest_revision_created_at: "2022-01-11T04:42:46.011880+13:00"
-company_slug: shenberger-technology
 site_url: https://mellottmfg.com
 site_screenshot_url: /images/Mellott_Manufacturing_Website.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Sawmill controls
   - Log handling equipment

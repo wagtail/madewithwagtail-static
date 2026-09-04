@@ -1,16 +1,9 @@
 ---
-id: 218
-slug: wow-air
 title: WOW air
-url: /developers/overcast/wow-air/
-live: true
 first_published_at: "2016-08-31T12:14:23.528675+12:00"
 latest_revision_created_at: "2016-08-31T12:30:40.794468+12:00"
-company_slug: overcast
 site_url: https://wowair.co.uk/
 site_screenshot_url: /images/wowair-1440x1200.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - responsive
   - tickets

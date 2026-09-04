@@ -1,16 +1,9 @@
 ---
-id: 557
-slug: thefestivalshop
 title: TheFestival.Shop
-url: /developers/thefestivalshop/thefestivalshop/
-live: true
 first_published_at: "2018-03-06T15:36:09.982337+13:00"
 latest_revision_created_at: "2018-03-06T15:36:09.946359+13:00"
-company_slug: thefestivalshop
 site_url: https://www.thefestival.shop
 site_screenshot_url: /images/thefestivalshop.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - festival
 ---

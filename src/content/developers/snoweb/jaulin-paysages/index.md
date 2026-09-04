@@ -1,16 +1,9 @@
 ---
-id: 979
-slug: jaulin-paysages
 title: Jaulin Paysages
-url: /developers/snoweb/jaulin-paysages/
-live: true
 first_published_at: "2022-01-11T22:33:28.355090+13:00"
 latest_revision_created_at: "2022-01-11T23:08:11.882487+13:00"
-company_slug: snoweb
 site_url: https://www.jaulin-paysages.com/
 site_screenshot_url: /images/site-internet-jaulin2.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - website
   - webdesign

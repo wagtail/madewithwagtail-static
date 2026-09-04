@@ -6,11 +6,11 @@ import { withBase } from '../../helpers.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const allDevelopers = await getCollection('developers');
-const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+const allSites = await getCollection('sites');
 
 const siteCounts = new Map<string, number>();
 for (const site of allSites) {
-  const slug = site.data.company_slug;
+  const slug = site.id.split('/')[0];
   siteCounts.set(slug, (siteCounts.get(slug) ?? 0) + 1);
 }
 
@@ -46,7 +46,7 @@ const totalPages = Math.ceil(sortedDevelopers.length / PAGE_SIZE);
       {pageDevelopers.map((dev) => (
         <DeveloperCard
           title={dev.data.title}
-          url={withBase(dev.data.url)}
+          url={withBase(`/developers/${dev.data.slug}/`)}
           logoUrl={dev.data.logo_url ? withBase(dev.data.logo_url) : null}
           location={dev.data.location}
           sitesCount={dev.sitesCount}

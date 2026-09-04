@@ -1,16 +1,9 @@
 ---
-id: 1060
-slug: viðskiptablaðið
 title: Viðskiptablaðið
-url: /developers/overcast/viðskiptablaðið/
-live: true
 first_published_at: "2024-08-07T03:24:23.393225+12:00"
 latest_revision_created_at: "2024-08-07T03:24:23.268248+12:00"
-company_slug: overcast
 site_url: https://vb.is/
 site_screenshot_url: /images/vb.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - journalist
   - newspaper

@@ -1,16 +1,9 @@
 ---
-id: 921
-slug: landsmannschaft-brandenburg
 title: Landsmannschaft Brandenburg
-url: /developers/phookycom/landsmannschaft-brandenburg/
-live: true
 first_published_at: "2021-12-12T04:17:20.583997+13:00"
 latest_revision_created_at: "2021-12-12T04:17:20.495168+13:00"
-company_slug: phookycom
 site_url: https://www.landsmannschaft-brandenburg.de/
 site_screenshot_url: /images/www.landsmannschaft-brandenburg.d.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - berlin
   - organisation

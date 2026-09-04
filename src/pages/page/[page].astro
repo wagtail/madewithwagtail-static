@@ -7,7 +7,7 @@ import { withBase } from '../../helpers.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const allSites = await getCollection('sites', ({ data }) => data.live !== false);
+  const allSites = await getCollection('sites');
   const allDevelopers = await getCollection('developers');
 
   const developerMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
@@ -30,15 +30,13 @@ interface DeveloperEntry {
   data: {
     slug: string;
     title: string;
-    url: string;
   };
 }
 
 interface PaginatedSite {
+  id: string;
   data: {
     title: string;
-    url: string;
-    company_slug: string;
     site_url: string | null;
     site_screenshot_url: string | null;
   };
@@ -65,13 +63,13 @@ const developerMap = new Map(
 
     <div class="grid grid-stack site-listing">
       {page.data.map((site: PaginatedSite) => {
-        const devData = developerMap.get(site.data.company_slug)?.data;
+        const devData = developerMap.get(site.id.split('/')[0])?.data;
         return (
           <SiteCard
             title={site.data.title}
-            url={withBase(site.data.url)}
+            url={withBase(`/developers/${site.id}/`)}
             developerName={devData?.title ?? 'A Wagtail developer'}
-            developerUrl={withBase(devData?.url ?? '/developers/')}
+            developerUrl={withBase(devData ? `/developers/${devData.slug}/` : '/developers/')}
             screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
             siteUrl={site.data.site_url}
           />

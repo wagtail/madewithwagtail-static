@@ -1,16 +1,9 @@
 ---
-id: 1054
-slug: gildi
 title: Gildi
-url: /developers/overcast/gildi/
-live: true
 first_published_at: "2024-08-07T02:28:07.641085+12:00"
 latest_revision_created_at: "2024-08-07T02:28:07.462243+12:00"
-company_slug: overcast
 site_url: https://www.gildi.is/
 site_screenshot_url: /images/gildi.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - calculator
   - loan

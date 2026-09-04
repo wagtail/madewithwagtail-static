@@ -1,16 +1,9 @@
 ---
-id: 701
-slug: big-picnic
 title: Big Picnic
-url: /developers/fffunction/big-picnic/
-live: true
 first_published_at: "2019-09-23T11:08:37.464486+12:00"
 latest_revision_created_at: "2024-09-17T02:58:05.790263+12:00"
-company_slug: fffunction
 site_url: https://www.bigpicnic.net
 site_screenshot_url: /images/screenshot_qXngVRB.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - human-centred design
   - sustainability

@@ -1,16 +1,9 @@
 ---
-id: 973
-slug: mercersburg-area-community-chorus
 title: Mercersburg Area Community Chorus
-url: /developers/shenberger-technology/mercersburg-area-community-chorus/
-live: true
 first_published_at: "2022-01-11T04:41:46.776881+13:00"
 latest_revision_created_at: "2025-09-10T05:15:59.224022+12:00"
-company_slug: shenberger-technology
 site_url: https://mercersburgchorus.org
 site_screenshot_url: /images/Mercersburg_Area_Community_Chorus.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Mercersburg Community Chorus
 ---

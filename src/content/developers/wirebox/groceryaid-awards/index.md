@@ -1,16 +1,9 @@
 ---
-id: 836
-slug: groceryaid-awards
 title: GroceryAid Awards
-url: /developers/wirebox/groceryaid-awards/
-live: true
 first_published_at: "2020-05-13T17:38:15.511667+12:00"
 latest_revision_created_at: "2020-05-13T17:39:12.783120+12:00"
-company_slug: wirebox
 site_url: https://www.groceryaid.org.uk/groceryaid-awards/
 site_screenshot_url: /images/www.groceryaid.org.uk_groceryaid-.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - awards
   - non-profit

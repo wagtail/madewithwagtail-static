@@ -1,16 +1,9 @@
 ---
-id: 1014
-slug: norris-bedding
 title: Norris Bedding
-url: /developers/hpt/norris-bedding/
-live: true
 first_published_at: "2022-01-21T01:03:11.416465+13:00"
 latest_revision_created_at: "2022-01-21T01:03:11.361943+13:00"
-company_slug: hpt
 site_url: https://norrisbedding.co.uk/
 site_screenshot_url: /images/Screenshot_2022-01-20_at_12.00.16.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - industry
 ---

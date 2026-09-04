@@ -1,16 +1,9 @@
 ---
-id: 632
-slug: springload-2018
 title: Springload
-url: /developers/springload/springload-2018/
-live: true
 first_published_at: "2018-07-03T15:50:48.034124+12:00"
 latest_revision_created_at: "2018-07-03T15:59:40.297722+12:00"
-company_slug: springload
 site_url: https://www.springload.co.nz/
 site_screenshot_url: /images/madewith-wagtail-springload.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - design
   - responsive

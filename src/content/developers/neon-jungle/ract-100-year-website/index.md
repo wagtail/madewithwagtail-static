@@ -1,16 +1,9 @@
 ---
-id: 1049
-slug: ract-100-year-website
 title: RACT 100 Year Website
-url: /developers/neon-jungle/ract-100-year-website/
-live: true
 first_published_at: "2024-06-12T17:45:16.179109+12:00"
 latest_revision_created_at: "2024-06-12T17:45:16.081167+12:00"
-company_slug: neon-jungle
 site_url: https://100.ract.com.au/
 site_screenshot_url: /images/100.ract.com.au__decades.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - parallax
   - interactive

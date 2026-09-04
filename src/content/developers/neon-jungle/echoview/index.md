@@ -1,16 +1,9 @@
 ---
-id: 882
-slug: echoview
 title: Echoview
-url: /developers/neon-jungle/echoview/
-live: true
 first_published_at: "2021-10-05T18:23:53.703423+13:00"
 latest_revision_created_at: "2021-10-05T18:23:53.620858+13:00"
-company_slug: neon-jungle
 site_url: https://echoview.com/
 site_screenshot_url: /images/Screen_Shot_2021-10-05_at_16.11.5.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - science
   - business

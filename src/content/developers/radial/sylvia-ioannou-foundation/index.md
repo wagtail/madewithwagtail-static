@@ -1,16 +1,9 @@
 ---
-id: 906
-slug: sylvia-ioannou-foundation
 title: Sylvia Ioannou Foundation
-url: /developers/radial/sylvia-ioannou-foundation/
-live: true
 first_published_at: "2021-12-08T15:40:31.552947+13:00"
 latest_revision_created_at: "2021-12-08T15:40:31.449255+13:00"
-company_slug: radial
 site_url: https://sylviaioannoufoundation.org/en/
 site_screenshot_url: /images/Screen_Shot_2021-12-08_at_3.37.11.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - culture
   - greece

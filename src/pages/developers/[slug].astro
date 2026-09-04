@@ -19,10 +19,11 @@ export const getStaticPaths = (async () => {
 
 const { developer } = Astro.props;
 
-const devSites = await getCollection(
-  'sites',
-  ({ data }) => data.company_slug === developer.data.slug,
-);
+const devSites = await getCollection('sites', (site) => {
+  // Site IDs are '<company>/<site>'; the company segment matches this
+  // developer's slug (their folder name).
+  return site.id.split('/')[0] === developer.data.slug;
+});
 
 const allDevelopers = await getCollection('developers');
 const devMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
@@ -69,17 +70,20 @@ function getCooperator(cooperatorSlug: string) {
               </a>
             </li>
           )}
-          {developer.data.twitter_url && (
+          {developer.data.twitter_handler && (
             <li class="company__info__item">
-              <a class="icon-text" href={developer.data.twitter_url}>
+              <a
+                class="icon-text"
+                href={`https://twitter.com/${developer.data.twitter_handler.replace(/^@+/, '')}`}
+              >
                 <Icon name="twitter" class="i--hover" />
                 {developer.data.twitter_handler}
               </a>
             </li>
           )}
-          {developer.data.github_url && (
+          {developer.data.github_user && (
             <li class="company__info__item">
-              <a class="icon-text" href={developer.data.github_url}>
+              <a class="icon-text" href={`https://github.com/${developer.data.github_user}`}>
                 <Icon name="github" class="i--hover" />
                 {developer.data.github_user}
               </a>
@@ -100,9 +104,9 @@ function getCooperator(cooperatorSlug: string) {
         {devSites.map((site) => (
           <SiteCard
             title={site.data.title}
-            url={withBase(site.data.url)}
+            url={withBase(`/developers/${site.id}/`)}
             developerName={developer.data.title}
-            developerUrl={withBase(developer.data.url)}
+            developerUrl={withBase(`/developers/${developer.data.slug}/`)}
             screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
             siteUrl={site.data.site_url}
             inCooperationWith={site.data.in_cooperation_with_slug
@@ -111,7 +115,11 @@ function getCooperator(cooperatorSlug: string) {
             }
             inCooperationWithUrl={
               site.data.in_cooperation_with_slug
-                ? withBase(getCooperator(site.data.in_cooperation_with_slug)?.data.url ?? '/developers/')
+                ? withBase(
+                    getCooperator(site.data.in_cooperation_with_slug)
+                      ? `/developers/${site.data.in_cooperation_with_slug}/`
+                      : '/developers/',
+                  )
               : null
             }
           />

@@ -1,16 +1,9 @@
 ---
-id: 991
-slug: allianz-iceland
 title: Allianz Iceland
-url: /developers/overcast/allianz-iceland/
-live: true
 first_published_at: "2022-01-18T05:13:52.671352+13:00"
 latest_revision_created_at: "2022-01-18T05:13:52.602329+13:00"
-company_slug: overcast
 site_url: https://www.allianz.is/
 site_screenshot_url: /images/allianz.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - allianz
   - insurance

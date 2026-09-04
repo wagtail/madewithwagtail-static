@@ -1,16 +1,9 @@
 ---
-id: 600
-slug: climate-action-tracker
 title: Climate Action Tracker
-url: /developers/waat-ltd/climate-action-tracker/
-live: true
 first_published_at: "2018-05-28T16:10:53.308942+12:00"
 latest_revision_created_at: "2018-05-28T16:10:53.271832+12:00"
-company_slug: waat-ltd
 site_url: https://climateactiontracker.org
 site_screenshot_url: /images/climateactiontracker.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Climate Change
 ---

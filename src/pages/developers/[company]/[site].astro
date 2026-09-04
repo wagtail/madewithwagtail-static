@@ -7,21 +7,18 @@ import { withBase } from '../../../helpers.ts';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
-  const sites = await getCollection('sites', ({ data }) => data.live !== false);
+  const sites = await getCollection('sites');
   const developers = await getCollection('developers');
   const devMap = new Map(developers.map((d) => [d.data.slug, d]));
 
   return sites
-    .filter((site) => {
-      const dev = devMap.get(site.data.company_slug);
-      return dev && dev.data.live !== false;
-    })
+    .filter((site) => devMap.get(site.id.split('/')[0])?.data.live !== false)
     .map((site) => ({
+      // Route params derive from the entry ID ('<company>/<site>'), i.e.
+      // the folder structure — no slug frontmatter needed.
       params: {
-        company: site.data.company_slug,
-        // Entries without a slug frontmatter derive it from the last segment
-        // of their ID ('<company>/<site>').
-        site: site.data.slug ?? site.id.split('/').at(-1) ?? site.data.company_slug,
+        company: site.id.split('/')[0],
+        site: site.id.split('/').at(-1),
       },
       props: { siteEntry: site },
     }));
@@ -33,7 +30,7 @@ const { Content } = await render(siteEntry);
 const developers = await getCollection('developers');
 const devMap = new Map(developers.map((d) => [d.data.slug, d]));
 
-const parentDev = devMap.get(siteEntry.data.company_slug);
+const parentDev = devMap.get(siteEntry.id.split('/')[0]);
 const coopDev = siteEntry.data.in_cooperation_with_slug
   ? devMap.get(siteEntry.data.in_cooperation_with_slug)
   : null;
@@ -45,7 +42,7 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
       ancestors={[
         { title: 'Developers', url: withBase('/developers/') },
         ...(parentDev
-          ? [{ title: parentDev.data.title, url: withBase(parentDev.data.url) }]
+          ? [{ title: parentDev.data.title, url: withBase(`/developers/${parentDev.data.slug}/`) }]
           : []),
       ]}
     />
@@ -70,14 +67,14 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
         <p class="project-author project-author--block">
           Made by{' '}
           {parentDev ? (
-            <a href={withBase(parentDev.data.url)}>{parentDev.data.title}</a>
+            <a href={withBase(`/developers/${parentDev.data.slug}/`)}>{parentDev.data.title}</a>
           ) : (
             'A Wagtail developer'
           )}
           {coopDev && (
             <span class="project-featuring">
               &mdash; in cooperation with{' '}
-              <a href={withBase(coopDev.data.url)}>{coopDev.data.title}</a>
+              <a href={withBase(`/developers/${coopDev.data.slug}/`)}>{coopDev.data.title}</a>
             </span>
           )}
         </p>

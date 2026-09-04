@@ -1,16 +1,9 @@
 ---
-id: 559
-slug: fsp-architekten
 title: fsp Architekten
-url: /developers/taywa/fsp-architekten/
-live: true
 first_published_at: "2018-03-06T15:41:44.816420+13:00"
 latest_revision_created_at: "2019-11-20T13:59:59.163981+13:00"
-company_slug: taywa
 site_url: https://www.fsp-architekten.ch/
 site_screenshot_url: /images/fsp-architekten.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Switzerland
   - business

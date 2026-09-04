@@ -1,16 +1,9 @@
 ---
-id: 905
-slug: mansfields
 title: Mansfields
-url: /developers/dodgems-floss/mansfields/
-live: true
 first_published_at: "2021-12-08T15:34:58.016245+13:00"
 latest_revision_created_at: "2025-05-19T21:38:42.419283+12:00"
-company_slug: dodgems-floss
 site_url: https://mansfields.net
 site_screenshot_url: /images/dodgemsandfloss-mansfields.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - food
   - responsive

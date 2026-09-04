@@ -1,16 +1,9 @@
 ---
-id: 782
-slug: jane-franklin-hall
 title: Jane Franklin Hall
-url: /developers/neon-jungle/jane-franklin-hall/
-live: true
 first_published_at: "2019-10-23T14:17:12.253323+13:00"
 latest_revision_created_at: "2019-10-23T14:17:12.113105+13:00"
-company_slug: neon-jungle
 site_url: http://jane.edu.au
 site_screenshot_url: /images/jane.edu.au_Made_With_Wagtail.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - responsive
   - forms

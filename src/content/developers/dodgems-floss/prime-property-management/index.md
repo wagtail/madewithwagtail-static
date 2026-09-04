@@ -1,16 +1,9 @@
 ---
-id: 1070
-slug: prime-property-management
 title: Prime Property Management
-url: /developers/dodgems-floss/prime-property-management/
-live: true
 first_published_at: "2025-02-04T03:55:09.093173+13:00"
 latest_revision_created_at: "2025-05-19T21:39:35.873059+12:00"
-company_slug: dodgems-floss
 site_url: https://primepm.co.uk/
 site_screenshot_url: /images/dodgemsandfloss-prime.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - responsive
   - industry

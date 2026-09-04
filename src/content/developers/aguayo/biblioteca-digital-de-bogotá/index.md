@@ -1,16 +1,9 @@
 ---
-id: 924
-slug: biblioteca-digital-de-bogotá
 title: Biblioteca Digital de Bogotá
-url: /developers/aguayo/biblioteca-digital-de-bogotá/
-live: true
 first_published_at: "2021-12-12T04:32:05.814829+13:00"
 latest_revision_created_at: "2021-12-12T04:32:05.726719+13:00"
-company_slug: aguayo
 site_url: https://www.bibliotecadigitaldebogota.gov.co/
 site_screenshot_url: /images/www.bibliotecadigitaldebogota.gov.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - bogota
   - webservices

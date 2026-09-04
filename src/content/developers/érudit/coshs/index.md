@@ -1,16 +1,9 @@
 ---
-id: 664
-slug: coshs
 title: CO.SHS
-url: /developers/érudit/coshs/
-live: true
 first_published_at: "2019-09-19T18:49:29.515243+12:00"
 latest_revision_created_at: "2019-09-19T18:49:29.474420+12:00"
-company_slug: érudit
 site_url: https://co-shs.ca/en/
 site_screenshot_url: /images/screenshot_RPZkXdu.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - social sciences
   - opendata

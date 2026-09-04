@@ -1,16 +1,9 @@
 ---
-id: 1015
-slug: syfm
 title: SYFM
-url: /developers/hpt/syfm/
-live: true
 first_published_at: "2022-01-21T01:07:15.846451+13:00"
 latest_revision_created_at: "2022-01-21T01:07:15.787633+13:00"
-company_slug: hpt
 site_url: https://www.syfm.co.uk/
 site_screenshot_url: /images/Screenshot_2022-01-20_at_12.03.36.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - industry
 ---

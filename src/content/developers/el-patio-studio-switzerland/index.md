@@ -1,26 +1,14 @@
 ---
-id: 692
 slug: el-patio-studio-switzerland
 title: El Patio Studio Switzerland
-url: /developers/el-patio-studio-switzerland/
 live: true
 first_published_at: "2019-09-23T10:29:30.680190+12:00"
 latest_revision_created_at: "2019-09-23T10:29:30.645627+12:00"
-company_page_html_missing: false
 logo_url: /images/ElPatioStudioLogo.max-120x120.webp
-logo_title: null
 location: Arlesheim, Switzerland
-location_label: Arlesheim, Switzerland
 lat: "47.493113"
 lon: " 7.620205"
 company_url: https://www.elpatiostudio.com/
-twitter_url: null
-twitter_handler: null
-github_url: null
-github_user: null
-site_slugs:
-  - crafft-kommunikation-ag
-api_only_site_slugs: []
 ---
 
 We are a web development & design studio passionate about using technology to simplify and improve people's life.

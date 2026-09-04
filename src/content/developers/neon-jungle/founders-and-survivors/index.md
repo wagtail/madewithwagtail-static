@@ -1,16 +1,9 @@
 ---
-id: 851
-slug: founders-and-survivors
 title: Founders and Survivors
-url: /developers/neon-jungle/founders-and-survivors/
-live: true
 first_published_at: "2020-06-30T12:51:41.568334+12:00"
 latest_revision_created_at: "2020-06-30T13:15:06.919748+12:00"
-company_slug: neon-jungle
 site_url: https://foundersandsurvivors.com/
 site_screenshot_url: /images/Screenshot_2020-06-30_Home.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - design
   - responsive

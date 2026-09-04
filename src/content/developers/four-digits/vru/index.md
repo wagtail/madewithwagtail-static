@@ -1,16 +1,9 @@
 ---
-id: 1041
-slug: vru
 title: Veiligheidsregio Utrecht
-url: /developers/four-digits/vru/
-live: true
 first_published_at: "2023-06-22T00:50:19.662294+12:00"
 latest_revision_created_at: "2023-11-09T01:17:36.988946+13:00"
-company_slug: four-digits
 site_url: https://vru.nl
 site_screenshot_url: /images/Screenshot_2023-11-08_at_13.17.02.e7d77204.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - incident response
   - government

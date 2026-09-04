@@ -1,16 +1,9 @@
 ---
-id: 883
-slug: lipscombe
 title: Lipscombe
-url: /developers/neon-jungle/lipscombe/
-live: true
 first_published_at: "2021-10-05T18:36:21.780251+13:00"
 latest_revision_created_at: "2021-10-05T18:36:21.698492+13:00"
-company_slug: neon-jungle
 site_url: https://lipscombechildcare.asn.au/
 site_screenshot_url: /images/image_1.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - non-profit
   - images

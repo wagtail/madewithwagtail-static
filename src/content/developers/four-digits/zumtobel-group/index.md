@@ -1,17 +1,9 @@
 ---
-id: 850
-slug: zumtobel-group
 title: Zumtobel Group
-url: /developers/four-digits/zumtobel-group/
-live: true
 first_published_at: "2020-06-26T01:14:11.925451+12:00"
 latest_revision_created_at: "2024-09-17T03:00:34.291174+12:00"
-company_slug: four-digits
 site_url: https://z.lighting/
 site_screenshot_url: /images/Zumtobel_Group_vJ3mitU.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
-tags: []
 ---
 
 Improve the quality of life through light. The right light. At the right time. In the right place.

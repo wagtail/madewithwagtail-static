@@ -1,26 +1,16 @@
 ---
-id: 471
 slug: pure-blue
 title: Pure Blue
-url: /developers/pure-blue/
 live: true
 first_published_at: "2017-11-15T12:35:24.075599+13:00"
 latest_revision_created_at: "2017-11-15T12:56:20.350504+13:00"
-company_page_html_missing: false
 logo_url: /images/pure-blue-square.max-120x120.webp
-logo_title: null
 location: Eugene, Oregon
-location_label: Eugene, Oregon
 lat: "44.052069"
 lon: "-123.086754"
 company_url: https://purebluedesign.com
-twitter_url: https://twitter.com/pureblue
 twitter_handler: "@pureblue"
-github_url: https://github.com/pureblue
 github_user: pureblue
-site_slugs:
-  - drawn-agency
-api_only_site_slugs: []
 ---
 
 **About Us**

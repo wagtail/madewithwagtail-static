@@ -6,10 +6,8 @@ const developers = defineCollection({
   // sites they built live in <dev>/<site>/index.md (see the sites collection).
   loader: glob({ base: './src/content/developers', pattern: '*/index.md' }),
   schema: z.object({
-    id: z.number(),
     slug: z.string(),
     title: z.string(),
-    url: z.string(),
     live: z.boolean().default(true),
     first_published_at: z
       .union([z.string(), z.date(), z.null()])
@@ -17,20 +15,20 @@ const developers = defineCollection({
     latest_revision_created_at: z
       .union([z.string(), z.date(), z.null()])
       .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
-    company_page_html_missing: z.boolean().default(false),
     logo_url: z.string().nullable().default(null),
-    logo_title: z.string().nullable().default(null),
     location: z.string().nullable().default(null),
-    location_label: z.string().nullable().default(null),
     lat: z.string().nullable().default(null),
     lon: z.string().nullable().default(null),
     company_url: z.string().nullable().default(null),
-    twitter_url: z.string().nullable().default(null),
+    // Profile page derives the Twitter profile URL from the handler
+    // (https://twitter.com/<twitter_handler>).
     twitter_handler: z.string().nullable().default(null),
-    github_url: z.string().nullable().default(null),
+    // Profile page derives the GitHub profile URL from the username
+    // (https://github.com/<github_user>).
     github_user: z.string().nullable().default(null),
-    site_slugs: z.array(z.string()).default([]),
-    api_only_site_slugs: z.array(z.string()).default([]),
+    // Verbatim URLs for profiles on other platforms (Instagram, GitLab,
+    // personal sites). Unused by pages for now.
+    online_profiles: z.array(z.string()).default([]),
   }),
 });
 
@@ -40,25 +38,22 @@ const sites = defineCollection({
   // unique across developers.
   loader: glob({ base: './src/content/developers', pattern: '*/*/index.md' }),
   schema: z.object({
-    id: z.number(),
-    // Optional: when absent, the slug is derived from the entry ID
-    // ('<company>/<site>' -> the site segment). Kept optional so the two
-    // 'fertighausde' sites (christian-peters and fertighaus) can share the
-    // same visible slug under different companies.
-    slug: z.string().optional(),
+    // The site slug is the last segment of the entry ID
+    // ('<company>/<site>' -> 'site'). Multiple companies may share the same
+    // site slug ('fertighausde' exists under both christian-peters and
+    // fertighaus) — uniqueness comes from the '<company>/' prefix.
+    // The company slug is the first segment of the entry ID
+    // ('<company>/<site>' -> 'company'), matching the parent folder.
+    // All site entries are live; only developer profiles use live: false.
     title: z.string(),
-    url: z.string(),
-    live: z.boolean().default(true),
     first_published_at: z
       .union([z.string(), z.date(), z.null()])
       .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
     latest_revision_created_at: z
       .union([z.string(), z.date(), z.null()])
       .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
-    company_slug: z.string(),
     site_url: z.string().nullable().default(null),
     site_screenshot_url: z.string().nullable().default(null),
-    site_screenshot_title: z.string().nullable().default(null),
     in_cooperation_with_slug: z.string().nullable().default(null),
     tags: z.array(z.string()).default([]),
   }),

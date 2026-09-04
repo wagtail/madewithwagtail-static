@@ -1,16 +1,9 @@
 ---
-id: 896
-slug: computest
 title: Computest
-url: /developers/computest/computest/
-live: true
 first_published_at: "2021-12-04T11:58:34.848833+13:00"
 latest_revision_created_at: "2021-12-04T11:58:34.769455+13:00"
-company_slug: computest
 site_url: https://www.computest.nl
 site_screenshot_url: /images/www.computest.nl_nl_.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Hackers
   - consultancy

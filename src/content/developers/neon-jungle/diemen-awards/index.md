@@ -1,16 +1,9 @@
 ---
-id: 894
-slug: diemen-awards
 title: The Diemen Awards
-url: /developers/neon-jungle/diemen-awards/
-live: true
 first_published_at: "2021-10-26T16:49:33.323035+13:00"
 latest_revision_created_at: "2023-09-19T17:31:04.274469+12:00"
-company_slug: neon-jungle
 site_url: https://diemenawards.com.au/
 site_screenshot_url: /images/diemenawards.com.au_Wagtail.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - creativity
   - creative industries

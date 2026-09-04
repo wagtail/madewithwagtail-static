@@ -1,16 +1,9 @@
 ---
-id: 1073
-slug: chaplin-solutions
 title: Chaplin Solutions
-url: /developers/dodgems-floss/chaplin-solutions/
-live: true
 first_published_at: "2025-02-04T04:57:29.296911+13:00"
 latest_revision_created_at: "2025-05-19T21:37:23.792277+12:00"
-company_slug: dodgems-floss
 site_url: https://chaplinsolutions.co.uk/
 site_screenshot_url: /images/dodgemsandfloss-chaplin.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - IT consulting
   - business

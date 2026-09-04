@@ -1,16 +1,9 @@
 ---
-id: 964
-slug: station-spatiale
 title: Station Spatiale
-url: /developers/snoweb/station-spatiale/
-live: true
 first_published_at: "2022-01-08T13:41:02.285924+13:00"
 latest_revision_created_at: "2022-01-11T22:43:01.641175+13:00"
-company_slug: snoweb
 site_url: https://stationspatiale.com/
 site_screenshot_url: /images/station-spatiale-site.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - responsive
   - freelance

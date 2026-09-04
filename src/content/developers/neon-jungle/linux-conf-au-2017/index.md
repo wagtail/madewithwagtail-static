@@ -1,16 +1,9 @@
 ---
-id: 333
-slug: linux-conf-au-2017
 title: Linux Conf AU 2017
-url: /developers/neon-jungle/linux-conf-au-2017/
-live: true
 first_published_at: "2017-03-14T05:29:02.598051+13:00"
 latest_revision_created_at: "2017-03-14T05:30:35.512179+13:00"
-company_slug: neon-jungle
 site_url: https://www.linux.conf.au/
 site_screenshot_url: /images/linux.conf.au-1440x1200.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - events
   - conference

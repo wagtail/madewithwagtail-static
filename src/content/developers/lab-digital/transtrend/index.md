@@ -1,16 +1,9 @@
 ---
-id: 720
-slug: transtrend
 title: Transtrend
-url: /developers/lab-digital/transtrend/
-live: true
 first_published_at: "2019-09-23T11:40:40.183871+12:00"
 latest_revision_created_at: "2019-09-23T11:40:40.147725+12:00"
-company_slug: lab-digital
 site_url: https://www.transtrend.com/nl/
 site_screenshot_url: /images/screenshot_5skJpXq.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - wagtail
   - CMS

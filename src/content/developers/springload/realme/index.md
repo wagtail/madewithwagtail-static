@@ -1,16 +1,9 @@
 ---
-id: 109
-slug: realme
 title: RealMe
-url: /developers/springload/realme/
-live: true
 first_published_at: "2015-07-28T09:10:35.098741+12:00"
 latest_revision_created_at: "2018-02-27T09:13:05.296079+13:00"
-company_slug: springload
 site_url: https://www.realme.govt.nz/
 site_screenshot_url: /images/www.realme.govt.nz-1440x1200-1x_Q.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - responsive
   - services

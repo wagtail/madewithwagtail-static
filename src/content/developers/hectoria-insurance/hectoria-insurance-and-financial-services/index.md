@@ -1,16 +1,9 @@
 ---
-id: 678
-slug: hectoria-insurance-and-financial-services
 title: Hectoria Insurance and Financial Services
-url: /developers/hectoria-insurance/hectoria-insurance-and-financial-services/
-live: true
 first_published_at: "2019-09-19T19:34:58.376985+12:00"
 latest_revision_created_at: "2019-09-19T19:36:09.246441+12:00"
-company_slug: hectoria-insurance
 site_url: https://www.hiafs.com
 site_screenshot_url: /images/screenshot_Hv40Qdk.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - insurance
 ---

@@ -1,16 +1,9 @@
 ---
-id: 507
-slug: mia-metabolic-impact-assessment-concept-practice
 title: "MIA - Metabolic Impact Assessment: from concept to practice"
-url: /developers/citta/mia-metabolic-impact-assessment-concept-practice/
-live: true
 first_published_at: "2017-11-27T14:10:19.429772+13:00"
 latest_revision_created_at: "2017-11-27T14:10:19.388411+13:00"
-company_slug: citta
 site_url: https://projectmia.up.pt
 site_screenshot_url: /images/projectmia.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Urban Metabolism
   - Environmental Impact Assessment

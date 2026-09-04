@@ -1,16 +1,9 @@
 ---
-id: 880
-slug: brand-tasmania
 title: Brand Tasmania
-url: /developers/neon-jungle/brand-tasmania/
-live: true
 first_published_at: "2021-10-05T17:51:10.198772+13:00"
 latest_revision_created_at: "2023-09-19T17:32:47.571264+12:00"
-company_slug: neon-jungle
 site_url: https://tasmanian.com.au/
 site_screenshot_url: /images/tasmanian.com.au_Wagtail.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - storytelling
   - government

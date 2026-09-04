@@ -1,16 +1,9 @@
 ---
-id: 960
-slug: m
 title: M+
-url: /developers/torchbox/m/
-live: true
 first_published_at: "2022-01-05T22:13:54.546504+13:00"
 latest_revision_created_at: "2022-01-05T22:57:45.760739+13:00"
-company_slug: torchbox
 site_url: https://www.mplus.org.hk/en/
 site_screenshot_url: /images/M.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - museum
   - multilingual

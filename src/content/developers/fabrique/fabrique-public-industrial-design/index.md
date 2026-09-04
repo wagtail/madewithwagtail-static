@@ -1,16 +1,9 @@
 ---
-id: 533
-slug: fabrique-public-industrial-design
 title: Fabrique Public & Industrial Design
-url: /developers/fabrique/fabrique-public-industrial-design/
-live: true
 first_published_at: "2018-01-31T13:05:53.391280+13:00"
 latest_revision_created_at: "2018-01-31T13:07:19.387900+13:00"
-company_slug: fabrique
 site_url: https://www.fabrique3d.com/
 site_screenshot_url: /images/fabrique3d.com.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - responsive
   - multilingual

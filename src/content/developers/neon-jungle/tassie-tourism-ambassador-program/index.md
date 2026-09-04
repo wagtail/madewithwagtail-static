@@ -1,16 +1,9 @@
 ---
-id: 878
-slug: tassie-tourism-ambassador-program
 title: Tassie Tourism Ambassador Program
-url: /developers/neon-jungle/tassie-tourism-ambassador-program/
-live: true
 first_published_at: "2021-10-05T16:45:42.746585+13:00"
 latest_revision_created_at: "2021-10-05T17:53:49.902554+13:00"
-company_slug: neon-jungle
 site_url: https://tassietourismambassador.com.au/
 site_screenshot_url: /images/tassietourismambassador.com.au_Wa.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - design
   - responsive

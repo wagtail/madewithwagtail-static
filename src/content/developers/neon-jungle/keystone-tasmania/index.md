@@ -1,16 +1,9 @@
 ---
-id: 1034
-slug: keystone-tasmania
 title: Keystone Tasmania
-url: /developers/neon-jungle/keystone-tasmania/
-live: true
 first_published_at: "2022-07-13T11:55:25.586572+12:00"
 latest_revision_created_at: "2022-07-13T11:55:25.500448+12:00"
-company_slug: neon-jungle
 site_url: http://keystone.com.au
 site_screenshot_url: /images/keystone.com.au_Wagtail.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - accessibility
   - e-learning

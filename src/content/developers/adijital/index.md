@@ -1,26 +1,14 @@
 ---
-id: 925
 slug: adijital
 title: ADijital
-url: /developers/adijital/
 live: true
 first_published_at: "2021-12-12T04:36:04.281789+13:00"
 latest_revision_created_at: "2021-12-12T04:36:04.227621+13:00"
-company_page_html_missing: false
 logo_url: /images/ADijital-logo-130x78-1.max-120x120.webp
-logo_title: null
 location: Istanbul, Turkey
-location_label: Istanbul, Turkey
 lat: "41.024475"
 lon: " 29.016799"
 company_url: https://adijital.com/
-twitter_url: null
-twitter_handler: null
-github_url: null
-github_user: null
-site_slugs:
-  - golden-life-american-hospital-mali
-api_only_site_slugs: []
 ---
 
 If you want to have an effective presence in the digital world, let's take your business to the internet with our marketing, website, social media solutions!

@@ -1,16 +1,9 @@
 ---
-id: 708
-slug: ovarian-cancer-action
 title: Ovarian Cancer Action
-url: /developers/hactar/ovarian-cancer-action/
-live: true
 first_published_at: "2019-09-23T11:27:27.416786+12:00"
 latest_revision_created_at: "2019-09-24T10:38:06.245434+12:00"
-company_slug: hactar
 site_url: https://ovarian.org.uk
 site_screenshot_url: /images/screenshot_gxizcyp.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Research
   - charity

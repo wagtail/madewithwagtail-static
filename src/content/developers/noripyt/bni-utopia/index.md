@@ -1,16 +1,8 @@
 ---
-id: 464
-slug: bni-utopia
 title: BNI Utopia
-url: /developers/noripyt/bni-utopia/
-live: true
 first_published_at: "2017-11-06T09:17:05.449765+13:00"
 latest_revision_created_at: "2018-04-20T01:27:01.151598+12:00"
-company_slug: noripyt
-site_url: null
 site_screenshot_url: /images/bni-utopia.fr_membres_Made_with_W.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Network
   - business

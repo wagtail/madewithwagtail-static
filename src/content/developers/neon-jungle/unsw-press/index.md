@@ -1,16 +1,9 @@
 ---
-id: 952
-slug: unsw-press
 title: UNSW Press
-url: /developers/neon-jungle/unsw-press/
-live: true
 first_published_at: "2021-12-14T13:15:46.596805+13:00"
 latest_revision_created_at: "2023-09-19T17:31:48.731720+12:00"
-company_slug: neon-jungle
 site_url: https://unsw.press/
 site_screenshot_url: /images/unsw.press_books_Wagtail.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - publishing
   - not-for-profit

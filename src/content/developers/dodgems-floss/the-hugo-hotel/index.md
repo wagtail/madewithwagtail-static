@@ -1,16 +1,9 @@
 ---
-id: 1075
-slug: the-hugo-hotel
 title: The Hugo Hotel
-url: /developers/dodgems-floss/the-hugo-hotel/
-live: true
 first_published_at: "2025-05-19T20:56:17.111946+12:00"
 latest_revision_created_at: "2025-05-19T22:50:41.074876+12:00"
-company_slug: dodgems-floss
 site_url: https://thehugo.co.uk/
 site_screenshot_url: /images/dodgemsandfloss-hugoHotels.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - canterbury
   - responsive

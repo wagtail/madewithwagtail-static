@@ -1,16 +1,9 @@
 ---
-id: 578
-slug: garri
 title: Garri Wholesale
-url: /developers/overcast/garri/
-live: true
 first_published_at: "2018-04-10T13:53:20.175303+12:00"
 latest_revision_created_at: "2022-01-10T21:58:53.188495+13:00"
-company_slug: overcast
 site_url: https://www.garri.is
 site_screenshot_url: /images/garri.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - b2b
   - responsive

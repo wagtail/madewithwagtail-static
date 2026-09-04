@@ -1,16 +1,9 @@
 ---
-id: 1052
-slug: hogeschool-van-hall-larenstein-hvhl
 title: Hogeschool Van Hall Larenstein (HVHL)
-url: /developers/four-digits/hogeschool-van-hall-larenstein-hvhl/
-live: true
 first_published_at: "2024-07-03T00:34:03.186973+12:00"
 latest_revision_created_at: "2024-07-03T00:34:30.457613+12:00"
-company_slug: four-digits
 site_url: https://www.vhluas.com/
 site_screenshot_url: /images/Screenshot_2024-07-02_at_14.24.12.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Education
   - school

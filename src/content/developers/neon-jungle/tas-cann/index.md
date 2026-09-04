@@ -1,16 +1,9 @@
 ---
-id: 497
-slug: tas-cann
 title: Tas Cann
-url: /developers/neon-jungle/tas-cann/
-live: true
 first_published_at: "2017-11-22T11:23:27.809844+13:00"
 latest_revision_created_at: "2018-01-16T16:56:08.149364+13:00"
-company_slug: neon-jungle
 site_url: http://tascann.com/
 site_screenshot_url: /images/tascann.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - design
   - responsive

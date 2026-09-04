@@ -1,16 +1,9 @@
 ---
-id: 961
-slug: oxfam-gb
 title: Oxfam GB
-url: /developers/torchbox/oxfam-gb/
-live: true
 first_published_at: "2022-01-05T22:40:52.750901+13:00"
 latest_revision_created_at: "2022-01-06T05:24:57.846012+13:00"
-company_slug: torchbox
 site_url: https://www.oxfam.org.uk
 site_screenshot_url: /images/Oxfam.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - charity
   - non-profit

@@ -1,16 +1,9 @@
 ---
-id: 1003
-slug: búseti
 title: Búseti
-url: /developers/overcast/búseti/
-live: true
 first_published_at: "2022-01-18T20:35:19.134851+13:00"
 latest_revision_created_at: "2022-01-18T20:35:19.028365+13:00"
-company_slug: overcast
 site_url: https://www.buseti.is/
 site_screenshot_url: /images/Screenshot_2022-01-18_at_08.38.00.05741bc5.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - My sites
   - Customers

@@ -1,16 +1,9 @@
 ---
-id: 645
-slug: teso
 title: TESO ferry service
-url: /developers/fabrique/teso/
-live: true
 first_published_at: "2019-04-03T00:35:21.031065+13:00"
 latest_revision_created_at: "2019-04-03T00:36:51.453492+13:00"
-company_slug: fabrique
 site_url: https://www.teso.nl/en/
 site_screenshot_url: /images/teso2.1-Home---onbekende-gebruike.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - Amsterdam
   - responsive

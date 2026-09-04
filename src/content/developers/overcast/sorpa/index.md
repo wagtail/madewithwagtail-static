@@ -1,16 +1,9 @@
 ---
-id: 1053
-slug: sorpa
 title: Sorpa
-url: /developers/overcast/sorpa/
-live: true
 first_published_at: "2024-08-07T01:54:09.228506+12:00"
 latest_revision_created_at: "2024-08-07T01:54:09.074695+12:00"
-company_slug: overcast
 site_url: https://www.sorpa.is/
 site_screenshot_url: /images/sorpa.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - recycling
   - waste management

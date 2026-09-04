@@ -1,16 +1,9 @@
 ---
-id: 1083
-slug: apex-contractors
 title: Apex Contractors
-url: /developers/dodgems-floss/apex-contractors/
-live: true
 first_published_at: "2025-07-24T04:19:51.369782+12:00"
 latest_revision_created_at: "2025-07-24T04:19:51.216164+12:00"
-company_slug: dodgems-floss
 site_url: https://apexcontractors.co.uk/
 site_screenshot_url: /images/dodgemsandfloss_apexContractors.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - business
   - responsive

@@ -1,16 +1,9 @@
 ---
-id: 487
-slug: peoples-archive-rural-india
 title: People's Archive of Rural India
-url: /developers/siddharth-adelkar/peoples-archive-rural-india/
-live: true
 first_published_at: "2017-11-21T19:06:51.707071+13:00"
 latest_revision_created_at: "2017-11-21T19:08:20.170343+13:00"
-company_slug: siddharth-adelkar
 site_url: https://ruralindiaonline.org/
 site_screenshot_url: /images/ruralindiaonline.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - journalism
   - school

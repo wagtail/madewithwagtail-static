@@ -1,16 +1,9 @@
 ---
-id: 933
-slug: ria-parish-digital-freelancer-nz
 title: Ria Parish | Digital Freelancer NZ
-url: /developers/ria-parish/ria-parish-digital-freelancer-nz/
-live: true
 first_published_at: "2021-12-12T05:00:14.473331+13:00"
 latest_revision_created_at: "2021-12-12T05:00:14.389630+13:00"
-company_slug: ria-parish
 site_url: https://riaparish.co.nz
 site_screenshot_url: /images/riaparish.co.nz_.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - freelancer
   - marketing

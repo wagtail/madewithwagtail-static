@@ -1,16 +1,9 @@
 ---
-id: 596
-slug: hydrock-engineering
 title: Hydrock Engineering
-url: /developers/omni-digital/hydrock-engineering/
-live: true
 first_published_at: "2018-05-28T15:53:12.087922+12:00"
 latest_revision_created_at: "2018-05-28T15:53:12.048561+12:00"
-company_slug: omni-digital
 site_url: https://www.hydrock.com/
 site_screenshot_url: /images/hydrock.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - engineering
   - consultancy

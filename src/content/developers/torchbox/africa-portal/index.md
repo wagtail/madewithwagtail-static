@@ -1,16 +1,9 @@
 ---
-id: 517
-slug: africa-portal
 title: Africa Portal
-url: /developers/torchbox/africa-portal/
-live: true
 first_published_at: "2018-01-16T11:01:16.409890+13:00"
 latest_revision_created_at: "2018-01-16T11:01:16.361082+13:00"
-company_slug: torchbox
 site_url: https://www.africaportal.org/
 site_screenshot_url: /images/africaportal.org.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - news
   - StreamField

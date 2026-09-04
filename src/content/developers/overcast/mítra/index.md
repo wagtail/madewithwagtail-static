@@ -1,16 +1,9 @@
 ---
-id: 1056
-slug: mítra
 title: Mítra
-url: /developers/overcast/mítra/
-live: true
 first_published_at: "2024-08-07T02:54:17.777901+12:00"
 latest_revision_created_at: "2024-08-07T02:54:17.645862+12:00"
-company_slug: overcast
 site_url: https://mitra.is/
 site_screenshot_url: /images/mitra.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - calculator
   - cars

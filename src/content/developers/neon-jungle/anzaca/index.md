@@ -1,16 +1,9 @@
 ---
-id: 787
-slug: anzaca
 title: ANZACA
-url: /developers/neon-jungle/anzaca/
-live: true
 first_published_at: "2019-10-28T13:48:03.094171+13:00"
 latest_revision_created_at: "2019-10-28T13:48:02.937601+13:00"
-company_slug: neon-jungle
 site_url: http://anzaca.org
 site_screenshot_url: /images/anzaca.org_Made_With_Wagtail.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - responsive
   - forms

@@ -1,16 +1,9 @@
 ---
-id: 509
-slug: block-venture
 title: Block Venture
-url: /developers/moor-interactive/block-venture/
-live: true
 first_published_at: "2017-12-05T11:32:28.073245+13:00"
 latest_revision_created_at: "2017-12-05T11:32:28.020574+13:00"
-company_slug: moor-interactive
 site_url: https://blockventure.io/
 site_screenshot_url: /images/blockventure.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - AWS
   - Multisite

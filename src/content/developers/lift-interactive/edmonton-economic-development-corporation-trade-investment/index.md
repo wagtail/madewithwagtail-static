@@ -1,16 +1,9 @@
 ---
-id: 491
-slug: edmonton-economic-development-corporation-trade-investment
 title: Edmonton Economic Development Corporation - Trade & Investment
-url: /developers/lift-interactive/edmonton-economic-development-corporation-trade-investment/
-live: true
 first_published_at: "2017-11-22T10:06:17.778519+13:00"
 latest_revision_created_at: "2017-11-22T10:08:21.075860+13:00"
-company_slug: lift-interactive
 site_url: https://www.investedmontonregion.com/
 site_screenshot_url: /images/EEDC.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - business
   - responsive

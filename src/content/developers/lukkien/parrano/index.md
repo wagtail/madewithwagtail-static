@@ -1,16 +1,9 @@
 ---
-id: 307
-slug: parrano
 title: Parrano
-url: /developers/lukkien/parrano/
-live: true
 first_published_at: "2017-01-28T04:33:29.048801+13:00"
 latest_revision_created_at: "2017-01-28T04:33:29.001191+13:00"
-company_slug: lukkien
 site_url: http://www.parrano.nl
 site_screenshot_url: /images/parrano.nl-1440x1200.2e16d0ba.fill-1200x996.webp
-site_screenshot_title: null
-in_cooperation_with_slug: null
 tags:
   - food
   - Photography
