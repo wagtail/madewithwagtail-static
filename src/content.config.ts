@@ -40,9 +40,10 @@ const sites = defineCollection({
   loader: glob({ base: './src/content/developers', pattern: '*/*/index.md' }),
   schema: z.object({
     // The site slug is the last segment of the entry ID
-    // ('<company>/<site>' -> 'site'). Multiple companies may share the same
-    // site slug ('fertighausde' exists under both christian-peters and
-    // fertighaus) — uniqueness comes from the '<company>/' prefix.
+    // ('<company>/<site>' -> 'site'). Site slugs are unique across
+    // developers: when two developers built a site together, it lives
+    // under one directory and the other is credited with
+    // in_cooperation_with_slug.
     // The company slug is the first segment of the entry ID
     // ('<company>/<site>' -> 'company'), matching the parent folder.
     // All site entries are live; only developer profiles use live: false.

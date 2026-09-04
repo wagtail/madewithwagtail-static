@@ -25,10 +25,13 @@ export const getStaticPaths = (async () => {
 
 const { developer, logoFile } = Astro.props;
 
-const devSites = await getCollection('sites', (site) => {
-  // Site IDs are '<company>/<site>'; the company segment matches this
-  // developer's slug (their directory name, the entry ID).
-  return site.id.split('/')[0] === developer.id;
+// A developer's sites: those in their own directory, plus sites they
+// contributed to via in_cooperation_with_slug.
+const devSites = (await getCollection('sites')).filter((site) => {
+  const company = site.id.split('/')[0];
+  const isOwner = company === developer.id;
+  const isCooperator = site.data.in_cooperation_with_slug === developer.id && !isOwner;
+  return isOwner || isCooperator;
 });
 
 const allDevelopers = await getCollection('developers');
@@ -107,29 +110,33 @@ function getCooperator(cooperatorSlug: string) {
 
     <div class="company__sites">
       <div class="grid grid-stack site-listing">
-        {devSites.map((site) => (
-          <SiteCard
-            title={site.data.title}
-            url={withBase(`/developers/${site.id}/`)}
-            developerName={developer.data.title}
-            developerUrl={withBase(`/developers/${developer.id}/`)}
-            id={site.id}
-            siteUrl={site.data.site_url}
-            inCooperationWith={site.data.in_cooperation_with_slug
-              ? getCooperator(site.data.in_cooperation_with_slug)?.data.title ?? null
-              : null
-            }
-            inCooperationWithUrl={
-              site.data.in_cooperation_with_slug
-                ? withBase(
-                    getCooperator(site.data.in_cooperation_with_slug)
-                      ? `/developers/${site.data.in_cooperation_with_slug}/`
-                      : '/developers/',
-                  )
-              : null
-            }
-          />
-        ))}
+        {devSites.map((site) => {
+          const isOwn = site.id.split('/')[0] === developer.id;
+          const coopSlug = isOwn
+            ? site.data.in_cooperation_with_slug
+            : site.id.split('/')[0];
+          const coop = coopSlug ? getCooperator(coopSlug) : null;
+          return (
+            <SiteCard
+              title={site.data.title}
+              url={withBase(`/developers/${site.id}/`)}
+              developerName={isOwn ? developer.data.title : (coop?.data.title ?? 'A Wagtail developer')}
+              developerUrl={withBase(
+                isOwn ? `/developers/${developer.id}/` : (coop ? `/developers/${coop.id}/` : '/developers/'),
+              )}
+              id={site.id}
+              siteUrl={site.data.site_url}
+              inCooperationWith={isOwn
+                ? (coop?.data.title ?? null)
+                : (developer.data.title)
+              }
+              inCooperationWithUrl={isOwn
+                ? (coop ? withBase(`/developers/${coop.id}/`) : null)
+                : withBase(`/developers/${developer.id}/`)
+              }
+            />
+          );
+        })}
       </div>
     </div>
   </div>

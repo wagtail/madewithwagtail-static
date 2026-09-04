@@ -8,10 +8,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const allDevelopers = await getCollection('developers');
 const allSites = await getCollection('sites');
 
+// Count owned sites plus collaborations (in_cooperation_with_slug).
 const siteCounts = new Map<string, number>();
+const bump = (slug: string) => siteCounts.set(slug, (siteCounts.get(slug) ?? 0) + 1);
 for (const site of allSites) {
-  const slug = site.id.split('/')[0];
-  siteCounts.set(slug, (siteCounts.get(slug) ?? 0) + 1);
+  bump(site.id.split('/')[0]);
+  if (site.data.in_cooperation_with_slug) bump(site.data.in_cooperation_with_slug);
 }
 
 const developersWithCounts = allDevelopers.map((dev) => ({
