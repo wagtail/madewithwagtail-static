@@ -2,7 +2,6 @@
 title: Numiko
 first_published_at: "2019-09-19T15:12:12.630066+12:00"
 latest_revision_created_at: "2019-09-19T15:14:49.072332+12:00"
-logo_url: /images/Numiko_Logo.max-120x120.webp
 location: Leeds
 lat: "53.801747"
 lon: " -1.547782"

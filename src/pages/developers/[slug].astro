@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
+import { readdirSync } from 'node:fs';
 import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
@@ -9,18 +10,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
   const developers = await getCollection('developers');
+  const logoFiles = new Set(readdirSync('./public/images'));
   return developers.map((d) => ({
     // A developer's slug is their directory name, i.e. the entry ID.
     params: { slug: d.id },
-    props: { developer: d },
+    props: {
+      developer: d,
+      // Logos live at public/images/<id>.max-120x120.webp when the
+      // developer has one.
+      logoFile: logoFiles.has(`${d.id}.max-120x120.webp`),
+    },
   }));
 }) satisfies GetStaticPaths;
 
-const { developer } = Astro.props;
+const { developer, logoFile } = Astro.props;
 
 const devSites = await getCollection('sites', (site) => {
   // Site IDs are '<company>/<site>'; the company segment matches this
-  // developer's slug (their folder name).
+  // developer's slug (their directory name, the entry ID).
   return site.id.split('/')[0] === developer.id;
 });
 
@@ -39,11 +46,11 @@ function getCooperator(cooperatorSlug: string) {
     <Breadcrumbs ancestors={[{ title: 'Developers', url: withBase('/developers/') }]} />
 
     <div class="company grid-float">
-      {developer.data.logo_url && (
+      {logoFile && (
         <div>
           <div class="company__logo">
             <img
-              src={withBase(developer.data.logo_url)}
+              src={withBase(`/images/${developer.id}.max-120x120.webp`)}
               alt={developer.data.title}
               title={developer.data.title}
             />

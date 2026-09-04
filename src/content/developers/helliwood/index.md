@@ -2,7 +2,6 @@
 title: Helliwood
 first_published_at: "2021-12-04T12:17:13.716562+13:00"
 latest_revision_created_at: "2021-12-04T12:17:13.659225+13:00"
-logo_url: /images/Helliwood_logo.max-120x120.webp
 location: Berlin, Germany
 lat: "52.51464"
 lon: " 13.44417"

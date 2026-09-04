@@ -2,7 +2,6 @@
 title: CITTA
 first_published_at: "2017-11-27T14:08:01.249176+13:00"
 latest_revision_created_at: "2017-11-27T14:08:01.217213+13:00"
-logo_url: /images/citta_brRFFZH.max-120x120.webp
 location: Porto, Portugal
 lat: "41.177958"
 lon: " -8.597835"

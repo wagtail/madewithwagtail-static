@@ -2,7 +2,6 @@
 title: DabApps
 first_published_at: "2018-06-22T17:45:15.743880+12:00"
 latest_revision_created_at: "2018-06-22T17:45:15.702929+12:00"
-logo_url: /images/dabapps-logo.max-120x120.webp
 location: Brighton, UK
 lat: "50.828157"
 lon: " -0.140929"

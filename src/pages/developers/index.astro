@@ -47,7 +47,7 @@ const totalPages = Math.ceil(sortedDevelopers.length / PAGE_SIZE);
         <DeveloperCard
           title={dev.data.title}
           url={withBase(`/developers/${dev.id}/`)}
-          logoUrl={dev.data.logo_url ? withBase(dev.data.logo_url) : null}
+          id={dev.id}
           location={dev.data.location}
           sitesCount={dev.sitesCount}
         />

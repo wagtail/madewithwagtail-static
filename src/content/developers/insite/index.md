@@ -2,7 +2,6 @@
 title: Insite
 first_published_at: "2019-09-19T18:51:57.611764+12:00"
 latest_revision_created_at: "2019-09-19T18:51:57.577135+12:00"
-logo_url: /images/insite.max-120x120.webp
 location: Dallas, USA
 lat: "32.820981"
 lon: " -96.802865"

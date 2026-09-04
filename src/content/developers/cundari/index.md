@@ -2,7 +2,6 @@
 title: Cundari
 first_published_at: "2019-09-23T10:12:50.166090+12:00"
 latest_revision_created_at: "2019-09-23T10:12:50.129819+12:00"
-logo_url: /images/cundari-logo.max-120x120.webp
 location: Toronto, Canada
 lat: "43.648593"
 lon: "-79.389112"

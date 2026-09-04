@@ -2,7 +2,6 @@
 title: Four Digits
 first_published_at: "2015-12-21T18:02:19.573902+13:00"
 latest_revision_created_at: "2023-11-09T01:18:17.958855+13:00"
-logo_url: /images/FoDig_rgb_onwhite_1024x1024.max-120x120.webp
 location: Arnhem, The Netherlands
 lat: "51.9839248"
 lon: " 5.910747799999967"

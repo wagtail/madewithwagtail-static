@@ -2,7 +2,6 @@
 title: Intelliscale
 first_published_at: "2015-08-21T13:08:19.825233+12:00"
 latest_revision_created_at: "2016-11-19T00:22:36.948777+13:00"
-logo_url: /images/logo_bw.max-120x120.webp
 location: Launceston, Tasmania
 lat: "-41.4371063"
 lon: " 147.1390116"

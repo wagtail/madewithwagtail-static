@@ -2,7 +2,6 @@
 title: SJC Marketing
 first_published_at: "2019-09-19T19:25:01.671958+12:00"
 latest_revision_created_at: "2019-09-19T19:25:01.602921+12:00"
-logo_url: /images/sjc.max-120x120.webp
 location: Kansas City, United States of America
 lat: "39.136030"
 lon: " -94.577960"

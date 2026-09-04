@@ -2,7 +2,6 @@
 title: Aguayo
 first_published_at: "2020-04-24T20:27:49.941346+12:00"
 latest_revision_created_at: "2020-04-24T20:27:49.880878+12:00"
-logo_url: /images/Aguayo-UX-Logo-Modyo.max-120x120.webp
 location: Bogotá, Colombia
 lat: "Cra. 20c #76-32"
 lon: " Bogotá"

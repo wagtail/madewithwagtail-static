@@ -2,7 +2,6 @@
 title: Bedrock Development
 first_published_at: "2018-01-16T10:53:54.506712+13:00"
 latest_revision_created_at: "2018-01-16T10:53:54.471259+13:00"
-logo_url: /images/bedrock.max-120x120.webp
 location: Rotterdam
 lat: "51.910454"
 lon: "4.448202"

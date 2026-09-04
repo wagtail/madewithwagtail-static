@@ -2,7 +2,6 @@
 title: The Interaction Consortium
 first_published_at: "2021-12-04T12:05:46.997148+13:00"
 latest_revision_created_at: "2021-12-04T12:05:46.940030+13:00"
-logo_url: /images/ic_avatar.max-120x120.webp
 location: Sydney, Australia
 lat: "-33.888435"
 lon: " 151.200662"

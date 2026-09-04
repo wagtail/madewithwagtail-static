@@ -2,7 +2,6 @@
 title: NASA JPL
 first_published_at: "2021-12-12T06:14:30.293583+13:00"
 latest_revision_created_at: "2021-12-12T06:14:30.240075+13:00"
-logo_url: /images/nasa-jpl-logo.max-120x120.webp
 location: Pasadena, California, US
 lat: "34.20288755903142"
 lon: " -118.1714181654724"

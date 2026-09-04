@@ -2,7 +2,6 @@
 title: Radial
 first_published_at: "2021-12-08T15:33:25.561328+13:00"
 latest_revision_created_at: "2021-12-08T15:33:25.507345+13:00"
-logo_url: /images/radial-logo.max-120x120.webp
 location: Athens, Greece
 lat: Lat Long (37.983810
 lon: " 23.727539)"

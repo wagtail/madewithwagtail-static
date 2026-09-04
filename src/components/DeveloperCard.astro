@@ -1,20 +1,27 @@
 ---
+import { existsSync } from 'node:fs';
+import { withBase } from '../helpers.ts';
+
 interface Props {
   title: string;
   url: string;
-  logoUrl: string | null;
+  // Developer entry ID: the logo lives at public/images/<id>.max-120x120.webp
+  // when the developer has one.
+  id: string;
   location: string | null;
   sitesCount: number;
 }
 
-const { title, url, logoUrl, location, sitesCount } = Astro.props;
+const { title, url, id, location, sitesCount } = Astro.props;
+const logoFile = `images/${id}.max-120x120.webp`;
+const hasLogo = existsSync(`./public/${logoFile}`);
 ---
 
 <div class="one-half--medium one-third--large company-listing__column">
   <a class="company-listing link-ghost" href={url}>
     <div class="media__image">
-      {logoUrl ? (
-        <img src={logoUrl} alt={title} loading="lazy" width="80" height="80" />
+      {hasLogo ? (
+        <img src={withBase(`/${logoFile}`)} alt={title} loading="lazy" width="80" height="80" />
       ) : (
         <div class="company__placeholder"></div>
       )}

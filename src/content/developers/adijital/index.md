@@ -2,7 +2,6 @@
 title: ADijital
 first_published_at: "2021-12-12T04:36:04.281789+13:00"
 latest_revision_created_at: "2021-12-12T04:36:04.227621+13:00"
-logo_url: /images/ADijital-logo-130x78-1.max-120x120.webp
 location: Istanbul, Turkey
 lat: "41.024475"
 lon: " 29.016799"

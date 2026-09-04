@@ -2,7 +2,6 @@
 title: Dodgems & Floss
 first_published_at: "2021-12-08T15:29:42.462617+13:00"
 latest_revision_created_at: "2025-02-04T03:50:43.804082+13:00"
-logo_url: /images/dodgemsandfloss.max-120x120.webp
 location: Canterbury, UK
 lat: "51.2809062"
 lon: " 1.0770378"

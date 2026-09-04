@@ -2,7 +2,6 @@
 title: Squeeze My Lizard
 first_published_at: "2022-03-01T10:04:09.107911+13:00"
 latest_revision_created_at: "2022-10-20T15:41:46.727509+13:00"
-logo_url: /images/squeezelizard-logo.max-120x120.webp
 location: New Zealand
 lat: "-40.9378671"
 lon: " 174.994055"

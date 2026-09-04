@@ -2,7 +2,6 @@
 title: TechEquipt
 first_published_at: "2020-02-05T12:41:40.145822+13:00"
 latest_revision_created_at: "2020-02-05T12:41:40.096528+13:00"
-logo_url: /images/A1-TechEquipt-1.max-120x120.webp
 location: Narellan, Australia
 lat: 74 Alamein Ave
 lon: " Smeaton Grange NSW 2567"

@@ -2,7 +2,6 @@
 title: GS
 first_published_at: "2017-04-20T01:14:58.211137+12:00"
 latest_revision_created_at: "2017-07-07T16:44:42.116566+12:00"
-logo_url: /images/gsLogo.max-120x120.webp
 location: Milwaukee, WI USA
 lat: "43.1374417"
 lon: " -87.94970949999998"

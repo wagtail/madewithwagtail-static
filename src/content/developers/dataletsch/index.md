@@ -2,7 +2,6 @@
 title: Datalets.ch
 first_published_at: "2017-07-07T17:12:38.046654+12:00"
 latest_revision_created_at: "2017-07-19T09:54:58.239612+12:00"
-logo_url: /images/8876208.max-120x120.webp
 location: Bern, Switzerland
 lat: "46.948034"
 lon: " 7.447217499999965"

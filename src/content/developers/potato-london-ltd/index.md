@@ -2,7 +2,6 @@
 title: Potato
 first_published_at: "2017-07-18T12:31:59.964825+12:00"
 latest_revision_created_at: "2020-05-18T09:50:59.043539+12:00"
-logo_url: /images/potato.max-120x120.webp
 location: London, UK
 lat: "51.5223287"
 lon: " -0.13633340000001226"

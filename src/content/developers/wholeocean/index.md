@@ -2,7 +2,6 @@
 title: WholeOcean
 first_published_at: "2024-05-01T15:05:14.483826+12:00"
 latest_revision_created_at: "2024-05-01T15:05:14.415277+12:00"
-logo_url: /images/WholeOcean_dark_filled.max-120x120.webp
 location: Somerton, UK
 lat: "51.0536362"
 lon: " -2.7305138"

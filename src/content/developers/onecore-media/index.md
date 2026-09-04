@@ -2,7 +2,6 @@
 title: OneCore Media
 first_published_at: "2019-09-23T12:00:14.134273+12:00"
 latest_revision_created_at: "2019-09-23T12:00:14.099197+12:00"
-logo_url: /images/onecore.max-120x120.webp
 location: Toronto, Canada
 lat: "43.769140"
 lon: "-79.468650"

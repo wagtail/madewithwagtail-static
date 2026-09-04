@@ -2,7 +2,6 @@
 title: Purpleweb
 first_published_at: "2016-08-31T10:55:36.862935+12:00"
 latest_revision_created_at: "2016-08-31T11:01:55.098800+12:00"
-logo_url: /images/4405105.max-120x120.webp
 location: Versailles, France
 lat: "48.7859636"
 lon: " 2.131674500000031"

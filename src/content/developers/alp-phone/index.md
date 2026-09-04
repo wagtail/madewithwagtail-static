@@ -2,7 +2,6 @@
 title: Alp Phone
 first_published_at: "2016-04-19T09:50:37.662831+12:00"
 latest_revision_created_at: "2016-05-18T17:18:21.061722+12:00"
-logo_url: /images/Icon_400x400.max-120x120.webp
 location: Basel, Switzerland
 lat: "47.5556998"
 lon: " 7.591236200000026"

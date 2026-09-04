@@ -2,7 +2,6 @@
 title: Nick Moreton
 first_published_at: "2017-07-10T12:36:08.144676+12:00"
 latest_revision_created_at: "2017-08-07T14:50:37.170707+12:00"
-logo_url: /images/nick_moreton.max-120x120.webp
 location: Droitwich, Worcestershire, UK
 lat: "52.2872693"
 lon: " -2.1155738999999585"

@@ -2,7 +2,6 @@
 title: Alex Romantsov
 first_published_at: "2017-05-18T02:30:33.851465+12:00"
 latest_revision_created_at: "2017-05-18T02:30:33.817136+12:00"
-logo_url: /images/logo_ObYs42N.max-120x120.webp
 location: Russia, Vladivostok
 lat: "43.120123"
 lon: " 131.88768600000003"

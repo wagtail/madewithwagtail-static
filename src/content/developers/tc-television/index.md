@@ -2,7 +2,6 @@
 title: TC Television
 first_published_at: "2016-03-13T10:19:15.329798+13:00"
 latest_revision_created_at: "2016-05-18T17:29:39.091368+12:00"
-logo_url: /images/tMMPuTFc_400x400.max-120x120.webp
 location: Quito, Ecuador
 lat: "-2.1575899"
 lon: " -79.8880666"

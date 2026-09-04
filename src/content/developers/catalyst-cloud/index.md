@@ -2,7 +2,6 @@
 title: Catalyst Cloud
 first_published_at: "2018-03-09T16:58:05.670288+13:00"
 latest_revision_created_at: "2018-03-09T16:58:05.636658+13:00"
-logo_url: /images/CatalystCloud_logo-small.original.max-120x120.webp
 location: Wellington, New Zealand
 lat: "-41.286460"
 lon: "174.776236"

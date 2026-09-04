@@ -2,7 +2,6 @@
 title: Modulus
 first_published_at: "2016-01-27T09:25:29.758856+13:00"
 latest_revision_created_at: "2016-05-18T17:36:08.956203+12:00"
-logo_url: /images/IWzGb1OZ_400x400.max-120x120.webp
 location: Athens, Greece
 lat: "38.0068853"
 lon: " 23.79660290000004"

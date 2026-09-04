@@ -2,7 +2,6 @@
 title: A Color Bright
 first_published_at: "2017-01-16T16:40:08.430616+13:00"
 latest_revision_created_at: "2017-01-16T16:40:08.400320+13:00"
-logo_url: /images/487f41f799cd9ebff0917c1b36020607.max-120x120.webp
 location: Berlin, Germany
 lat: "52.491453"
 lon: " 13.4211373"

@@ -2,7 +2,6 @@
 title: El Patio Studio Switzerland
 first_published_at: "2019-09-23T10:29:30.680190+12:00"
 latest_revision_created_at: "2019-09-23T10:29:30.645627+12:00"
-logo_url: /images/ElPatioStudioLogo.max-120x120.webp
 location: Arlesheim, Switzerland
 lat: "47.493113"
 lon: " 7.620205"

@@ -2,7 +2,6 @@
 title: Siddharth Adelkar
 first_published_at: "2017-11-21T19:02:17.306997+13:00"
 latest_revision_created_at: "2017-11-21T19:07:19.133952+13:00"
-logo_url: /images/PARInetwork.max-120x120.webp
 location: Mumbai, India
 lat: "19.046880"
 lon: "72.826646"
