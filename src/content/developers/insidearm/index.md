@@ -1,7 +1,5 @@
 ---
-slug: insidearm
 title: insideARM
-live: true
 first_published_at: "2016-09-28T12:27:21.162663+13:00"
 latest_revision_created_at: "2016-09-28T12:27:21.132828+13:00"
 logo_url: /images/2015-ia-logo-360x84.max-120x120.webp

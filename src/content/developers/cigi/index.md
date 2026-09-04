@@ -1,7 +1,5 @@
 ---
-slug: cigi
 title: CIGI
-live: true
 first_published_at: "2015-07-16T11:26:20.867522+12:00"
 latest_revision_created_at: "2016-05-18T17:57:23.329853+12:00"
 logo_url: /images/124cf009782cf7f1e941a4cb2bc58426.max-120x120.webp

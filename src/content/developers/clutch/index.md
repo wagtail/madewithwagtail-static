@@ -1,7 +1,5 @@
 ---
-slug: clutch
 title: Clutch
-live: true
 first_published_at: '2018-06-22T17:49:22.220067+12:00'
 latest_revision_created_at: '2018-06-25T11:00:50.082308+12:00'
 location: Amsterdam

@@ -1,7 +1,5 @@
 ---
-slug: ria-parish
 title: Ria Parish
-live: true
 first_published_at: '2021-12-12T04:57:56.952726+13:00'
 latest_revision_created_at: '2021-12-12T04:57:56.909177+13:00'
 location: Wellington, New Zealand

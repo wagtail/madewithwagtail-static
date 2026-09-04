@@ -1,7 +1,5 @@
 ---
-slug: candylabs
 title: Candylabs
-live: true
 first_published_at: "2019-12-11T15:25:39.102033+13:00"
 latest_revision_created_at: "2019-12-11T15:25:38.934519+13:00"
 logo_url: /images/Screen_Shot_2019-12-11_at_3.20.48_PM.max-120x120.webp

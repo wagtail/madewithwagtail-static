@@ -1,7 +1,5 @@
 ---
-slug: marco-lerco
 title: Marco Lerco
-live: true
 first_published_at: "2016-10-12T13:36:07.094087+13:00"
 latest_revision_created_at: "2016-10-12T13:36:07.065678+13:00"
 logo_url: /images/marco-lerco.max-120x120.webp

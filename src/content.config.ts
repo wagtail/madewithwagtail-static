@@ -6,9 +6,9 @@ const developers = defineCollection({
   // sites they built live in <dev>/<site>/index.md (see the sites collection).
   loader: glob({ base: './src/content/developers', pattern: '*/index.md' }),
   schema: z.object({
-    slug: z.string(),
+    // The developer slug is the developer directory name, i.e. the first
+    // segment of site entry IDs ('<company>/<site>').
     title: z.string(),
-    live: z.boolean().default(true),
     first_published_at: z
       .union([z.string(), z.date(), z.null()])
       .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),

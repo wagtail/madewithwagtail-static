@@ -1,7 +1,5 @@
 ---
-slug: end2enddev
 title: end2end.dev
-live: true
 first_published_at: '2021-12-08T15:50:04.258925+13:00'
 latest_revision_created_at: '2021-12-08T15:50:04.210790+13:00'
 location: Berlin, Germany

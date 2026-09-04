@@ -1,7 +1,5 @@
 ---
-slug: martin-fitzpatrick
 title: Martin Fitzpatrick
-live: true
 first_published_at: '2019-09-23T11:52:45.083083+12:00'
 latest_revision_created_at: '2019-09-23T11:52:45.051211+12:00'
 location: Utrecht

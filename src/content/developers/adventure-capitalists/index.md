@@ -1,7 +1,5 @@
 ---
-slug: adventure-capitalists
 title: Adventure Capitalists
-live: true
 first_published_at: "2016-09-07T23:07:39.614889+12:00"
 latest_revision_created_at: "2016-09-07T23:07:39.583547+12:00"
 logo_url: /images/5060041.max-120x120.webp

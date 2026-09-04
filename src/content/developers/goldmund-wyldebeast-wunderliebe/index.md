@@ -1,7 +1,5 @@
 ---
-slug: goldmund-wyldebeast-wunderliebe
 title: Goldmund, Wyldebeast & Wunderliebe
-live: true
 first_published_at: "2021-12-23T11:34:36.999969+13:00"
 latest_revision_created_at: "2021-12-23T11:34:36.940470+13:00"
 logo_url: /images/0.max-120x120.webp

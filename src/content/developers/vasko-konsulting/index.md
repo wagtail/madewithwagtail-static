@@ -1,7 +1,5 @@
 ---
-slug: vasko-konsulting
 title: Vasko Konsulting
-live: true
 first_published_at: "2017-10-02T20:13:07.135186+13:00"
 latest_revision_created_at: "2017-10-02T20:13:07.106380+13:00"
 logo_url: /images/vaskonsulting-logo.max-120x120.webp

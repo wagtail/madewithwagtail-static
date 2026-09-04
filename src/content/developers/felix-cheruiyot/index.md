@@ -1,7 +1,5 @@
 ---
-slug: felix-cheruiyot
 title: Felix Cheruiyot
-live: true
 first_published_at: '2017-07-13T13:57:45.175185+12:00'
 latest_revision_created_at: '2017-07-13T13:57:45.148571+12:00'
 location: Nairobi, Kenya

@@ -1,7 +1,5 @@
 ---
-slug: waat-ltd
 title: WAAT Ltd
-live: true
 first_published_at: "2018-05-28T16:08:04.454034+12:00"
 latest_revision_created_at: "2018-05-28T16:08:04.418354+12:00"
 logo_url: /images/Waat.max-120x120.webp

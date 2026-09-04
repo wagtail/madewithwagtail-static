@@ -1,7 +1,5 @@
 ---
-slug: mostly-serious
 title: Mostly Serious
-live: true
 first_published_at: "2017-03-14T04:45:27.238530+13:00"
 latest_revision_created_at: "2017-03-14T04:45:27.197163+13:00"
 logo_url: /images/qQ7t3kIO.max-120x120.webp

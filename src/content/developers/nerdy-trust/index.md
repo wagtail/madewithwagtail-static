@@ -1,7 +1,5 @@
 ---
-slug: nerdy-trust
 title: Nerdy Trust
-live: true
 first_published_at: '2017-07-07T16:08:06.899986+12:00'
 latest_revision_created_at: '2017-07-07T16:08:06.865095+12:00'
 location: México

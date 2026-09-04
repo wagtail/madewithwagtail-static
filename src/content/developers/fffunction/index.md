@@ -1,7 +1,5 @@
 ---
-slug: fffunction
 title: Fffunction
-live: true
 first_published_at: "2015-10-12T10:18:01.235179+13:00"
 latest_revision_created_at: "2016-05-18T18:06:26.766367+12:00"
 logo_url: /images/QUobFeXT_400x400.max-120x120.webp

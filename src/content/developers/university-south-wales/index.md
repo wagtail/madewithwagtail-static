@@ -1,7 +1,5 @@
 ---
-slug: university-south-wales
 title: University of South Wales
-live: true
 first_published_at: "2015-04-19T21:35:26.639908+12:00"
 latest_revision_created_at: "2016-05-18T16:35:52.756928+12:00"
 logo_url: /images/usw.max-120x120.webp

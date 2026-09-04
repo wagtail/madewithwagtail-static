@@ -1,7 +1,5 @@
 ---
-slug: ticketea
 title: Ticketea
-live: true
 first_published_at: "2015-08-13T11:14:40.538706+12:00"
 latest_revision_created_at: "2016-05-18T18:00:10.806045+12:00"
 logo_url: /images/GN1eNyMk_400x400.max-120x120.webp

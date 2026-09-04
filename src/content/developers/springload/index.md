@@ -1,7 +1,5 @@
 ---
-slug: springload
 title: Springload
-live: true
 first_published_at: "2015-04-18T21:19:46.509051+12:00"
 latest_revision_created_at: "2019-09-25T10:18:03.191113+12:00"
 logo_url: /images/Sprout_-_600x600.max-120x120.webp

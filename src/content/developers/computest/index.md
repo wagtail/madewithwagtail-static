@@ -1,7 +1,5 @@
 ---
-slug: computest
 title: Computest
-live: true
 first_published_at: "2021-12-04T11:50:46.835693+13:00"
 latest_revision_created_at: "2021-12-04T11:50:46.777480+13:00"
 logo_url: /images/computest-logo.max-120x120.webp

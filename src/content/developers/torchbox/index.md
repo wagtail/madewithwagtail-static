@@ -1,7 +1,5 @@
 ---
-slug: torchbox
 title: Torchbox
-live: true
 first_published_at: "2015-04-18T21:19:37.793520+12:00"
 latest_revision_created_at: "2022-01-13T22:41:42.112694+13:00"
 logo_url: /images/Torchbox_logo.max-120x120.webp

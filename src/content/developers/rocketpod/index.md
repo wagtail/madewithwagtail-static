@@ -1,7 +1,5 @@
 ---
-slug: rocketpod
 title: RocketPod
-live: true
 first_published_at: "2015-07-10T10:32:45.355351+12:00"
 latest_revision_created_at: "2016-05-18T17:54:14.735363+12:00"
 logo_url: /images/oU4txM-n_400x400.max-120x120.webp

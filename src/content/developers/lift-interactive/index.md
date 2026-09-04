@@ -1,7 +1,5 @@
 ---
-slug: lift-interactive
 title: Lift Interactive
-live: true
 first_published_at: "2015-10-12T09:51:14.903343+13:00"
 latest_revision_created_at: "2018-03-08T11:26:35.615385+13:00"
 logo_url: /images/Lucille-120px-01.max-120x120.webp

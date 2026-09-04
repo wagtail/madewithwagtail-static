@@ -1,7 +1,5 @@
 ---
-slug: bon-osonwanne
 title: Bon Osonwanne
-live: true
 first_published_at: '2017-07-31T16:38:53.274770+12:00'
 latest_revision_created_at: '2017-07-31T16:38:53.247837+12:00'
 location: Scottsdale, Arizona USA

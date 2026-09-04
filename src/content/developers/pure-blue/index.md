@@ -1,7 +1,5 @@
 ---
-slug: pure-blue
 title: Pure Blue
-live: true
 first_published_at: "2017-11-15T12:35:24.075599+13:00"
 latest_revision_created_at: "2017-11-15T12:56:20.350504+13:00"
 logo_url: /images/pure-blue-square.max-120x120.webp

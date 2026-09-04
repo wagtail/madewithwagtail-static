@@ -1,7 +1,5 @@
 ---
-slug: babl-media
 title: Babl Media
-live: true
 first_published_at: "2015-04-19T21:35:55.679587+12:00"
 latest_revision_created_at: "2016-05-18T16:33:18.484315+12:00"
 logo_url: /images/blablmedia.max-120x120.webp

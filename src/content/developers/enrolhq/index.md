@@ -1,7 +1,5 @@
 ---
-slug: enrolhq
 title: EnrolHQ
-live: true
 first_published_at: "2019-09-23T11:00:48.544138+12:00"
 latest_revision_created_at: "2019-09-23T11:01:14.012495+12:00"
 logo_url: /images/enrol-hq.max-120x120.webp

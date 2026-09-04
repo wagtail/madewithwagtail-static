@@ -1,7 +1,5 @@
 ---
-slug: innokoda
 title: Innokoda
-live: true
 first_published_at: "2015-11-02T10:26:30.344509+13:00"
 latest_revision_created_at: "2016-05-18T17:47:10.386253+12:00"
 logo_url: /images/social_400x400.max-120x120.webp

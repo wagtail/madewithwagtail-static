@@ -1,7 +1,5 @@
 ---
-slug: hpt
 title: HPT
-live: true
 first_published_at: "2016-09-07T20:55:46.046115+12:00"
 latest_revision_created_at: "2022-01-08T23:23:36.481196+13:00"
 logo_url: /images/HPT-Light-Social02.max-120x120.webp

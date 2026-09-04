@@ -1,7 +1,5 @@
 ---
-slug: engineervix
 title: engineervix
-live: true
 first_published_at: "2019-09-23T10:57:32.344255+12:00"
 latest_revision_created_at: "2019-09-23T10:57:32.312086+12:00"
 logo_url: /images/engineervix.max-120x120.webp

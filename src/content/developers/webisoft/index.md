@@ -1,7 +1,5 @@
 ---
-slug: webisoft
 title: Webisoft
-live: true
 first_published_at: '2017-07-31T17:22:15.499117+12:00'
 latest_revision_created_at: '2017-07-31T17:22:15.471767+12:00'
 location: Montreal, Canada

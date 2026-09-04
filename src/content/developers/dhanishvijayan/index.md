@@ -1,7 +1,5 @@
 ---
-slug: dhanishvijayan
 title: dhanishvijayan
-live: true
 first_published_at: '2019-11-01T12:49:13.334800+13:00'
 latest_revision_created_at: '2019-11-01T12:49:13.307560+13:00'
 location: Trivandrum

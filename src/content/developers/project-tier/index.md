@@ -1,7 +1,5 @@
 ---
-slug: project-tier
 title: Project TIER
-live: true
 first_published_at: "2019-09-24T13:57:00.889425+12:00"
 latest_revision_created_at: "2019-09-24T13:57:00.855269+12:00"
 logo_url: /images/tier.max-120x120.webp

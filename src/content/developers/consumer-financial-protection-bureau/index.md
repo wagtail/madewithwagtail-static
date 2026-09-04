@@ -1,7 +1,5 @@
 ---
-slug: consumer-financial-protection-bureau
 title: Consumer Financial Protection Bureau
-live: true
 first_published_at: '2019-09-19T15:28:42.784621+12:00'
 latest_revision_created_at: '2019-09-19T15:28:42.755802+12:00'
 location: Washington, D.C., United States

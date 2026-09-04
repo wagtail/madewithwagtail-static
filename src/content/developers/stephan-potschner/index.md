@@ -1,7 +1,5 @@
 ---
-slug: stephan-potschner
 title: Stephan Pötschner
-live: true
 first_published_at: '2017-07-21T11:15:46.456461+12:00'
 latest_revision_created_at: '2017-07-21T11:15:46.428724+12:00'
 location: Vienna, Austria

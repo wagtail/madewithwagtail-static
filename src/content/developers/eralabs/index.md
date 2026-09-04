@@ -1,7 +1,5 @@
 ---
-slug: eralabs
 title: Eralabs
-live: true
 first_published_at: "2021-10-13T17:08:10.614514+13:00"
 latest_revision_created_at: "2021-10-13T17:08:10.330921+13:00"
 logo_url: /images/logo_ulfuo7b.max-120x120.webp

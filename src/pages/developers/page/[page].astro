@@ -18,7 +18,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 
   const developersWithCounts = allDevelopers.map((dev) => ({
     ...dev,
-    sitesCount: siteCounts.get(dev.data.slug) ?? 0,
+    sitesCount: siteCounts.get(dev.id) ?? 0,
   }));
 
   const sortedDevelopers = developersWithCounts.sort((a, b) => {
@@ -36,8 +36,8 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props;
 
 interface PaginatedDeveloper {
+  id: string;
   data: {
-    slug: string;
     title: string;
     logo_url: string | null;
     location: string | null;
@@ -55,7 +55,7 @@ interface PaginatedDeveloper {
       {page.data.map((dev: PaginatedDeveloper) => (
         <DeveloperCard
           title={dev.data.title}
-          url={withBase(`/developers/${dev.data.slug}/`)}
+          url={withBase(`/developers/${dev.id}/`)}
           logoUrl={dev.data.logo_url ? withBase(dev.data.logo_url) : null}
           location={dev.data.location}
           sitesCount={dev.sitesCount ?? 0}

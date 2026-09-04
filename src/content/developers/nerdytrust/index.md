@@ -1,7 +1,5 @@
 ---
-slug: nerdytrust
 title: NerdyTrust
-live: true
 first_published_at: "2020-04-24T15:42:08.276416+12:00"
 latest_revision_created_at: "2021-12-07T05:44:14.292663+13:00"
 logo_url: /images/logont.max-120x120.webp

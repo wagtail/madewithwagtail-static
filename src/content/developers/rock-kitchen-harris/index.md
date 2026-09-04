@@ -1,7 +1,5 @@
 ---
-slug: rock-kitchen-harris
 title: Rock Kitchen Harris
-live: true
 first_published_at: "2015-04-19T22:15:29.393985+12:00"
 latest_revision_created_at: "2018-01-03T05:56:57.562098+13:00"
 logo_url: /images/rock-kitchen-harris.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: studio-brabant
 title: Studio Brabant
-live: true
 first_published_at: '2016-03-13T10:50:30.946567+13:00'
 latest_revision_created_at: '2016-05-18T17:25:48.498270+12:00'
 location: Vyksa, Russia

@@ -1,7 +1,5 @@
 ---
-slug: texperience
 title: texperience
-live: true
 first_published_at: '2021-10-13T16:39:37.245885+13:00'
 latest_revision_created_at: '2021-10-13T16:39:37.201582+13:00'
 location: Aalen, Germany

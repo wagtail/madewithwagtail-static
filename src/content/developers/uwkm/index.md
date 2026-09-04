@@ -1,7 +1,5 @@
 ---
-slug: uwkm
 title: UWKM
-live: true
 first_published_at: "2017-03-30T00:22:32.068705+13:00"
 latest_revision_created_at: "2017-03-30T00:22:32.034470+13:00"
 logo_url: /images/logo.max-120x120.webp

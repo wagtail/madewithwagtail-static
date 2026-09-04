@@ -1,7 +1,5 @@
 ---
-slug: noripyt
 title: NoriPyt
-live: true
 first_published_at: "2015-07-17T10:55:55.023759+12:00"
 latest_revision_created_at: "2018-07-28T02:27:16.535124+12:00"
 logo_url: /images/noripyt.max-120x120.webp

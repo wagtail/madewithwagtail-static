@@ -1,7 +1,5 @@
 ---
-slug: cundari
 title: Cundari
-live: true
 first_published_at: "2019-09-23T10:12:50.166090+12:00"
 latest_revision_created_at: "2019-09-23T10:12:50.129819+12:00"
 logo_url: /images/cundari-logo.max-120x120.webp

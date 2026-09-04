@@ -1,7 +1,5 @@
 ---
-slug: codered
 title: CodeRed
-live: true
 first_published_at: "2019-09-19T19:14:57.721169+12:00"
 latest_revision_created_at: "2019-09-19T19:14:57.686822+12:00"
 logo_url: /images/codered.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: érudit
 title: Érudit
-live: true
 first_published_at: '2019-09-19T18:46:16.956263+12:00'
 latest_revision_created_at: '2019-09-26T18:07:34.643702+12:00'
 location: Montreal, Canada

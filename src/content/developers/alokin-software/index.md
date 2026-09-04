@@ -1,7 +1,5 @@
 ---
-slug: alokin-software
 title: Alokin Software
-live: true
 first_published_at: "2019-09-19T17:07:42.532526+12:00"
 latest_revision_created_at: "2019-09-19T17:07:42.495525+12:00"
 logo_url: /images/alokin.max-120x120.webp

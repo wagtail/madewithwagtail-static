@@ -1,7 +1,5 @@
 ---
-slug: techequipt
 title: TechEquipt
-live: true
 first_published_at: "2020-02-05T12:41:40.145822+13:00"
 latest_revision_created_at: "2020-02-05T12:41:40.096528+13:00"
 logo_url: /images/A1-TechEquipt-1.max-120x120.webp

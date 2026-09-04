@@ -8,27 +8,22 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
   const sites = await getCollection('sites');
-  const developers = await getCollection('developers');
-  const devMap = new Map(developers.map((d) => [d.data.slug, d]));
-
-  return sites
-    .filter((site) => devMap.get(site.id.split('/')[0])?.data.live !== false)
-    .map((site) => ({
-      // Route params derive from the entry ID ('<company>/<site>'), i.e.
-      // the folder structure — no slug frontmatter needed.
-      params: {
-        company: site.id.split('/')[0],
-        site: site.id.split('/').at(-1),
-      },
-      props: { siteEntry: site },
-    }));
+  return sites.map((site) => ({
+    // Route params derive from the entry ID ('<company>/<site>'), i.e.
+    // the folder structure — no slug frontmatter needed.
+    params: {
+      company: site.id.split('/')[0],
+      site: site.id.split('/').at(-1),
+    },
+    props: { siteEntry: site },
+  }));
 }) satisfies GetStaticPaths;
 
 const { siteEntry } = Astro.props;
 const { Content } = await render(siteEntry);
 
 const developers = await getCollection('developers');
-const devMap = new Map(developers.map((d) => [d.data.slug, d]));
+const devMap = new Map(developers.map((d) => [d.id, d]));
 
 const parentDev = devMap.get(siteEntry.id.split('/')[0]);
 const coopDev = siteEntry.data.in_cooperation_with_slug
@@ -42,7 +37,7 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
       ancestors={[
         { title: 'Developers', url: withBase('/developers/') },
         ...(parentDev
-          ? [{ title: parentDev.data.title, url: withBase(`/developers/${parentDev.data.slug}/`) }]
+          ? [{ title: parentDev.data.title, url: withBase(`/developers/${parentDev.id}/`) }]
           : []),
       ]}
     />
@@ -67,14 +62,14 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
         <p class="project-author project-author--block">
           Made by{' '}
           {parentDev ? (
-            <a href={withBase(`/developers/${parentDev.data.slug}/`)}>{parentDev.data.title}</a>
+            <a href={withBase(`/developers/${parentDev.id}/`)}>{parentDev.data.title}</a>
           ) : (
             'A Wagtail developer'
           )}
           {coopDev && (
             <span class="project-featuring">
               &mdash; in cooperation with{' '}
-              <a href={withBase(`/developers/${coopDev.data.slug}/`)}>{coopDev.data.title}</a>
+              <a href={withBase(`/developers/${coopDev.id}/`)}>{coopDev.data.title}</a>
             </span>
           )}
         </p>

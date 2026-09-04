@@ -1,7 +1,5 @@
 ---
-slug: blue-hut
 title: Blue Hut
-live: true
 first_published_at: "2018-06-29T16:10:36.202167+12:00"
 latest_revision_created_at: "2018-06-29T16:10:36.171228+12:00"
 logo_url: /images/Blue_Hut.max-120x120.webp

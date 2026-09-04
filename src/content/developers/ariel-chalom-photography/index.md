@@ -1,7 +1,5 @@
 ---
-slug: ariel-chalom-photography
 title: Ariel Chalom Photography
-live: true
 first_published_at: "2016-09-07T22:28:07.844553+12:00"
 latest_revision_created_at: "2016-09-07T22:28:07.799709+12:00"
 logo_url: /images/10690250_872616186111876_6910404061068073246.max-120x120.webp

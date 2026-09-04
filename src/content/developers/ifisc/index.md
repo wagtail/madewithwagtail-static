@@ -1,7 +1,5 @@
 ---
-slug: ifisc
 title: IFISC
-live: true
 first_published_at: '2019-09-23T11:32:08.261921+12:00'
 latest_revision_created_at: '2019-09-23T11:32:08.232734+12:00'
 lat: '48.286002'

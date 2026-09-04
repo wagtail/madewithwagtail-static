@@ -1,7 +1,5 @@
 ---
-slug: frojd
 title: Fröjd
-live: true
 first_published_at: "2017-03-14T05:42:09.633251+13:00"
 latest_revision_created_at: "2022-01-08T14:48:21.885038+13:00"
 logo_url: /images/frojd.max-120x120.webp

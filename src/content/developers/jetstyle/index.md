@@ -1,7 +1,5 @@
 ---
-slug: jetstyle
 title: JetStyle
-live: true
 first_published_at: "2017-07-21T11:37:01.184007+12:00"
 latest_revision_created_at: "2017-07-21T11:37:36.763102+12:00"
 logo_url: /images/jetstyle.max-120x120.webp

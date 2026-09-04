@@ -1,7 +1,5 @@
 ---
-slug: dominique-peretti
 title: Dominique Peretti
-live: true
 first_published_at: '2017-07-31T17:04:15.289021+12:00'
 latest_revision_created_at: '2017-07-31T17:04:15.261964+12:00'
 location: France

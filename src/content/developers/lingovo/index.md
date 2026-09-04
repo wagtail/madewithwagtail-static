@@ -1,7 +1,5 @@
 ---
-slug: lingovo
 title: Lingovo
-live: true
 first_published_at: '2019-09-23T11:41:42.167765+12:00'
 latest_revision_created_at: '2019-09-23T11:41:42.140155+12:00'
 location: Hamburg, Germany

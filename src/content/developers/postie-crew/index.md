@@ -1,7 +1,5 @@
 ---
-slug: postie-crew
 title: Postie Crew
-live: true
 first_published_at: '2019-09-24T13:50:49.471767+12:00'
 latest_revision_created_at: '2019-09-24T13:50:49.432975+12:00'
 location: Ultimo, Australia

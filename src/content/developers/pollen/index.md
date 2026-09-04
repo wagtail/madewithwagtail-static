@@ -1,7 +1,5 @@
 ---
-slug: pollen
 title: Pollen
-live: true
 first_published_at: "2018-03-14T16:48:55.843819+13:00"
 latest_revision_created_at: "2018-03-14T16:48:55.812239+13:00"
 logo_url: /images/ta70194q_400x400.max-120x120.webp

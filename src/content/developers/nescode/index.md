@@ -1,7 +1,5 @@
 ---
-slug: nescode
 title: Nescode
-live: true
 first_published_at: "2016-09-01T08:26:05.389308+12:00"
 latest_revision_created_at: "2016-09-01T08:26:05.341901+12:00"
 logo_url: /images/ZrlUFSwO.max-120x120.webp

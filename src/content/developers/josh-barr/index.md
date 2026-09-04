@@ -1,7 +1,5 @@
 ---
-slug: josh-barr
 title: Josh Barr
-live: true
 first_published_at: "2015-10-23T13:48:50.025024+13:00"
 latest_revision_created_at: "2016-05-18T17:49:01.744642+12:00"
 logo_url: /images/tweet_400x400.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: riku-oja
 title: Riku Oja
-live: true
 first_published_at: "2017-01-16T16:20:37.361649+13:00"
 latest_revision_created_at: "2017-01-28T03:33:21.206899+13:00"
 logo_url: /images/heldev-logo-white.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: university-hawaii
 title: University of Hawai‘i
-live: true
 first_published_at: "2016-09-07T22:15:33.919532+12:00"
 latest_revision_created_at: "2016-09-07T22:15:33.889348+12:00"
 logo_url: /images/University_of_Hawaii_seal.max-120x120.webp

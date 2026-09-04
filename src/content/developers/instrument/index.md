@@ -1,7 +1,5 @@
 ---
-slug: instrument
 title: Instrument
-live: true
 first_published_at: "2019-09-19T19:03:53.498848+12:00"
 latest_revision_created_at: "2019-09-19T19:03:53.464492+12:00"
 logo_url: /images/Instrument.max-120x120.webp

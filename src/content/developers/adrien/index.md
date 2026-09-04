@@ -1,7 +1,5 @@
 ---
-slug: adrien
 title: Adrien
-live: true
 first_published_at: '2017-04-20T01:34:58.521311+12:00'
 latest_revision_created_at: '2017-04-20T01:34:58.492866+12:00'
 location: Dublin, Ireland

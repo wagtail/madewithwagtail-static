@@ -1,7 +1,5 @@
 ---
-slug: orphmedia
 title: Orphmedia
-live: true
 first_published_at: "2019-09-24T11:09:36.842490+12:00"
 latest_revision_created_at: "2019-09-24T11:09:36.809466+12:00"
 logo_url: /images/orphmedia.max-120x120.webp

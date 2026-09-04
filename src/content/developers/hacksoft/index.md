@@ -1,7 +1,5 @@
 ---
-slug: hacksoft
 title: HackSoft
-live: true
 first_published_at: "2017-04-20T01:23:48.019079+12:00"
 latest_revision_created_at: "2017-04-20T01:26:48.226781+12:00"
 logo_url: /images/logo_GwhPJhX.max-120x120.webp

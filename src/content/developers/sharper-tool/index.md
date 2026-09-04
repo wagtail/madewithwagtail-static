@@ -1,7 +1,5 @@
 ---
-slug: sharper-tool
 title: SharperTool
-live: true
 first_published_at: '2019-11-05T09:14:49.077846+13:00'
 latest_revision_created_at: '2019-11-05T09:22:57.355775+13:00'
 location: Boise, Idaho

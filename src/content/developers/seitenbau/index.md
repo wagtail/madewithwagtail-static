@@ -1,7 +1,5 @@
 ---
-slug: seitenbau
 title: Seitenbau
-live: true
 first_published_at: "2016-09-01T08:05:00.468225+12:00"
 latest_revision_created_at: "2016-09-01T08:05:00.438533+12:00"
 logo_url: /images/1482773.max-120x120.webp

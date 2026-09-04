@@ -1,7 +1,5 @@
 ---
-slug: bigpear
 title: BigPear
-live: true
 first_published_at: '2021-10-13T16:56:46.287487+13:00'
 latest_revision_created_at: '2021-10-13T16:56:46.238237+13:00'
 location: Rio Ceballos, Argentina

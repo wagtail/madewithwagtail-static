@@ -1,7 +1,5 @@
 ---
-slug: taywa
 title: Taywa
-live: true
 first_published_at: "2018-03-06T15:38:54.112660+13:00"
 latest_revision_created_at: "2018-03-06T15:38:54.077763+13:00"
 logo_url: /images/taywa_logo_square-200.max-120x120.webp

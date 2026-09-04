@@ -1,7 +1,5 @@
 ---
-slug: entvia
 title: Entvia
-live: true
 first_published_at: "2021-12-12T04:08:47.057214+13:00"
 latest_revision_created_at: "2021-12-12T04:08:46.992050+13:00"
 logo_url: /images/coffeepard-logo.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: fabrique
 title: Fabrique
-live: true
 first_published_at: "2018-01-31T12:59:37.035997+13:00"
 latest_revision_created_at: "2018-01-31T12:59:36.960614+13:00"
 logo_url: /images/Fabrique.max-120x120.webp

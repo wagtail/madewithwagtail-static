@@ -1,7 +1,5 @@
 ---
-slug: nasa-jpl
 title: NASA JPL
-live: true
 first_published_at: "2021-12-12T06:14:30.293583+13:00"
 latest_revision_created_at: "2021-12-12T06:14:30.240075+13:00"
 logo_url: /images/nasa-jpl-logo.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: villageoffice-cooperative
 title: VillageOffice Cooperative
-live: true
 first_published_at: "2019-09-26T20:15:47.391402+12:00"
 latest_revision_created_at: "2019-09-26T20:15:47.356877+12:00"
 logo_url: /images/villageoffice.original.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: salebox
 title: Salebox
-live: true
 first_published_at: "2020-05-13T18:26:05.781031+12:00"
 latest_revision_created_at: "2020-05-13T18:26:05.731887+12:00"
 logo_url: /images/d1cvti2xf2607n.cloudfront.net_img_logo_logo..max-120x120.webp

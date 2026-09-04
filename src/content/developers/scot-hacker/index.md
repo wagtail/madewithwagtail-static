@@ -1,7 +1,5 @@
 ---
-slug: scot-hacker
 title: Scot Hacker
-live: true
 first_published_at: '2017-01-16T15:32:04.111501+13:00'
 latest_revision_created_at: '2017-01-16T17:26:40.716758+13:00'
 location: El Cerrito, California, USA

@@ -1,7 +1,5 @@
 ---
-slug: lambert-labs
 title: Lambert Labs
-live: true
 first_published_at: "2021-08-10T09:27:11.750711+12:00"
 latest_revision_created_at: "2021-08-10T09:27:11.697895+12:00"
 logo_url: /images/logo_size_icon.max-120x120.webp

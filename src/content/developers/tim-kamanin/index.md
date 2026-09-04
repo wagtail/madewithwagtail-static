@@ -1,7 +1,5 @@
 ---
-slug: tim-kamanin
 title: Tim Kamanin
-live: true
 first_published_at: "2015-10-13T12:44:38.730787+13:00"
 latest_revision_created_at: "2016-05-18T18:06:42.850912+12:00"
 logo_url: /images/avatar_400x400.max-120x120.webp

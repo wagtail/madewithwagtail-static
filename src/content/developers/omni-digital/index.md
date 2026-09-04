@@ -1,7 +1,5 @@
 ---
-slug: omni-digital
 title: Omni Digital
-live: true
 first_published_at: "2016-03-31T09:47:42.344539+13:00"
 latest_revision_created_at: "2018-05-28T15:56:51.431641+12:00"
 logo_url: /images/oSt5yLWT_400x400.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: megaterios
 title: Megaterios
-live: true
 first_published_at: '2017-02-23T04:03:08.972894+13:00'
 latest_revision_created_at: '2017-02-23T04:03:08.949434+13:00'
 location: Cúcuta, Colombia

@@ -1,7 +1,5 @@
 ---
-slug: lab-digital
 title: Lab Digital
-live: true
 first_published_at: "2017-04-26T23:46:10.009195+12:00"
 latest_revision_created_at: "2017-04-26T23:46:09.974626+12:00"
 logo_url: /images/Lab_Digital_Logo.max-120x120.webp

@@ -1,7 +1,5 @@
 ---
-slug: wirebox
 title: Wirebox
-live: true
 first_published_at: '2020-05-13T17:34:05.640253+12:00'
 latest_revision_created_at: '2020-05-13T17:34:05.596383+12:00'
 location: Watford, UK

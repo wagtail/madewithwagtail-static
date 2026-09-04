@@ -1,7 +1,5 @@
 ---
-slug: btc-media
 title: BTC Media
-live: true
 first_published_at: "2017-01-16T11:20:35.979623+13:00"
 latest_revision_created_at: "2017-01-16T11:28:10.920720+13:00"
 logo_url: /images/btc-logo.max-120x120.webp

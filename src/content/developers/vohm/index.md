@@ -1,7 +1,5 @@
 ---
-slug: vohm
 title: Vohm
-live: true
 first_published_at: "2021-07-06T15:55:03.620943+12:00"
 latest_revision_created_at: "2021-07-06T15:55:03.555761+12:00"
 logo_url: /images/vohm-cubes.max-120x120.webp

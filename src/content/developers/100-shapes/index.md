@@ -1,7 +1,5 @@
 ---
-slug: 100-shapes
 title: 100 Shapes
-live: true
 first_published_at: "2015-04-19T20:23:04.789921+12:00"
 latest_revision_created_at: "2016-05-18T16:11:18.772385+12:00"
 logo_url: /images/100shapes.max-120x120.webp

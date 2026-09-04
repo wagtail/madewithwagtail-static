@@ -1,7 +1,5 @@
 ---
-slug: predictive-solutions
 title: Predictive Solutions
-live: true
 first_published_at: "2017-03-14T04:50:48.893511+13:00"
 latest_revision_created_at: "2017-03-14T04:50:48.861788+13:00"
 logo_url: /images/SPSS_Logo.max-120x120.webp

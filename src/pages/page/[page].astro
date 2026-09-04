@@ -10,7 +10,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const allSites = await getCollection('sites');
   const allDevelopers = await getCollection('developers');
 
-  const developerMap = new Map(allDevelopers.map((d) => [d.data.slug, d]));
+  const developerMap = new Map(allDevelopers.map((d) => [d.id, d]));
 
   const sortedSites = allSites.sort(
     (a, b) =>
@@ -27,8 +27,8 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props;
 
 interface DeveloperEntry {
+  id: string;
   data: {
-    slug: string;
     title: string;
   };
 }
@@ -63,13 +63,13 @@ const developerMap = new Map(
 
     <div class="grid grid-stack site-listing">
       {page.data.map((site: PaginatedSite) => {
-        const devData = developerMap.get(site.id.split('/')[0])?.data;
+        const dev = developerMap.get(site.id.split('/')[0]);
         return (
           <SiteCard
             title={site.data.title}
             url={withBase(`/developers/${site.id}/`)}
-            developerName={devData?.title ?? 'A Wagtail developer'}
-            developerUrl={withBase(devData ? `/developers/${devData.slug}/` : '/developers/')}
+            developerName={dev?.data.title ?? 'A Wagtail developer'}
+            developerUrl={withBase(dev ? `/developers/${dev.id}/` : '/developers/')}
             screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
             siteUrl={site.data.site_url}
           />

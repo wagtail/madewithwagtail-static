@@ -1,7 +1,5 @@
 ---
-slug: nitric-software-laboratory
 title: Nitric Software Laboratory
-live: true
 first_published_at: '2022-03-01T09:52:43.964637+13:00'
 latest_revision_created_at: '2022-03-01T09:52:43.907755+13:00'
 location: Cape Town, South Africa
