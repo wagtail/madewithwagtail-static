@@ -3,7 +3,6 @@ title: Zumtobel Group
 first_published_at: "2020-06-26T01:14:11.925451+12:00"
 latest_revision_created_at: "2024-09-17T03:00:34.291174+12:00"
 site_url: https://z.lighting/
-site_screenshot_url: /images/Zumtobel_Group_vJ3mitU.2e16d0ba.fill-1200x996.webp
 ---
 
 Improve the quality of life through light. The right light. At the right time. In the right place.

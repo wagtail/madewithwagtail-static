@@ -3,7 +3,6 @@ title: NASA Jet Propulsion Laboratory
 first_published_at: "2021-12-19T00:00:34.496187+13:00"
 latest_revision_created_at: "2021-12-20T10:04:13.206472+13:00"
 site_url: https://www.jpl.nasa.gov/
-site_screenshot_url: /images/www_jpl_nasa_gov.2e16d0ba.fill-1200x996.webp
 in_cooperation_with_slug: torchbox
 tags:
   - headless

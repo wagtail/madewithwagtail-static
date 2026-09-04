@@ -3,7 +3,6 @@ title: Hectoria Insurance
 first_published_at: "2019-09-24T10:38:39.638293+12:00"
 latest_revision_created_at: "2019-09-24T10:38:39.600670+12:00"
 site_url: https://www.hiafs.com
-site_screenshot_url: /images/screenshot_XKjTseK.2e16d0ba.fill-1200x996.webp
 tags:
   - medical
   - insurance

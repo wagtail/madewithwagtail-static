@@ -3,7 +3,6 @@ title: Merlin Birding Tours
 first_published_at: "2017-08-07T15:17:09.464330+12:00"
 latest_revision_created_at: "2017-08-07T15:17:09.428769+12:00"
 site_url: https://merlinbirding.com
-site_screenshot_url: /images/merlinbirding.com-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - foundation
   - responsive

@@ -3,7 +3,6 @@ title: Nutritional Therapy for IBD
 first_published_at: "2021-12-12T04:49:26.132962+13:00"
 latest_revision_created_at: "2021-12-12T04:49:26.065213+13:00"
 site_url: https://ntforibd.org
-site_screenshot_url: /images/ntforibd.org_.2e16d0ba.fill-1200x996.webp
 tags:
   - non-profit
   - responsive

@@ -3,7 +3,6 @@ title: University of Tasmania - Research to Reality
 first_published_at: "2016-02-17T21:05:09.341229+13:00"
 latest_revision_created_at: "2016-02-17T21:05:57.809804+13:00"
 site_url: http://www.utas.edu.au/news/research
-site_screenshot_url: /images/www.utas.edu.aunewsresearch-1440x.2e16d0ba.fill-1200x996.webp
 tags:
   - Education
 ---

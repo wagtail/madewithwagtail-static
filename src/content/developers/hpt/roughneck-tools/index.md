@@ -3,7 +3,6 @@ title: Roughneck Tools
 first_published_at: "2022-01-20T23:58:04.386600+13:00"
 latest_revision_created_at: "2022-01-20T23:58:04.333233+13:00"
 site_url: https://roughneck-tools.com/en/
-site_screenshot_url: /images/Screenshot_2022-01-20_at_10.53.55.2e16d0ba.fill-1200x996.webp
 ---
 
 Working with the lead agency iloCreate, we built this project using a vanilla Wagtail and Templates configuration.

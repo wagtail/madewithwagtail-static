@@ -3,7 +3,6 @@ title: Veracchi Mobili
 first_published_at: "2017-01-16T13:32:32.542010+13:00"
 latest_revision_created_at: "2017-01-16T13:32:32.502392+13:00"
 site_url: https://veracchimobili.com
-site_screenshot_url: /images/Veracchi-Mobili-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - industry

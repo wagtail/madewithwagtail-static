@@ -3,7 +3,6 @@ title: IFISC
 first_published_at: "2019-09-23T11:33:15.387871+12:00"
 latest_revision_created_at: "2019-09-23T11:33:15.350023+12:00"
 site_url: https://ifisc.uib-csic.es
-site_screenshot_url: /images/screenshot_LpskPeg.2e16d0ba.fill-1200x996.webp
 tags:
   - Research
   - science

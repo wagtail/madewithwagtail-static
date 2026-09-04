@@ -3,7 +3,6 @@ title: Mansfields
 first_published_at: "2021-12-08T15:34:58.016245+13:00"
 latest_revision_created_at: "2025-05-19T21:38:42.419283+12:00"
 site_url: https://mansfields.net
-site_screenshot_url: /images/dodgemsandfloss-mansfields.2e16d0ba.fill-1200x996.webp
 tags:
   - food
   - responsive

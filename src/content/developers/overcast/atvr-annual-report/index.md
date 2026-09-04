@@ -3,7 +3,6 @@ title: ÁTVR Annual Report
 first_published_at: "2016-10-06T03:54:13.479524+13:00"
 latest_revision_created_at: "2016-10-06T03:55:40.540073+13:00"
 site_url: http://arsskyrsla2015.atvr.is/
-site_screenshot_url: /images/arsskyrsla2015.atvr.is-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - annual report
   - industry

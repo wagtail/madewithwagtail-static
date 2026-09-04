@@ -3,7 +3,6 @@ title: Central Kitchen
 first_published_at: "2019-09-26T20:11:31.438853+12:00"
 latest_revision_created_at: "2019-09-26T20:11:31.403458+12:00"
 site_url: https://centralkitchen.nl/
-site_screenshot_url: /images/centralkitchen.nl_.2e16d0ba.fill-1200x996.webp
 tags:
   - business
   - responsive

@@ -3,7 +3,6 @@ title: Keystone Tasmania
 first_published_at: "2022-07-13T11:55:25.586572+12:00"
 latest_revision_created_at: "2022-07-13T11:55:25.500448+12:00"
 site_url: http://keystone.com.au
-site_screenshot_url: /images/keystone.com.au_Wagtail.2e16d0ba.fill-1200x996.webp
 tags:
   - accessibility
   - e-learning

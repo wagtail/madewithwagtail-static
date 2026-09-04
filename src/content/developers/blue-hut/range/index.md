@@ -3,7 +3,6 @@ title: The Range
 first_published_at: "2018-06-29T16:12:43.258347+12:00"
 latest_revision_created_at: "2018-06-29T16:12:43.185608+12:00"
 site_url: https://www.therangecanmore.com/
-site_screenshot_url: /images/therange.2e16d0ba.fill-1200x996.webp
 tags:
   - Hospitality
 ---

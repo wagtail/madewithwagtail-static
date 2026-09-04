@@ -3,7 +3,6 @@ title: Bold Law
 first_published_at: "2018-10-24T12:00:12.146392+13:00"
 latest_revision_created_at: "2020-06-25T15:18:15.799499+12:00"
 site_url: http://boldlaw.com.au
-site_screenshot_url: /images/boldlaw.com.au_queensland_Made_Wi.2e16d0ba.fill-1200x996.webp
 tags:
   - business
   - responsive

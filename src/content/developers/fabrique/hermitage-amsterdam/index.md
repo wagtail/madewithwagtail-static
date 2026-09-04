@@ -3,7 +3,6 @@ title: Hermitage Amsterdam
 first_published_at: "2018-01-31T13:09:11.684860+13:00"
 latest_revision_created_at: "2018-01-31T13:09:11.633741+13:00"
 site_url: https://hermitage.nl/
-site_screenshot_url: /images/hermitage.nl.2e16d0ba.fill-1200x996.webp
 tags:
   - museum
   - art

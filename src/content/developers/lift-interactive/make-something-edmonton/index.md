@@ -3,7 +3,6 @@ title: Make Something Edmonton
 first_published_at: "2017-07-11T11:09:35.436114+12:00"
 latest_revision_created_at: "2017-07-11T11:09:35.387522+12:00"
 site_url: https://www.makesomethingedmonton.ca/
-site_screenshot_url: /images/makesomethingedmonton.ca-1440x120.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - StreamField

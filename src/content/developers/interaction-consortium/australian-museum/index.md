@@ -3,7 +3,6 @@ title: Australian Museum
 first_published_at: "2021-12-04T12:08:19.418365+13:00"
 latest_revision_created_at: "2021-12-04T12:08:19.327605+13:00"
 site_url: https://australianmuseum.net.au/
-site_screenshot_url: /images/australian.museum_.2e16d0ba.fill-1200x996.webp
 tags:
   - culture
   - responsive

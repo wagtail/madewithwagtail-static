@@ -3,7 +3,6 @@ title: Agradi
 first_published_at: "2017-04-26T23:52:26.077661+12:00"
 latest_revision_created_at: "2018-01-16T16:58:23.932705+13:00"
 site_url: https://www.agradi.nl/
-site_screenshot_url: /images/agradi.nl-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - multilingual
   - e-commerce

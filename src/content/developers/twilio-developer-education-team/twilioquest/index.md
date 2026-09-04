@@ -3,7 +3,6 @@ title: TwilioQuest
 first_published_at: "2017-11-27T14:04:07.462200+13:00"
 latest_revision_created_at: "2017-11-27T14:04:07.420171+13:00"
 site_url: https://www.twilio.com/quest
-site_screenshot_url: /images/twilioquest.2e16d0ba.fill-1200x996.webp
 tags:
   - Training
   - game

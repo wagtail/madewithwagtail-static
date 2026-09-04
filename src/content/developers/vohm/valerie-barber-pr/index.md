@@ -3,7 +3,6 @@ title: Valerie Barber PR
 first_published_at: "2021-07-07T15:26:59.079413+12:00"
 latest_revision_created_at: "2021-07-07T15:26:58.998403+12:00"
 site_url: https://www.vbpr.co.uk
-site_screenshot_url: /images/www.vbpr.co.uk_.2e16d0ba.fill-1200x996.webp
 tags:
   - culture
   - music

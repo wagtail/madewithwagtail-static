@@ -3,7 +3,6 @@ title: Four Digits
 first_published_at: "2022-11-15T05:23:07.749388+13:00"
 latest_revision_created_at: "2022-11-15T05:36:20.878027+13:00"
 site_url: https://www.fourdigits.nl/
-site_screenshot_url: /images/screenshot_four_digits_wagtail.2e16d0ba.fill-1200x996.webp
 ---
 
 High-tech heroes from the heart of Arnhem.

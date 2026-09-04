@@ -3,7 +3,6 @@ title: Klimaat Helpdesk
 first_published_at: "2022-03-01T09:50:06.285239+13:00"
 latest_revision_created_at: "2022-03-01T09:50:06.211801+13:00"
 site_url: https://www.klimaathelpdesk.org
-site_screenshot_url: /images/www.klimaathelpdesk.org_.2e16d0ba.fill-1200x996.webp
 tags:
   - q&a
   - climate

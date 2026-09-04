@@ -3,7 +3,6 @@ title: UNSW Press
 first_published_at: "2021-12-14T13:15:46.596805+13:00"
 latest_revision_created_at: "2023-09-19T17:31:48.731720+12:00"
 site_url: https://unsw.press/
-site_screenshot_url: /images/unsw.press_books_Wagtail.2e16d0ba.fill-1200x996.webp
 tags:
   - publishing
   - not-for-profit

@@ -3,7 +3,6 @@ title: Venture Beyond
 first_published_at: "2016-09-01T08:50:48.759366+12:00"
 latest_revision_created_at: "2016-09-01T08:50:48.717070+12:00"
 site_url: http://www.venturebeyond.ca/
-site_screenshot_url: /images/venturebeyond.ca-1440x1200-croppe.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - national park

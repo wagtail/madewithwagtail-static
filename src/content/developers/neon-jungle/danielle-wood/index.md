@@ -3,7 +3,6 @@ title: Danielle Wood
 first_published_at: "2021-10-05T18:04:13.948271+13:00"
 latest_revision_created_at: "2021-10-05T18:04:13.863511+13:00"
 site_url: https://daniellewood.com.au/
-site_screenshot_url: /images/daniellewood.com.au_Wagtail.2e16d0ba.fill-1200x996.webp
 tags:
   - Multisite
   - author

@@ -3,7 +3,6 @@ title: Budget Car Rental
 first_published_at: "2022-01-18T20:16:37.330123+13:00"
 latest_revision_created_at: "2024-08-07T00:22:17.193721+12:00"
 site_url: https://www.budget.is/en/
-site_screenshot_url: /images/budget-2024_OztX9W7.2e16d0ba.fill-1200x996.webp
 tags:
   - car rental
   - responsive

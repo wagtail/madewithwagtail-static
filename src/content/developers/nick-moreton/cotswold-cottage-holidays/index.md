@@ -3,7 +3,6 @@ title: Cotswold Cottage Holidays
 first_published_at: "2017-11-22T11:43:59.399375+13:00"
 latest_revision_created_at: "2017-11-22T11:44:59.800592+13:00"
 site_url: https://www.cotswoldcottageholidays.co.uk/
-site_screenshot_url: /images/cotswoldcottageholidays.2e16d0ba.fill-1200x996.webp
 tags:
   - tourism
   - Hospitality

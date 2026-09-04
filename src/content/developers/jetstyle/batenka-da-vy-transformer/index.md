@@ -3,7 +3,6 @@ title: Батенька, да вы трансформер!  My friend, you are a
 first_published_at: "2017-07-21T11:39:15.653852+12:00"
 latest_revision_created_at: "2017-09-11T10:42:05.832744+12:00"
 site_url: https://batenka.ru/
-site_screenshot_url: /images/batenka.ru-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - news
   - media

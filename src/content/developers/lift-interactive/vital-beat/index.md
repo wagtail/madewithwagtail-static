@@ -3,7 +3,6 @@ title: The Vital Beat
 first_published_at: "2016-09-01T07:49:22.725153+12:00"
 latest_revision_created_at: "2016-09-01T07:49:22.682979+12:00"
 site_url: http://www.thevitalbeat.ca/
-site_screenshot_url: /images/thevitalbeat.ca-1440x1200-cropped.2e16d0ba.fill-1200x996.webp
 tags:
   - news
   - responsive

@@ -3,7 +3,6 @@ title: Hectoria Insurance and Financial Services
 first_published_at: "2019-09-19T19:34:58.376985+12:00"
 latest_revision_created_at: "2019-09-19T19:36:09.246441+12:00"
 site_url: https://www.hiafs.com
-site_screenshot_url: /images/screenshot_Hv40Qdk.2e16d0ba.fill-1200x996.webp
 tags:
   - insurance
 ---

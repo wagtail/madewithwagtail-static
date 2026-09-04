@@ -3,7 +3,6 @@ title: Council of Europe development Bank – 2017 report
 first_published_at: "2018-04-10T06:45:58.061870+12:00"
 latest_revision_created_at: "2018-04-17T10:53:35.622567+12:00"
 site_url: https://report-2017.coebank.org/en/
-site_screenshot_url: /images/report-2017.coebank.org_en_Made_w.2e16d0ba.fill-1200x996.webp
 tags:
   - bank
   - responsive

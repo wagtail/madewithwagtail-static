@@ -3,7 +3,6 @@ title: Iceland Driving Instructors' Association
 first_published_at: "2022-01-18T20:32:04.655810+13:00"
 latest_revision_created_at: "2022-01-18T20:32:04.575997+13:00"
 site_url: https://www.aka.is/
-site_screenshot_url: /images/aka.2e16d0ba.fill-1200x996.webp
 tags:
   - Driving school
   - Instructor

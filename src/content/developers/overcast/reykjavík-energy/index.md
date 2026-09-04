@@ -3,7 +3,6 @@ title: Reykjavík Energy
 first_published_at: "2024-08-07T03:37:51.622526+12:00"
 latest_revision_created_at: "2024-08-07T03:37:51.537408+12:00"
 site_url: https://orkuveitan.is/
-site_screenshot_url: /images/or.2e16d0ba.fill-1200x996.webp
 tags:
   - energy
   - responsive

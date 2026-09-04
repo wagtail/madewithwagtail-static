@@ -3,7 +3,6 @@ title: University of California, Santa Cruz Silicon Valley Extension
 first_published_at: "2019-09-23T11:19:18.374035+12:00"
 latest_revision_created_at: "2019-10-23T11:17:50.517871+13:00"
 site_url: https://www.ucsc-extension.edu/
-site_screenshot_url: /images/www.ucsc-extension.edu_.2e16d0ba.fill-1200x996.webp
 tags:
   - silicon valley
   - Education

@@ -3,7 +3,6 @@ title: Norris Bedding
 first_published_at: "2022-01-21T01:03:11.416465+13:00"
 latest_revision_created_at: "2022-01-21T01:03:11.361943+13:00"
 site_url: https://norrisbedding.co.uk/
-site_screenshot_url: /images/Screenshot_2022-01-20_at_12.00.16.2e16d0ba.fill-1200x996.webp
 tags:
   - industry
 ---

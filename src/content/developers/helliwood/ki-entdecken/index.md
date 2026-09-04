@@ -3,7 +3,6 @@ title: KI ENTDECKEN
 first_published_at: "2021-12-04T12:18:12.480783+13:00"
 latest_revision_created_at: "2021-12-04T12:18:12.405408+13:00"
 site_url: https://www.ki-entdecken.de/
-site_screenshot_url: /images/www.ki-entdecken.de_.2e16d0ba.fill-1200x996.webp
 tags:
   - learning
   - ai

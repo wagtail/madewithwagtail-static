@@ -3,7 +3,6 @@ title: MAMaSe
 first_published_at: "2016-02-09T08:45:39.566527+13:00"
 latest_revision_created_at: "2016-02-09T08:45:39.527942+13:00"
 site_url: http://mamase.org
-site_screenshot_url: /images/mamase.org-1440x12001x.2e16d0ba.fill-1200x996.webp
 tags:
   - data
   - gis

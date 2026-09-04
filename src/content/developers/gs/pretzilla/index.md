@@ -3,7 +3,6 @@ title: Pretzilla
 first_published_at: "2017-04-20T01:19:59.665776+12:00"
 latest_revision_created_at: "2017-04-20T01:19:59.620134+12:00"
 site_url: https://www.pretzilla.com/
-site_screenshot_url: /images/pretzilla.com-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - food
   - business

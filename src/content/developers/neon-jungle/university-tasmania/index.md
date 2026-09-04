@@ -3,7 +3,6 @@ title: University of Tasmania
 first_published_at: "2016-06-01T09:41:06.519353+12:00"
 latest_revision_created_at: "2023-09-14T16:07:40.615447+12:00"
 site_url: http://www.utas.edu.au
-site_screenshot_url: /images/utas.edu.au-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - forms

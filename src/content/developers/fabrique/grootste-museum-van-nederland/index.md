@@ -3,7 +3,6 @@ title: Grootste Museum van Nederland
 first_published_at: "2018-01-31T13:15:40.350362+13:00"
 latest_revision_created_at: "2018-01-31T13:15:40.299898+13:00"
 site_url: https://www.grootstemuseum.nl
-site_screenshot_url: /images/grootstemuseum.nl.2e16d0ba.fill-1200x996.webp
 tags:
   - art
   - responsive

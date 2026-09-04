@@ -3,7 +3,6 @@ title: Nymphographie
 first_published_at: "2017-07-18T06:43:15.856203+12:00"
 latest_revision_created_at: "2017-11-21T03:37:58.398024+13:00"
 site_url: http://nymphographie.com/
-site_screenshot_url: /images/nymphographie.com_collections_lit.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - arts

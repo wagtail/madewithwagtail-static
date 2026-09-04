@@ -3,7 +3,6 @@ title: Co-Activation
 first_published_at: "2021-12-13T10:50:18.661687+13:00"
 latest_revision_created_at: "2021-12-13T10:50:18.558113+13:00"
 site_url: https://co-activation.com/
-site_screenshot_url: /images/co-activation.com_.2e16d0ba.fill-1200x996.webp
 tags:
   - career choices
   - job satisfaction

@@ -3,7 +3,6 @@ title: Great Western Park
 first_published_at: "2017-07-10T14:34:22.334118+12:00"
 latest_revision_created_at: "2017-07-10T14:34:22.302786+12:00"
 site_url: https://www.gw-park.co.uk/
-site_screenshot_url: /images/gw-park.co.uk-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
 ---

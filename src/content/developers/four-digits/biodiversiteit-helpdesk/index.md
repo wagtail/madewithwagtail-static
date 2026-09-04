@@ -3,7 +3,6 @@ title: Biodiversiteit Helpdesk
 first_published_at: "2022-09-02T20:51:43.306164+12:00"
 latest_revision_created_at: "2022-09-02T20:51:43.251327+12:00"
 site_url: https://biodiversiteithelpdesk.nl/
-site_screenshot_url: /images/biodiversiteithelpdesk_screenshot.2e16d0ba.fill-1200x996.webp
 ---
 
 The BiodiversiteitHelpdesk is the place where anyone can receive a scientifically substantiated answer to their biodiversity related questions.

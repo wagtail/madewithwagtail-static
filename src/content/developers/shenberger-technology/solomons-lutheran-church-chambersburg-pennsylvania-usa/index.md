@@ -3,7 +3,6 @@ title: Solomon's Lutheran Church, Chambersburg, Pennsylvania, USA
 first_published_at: "2022-01-11T04:56:01.717867+13:00"
 latest_revision_created_at: "2025-09-10T05:12:03.949932+12:00"
 site_url: https://solomonslutheran.org
-site_screenshot_url: /images/Solomons_Lutheran_Church_home_pag.2e16d0ba.fill-1200x996.webp
 tags:
   - Church Chambersburg Pennsylvania
   - Lutheran Church

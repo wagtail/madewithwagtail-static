@@ -3,7 +3,6 @@ title: British Swimming
 first_published_at: "2018-01-16T11:03:08.661588+13:00"
 latest_revision_created_at: "2018-01-16T11:03:08.613948+13:00"
 site_url: https://www.britishswimming.org/
-site_screenshot_url: /images/britishswimming.org.2e16d0ba.fill-1200x996.webp
 tags:
   - news
   - events

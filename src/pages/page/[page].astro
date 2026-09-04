@@ -38,7 +38,6 @@ interface PaginatedSite {
   data: {
     title: string;
     site_url: string | null;
-    site_screenshot_url: string | null;
   };
 }
 
@@ -70,7 +69,7 @@ const developerMap = new Map(
             url={withBase(`/developers/${site.id}/`)}
             developerName={dev?.data.title ?? 'A Wagtail developer'}
             developerUrl={withBase(dev ? `/developers/${dev.id}/` : '/developers/')}
-            screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
+            id={site.id}
             siteUrl={site.data.site_url}
           />
         );

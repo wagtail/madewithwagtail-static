@@ -3,7 +3,6 @@ title: United Wagon Company
 first_published_at: "2016-09-07T20:32:44.207472+12:00"
 latest_revision_created_at: "2016-09-07T20:36:53.394723+12:00"
 site_url: http://www.uniwagon.com/en/
-site_screenshot_url: /images/uniwagon.comen-1440x1200-cropped.2e16d0ba.fill-1200x996.webp
 tags:
   - news
   - events

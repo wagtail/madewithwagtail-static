@@ -3,7 +3,6 @@ title: Lewin Clinic
 first_published_at: "2022-01-21T00:05:59.892263+13:00"
 latest_revision_created_at: "2022-01-21T00:05:59.843460+13:00"
 site_url: https://www.lewinclinic.co.uk/
-site_screenshot_url: /images/Screenshot_2022-01-20_at_11.02.03.2e16d0ba.fill-1200x996.webp
 ---
 
 Working with designer Karma Creative, we built this Wagtail based site for the renowned Lewin Clinic Physiotherapists.

@@ -3,7 +3,6 @@ title: Mountain Park Lodges
 first_published_at: "2017-11-15T13:07:52.936981+13:00"
 latest_revision_created_at: "2017-11-15T13:07:52.903924+13:00"
 site_url: https://mpljasper.com/
-site_screenshot_url: /images/MountainParkLodges.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - hotels

@@ -3,7 +3,6 @@ title: JIREH Industries
 first_published_at: "2018-01-16T11:25:42.547546+13:00"
 latest_revision_created_at: "2018-01-16T11:25:42.504620+13:00"
 site_url: https://www.jireh.com/
-site_screenshot_url: /images/jireh.com.3d4d2de7.fill-1200x996.webp
 tags:
   - robots
   - responsive

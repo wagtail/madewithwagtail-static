@@ -3,7 +3,6 @@ title: Chaplin Solutions
 first_published_at: "2025-02-04T04:57:29.296911+13:00"
 latest_revision_created_at: "2025-05-19T21:37:23.792277+12:00"
 site_url: https://chaplinsolutions.co.uk/
-site_screenshot_url: /images/dodgemsandfloss-chaplin.2e16d0ba.fill-1200x996.webp
 tags:
   - IT consulting
   - business

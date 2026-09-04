@@ -3,7 +3,6 @@ title: Góði Hirðirinn
 first_published_at: "2024-08-07T02:47:25.363955+12:00"
 latest_revision_created_at: "2024-08-07T02:47:25.165628+12:00"
 site_url: https://godihirdirinn.is/
-site_screenshot_url: /images/godihirdirinn.2e16d0ba.fill-1200x996.webp
 tags:
   - online store
   - second-hand

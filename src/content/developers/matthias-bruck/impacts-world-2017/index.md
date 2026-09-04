@@ -3,7 +3,6 @@ title: Impacts World 2017
 first_published_at: "2017-11-21T18:57:09.044753+13:00"
 latest_revision_created_at: "2017-11-21T18:57:08.997338+13:00"
 site_url: https://www.impactsworld2017.org/
-site_screenshot_url: /images/impactsworld2017.2e16d0ba.fill-1200x996.webp
 tags:
   - conference
   - Climate Change

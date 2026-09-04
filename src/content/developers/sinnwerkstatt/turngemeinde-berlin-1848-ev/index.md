@@ -3,7 +3,6 @@ title: Turngemeinde in Berlin 1848 e.V.
 first_published_at: "2021-12-10T11:34:09.094583+13:00"
 latest_revision_created_at: "2021-12-10T11:34:08.934704+13:00"
 site_url: http://www.tib1848ev.de/
-site_screenshot_url: /images/tib1848ev.de_.2e16d0ba.fill-1200x996.webp
 tags:
   - sports club
   - regional

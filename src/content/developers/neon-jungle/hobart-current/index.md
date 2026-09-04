@@ -3,7 +3,6 @@ title: Hobart Current
 first_published_at: "2020-06-24T18:26:49.514738+12:00"
 latest_revision_created_at: "2020-06-25T12:26:30.152326+12:00"
 site_url: https://hobartcurrent.com/
-site_screenshot_url: /images/Screenshot_2020-06-24_A_new_bienn.2e16d0ba.fill-1200x996.webp
 tags:
   - local
   - design

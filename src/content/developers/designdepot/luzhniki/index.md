@@ -3,7 +3,6 @@ title: Luzhniki
 first_published_at: "2021-10-13T16:15:20.603821+13:00"
 latest_revision_created_at: "2021-10-13T16:15:20.550440+13:00"
 site_url: https://www.luzhniki.ru/
-site_screenshot_url: /images/www.luzhniki.ru_.2e16d0ba.fill-1200x996.webp
 tags:
   - sport
 ---

@@ -62,7 +62,7 @@ function getCooperator(cooperatorSlug: string) {
             url={withBase(`/developers/${site.id}/`)}
             developerName={dev?.data.title ?? 'A Wagtail developer'}
             developerUrl={withBase(dev ? `/developers/${dev.id}/` : '/developers/')}
-            screenshotUrl={site.data.site_screenshot_url ? withBase(site.data.site_screenshot_url) : null}
+            id={site.id}
             siteUrl={site.data.site_url}
             inCooperationWith={site.data.in_cooperation_with_slug
               ? getCooperator(site.data.in_cooperation_with_slug)?.data.title ?? null

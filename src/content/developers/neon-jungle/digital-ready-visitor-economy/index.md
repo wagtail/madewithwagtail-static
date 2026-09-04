@@ -3,7 +3,6 @@ title: Digital Ready Visitor Economy
 first_published_at: "2019-10-29T12:19:42.845231+13:00"
 latest_revision_created_at: "2019-10-29T12:19:42.811161+13:00"
 site_url: http://digitalready.tas.gov.au/visitor-economy
-site_screenshot_url: /images/digitalready.tas.gov.au_visitor-e.2e16d0ba.fill-1200x996.webp
 ---
 
 People are travelling to Tasmania in unprecedented numbers, with 1.32 million visitors arriving between January and December 2018.

@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
+import { existsSync } from 'node:fs';
 import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Icon from '../../../components/Icon.astro';
@@ -46,9 +47,9 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
       <div class="two-thirds--medium">
         <div class="card">
           <div class="project-big-image">
-            {siteEntry.data.site_screenshot_url && (
+            {existsSync(`./public/images/${siteEntry.id}.fill-1200x996.webp`) && (
               <img
-                src={withBase(siteEntry.data.site_screenshot_url)}
+                src={withBase(`/images/${siteEntry.id}.fill-1200x996.webp`)}
                 alt={siteEntry.data.title}
                 title={siteEntry.data.title}
                 class="img--responsive"

@@ -3,7 +3,6 @@ title: Sylvia Ioannou Foundation
 first_published_at: "2021-12-08T15:40:31.552947+13:00"
 latest_revision_created_at: "2021-12-08T15:40:31.449255+13:00"
 site_url: https://sylviaioannoufoundation.org/en/
-site_screenshot_url: /images/Screen_Shot_2021-12-08_at_3.37.11.2e16d0ba.fill-1200x996.webp
 tags:
   - culture
   - greece

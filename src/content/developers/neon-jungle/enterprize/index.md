@@ -3,7 +3,6 @@ title: Enterprize
 first_published_at: "2019-10-23T17:41:26.835448+13:00"
 latest_revision_created_at: "2020-08-18T12:50:23.835521+12:00"
 site_url: https://enterprize.space/
-site_screenshot_url: /images/Enterprize_Fold_Screenshot.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - forms

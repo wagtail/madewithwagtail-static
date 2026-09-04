@@ -3,7 +3,6 @@ title: Hoogheemraadschap Schieland and Krimpenerwaard
 first_published_at: "2021-08-26T01:24:20.775252+12:00"
 latest_revision_created_at: "2022-10-14T20:46:05.943797+13:00"
 site_url: https://www.schielandendekrimpenerwaard.nl
-site_screenshot_url: /images/schielandenkrimpenerwaard_screens.2e16d0ba.fill-1200x996.webp
 ---
 
 ‘Schieland en de Krimpenerwaard’ is a regional water authority.

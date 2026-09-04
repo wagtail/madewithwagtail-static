@@ -3,7 +3,6 @@ title: Edmonton Economic Development Corporation - Trade & Investment
 first_published_at: "2017-11-22T10:06:17.778519+13:00"
 latest_revision_created_at: "2017-11-22T10:08:21.075860+13:00"
 site_url: https://www.investedmontonregion.com/
-site_screenshot_url: /images/EEDC.2e16d0ba.fill-1200x996.webp
 tags:
   - business
   - responsive

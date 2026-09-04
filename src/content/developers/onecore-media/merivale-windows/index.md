@@ -3,7 +3,6 @@ title: Merivale Windows
 first_published_at: "2019-12-11T16:05:07.172549+13:00"
 latest_revision_created_at: "2019-12-11T16:05:07.097765+13:00"
 site_url: https://merivalewindows.com/
-site_screenshot_url: /images/merivalewindows.com_.2e16d0ba.fill-1200x996.webp
 tags:
   - windows
   - responsive

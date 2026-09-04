@@ -3,7 +3,6 @@ title: Fabrique
 first_published_at: "2018-01-31T13:03:04.534337+13:00"
 latest_revision_created_at: "2018-01-31T13:31:05.253117+13:00"
 site_url: https://fabrique.com
-site_screenshot_url: /images/fabrique.com.2e16d0ba.fill-1200x996.webp
 tags:
   - design
   - responsive

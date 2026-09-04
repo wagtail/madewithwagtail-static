@@ -3,7 +3,6 @@ title: Hanno
 first_published_at: "2019-09-23T11:39:54.882284+12:00"
 latest_revision_created_at: "2019-09-23T11:39:54.845366+12:00"
 site_url: https://www.hanno.nl/
-site_screenshot_url: /images/screenshot_g4ivuga.2e16d0ba.fill-1200x996.webp
 tags:
   - wagtail
   - CMS

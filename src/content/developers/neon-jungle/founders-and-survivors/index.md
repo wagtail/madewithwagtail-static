@@ -3,7 +3,6 @@ title: Founders and Survivors
 first_published_at: "2020-06-30T12:51:41.568334+12:00"
 latest_revision_created_at: "2020-06-30T13:15:06.919748+12:00"
 site_url: https://foundersandsurvivors.com/
-site_screenshot_url: /images/Screenshot_2020-06-30_Home.2e16d0ba.fill-1200x996.webp
 tags:
   - design
   - responsive

@@ -3,7 +3,6 @@ title: Burgtheater Wien
 first_published_at: "2017-11-15T13:00:52.390234+13:00"
 latest_revision_created_at: "2017-11-15T13:01:37.888495+13:00"
 site_url: https://www.burgtheater.at/
-site_screenshot_url: /images/BurgTheater.2e16d0ba.fill-1200x996.webp
 tags:
   - theatre
   - ticketing

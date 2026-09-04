@@ -3,7 +3,6 @@ title: StreamFlo
 first_published_at: "2016-09-01T08:13:17.697322+12:00"
 latest_revision_created_at: "2016-09-01T08:13:17.642220+12:00"
 site_url: http://www.streamflo.com/
-site_screenshot_url: /images/streamflo.com-1440x1200-cropped.2e16d0ba.fill-1200x996.webp
 tags:
   - events
   - responsive

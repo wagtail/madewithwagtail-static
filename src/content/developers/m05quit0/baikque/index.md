@@ -3,7 +3,6 @@ title: Baikque
 first_published_at: "2019-09-23T11:51:31.189742+12:00"
 latest_revision_created_at: "2019-10-23T11:12:56.360992+13:00"
 site_url: http://batikque.ru
-site_screenshot_url: /images/batikque.ru_.2e16d0ba.fill-1200x996.webp
 tags:
   - fashion
   - blog

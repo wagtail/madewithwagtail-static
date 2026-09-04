@@ -3,7 +3,6 @@ title: BD France
 first_published_at: "2019-09-26T20:07:40.262042+12:00"
 latest_revision_created_at: "2019-09-26T20:07:40.199270+12:00"
 site_url: https://bdfrance.nl/nl/
-site_screenshot_url: /images/bdfrance.nl_nl_.2e16d0ba.fill-1200x996.webp
 tags:
   - business
   - responsive

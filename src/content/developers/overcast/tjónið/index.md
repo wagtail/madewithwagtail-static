@@ -3,7 +3,6 @@ title: Tjónið
 first_published_at: "2024-08-07T03:33:45.673733+12:00"
 latest_revision_created_at: "2024-08-07T03:33:45.565351+12:00"
 site_url: https://www.tjonid.is/
-site_screenshot_url: /images/tjonid.2e16d0ba.fill-1200x996.webp
 tags:
   - accident compensation
   - responsive

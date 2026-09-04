@@ -3,7 +3,6 @@ title: Lingovo - Übersetzungsbüro (Translation Agency)
 first_published_at: "2019-09-23T11:43:32.264621+12:00"
 latest_revision_created_at: "2019-09-23T11:43:32.219205+12:00"
 site_url: https://www.lingovo.com
-site_screenshot_url: /images/screenshot_4sXaF3y.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - working

@@ -54,7 +54,8 @@ const sites = defineCollection({
       .union([z.string(), z.date(), z.null()])
       .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
     site_url: z.string().nullable().default(null),
-    site_screenshot_url: z.string().nullable().default(null),
+    // The screenshot lives at public/images/<company>/<site>.fill-1200x996.webp,
+    // derived from the entry ID in code — no frontmatter needed.
     in_cooperation_with_slug: z.string().nullable().default(null),
     tags: z.array(z.string()).default([]),
   }),

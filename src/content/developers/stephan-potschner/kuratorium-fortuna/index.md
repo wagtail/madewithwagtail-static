@@ -3,7 +3,6 @@ title: Kuratorium Fortuna
 first_published_at: "2017-07-21T11:32:06.095384+12:00"
 latest_revision_created_at: "2018-01-16T16:58:00.071769+13:00"
 site_url: http://www.fortuna-swa.at/
-site_screenshot_url: /images/fortuna-swa.at-1440x1200_x95zv4f.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - healthcare

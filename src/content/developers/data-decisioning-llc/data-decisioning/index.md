@@ -3,7 +3,6 @@ title: Data Decisioning
 first_published_at: "2019-09-23T10:22:48.234028+12:00"
 latest_revision_created_at: "2019-09-23T10:22:48.187227+12:00"
 site_url: https://datadecisioning.com
-site_screenshot_url: /images/screenshot_afYw1tE.2e16d0ba.fill-1200x996.webp
 tags:
   - statistics
   - iot

@@ -3,7 +3,6 @@ title: Catalyst Cloud
 first_published_at: "2018-03-09T17:00:28.242121+13:00"
 latest_revision_created_at: "2018-03-09T17:00:28.185218+13:00"
 site_url: https://catalystcloud.nz
-site_screenshot_url: /images/catalystcloud.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - OpenStack

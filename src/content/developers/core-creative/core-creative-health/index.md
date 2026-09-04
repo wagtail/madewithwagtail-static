@@ -3,7 +3,6 @@ title: Core Creative Health
 first_published_at: "2019-09-24T10:41:23.029256+12:00"
 latest_revision_created_at: "2019-09-24T10:41:22.992618+12:00"
 site_url: https://health.corecreative.com
-site_screenshot_url: /images/screenshot_1ABEd5b.2e16d0ba.fill-1200x996.webp
 tags:
   - healthcare
   - marketing

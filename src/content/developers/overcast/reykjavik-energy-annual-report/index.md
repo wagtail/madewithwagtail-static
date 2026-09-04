@@ -3,7 +3,6 @@ title: Reykjavík Energy Annual Report
 first_published_at: "2018-05-01T16:44:16.645814+12:00"
 latest_revision_created_at: "2018-05-01T16:45:48.097580+12:00"
 site_url: https://annualreport2017.or.is
-site_screenshot_url: /images/annualreport2017.2e16d0ba.fill-1200x996.webp
 tags:
   - annual report
 ---

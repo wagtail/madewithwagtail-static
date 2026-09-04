@@ -3,7 +3,6 @@ title: Mein Stück Wien Fundraising Website
 first_published_at: "2019-09-23T11:56:30.840416+12:00"
 latest_revision_created_at: "2019-10-23T11:11:35.241790+13:00"
 site_url: https://meinstueckwien.at/de/
-site_screenshot_url: /images/meinstueckwien.at_de_.2e16d0ba.fill-1200x996.webp
 tags:
   - website
   - 3d

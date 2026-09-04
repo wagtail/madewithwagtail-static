@@ -3,7 +3,6 @@ title: World of Hapimag
 first_published_at: "2016-05-23T12:06:24.179716+12:00"
 latest_revision_created_at: "2016-05-23T12:06:24.141187+12:00"
 site_url: https://www.worldofhapimag.com
-site_screenshot_url: /images/www.worldofhapimag.com-1440x12001.2e16d0ba.fill-1200x996.webp
 tags:
   - animation
 ---

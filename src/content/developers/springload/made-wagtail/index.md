@@ -3,7 +3,6 @@ title: Made with Wagtail
 first_published_at: "2015-05-14T09:03:48.326016+12:00"
 latest_revision_created_at: "2018-02-27T09:14:54.134071+13:00"
 site_url: ../../../index.html
-site_screenshot_url: /images/Screen_Shot_2015-05-14_at_09.01.5.2e16d0ba.fill-1200x996.webp
 tags:
   - design
   - responsive

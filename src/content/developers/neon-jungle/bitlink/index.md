@@ -3,7 +3,6 @@ title: Bitlink
 first_published_at: "2021-10-05T17:36:18.314092+13:00"
 latest_revision_created_at: "2021-10-05T17:51:41.789771+13:00"
 site_url: https://bitlink.com.au/
-site_screenshot_url: /images/bitlink.com.au_.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - video

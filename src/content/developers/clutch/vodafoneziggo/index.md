@@ -3,7 +3,6 @@ title: VodafoneZiggo
 first_published_at: "2018-06-22T17:50:57.474004+12:00"
 latest_revision_created_at: "2018-06-22T17:50:57.436566+12:00"
 site_url: http://www.vodafoneziggo.nl
-site_screenshot_url: /images/VodafoneZiggo.2e16d0ba.fill-1200x996.webp
 tags:
   - Telecom
   - corporate

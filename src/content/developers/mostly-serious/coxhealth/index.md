@@ -3,7 +3,6 @@ title: CoxHealth
 first_published_at: "2017-03-14T04:47:03.058167+13:00"
 latest_revision_created_at: "2021-12-08T20:15:30.356007+13:00"
 site_url: http://www.coxhealth.com/
-site_screenshot_url: /images/www.coxhealth.com_.2e16d0ba.fill-1200x996.webp
 tags:
   - healthcare
   - hospital

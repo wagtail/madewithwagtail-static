@@ -3,7 +3,6 @@ title: Rijksmuseum Boerhaave
 first_published_at: "2018-01-31T13:22:38.712376+13:00"
 latest_revision_created_at: "2018-01-31T13:22:38.664240+13:00"
 site_url: https://rijksmuseumboerhaave.nl
-site_screenshot_url: /images/rijksmuseumboerhaave.nl.2e16d0ba.fill-1200x996.webp
 tags:
   - museum
   - art

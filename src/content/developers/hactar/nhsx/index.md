@@ -3,7 +3,6 @@ title: NHSX
 first_published_at: "2020-04-24T20:40:48.913422+12:00"
 latest_revision_created_at: "2020-04-24T20:43:03.741443+12:00"
 site_url: https://www.nhsx.nhs.uk
-site_screenshot_url: /images/www.nhsx.nhs.uk_.2e16d0ba.fill-1200x996.webp
 in_cooperation_with_slug: dxw
 tags:
   - nhs

@@ -3,7 +3,6 @@ title: Provisum
 first_published_at: "2021-12-14T07:59:58.135202+13:00"
 latest_revision_created_at: "2021-12-14T08:00:47.691128+13:00"
 site_url: https://provisum.nl/
-site_screenshot_url: /images/provisum.nl__1.2e16d0ba.fill-1200x996.webp
 tags:
   - pension schemes
   - pensions schemes

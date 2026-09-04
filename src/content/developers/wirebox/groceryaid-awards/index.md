@@ -3,7 +3,6 @@ title: GroceryAid Awards
 first_published_at: "2020-05-13T17:38:15.511667+12:00"
 latest_revision_created_at: "2020-05-13T17:39:12.783120+12:00"
 site_url: https://www.groceryaid.org.uk/groceryaid-awards/
-site_screenshot_url: /images/www.groceryaid.org.uk_groceryaid-.2e16d0ba.fill-1200x996.webp
 tags:
   - awards
   - non-profit

@@ -3,7 +3,6 @@ title: Rijn IJssel
 first_published_at: "2022-11-21T22:29:07.562300+13:00"
 latest_revision_created_at: "2022-11-21T22:29:07.502984+13:00"
 site_url: https://www.rijnijssel.nl/
-site_screenshot_url: /images/RijnIJsel_Screenshot.2e16d0ba.fill-1200x996.webp
 ---
 
 RijnIJssel educates their students sustainably: for a place in the current job market and that of the future, and for active participation in society. They share the interest that their students have in a subject or help them discover it, so that they’re well prepared for the future.

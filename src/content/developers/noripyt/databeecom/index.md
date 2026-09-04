@@ -3,7 +3,6 @@ title: DataBeeCom
 first_published_at: "2018-02-24T04:15:07.232560+13:00"
 latest_revision_created_at: "2019-09-24T10:36:01.903578+12:00"
 site_url: http://databeecom.fr
-site_screenshot_url: /images/databeecom.fr_Made_with_Wagtail.2e16d0ba.fill-1200x996.webp
 tags:
   - consultancy
 ---

@@ -3,7 +3,6 @@ title: The Conococheague Institute
 first_published_at: "2019-09-19T17:49:40.574996+12:00"
 latest_revision_created_at: "2022-01-11T04:45:52.681678+13:00"
 site_url: https://cimlg.org/
-site_screenshot_url: /images/screenshot_AKNu3ot.2e16d0ba.fill-1200x996.webp
 tags:
   - Education
   - local history

@@ -3,7 +3,6 @@ title: State of Fashion 2018
 first_published_at: "2018-01-31T13:11:32.267750+13:00"
 latest_revision_created_at: "2018-01-31T13:11:32.214270+13:00"
 site_url: https://stateoffashion.org
-site_screenshot_url: /images/stateoffashion.org.2e16d0ba.fill-1200x996.webp
 tags:
   - festival
   - art

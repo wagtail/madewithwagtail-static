@@ -3,7 +3,6 @@ title: Hoogheemraadschap van Rijnland
 first_published_at: "2021-08-26T01:24:32.438356+12:00"
 latest_revision_created_at: "2024-07-03T00:34:55.541694+12:00"
 site_url: https://www.rijnland.net
-site_screenshot_url: /images/RIJNLAND.2e16d0ba.fill-1200x996.webp
 ---
 
 The Hoogheemraadschap van Rijnland is the oldest water authority in the Netherlands, having received commission to coordinate protection of the land from flooding in 1248 from Count William II of Holland and Zeeland.

@@ -3,7 +3,6 @@ title: Fabrique Public & Industrial Design
 first_published_at: "2018-01-31T13:05:53.391280+13:00"
 latest_revision_created_at: "2018-01-31T13:07:19.387900+13:00"
 site_url: https://www.fabrique3d.com/
-site_screenshot_url: /images/fabrique3d.com.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - multilingual

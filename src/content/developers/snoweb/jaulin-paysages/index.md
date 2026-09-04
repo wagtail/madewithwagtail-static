@@ -3,7 +3,6 @@ title: Jaulin Paysages
 first_published_at: "2022-01-11T22:33:28.355090+13:00"
 latest_revision_created_at: "2022-01-11T23:08:11.882487+13:00"
 site_url: https://www.jaulin-paysages.com/
-site_screenshot_url: /images/site-internet-jaulin2.2e16d0ba.fill-1200x996.webp
 tags:
   - website
   - webdesign

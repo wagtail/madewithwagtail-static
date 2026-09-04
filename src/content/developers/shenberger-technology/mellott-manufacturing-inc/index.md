@@ -3,7 +3,6 @@ title: Mellott Manufacturing, Inc.
 first_published_at: "2022-01-11T04:10:34.136597+13:00"
 latest_revision_created_at: "2022-01-11T04:42:46.011880+13:00"
 site_url: https://mellottmfg.com
-site_screenshot_url: /images/Mellott_Manufacturing_Website.2e16d0ba.fill-1200x996.webp
 tags:
   - Sawmill controls
   - Log handling equipment

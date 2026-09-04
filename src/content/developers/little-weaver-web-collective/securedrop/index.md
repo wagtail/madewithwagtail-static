@@ -3,7 +3,6 @@ title: SecureDrop
 first_published_at: "2018-05-01T17:21:50.896132+12:00"
 latest_revision_created_at: "2018-05-01T17:21:50.849464+12:00"
 site_url: https://securedrop.org/
-site_screenshot_url: /images/securedrop.2e16d0ba.fill-1200x996.webp
 tags:
   - technology
   - responsive

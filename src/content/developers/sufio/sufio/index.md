@@ -3,7 +3,6 @@ title: Sufio
 first_published_at: "2016-09-07T22:54:26.006268+12:00"
 latest_revision_created_at: "2016-09-07T22:54:25.921089+12:00"
 site_url: https://sufio.com/blog
-site_screenshot_url: /images/sufio.comblog-1440x1200-cropped.2e16d0ba.fill-1200x996.webp
 tags:
   - accounting
   - responsive

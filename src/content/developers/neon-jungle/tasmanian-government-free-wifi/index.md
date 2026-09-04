@@ -3,7 +3,6 @@ title: Tasmanian Government Free WiFi
 first_published_at: "2017-03-14T05:24:20.492439+13:00"
 latest_revision_created_at: "2017-11-20T14:25:35.213316+13:00"
 site_url: https://freewifi.tas.gov.au/
-site_screenshot_url: /images/MWW_-_Free_Wifi.2e16d0ba.fill-1200x996.webp
 tags:
   - Network
   - responsive

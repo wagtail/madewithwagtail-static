@@ -3,7 +3,6 @@ title: National Literacy Trust
 first_published_at: "2019-09-23T11:24:26.597996+12:00"
 latest_revision_created_at: "2019-09-23T11:24:26.558465+12:00"
 site_url: http://literacytrust.org.uk
-site_screenshot_url: /images/screenshot_cFe9BGF.2e16d0ba.fill-1200x996.webp
 tags:
   - charity
   - non-profit

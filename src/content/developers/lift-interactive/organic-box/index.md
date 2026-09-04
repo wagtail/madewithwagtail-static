@@ -3,7 +3,6 @@ title: The Organic Box
 first_published_at: "2016-09-01T08:14:54.636036+12:00"
 latest_revision_created_at: "2016-09-01T08:14:54.599865+12:00"
 site_url: https://www.theorganicbox.ca/
-site_screenshot_url: /images/theorganicbox.ca-1440x1200-croppe.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - blog

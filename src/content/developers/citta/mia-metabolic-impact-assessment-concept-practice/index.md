@@ -3,7 +3,6 @@ title: "MIA - Metabolic Impact Assessment: from concept to practice"
 first_published_at: "2017-11-27T14:10:19.429772+13:00"
 latest_revision_created_at: "2017-11-27T14:10:19.388411+13:00"
 site_url: https://projectmia.up.pt
-site_screenshot_url: /images/projectmia.2e16d0ba.fill-1200x996.webp
 tags:
   - Urban Metabolism
   - Environmental Impact Assessment

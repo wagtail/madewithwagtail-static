@@ -3,7 +3,6 @@ title: Python GUI Academy
 first_published_at: "2019-09-23T11:53:57.984551+12:00"
 latest_revision_created_at: "2019-09-23T11:53:57.947719+12:00"
 site_url: https://pythonguis.com
-site_screenshot_url: /images/screenshot_EbzClV0.2e16d0ba.fill-1200x996.webp
 tags:
   - windows
   - gui

@@ -3,7 +3,6 @@ title: Paradise Estates
 first_published_at: "2017-11-15T13:10:15.423693+13:00"
 latest_revision_created_at: "2017-11-15T13:10:15.375430+13:00"
 site_url: https://www.paradiseestates.ca/
-site_screenshot_url: /images/ParadiseEstates.2e16d0ba.fill-1200x996.webp
 tags:
   - construction
   - luxury homes

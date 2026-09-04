@@ -2,7 +2,6 @@
 title: Museum of Rouen
 first_published_at: "2015-07-17T11:00:52.778746+12:00"
 latest_revision_created_at: "2017-11-06T09:24:50.415026+13:00"
-site_screenshot_url: /images/museumderouen.fr-1440x1200-1x.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - non-profit

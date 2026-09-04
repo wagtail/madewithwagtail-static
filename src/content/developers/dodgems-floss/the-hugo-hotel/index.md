@@ -3,7 +3,6 @@ title: The Hugo Hotel
 first_published_at: "2025-05-19T20:56:17.111946+12:00"
 latest_revision_created_at: "2025-05-19T22:50:41.074876+12:00"
 site_url: https://thehugo.co.uk/
-site_screenshot_url: /images/dodgemsandfloss-hugoHotels.2e16d0ba.fill-1200x996.webp
 tags:
   - canterbury
   - responsive

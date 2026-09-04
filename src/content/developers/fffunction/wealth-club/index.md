@@ -3,7 +3,6 @@ title: Wealth Club
 first_published_at: "2017-01-28T04:22:34.194428+13:00"
 latest_revision_created_at: "2017-01-28T04:22:34.152903+13:00"
 site_url: https://www.wealthclub.co.uk/
-site_screenshot_url: /images/wealthclub.co.uk-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - articles
   - responsive

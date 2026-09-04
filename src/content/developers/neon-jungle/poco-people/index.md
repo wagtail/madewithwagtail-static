@@ -3,7 +3,6 @@ title: Poco People
 first_published_at: "2017-07-27T17:39:12.137561+12:00"
 latest_revision_created_at: "2024-09-17T03:02:09.440835+12:00"
 site_url: http://pocopeople.com.au/
-site_screenshot_url: /images/pocopeople.com.au-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - Photography
   - responsive

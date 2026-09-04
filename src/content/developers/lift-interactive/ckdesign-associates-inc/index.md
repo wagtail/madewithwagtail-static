@@ -3,7 +3,6 @@ title: CKDESIGN Associates Inc.
 first_published_at: "2017-11-22T09:42:45.841205+13:00"
 latest_revision_created_at: "2017-11-22T09:42:45.796855+13:00"
 site_url: https://www.ckdesignassociates.com/
-site_screenshot_url: /images/CKdesign.2e16d0ba.fill-1200x996.webp
 tags:
   - portfolio
   - design

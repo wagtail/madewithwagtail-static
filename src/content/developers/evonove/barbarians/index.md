@@ -3,7 +3,6 @@ title: Barbarians
 first_published_at: "2017-04-20T01:41:21.549398+12:00"
 latest_revision_created_at: "2017-04-20T01:44:52.590213+12:00"
 site_url: https://barbarians.tabula.games/
-site_screenshot_url: /images/barbarians.tabula.games-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - kickstarter
   - game

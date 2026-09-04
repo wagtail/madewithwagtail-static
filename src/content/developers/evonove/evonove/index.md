@@ -3,7 +3,6 @@ title: Evonove
 first_published_at: "2016-11-18T02:54:51.457134+13:00"
 latest_revision_created_at: "2017-07-21T12:13:14.723797+12:00"
 site_url: https://evonove.it/
-site_screenshot_url: /images/evonove.it-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - portfolio
   - responsive

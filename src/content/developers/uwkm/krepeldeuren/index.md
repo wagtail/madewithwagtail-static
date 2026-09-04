@@ -3,7 +3,6 @@ title: Krepeldeuren
 first_published_at: "2021-12-13T10:44:35.335160+13:00"
 latest_revision_created_at: "2021-12-13T10:44:35.248940+13:00"
 site_url: https://www.krepeldeuren.nl/
-site_screenshot_url: /images/www.krepeldeuren.nl_.2e16d0ba.fill-1200x996.webp
 tags:
   - locks
   - assembly

@@ -3,7 +3,6 @@ title: Drawn Agency
 first_published_at: "2017-11-15T12:35:29.229784+13:00"
 latest_revision_created_at: "2017-11-15T12:55:05.101542+13:00"
 site_url: https://drawn.agency
-site_screenshot_url: /images/drawn.agency-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - design
   - business

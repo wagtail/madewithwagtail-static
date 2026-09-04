@@ -3,7 +3,6 @@ title: Avis long term car rental
 first_published_at: "2022-01-18T05:06:14.838545+13:00"
 latest_revision_created_at: "2022-01-18T05:06:14.779685+13:00"
 site_url: https://www.avislangtimaleiga.is/is/
-site_screenshot_url: /images/avis.2e16d0ba.fill-1200x996.webp
 tags:
   - car rental
   - responsive

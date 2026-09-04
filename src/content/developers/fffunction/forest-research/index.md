@@ -3,7 +3,6 @@ title: Forest Research
 first_published_at: "2019-09-23T11:04:47.387382+12:00"
 latest_revision_created_at: "2019-09-23T11:04:47.341745+12:00"
 site_url: https://forestresearch.gov.uk
-site_screenshot_url: /images/screenshot_PEPFqSS.2e16d0ba.fill-1200x996.webp
 tags:
   - forestry
   - publications

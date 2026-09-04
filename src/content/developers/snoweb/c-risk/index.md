@@ -3,7 +3,6 @@ title: C-Risk
 first_published_at: "2022-01-11T21:39:38.741185+13:00"
 latest_revision_created_at: "2022-01-11T23:07:41.875061+13:00"
 site_url: https://www.c-risk.com/en/
-site_screenshot_url: /images/new-c-risk-website.2e16d0ba.fill-1200x996.webp
 tags:
   - ux
   - identity

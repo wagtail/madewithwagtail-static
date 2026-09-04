@@ -3,7 +3,6 @@ title: Cross the Aisle for Climate
 first_published_at: "2017-01-16T16:05:49.234638+13:00"
 latest_revision_created_at: "2017-01-16T16:06:03.466672+13:00"
 site_url: http://crossforclimate.com
-site_screenshot_url: /images/Cross-the-Aisle-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
 ---

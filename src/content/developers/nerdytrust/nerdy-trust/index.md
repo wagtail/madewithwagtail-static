@@ -3,7 +3,6 @@ title: Nerdy Trust
 first_published_at: "2021-12-08T15:49:03.532603+13:00"
 latest_revision_created_at: "2021-12-08T15:49:03.469156+13:00"
 site_url: https://nerdytrust.com/
-site_screenshot_url: /images/nerdytrust.com_.2e16d0ba.fill-1200x996.webp
 tags:
   - transformacion digital
 ---

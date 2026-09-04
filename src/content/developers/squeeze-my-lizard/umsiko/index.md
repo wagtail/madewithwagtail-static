@@ -3,7 +3,6 @@ title: Umsiko
 first_published_at: "2022-03-01T10:06:10.259515+13:00"
 latest_revision_created_at: "2022-03-01T10:06:10.197696+13:00"
 site_url: https://www.umsiko.co.nz
-site_screenshot_url: /images/www.umsiko.co.nz_.2e16d0ba.fill-1200x996.webp
 tags:
   - pattern making
 ---

@@ -3,7 +3,6 @@ title: Crossroads in Complex Systems Conference
 first_published_at: "2019-09-23T11:34:31.474716+12:00"
 latest_revision_created_at: "2019-09-23T11:34:31.438472+12:00"
 site_url: https://crossroads2017.ifisc.uib-csic.es/
-site_screenshot_url: /images/screenshot_oshYrcW.2e16d0ba.fill-1200x996.webp
 tags:
   - Research
   - talks

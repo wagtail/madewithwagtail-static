@@ -3,7 +3,6 @@ title: Stadt Land Food
 first_published_at: "2019-09-23T09:56:41.772470+12:00"
 latest_revision_created_at: "2019-09-23T10:00:21.823386+12:00"
 site_url: https://stadtlandfood.com
-site_screenshot_url: /images/screenshot_xUfikbJ.2e16d0ba.fill-1200x996.webp
 tags:
   - festival
   - food

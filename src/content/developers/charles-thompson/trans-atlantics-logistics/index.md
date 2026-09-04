@@ -3,7 +3,6 @@ title: Trans Atlantics Logistics
 first_published_at: "2020-02-05T10:58:48.550055+13:00"
 latest_revision_created_at: "2020-02-05T10:58:48.487134+13:00"
 site_url: https://tatlantics.com/
-site_screenshot_url: /images/tatlantics.com__2.2e16d0ba.fill-1200x996.webp
 tags:
   - construction
   - logistics

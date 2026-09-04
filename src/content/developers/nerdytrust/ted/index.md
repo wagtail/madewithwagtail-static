@@ -3,7 +3,6 @@ title: TED
 first_published_at: "2021-12-08T15:24:14.109140+13:00"
 latest_revision_created_at: "2021-12-08T15:24:14.008648+13:00"
 site_url: https://www.ted.com.mx/
-site_screenshot_url: /images/www.ted.com.mx_.2e16d0ba.fill-1200x996.webp
 tags:
   - corporate
   - nerdytrust

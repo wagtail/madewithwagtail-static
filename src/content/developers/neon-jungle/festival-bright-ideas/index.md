@@ -3,7 +3,6 @@ title: Festival of Bright Ideas
 first_published_at: "2017-07-27T17:15:11.653471+12:00"
 latest_revision_created_at: "2018-01-16T16:56:46.971374+13:00"
 site_url: http://www.festivalofbrightideas.com.au/
-site_screenshot_url: /images/festivalofbrightideas.com.au-1440.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - Education

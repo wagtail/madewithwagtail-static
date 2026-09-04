@@ -3,7 +3,6 @@ title: Domaine de Joinville
 first_published_at: "2017-11-06T09:38:05.004992+13:00"
 latest_revision_created_at: "2017-12-05T11:18:02.092889+13:00"
 site_url: http://domainejoinville.fr
-site_screenshot_url: /images/domainejoinville.fr_Made_with_Wag.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - hotels

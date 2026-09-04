@@ -3,7 +3,6 @@ title: Vinyl Me, Please
 first_published_at: "2017-01-16T16:51:31.415348+13:00"
 latest_revision_created_at: "2017-11-22T11:01:02.396285+13:00"
 site_url: http://vinylmeplease.com
-site_screenshot_url: /images/Vinyl-Me-Please-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - design
   - editorial

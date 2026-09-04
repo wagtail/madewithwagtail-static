@@ -3,7 +3,6 @@ title: Insurance Hotline
 first_published_at: "2018-05-01T16:52:50.592934+12:00"
 latest_revision_created_at: "2018-05-01T16:52:50.552713+12:00"
 site_url: https://www.insurancehotline.com/
-site_screenshot_url: /images/insurancehotline.2e16d0ba.fill-1200x996.webp
 tags:
   - insurance
   - comparator

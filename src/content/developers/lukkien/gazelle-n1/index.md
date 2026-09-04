@@ -3,7 +3,6 @@ title: Gazelle Nº1
 first_published_at: "2017-02-23T04:37:45.647819+13:00"
 latest_revision_created_at: "2017-07-21T12:21:50.397732+12:00"
 site_url: http://www.gazelleno1.com
-site_screenshot_url: /images/gazelleno1.com-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - video

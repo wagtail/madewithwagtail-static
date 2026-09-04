@@ -3,7 +3,6 @@ title: CB'S Réseau
 first_published_at: "2022-01-11T22:19:27.684846+13:00"
 latest_revision_created_at: "2022-01-11T23:08:04.734929+13:00"
 site_url: https://www.brasserie-carquefou-cbs.com/
-site_screenshot_url: /images/cbs-reseau-site11.2e16d0ba.fill-1200x996.webp
 tags:
   - seo
   - website

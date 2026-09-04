@@ -3,7 +3,6 @@ title: Blue Mountain Shoes
 first_published_at: "2025-05-21T05:21:44.660214+12:00"
 latest_revision_created_at: "2025-09-10T05:05:50.591570+12:00"
 site_url: https://bluemountainshoes.com
-site_screenshot_url: /images/Blue_Mountain_Shoes_home_page.2e16d0ba.fill-1200x996.webp
 tags:
   - Name-brand footwear
   - Shoes

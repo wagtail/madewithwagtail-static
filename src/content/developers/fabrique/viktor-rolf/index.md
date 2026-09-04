@@ -3,7 +3,6 @@ title: Viktor & Rolf
 first_published_at: "2018-01-31T13:20:27.842676+13:00"
 latest_revision_created_at: "2018-01-31T13:20:27.796550+13:00"
 site_url: http://www.viktor-rolf.com/
-site_screenshot_url: /images/viktor-rolf.com.2e16d0ba.fill-1200x996.webp
 tags:
   - fashion
   - responsive

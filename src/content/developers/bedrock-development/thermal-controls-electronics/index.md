@@ -3,7 +3,6 @@ title: Thermal Controls & Electronics
 first_published_at: "2018-01-16T10:57:00.169264+13:00"
 latest_revision_created_at: "2018-01-16T10:57:00.116895+13:00"
 site_url: https://www.tc-e.nl/
-site_screenshot_url: /images/tc-e.nl.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - catalog

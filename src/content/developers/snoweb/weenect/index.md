@@ -3,7 +3,6 @@ title: Weenect
 first_published_at: "2022-01-08T13:45:01.423744+13:00"
 latest_revision_created_at: "2022-01-11T22:43:18.288830+13:00"
 site_url: https://www.weenect.com/
-site_screenshot_url: /images/weenect-site4.2e16d0ba.fill-1200x996.webp
 tags:
   - design
   - responsive

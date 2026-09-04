@@ -3,7 +3,6 @@ title: Búseti
 first_published_at: "2022-01-18T20:35:19.134851+13:00"
 latest_revision_created_at: "2022-01-18T20:35:19.028365+13:00"
 site_url: https://www.buseti.is/
-site_screenshot_url: /images/Screenshot_2022-01-18_at_08.38.00.05741bc5.fill-1200x996.webp
 tags:
   - My sites
   - Customers

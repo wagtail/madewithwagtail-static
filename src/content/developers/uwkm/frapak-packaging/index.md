@@ -3,7 +3,6 @@ title: Frapak Packaging
 first_published_at: "2018-05-28T16:14:59.291285+12:00"
 latest_revision_created_at: "2018-05-28T16:14:59.251542+12:00"
 site_url: https://www.frapak.com/en/
-site_screenshot_url: /images/frapak.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - configurator

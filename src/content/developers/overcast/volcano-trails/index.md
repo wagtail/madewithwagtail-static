@@ -3,7 +3,6 @@ title: Volcano Trails
 first_published_at: "2022-01-18T20:22:43.259601+13:00"
 latest_revision_created_at: "2022-01-18T20:22:43.163129+13:00"
 site_url: https://volcanotrails.com/
-site_screenshot_url: /images/volcano.2e16d0ba.fill-1200x996.webp
 tags:
   - Volcano
   - travel

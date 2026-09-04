@@ -3,7 +3,6 @@ title: UK Chamber of Shipping
 first_published_at: "2016-03-31T09:52:07.962892+13:00"
 latest_revision_created_at: "2016-10-06T03:57:24.103713+13:00"
 site_url: https://www.ukchamberofshipping.com
-site_screenshot_url: /images/www.ukchamberofshipping.com-1440x.2e16d0ba.fill-1200x996.webp
 tags:
   - StreamField
 ---

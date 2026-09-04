@@ -3,7 +3,6 @@ title: Prime Property Management
 first_published_at: "2025-02-04T03:55:09.093173+13:00"
 latest_revision_created_at: "2025-05-19T21:39:35.873059+12:00"
 site_url: https://primepm.co.uk/
-site_screenshot_url: /images/dodgemsandfloss-prime.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - industry

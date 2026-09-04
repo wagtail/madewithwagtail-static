@@ -3,7 +3,6 @@ title: ElementzOnline
 first_published_at: "2019-11-01T12:52:00.453200+13:00"
 latest_revision_created_at: "2019-11-01T12:52:00.406862+13:00"
 site_url: http://www.elementzonline.org
-site_screenshot_url: /images/www.elementzonline.org_.2e16d0ba.fill-1200x996.webp
 tags:
   - raspberrypi
   - elementzonline

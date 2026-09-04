@@ -3,7 +3,6 @@ title: B Commerces
 first_published_at: "2017-11-06T09:44:46.649799+13:00"
 latest_revision_created_at: "2018-02-26T11:20:42.558469+13:00"
 site_url: https://b-commerces.fr
-site_screenshot_url: /images/b-commerces.fr_Made_with_Wagtail.2e16d0ba.fill-1200x996.webp
 tags:
   - real estate
   - responsive

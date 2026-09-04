@@ -3,7 +3,6 @@ title: Hervitas
 first_published_at: "2018-06-22T17:56:11.149968+12:00"
 latest_revision_created_at: "2018-06-22T17:56:11.106979+12:00"
 site_url: https://www.hervitas.nl/
-site_screenshot_url: /images/Hervitas.2e16d0ba.fill-1200x996.webp
 tags:
   - business
   - responsive

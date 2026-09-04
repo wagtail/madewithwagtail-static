@@ -3,7 +3,6 @@ title: Bow River Veterinary Centre
 first_published_at: "2018-06-29T16:18:40.839390+12:00"
 latest_revision_created_at: "2018-06-29T16:18:40.805071+12:00"
 site_url: https://www.bowrivervet.com/
-site_screenshot_url: /images/bowrivervet.2e16d0ba.fill-1200x996.webp
 tags:
   - animal welfare
 ---

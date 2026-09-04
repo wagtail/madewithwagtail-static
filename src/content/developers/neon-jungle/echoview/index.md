@@ -3,7 +3,6 @@ title: Echoview
 first_published_at: "2021-10-05T18:23:53.703423+13:00"
 latest_revision_created_at: "2021-10-05T18:23:53.620858+13:00"
 site_url: https://echoview.com/
-site_screenshot_url: /images/Screen_Shot_2021-10-05_at_16.11.5.2e16d0ba.fill-1200x996.webp
 tags:
   - science
   - business

@@ -3,7 +3,6 @@ title: Flint Hills Paranormal
 first_published_at: "2017-10-02T19:50:06.123092+13:00"
 latest_revision_created_at: "2017-10-02T19:50:06.083511+13:00"
 site_url: https://flinthillsparanormal.com/
-site_screenshot_url: /images/flinthillsparanormal.com-1440x120.2e16d0ba.fill-1200x996.webp
 tags:
   - paranormal
   - responsive

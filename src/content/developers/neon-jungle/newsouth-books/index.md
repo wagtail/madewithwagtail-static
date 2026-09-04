@@ -3,7 +3,6 @@ title: NewSouth Books
 first_published_at: "2024-06-12T17:52:41.491357+12:00"
 latest_revision_created_at: "2024-06-12T17:52:41.370106+12:00"
 site_url: https://newsouthbooks.com.au/
-site_screenshot_url: /images/newsouthbooks.com.au_.2e16d0ba.fill-1200x996.webp
 tags:
   - data
   - publishing

@@ -3,7 +3,6 @@ title: Gildi
 first_published_at: "2024-08-07T02:28:07.641085+12:00"
 latest_revision_created_at: "2024-08-07T02:28:07.462243+12:00"
 site_url: https://www.gildi.is/
-site_screenshot_url: /images/gildi.2e16d0ba.fill-1200x996.webp
 tags:
   - calculator
   - loan

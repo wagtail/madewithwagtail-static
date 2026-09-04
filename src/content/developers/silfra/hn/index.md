@@ -3,7 +3,6 @@ title: H:N
 first_published_at: "2019-09-26T18:33:14.173476+12:00"
 latest_revision_created_at: "2019-09-26T18:33:14.134233+12:00"
 site_url: https://hn.is
-site_screenshot_url: /images/Screen_Shot_2019-09-26_at_6.21.49.2e16d0ba.fill-1200x996.webp
 tags:
   - agency
   - advertising

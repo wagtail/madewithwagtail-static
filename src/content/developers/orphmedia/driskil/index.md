@@ -3,7 +3,6 @@ title: The Driskil
 first_published_at: "2019-09-24T11:19:53.958166+12:00"
 latest_revision_created_at: "2019-09-24T11:19:53.920642+12:00"
 site_url: https://thedriskill.com
-site_screenshot_url: /images/screenshot_wSKKkrq.2e16d0ba.fill-1200x996.webp
 tags:
   - hotels
   - Hospitality

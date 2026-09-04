@@ -3,7 +3,6 @@ title: Dr. Gina Ha & Associates
 first_published_at: "2019-12-11T16:07:11.544993+13:00"
 latest_revision_created_at: "2019-12-11T16:07:11.479216+13:00"
 site_url: https://www.drginahaandassociates.com/
-site_screenshot_url: /images/www.drginahaandassociates.com_.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - dentist

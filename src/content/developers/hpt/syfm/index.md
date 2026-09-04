@@ -3,7 +3,6 @@ title: SYFM
 first_published_at: "2022-01-21T01:07:15.846451+13:00"
 latest_revision_created_at: "2022-01-21T01:07:15.787633+13:00"
 site_url: https://www.syfm.co.uk/
-site_screenshot_url: /images/Screenshot_2022-01-20_at_12.03.36.2e16d0ba.fill-1200x996.webp
 tags:
   - industry
 ---

@@ -2,7 +2,6 @@
 title: “La chambre des visiteurs” 2016
 first_published_at: "2017-05-03T22:27:17.604606+12:00"
 latest_revision_created_at: "2017-11-06T09:23:58.868495+13:00"
-site_screenshot_url: /images/la-chambre-des-visiteurs_I7YhnuU.2e16d0ba.fill-1200x996.webp
 tags:
   - non-profit
   - arts

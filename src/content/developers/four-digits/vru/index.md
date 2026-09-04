@@ -3,7 +3,6 @@ title: Veiligheidsregio Utrecht
 first_published_at: "2023-06-22T00:50:19.662294+12:00"
 latest_revision_created_at: "2023-11-09T01:17:36.988946+13:00"
 site_url: https://vru.nl
-site_screenshot_url: /images/Screenshot_2023-11-08_at_13.17.02.e7d77204.fill-1200x996.webp
 tags:
   - incident response
   - government

@@ -3,7 +3,6 @@ title: Jane Franklin Hall
 first_published_at: "2019-10-23T14:17:12.253323+13:00"
 latest_revision_created_at: "2019-10-23T14:17:12.113105+13:00"
 site_url: http://jane.edu.au
-site_screenshot_url: /images/jane.edu.au_Made_With_Wagtail.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - forms

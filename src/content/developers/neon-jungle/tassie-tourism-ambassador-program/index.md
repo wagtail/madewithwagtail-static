@@ -3,7 +3,6 @@ title: Tassie Tourism Ambassador Program
 first_published_at: "2021-10-05T16:45:42.746585+13:00"
 latest_revision_created_at: "2021-10-05T17:53:49.902554+13:00"
 site_url: https://tassietourismambassador.com.au/
-site_screenshot_url: /images/tassietourismambassador.com.au_Wa.2e16d0ba.fill-1200x996.webp
 tags:
   - design
   - responsive

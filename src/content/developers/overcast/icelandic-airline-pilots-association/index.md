@@ -3,7 +3,6 @@ title: The Icelandic Airline Pilots’ Association
 first_published_at: "2022-01-18T20:27:19.887404+13:00"
 latest_revision_created_at: "2022-01-18T20:27:19.801653+13:00"
 site_url: https://www.fia.is/
-site_screenshot_url: /images/fia.2e16d0ba.fill-1200x996.webp
 tags:
   - Pilots
   - responsive

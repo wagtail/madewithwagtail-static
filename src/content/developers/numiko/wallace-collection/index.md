@@ -3,7 +3,6 @@ title: The Wallace Collection
 first_published_at: "2019-09-19T15:13:24.406190+12:00"
 latest_revision_created_at: "2019-09-19T15:17:10.225465+12:00"
 site_url: https://www.wallacecollection.org/
-site_screenshot_url: /images/screenshot_XEvxaNb.2e16d0ba.fill-1200x996.webp
 tags:
   - museum
   - art

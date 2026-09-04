@@ -3,7 +3,6 @@ title: The Diemen Awards
 first_published_at: "2021-10-26T16:49:33.323035+13:00"
 latest_revision_created_at: "2023-09-19T17:31:04.274469+12:00"
 site_url: https://diemenawards.com.au/
-site_screenshot_url: /images/diemenawards.com.au_Wagtail.2e16d0ba.fill-1200x996.webp
 tags:
   - creativity
   - creative industries

@@ -3,7 +3,6 @@ title: Alde
 first_published_at: "2017-07-13T13:43:20.391614+12:00"
 latest_revision_created_at: "2017-07-13T13:43:20.358631+12:00"
 site_url: https://www.alde.us/
-site_screenshot_url: /images/alde.us-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
 ---

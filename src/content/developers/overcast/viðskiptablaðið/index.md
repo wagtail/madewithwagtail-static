@@ -3,7 +3,6 @@ title: Viðskiptablaðið
 first_published_at: "2024-08-07T03:24:23.393225+12:00"
 latest_revision_created_at: "2024-08-07T03:24:23.268248+12:00"
 site_url: https://vb.is/
-site_screenshot_url: /images/vb.2e16d0ba.fill-1200x996.webp
 tags:
   - journalist
   - newspaper

@@ -3,7 +3,6 @@ title: Station Spatiale
 first_published_at: "2022-01-08T13:41:02.285924+13:00"
 latest_revision_created_at: "2022-01-11T22:43:01.641175+13:00"
 site_url: https://stationspatiale.com/
-site_screenshot_url: /images/station-spatiale-site.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - freelance

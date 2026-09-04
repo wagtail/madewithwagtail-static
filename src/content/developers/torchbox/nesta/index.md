@@ -3,7 +3,6 @@ title: Nesta
 first_published_at: "2019-09-19T18:39:14.923873+12:00"
 latest_revision_created_at: "2019-09-24T10:30:23.127674+12:00"
 site_url: https://www.nesta.org.uk
-site_screenshot_url: /images/screenshot_2mUJ4G9.2e16d0ba.fill-1200x996.webp
 tags:
   - responsive
   - non-profit

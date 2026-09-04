@@ -3,7 +3,6 @@ title: myBaze.com - Your Favourite Fashion Brands
 first_published_at: "2022-03-01T10:02:56.800380+13:00"
 latest_revision_created_at: "2022-03-01T10:02:56.726993+13:00"
 site_url: https://mybaze.com/pl/
-site_screenshot_url: /images/mybaze.com_pl_.2e16d0ba.fill-1200x996.webp
 tags:
   - e-commerce
   - fashion

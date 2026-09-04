@@ -3,7 +3,6 @@ title: Block Venture
 first_published_at: "2017-12-05T11:32:28.073245+13:00"
 latest_revision_created_at: "2017-12-05T11:32:28.020574+13:00"
 site_url: https://blockventure.io/
-site_screenshot_url: /images/blockventure.2e16d0ba.fill-1200x996.webp
 tags:
   - AWS
   - Multisite

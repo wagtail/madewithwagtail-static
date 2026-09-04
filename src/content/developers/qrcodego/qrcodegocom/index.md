@@ -3,7 +3,6 @@ title: qrcodego.com
 first_published_at: "2017-05-18T02:28:13.829659+12:00"
 latest_revision_created_at: "2017-05-18T02:28:13.785651+12:00"
 site_url: https://qrcodego.com
-site_screenshot_url: /images/qrcodego.com-1440x1200.2e16d0ba.fill-1200x996.webp
 tags:
   - multilingual
 ---
