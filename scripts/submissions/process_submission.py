@@ -42,7 +42,7 @@ from typing import Literal
 from urllib.parse import urlsplit
 
 from PIL import Image
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from slugify import slugify
 
 SLUG_RE = r"^[a-z0-9][a-z0-9-]{0,49}$"
@@ -346,17 +346,39 @@ def detect_wagtail(html: str) -> list[str]:
     return signals
 
 
+def _response_too_large(response) -> bool:
+    """Best-effort size gate: honor content-length when present."""
+    headers = getattr(response, "headers", None) or {}
+    content_length = headers.get("content-length")
+    return bool(content_length and content_length.isdigit() and int(content_length) > MAX_RESPONSE_BYTES)
+
+
+def _capped_text(response) -> str:
+    """Decode at most MAX_RESPONSE_BYTES of the response body."""
+    if _response_too_large(response):
+        return ""
+    content = getattr(response, "content", None)
+    if content is None:
+        return response.text
+    return content[:MAX_RESPONSE_BYTES].decode("utf-8", errors="replace")
+
+
 def probe_admin_pages(client: "httpx.Client", origin: str) -> list[str]:
-    """Best-effort admin probe; every failure mode is silently skipped."""
+    """Best-effort admin probe; every failure mode is silently skipped.
+
+    No redirect following: fetch_page's per-hop SSRF checks are the only
+    validated network path, so a redirecting admin simply yields no signal.
+    """
     import httpx
 
     signals = []
     for path in ADMIN_PATHS:
         try:
-            response = client.get(origin + path, follow_redirects=True, timeout=5)
+            response = client.get(origin + path, timeout=5)
         except httpx.HTTPError:
             continue
-        if response.status_code == 200 and "wagtail" in response.text.casefold():
+        body = _capped_text(response)
+        if response.status_code == 200 and "wagtail" in body.casefold():
             signals.append(f"Wagtail admin page at {path}")
     return signals
 
@@ -512,12 +534,12 @@ def cmd_render(argv: list[str]) -> int:
             for candidate in gather_logo_candidates(client, html, origin, proposal.logo_url):
                 try:
                     response = client.get(candidate, timeout=10)
-                    if response.status_code != 200:
+                    if response.status_code != 200 or _response_too_large(response):
                         continue
                     # No magic-byte sniffing (it misses ICO favicons): try to
                     # decode + encode with Pillow; any failure means "not a
                     # usable logo". UnidentifiedImageError is an OSError.
-                    logo_bytes = encode_logo(response.content)
+                    logo_bytes = encode_logo(response.content[:MAX_RESPONSE_BYTES])
                     break
                 except (httpx.HTTPError, ValueError, OSError):
                     continue
@@ -677,25 +699,50 @@ def build_proposal(
     if reasons:
         raise Rejection(*reasons)
 
-    return Proposal(
-        schema_version=1,
-        issue_number=issue_number,
-        submission_type=submission_type,
-        site_url=site_url,
-        site_title=site_title,
-        site_description=site_description,
-        tags=tags,
-        developer_name=developer_name,
-        developer_slug=developer_slug,
-        site_slug=site_slug,
-        developer_exists=developer_exists,
-        company_url=company_url or None,
-        location=location,
-        lat=lat,
-        lon=lon,
-        github_user=github_user,
-        logo_url=logo_url or None,
-        submitted_at=now or utcnow(),
+    try:
+        return Proposal(
+            schema_version=1,
+            issue_number=issue_number,
+            submission_type=submission_type,
+            site_url=site_url,
+            site_title=site_title,
+            site_description=site_description,
+            tags=tags,
+            developer_name=developer_name,
+            developer_slug=developer_slug,
+            site_slug=site_slug,
+            developer_exists=developer_exists,
+            company_url=company_url or None,
+            location=location,
+            lat=lat,
+            lon=lon,
+            github_user=github_user,
+            logo_url=logo_url or None,
+            submitted_at=now or utcnow(),
+        )
+    except ValidationError as exc:
+        # Model-level caps (title > 80, description > 500, ...) are reachable
+        # through the real form — they must surface as a structured rejection,
+        # not an exit-1 traceback that silently drops the submission.
+        raise Rejection(*(_proposal_error_reason(error) for error in exc.errors())) from exc
+
+
+# Model-level constraints on user-editable fields, mapped to rejection copy.
+PROPOSAL_ERROR_REASONS = {
+    "site_title": "The site title must be at most 80 characters.",
+    "site_description": "The short description must be at most 500 characters.",
+    "developer_name": "The developer name must be at most 80 characters.",
+    "tags": "Choose at most 5 tags.",
+    "location": "The location must be at most 100 characters.",
+}
+
+
+def _proposal_error_reason(error: dict) -> str:
+    loc = error.get("loc") or ()
+    field = str(loc[-1]) if loc else ""
+    return PROPOSAL_ERROR_REASONS.get(
+        field,
+        f"An entry in the form was rejected: {error.get('msg', 'invalid value')}.",
     )
 
 
@@ -977,17 +1024,22 @@ def cmd_publish(argv: list[str]) -> int:
     if args.detection is None:
         parser.error("publish pr requires --detection")
     detection = json.loads(args.detection.read_text(encoding="utf-8"))
-    repo = os.environ["GITHUB_REPOSITORY"]
-    run_url = os.environ["GITHUB_RUN_URL"]
     branch = f"{BRANCH_PREFIX}{proposal.issue_number}"
     paths = output_paths(proposal)
     logo_committed = "logo" in paths and (args.repo_root / paths["logo"]).exists()
-    body = build_pr_body(proposal, detection, repo, branch, run_url, logo_committed=logo_committed)
 
     if args.dry_run:
+        # Placeholders keep the advertised local dry-run working without CI env.
+        repo = os.environ.get("GITHUB_REPOSITORY", "<GITHUB_REPOSITORY>")
+        run_url = os.environ.get("GITHUB_RUN_URL", "<GITHUB_RUN_URL>")
+        body = build_pr_body(proposal, detection, repo, branch, run_url, logo_committed=logo_committed)
         print(f"would create branch {branch} and open a PR on {repo}")
         print(body)
         return 0
+
+    repo = os.environ["GITHUB_REPOSITORY"]
+    run_url = os.environ["GITHUB_RUN_URL"]
+    body = build_pr_body(proposal, detection, repo, branch, run_url, logo_committed=logo_committed)
 
     body_file = args.repo_root / ".git" / "PR_BODY.md"
     body_file.write_text(body, encoding="utf-8")

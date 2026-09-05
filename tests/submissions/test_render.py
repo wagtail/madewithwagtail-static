@@ -138,3 +138,29 @@ class TestGatherLogoCandidates:
             "https://example.com/apple-touch-icon.png",
             "https://example.com/favicon.ico",
         ]
+
+
+class TestProbeAdminPages:
+    def test_redirecting_admin_yields_no_signal(self, url_guard):
+        """A redirecting admin page must produce no signal: redirects are only
+        followed through fetch_page's per-hop SSRF-checked path."""
+
+        class RedirectClient(FakeClient):
+            def get(self, url, **kwargs):
+                self.requested.append(url)
+                assert "follow_redirects" not in kwargs, "admin probe must not follow redirects"
+                resp = FakeResponse(302, "", url)
+                resp.headers = {"location": "https://example.com/login", "content-type": "text/html"}
+                return resp
+
+        assert ps.probe_admin_pages(RedirectClient({}), "https://example.com") == []
+
+    def test_huge_content_length_skipped(self):
+        class HugeClient(FakeClient):
+            def get(self, url, **kwargs):
+                resp = FakeResponse(200, "wagtail everywhere", url)
+                resp.headers = {"content-type": "text/html", "content-length": str(ps.MAX_RESPONSE_BYTES + 1)}
+                resp.content = b"x" * 10
+                return resp
+
+        assert ps.probe_admin_pages(HugeClient({}), "https://example.com") == []

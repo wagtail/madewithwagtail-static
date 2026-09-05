@@ -56,7 +56,7 @@ jobs:
       - name: Handle rejection
         if: steps.validate.outputs.outcome == 'rejected'
         run: |
-          reasons=$(jq -r '.reasons | map("- " + .) | join("\n")' validate-out.json)
+          reasons=$(jq -r '(.reasons // ["The submission could not be processed."]) | map("- " + .) | join("\n")' validate-out.json)
           {
             echo "Thanks for your submission! Unfortunately it could not be processed:"
             echo
