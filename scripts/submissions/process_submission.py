@@ -16,7 +16,7 @@ Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
 # requires-python = ">=3.12"
 # dependencies = [
 #   "httpx>=0.28",
-#   "playwright>=1.49",
+#   "playwright==1.62.0",
 #   "pillow>=11",
 #   "pydantic>=2.10",
 #   "python-slugify>=8",
@@ -938,7 +938,9 @@ def cmd_publish(argv: list[str]) -> int:
 
     if args.stage == "prepare":
         screenshot = args.screenshot.read_bytes()
-        logo = args.logo.read_bytes() if args.logo else None
+        # A missing logo artifact is a legitimate no-logo outcome, not an
+        # error: write_content_files treats empty bytes as "no logo".
+        logo = args.logo.read_bytes() if args.logo and args.logo.exists() else b""
         if args.dry_run:
             for key, rel in output_paths(proposal).items():
                 print(f"would write {rel}")
