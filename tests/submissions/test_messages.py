@@ -45,6 +45,19 @@ class TestPrBody:
         assert "https://run" in body
         assert "just serve" in body
 
+    def test_logo_section_gated_on_logo_committed(self):
+        p = make_proposal()  # new-developer: output_paths includes the logo
+        with_logo = ps.build_pr_body(p, DETECTION, "r/r", "b", "https://run", logo_committed=True)
+        without_logo = ps.build_pr_body(p, DETECTION, "r/r", "b", "https://run", logo_committed=False)
+        assert "Developer logo (as committed)" in with_logo
+        assert "Developer logo (as committed)" not in without_logo
+
+    def test_logo_section_default_keeps_backward_compatible_behavior(self):
+        # None derives from output_paths: a new-developer proposal still
+        # advertises the logo unless the caller says otherwise.
+        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        assert "Developer logo (as committed)" in body
+
 
 class TestComments:
     def test_pr_comment_links(self):

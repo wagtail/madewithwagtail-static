@@ -54,6 +54,37 @@ class TestWriteContentFiles:
             ps.write_content_files(make_proposal(), tmp_path, buf.getvalue(), None)
 
 
+class TestGitAddPaths:
+    def test_excludes_missing_logo(self, tmp_path):
+        # New-developer proposal whose logo was never written (no logo
+        # artifact): the logo path must not reach `git add`.
+        p = make_proposal()
+        (tmp_path / "src" / "content" / "developers" / "example-co" / "example-site").mkdir(parents=True)
+        (tmp_path / "public" / "images" / "example-co").mkdir(parents=True)
+        (tmp_path / "src" / "content" / "developers" / "example-co" / "example-site" / "index.md").touch()
+        (tmp_path / "src" / "content" / "developers" / "example-co" / "index.md").touch()
+        (tmp_path / "public" / "images" / "example-co" / "example-site.fill-1200x996.webp").touch()
+        paths = ps.git_add_paths(p, tmp_path)
+        assert tmp_path / "public/images/example-co.max-120x120.webp" not in paths
+        assert len(paths) == 3
+
+    def test_includes_logo_when_written(self, tmp_path):
+        p = make_proposal()
+        for rel in ps.output_paths(p).values():
+            (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
+            (tmp_path / rel).touch()
+        paths = ps.git_add_paths(p, tmp_path)
+        assert len(paths) == 4
+
+    def test_existing_developer_paths_only(self, tmp_path):
+        p = make_proposal(submission_type="existing-developer", developer_exists=True, developer_slug="frojd")
+        for rel in ps.output_paths(p).values():
+            (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
+            (tmp_path / rel).touch()
+        paths = ps.git_add_paths(p, tmp_path)
+        assert {path.name for path in paths} == {"index.md", "example-site.fill-1200x996.webp"}
+
+
 class TestCmdPublishPrepare:
     def test_missing_logo_file_writes_without_logo(self, tmp_path, capsys):
         """The render job only writes logo.webp when one is discoverable, so

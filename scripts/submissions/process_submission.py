@@ -786,8 +786,18 @@ def _run_footer(run_url: str) -> str:
     )
 
 
-def build_pr_body(p: Proposal, detection: dict, repo_full_name: str, branch: str, run_url: str) -> str:
+def build_pr_body(
+    p: Proposal,
+    detection: dict,
+    repo_full_name: str,
+    branch: str,
+    run_url: str,
+    logo_committed: bool | None = None,
+) -> str:
     paths = output_paths(p)
+    # Whether the logo image was actually written to the branch. None keeps
+    # the default "the proposal expects one" for callers that don't know.
+    logo_expected = logo_committed if logo_committed is not None else "logo" in paths
     profile = "new developer profile" if not p.developer_exists else "existing developer profile"
     verdict = "✅ Wagtail signals detected" if detection["is_wagtail"] else "⚠️ No Wagtail signals detected"
     signal_lines = "\n".join(f"- {signal}" for signal in detection["signals"]) or "- (none found)"
@@ -808,7 +818,7 @@ def build_pr_body(p: Proposal, detection: dict, repo_full_name: str, branch: str
         f"![Screenshot of {p.site_title}](https://raw.githubusercontent.com/{repo_full_name}/{branch}/{paths['screenshot']})",
         "",
     ]
-    if not p.developer_exists and "logo" in paths:
+    if not p.developer_exists and logo_expected:
         lines += [
             "### Developer logo (as committed)",
             "",
@@ -836,6 +846,17 @@ def build_pr_body(p: Proposal, detection: dict, repo_full_name: str, branch: str
         _run_footer(run_url),
     ]
     return "\n".join(lines)
+
+
+def git_add_paths(p: Proposal, repo_root: Path) -> list[Path]:
+    """Content paths that exist on disk — a missing logo is legitimate, and
+    `git add` on a pathspec that matches nothing fails the publish stage."""
+    return [
+        path
+        for rel in output_paths(p).values()
+        if (repo_root / rel).exists()
+        for path in [repo_root / rel]
+    ]
 
 
 def build_pr_comment(p: Proposal, pr_url: str, run_url: str) -> str:
@@ -959,7 +980,9 @@ def cmd_publish(argv: list[str]) -> int:
     repo = os.environ["GITHUB_REPOSITORY"]
     run_url = os.environ["GITHUB_RUN_URL"]
     branch = f"{BRANCH_PREFIX}{proposal.issue_number}"
-    body = build_pr_body(proposal, detection, repo, branch, run_url)
+    paths = output_paths(proposal)
+    logo_committed = "logo" in paths and (args.repo_root / paths["logo"]).exists()
+    body = build_pr_body(proposal, detection, repo, branch, run_url, logo_committed=logo_committed)
 
     if args.dry_run:
         print(f"would create branch {branch} and open a PR on {repo}")
@@ -969,7 +992,7 @@ def cmd_publish(argv: list[str]) -> int:
     body_file = args.repo_root / ".git" / "PR_BODY.md"
     body_file.write_text(body, encoding="utf-8")
     run(["git", "checkout", "-B", branch])
-    run(["git", "add", *(str(path) for path in output_paths(proposal).values())])
+    run(["git", "add", *(str(path) for path in git_add_paths(proposal, args.repo_root))])
     run(["git", "commit", "-m", f"Add site submission from issue #{proposal.issue_number}"])
     run(["git", "push", "origin", branch])
     # The PR label may not exist yet in the repository.
