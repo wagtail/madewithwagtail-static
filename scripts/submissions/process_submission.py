@@ -986,17 +986,21 @@ def cmd_publish(argv: list[str]) -> int:
     return 0
 
 
-def main() -> int:  # render/publish routing fully wired up in Task 12
+def main() -> int:
     if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
         print(__doc__)
         return 0
     command, *argv = sys.argv[1:]
-    if command == "validate":
-        return cmd_validate(argv)
-    if command == "render":
-        return cmd_render(argv)
-    if command == "publish":
-        return cmd_publish(argv)
+    try:
+        if command == "validate":
+            return cmd_validate(argv)
+        if command == "render":
+            return cmd_render(argv)
+        if command == "publish":
+            return cmd_publish(argv)
+    except Rejection as rejection:  # defensive: cmd_validate already handles it
+        print(json.dumps({"reasons": rejection.reasons}), file=sys.stderr)
+        return REJECTION_EXIT
     print(f"Unknown command: {command}", file=sys.stderr)
     return ERROR_EXIT
 
