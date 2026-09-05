@@ -163,7 +163,11 @@ def check_public_url(raw: str, resolver=socket.getaddrinfo) -> str:
         raise bad(f"Scheme must be http or https, got {parts.scheme!r}")
     if parts.username or parts.password or "@" in (parts.netloc or ""):
         raise bad("URL must not contain credentials (userinfo)")
-    if parts.port is not None:
+    try:
+        explicit_port = parts.port
+    except ValueError as exc:
+        raise bad("URL has an invalid port") from exc
+    if explicit_port is not None:
         raise bad("URL must use the default port")
 
     hostname = parts.hostname or ""

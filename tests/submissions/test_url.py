@@ -50,6 +50,13 @@ class TestCheckPublicUrl:
         with pytest.raises(ValidationError):
             ps.check_public_url("https://example.com:8080", resolver=fake_resolver)
 
+    def test_rejects_invalid_port(self):
+        # An out-of-range port must raise ValidationError, not a bare ValueError.
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://example.com:99999", resolver=fake_resolver)
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://example.com:abc", resolver=fake_resolver)
+
     def test_rejects_private_ipv4(self):
         with pytest.raises(ValidationError):
             ps.check_public_url("https://internal.example", resolver=fake_resolver)
