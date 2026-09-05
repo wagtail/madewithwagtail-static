@@ -31,3 +31,7 @@ build:
 # Run the development server at localhost:4321.
 serve:
     npm run dev --background
+
+# Run the submission pipeline tests.
+test-submissions:
+    uv run --with pytest --with pydantic --with pyyaml --with python-slugify --with httpx --with pillow pytest tests/submissions
