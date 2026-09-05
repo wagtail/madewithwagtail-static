@@ -1,0 +1,125 @@
+name: Site submission
+description: Propose a site built with Wagtail for the showcase
+title: "[Site submission] "
+body:
+  - type: dropdown
+    id: submission-type
+    attributes:
+      label: Submission type
+      options:
+        - A new site and new developer profile
+        - A new site on an existing profile
+    validations:
+      required: true
+  - type: input
+    id: site-url
+    attributes:
+      label: Site URL
+      description: The public URL of the site, e.g. https://example.com
+    validations:
+      required: true
+  - type: input
+    id: site-title
+    attributes:
+      label: Site title
+      description: The site's name, as it should appear in the showcase
+    validations:
+      required: true
+  - type: textarea
+    id: site-description
+    attributes:
+      label: Short description
+      description: 2–3 sentences describing the site
+    validations:
+      required: true
+  - type: dropdown
+    id: tags
+    attributes:
+      label: Tags
+      description: Choose up to 5 tags describing the site
+      multiple: true
+      options:
+        - responsive
+        - business
+        - blog
+        - Education
+        - non-profit
+        - design
+        - portfolio
+        - events
+        - news
+        - multilingual
+        - industry
+        - website
+        - ux
+        - CMS
+        - culture
+        - healthcare
+        - e-commerce
+        - Research
+        - science
+        - developer
+        - tourism
+        - government
+        - agency
+        - travel
+    validations:
+      required: false
+  - type: input
+    id: developer
+    attributes:
+      label: Developer
+      description: "The agency or developer that built the site. For an existing profile, use the name exactly as it appears on the site."
+    validations:
+      required: true
+  - type: input
+    id: company-url
+    attributes:
+      label: Company URL
+      description: The developer's website (skip if the developer is already listed)
+    validations:
+      required: false
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: e.g. Stockholm, Sweden (skip if the developer is already listed)
+    validations:
+      required: false
+  - type: input
+    id: latitude
+    attributes:
+      label: Latitude
+      description: Decimal degrees, e.g. 59.3427 (skip if the developer is already listed)
+    validations:
+      required: false
+  - type: input
+    id: longitude
+    attributes:
+      label: Longitude
+      description: Decimal degrees, e.g. 18.0612 (skip if the developer is already listed)
+    validations:
+      required: false
+  - type: input
+    id: github-user
+    attributes:
+      label: GitHub username
+      description: The developer's GitHub username (skip if the developer is already listed)
+    validations:
+      required: false
+  - type: input
+    id: logo-url
+    attributes:
+      label: Logo URL
+      description: Optional direct URL to the developer's logo (we'll try the site's favicon otherwise)
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I am affiliated with this site or have permission to submit it.
+          required: true
+        - label: This is a production website built with Wagtail.
+          required: true
