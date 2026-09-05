@@ -368,6 +368,158 @@ def detection_result(signals: list[str], url: str) -> dict:
     }
 
 
+MAX_REDIRECTS = 5
+MAX_RESPONSE_BYTES = 3_000_000
+REDIRECT_STATUSES = frozenset({301, 302, 303, 307, 308})
+
+
+def fetch_page(client: "httpx.Client", url: str) -> tuple[str, str]:
+    """GET a page following redirects manually, SSRF-checking every hop.
+
+    Status-code redirect detection and getattr fallbacks keep this testable
+    against minimal fake responses (no httpx.Response required).
+    """
+    import httpx
+
+    current = check_public_url(url)
+    for _ in range(MAX_REDIRECTS):
+        response = client.get(
+            current, timeout=15, headers={"user-agent": "madewithwagtail-submission-bot"}
+        )
+        if response.status_code in REDIRECT_STATUSES:
+            location = response.headers.get("location", "")
+            if not location:
+                raise ValueError("Redirect without a location header")
+            current = check_public_url(str(httpx.URL(str(response.url)).join(location)))
+            continue
+        # Cap the body at MAX_RESPONSE_BYTES before decoding.
+        content = getattr(response, "content", None)
+        if content is None:
+            content = response.text.encode("utf-8", errors="replace")
+        encoding = getattr(response, "encoding", None) or "utf-8"
+        text = content[:MAX_RESPONSE_BYTES].decode(encoding, errors="replace")
+        return str(response.url), text
+    raise ValueError(f"More than {MAX_REDIRECTS} redirects")
+
+
+ICON_REL_RE = re.compile(
+    r"<link[^>]+rel=[\"'][^\"']*(?:apple-touch-icon|icon)[^\"']*[\"'][^>]*>", re.IGNORECASE
+)
+ICON_HREF_RE = re.compile(r"href=[\"']([^\"']+)[\"']", re.IGNORECASE)
+
+
+def gather_logo_candidates(
+    client: "httpx.Client", html: str, origin: str, logo_url: str | None
+) -> list[str]:
+    """Candidate logo URLs: explicit submission first, then <link> icons,
+    then conventional paths. All normalized against the origin."""
+    import httpx
+
+    candidates: list[str] = []
+
+    def add(raw: str) -> None:
+        try:
+            absolute = str(httpx.URL(origin).join(raw))
+        except ValueError:
+            return
+        if absolute not in candidates:
+            candidates.append(absolute)
+
+    if logo_url:
+        add(logo_url)
+    for tag in ICON_REL_RE.findall(html):
+        match = ICON_HREF_RE.search(tag)
+        if match:
+            add(match.group(1))
+    add("/apple-touch-icon.png")
+    add("/favicon.ico")
+    return candidates
+
+
+def capture_screenshot(url: str, out_path: Path) -> None:
+    """Load the URL in headless Chromium and save an encoded WebP screenshot."""
+    from playwright.sync_api import sync_playwright
+
+    private_literal_re = re.compile(
+        r"^(?:localhost|\d{1,3}(?:\.\d{1,3}){3}|\[[0-9a-f:]+\])$", re.IGNORECASE
+    )
+
+    def route_guard(route):
+        host = route.request.url.split("/")[2].split(":")[0]
+        if private_literal_re.fullmatch(host):
+            route.abort()
+        else:
+            route.continue_()
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        context = browser.new_context(
+            viewport={"width": 1200, "height": 996}, device_scale_factor=1
+        )
+        context.route("**/*", route_guard)
+        page = context.new_page()
+        try:
+            page.goto(url, timeout=30_000, wait_until="load")
+            page.wait_for_timeout(2000)
+            png = page.screenshot(type="png")
+        finally:
+            context.close()
+            browser.close()
+    out_path.write_bytes(encode_screenshot(png))
+
+
+def cmd_render(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(prog="render")
+    parser.add_argument("--proposal", type=Path)
+    parser.add_argument("--url")
+    parser.add_argument("--out-dir", required=True, type=Path)
+    args = parser.parse_args(argv)
+
+    # --url smoke mode (local browser testing) skips the proposal entirely.
+    proposal: Proposal | None = None
+    if args.proposal:
+        proposal = Proposal.model_validate_json(args.proposal.read_text(encoding="utf-8"))
+    elif not args.url:
+        print("render: either --proposal or --url is required", file=sys.stderr)
+        return ERROR_EXIT
+    target_url = args.url or proposal.site_url
+
+    import httpx
+
+    args.out_dir.mkdir(parents=True, exist_ok=True)
+
+    with httpx.Client() as client:
+        final_url, html = fetch_page(client, target_url)
+        signals = detect_wagtail(html)
+        final_parts = urlsplit(final_url)
+        origin = f"{final_parts.scheme}://{final_parts.hostname}"
+        signals += probe_admin_pages(client, origin)
+
+        logo_bytes: bytes | None = None
+        if proposal is not None and proposal.submission_type == "new-developer":
+            for candidate in gather_logo_candidates(client, html, origin, proposal.logo_url):
+                try:
+                    response = client.get(candidate, timeout=10)
+                    if response.status_code != 200:
+                        continue
+                    # No magic-byte sniffing (it misses ICO favicons): try to
+                    # decode + encode with Pillow; any failure means "not a
+                    # usable logo". UnidentifiedImageError is an OSError.
+                    logo_bytes = encode_logo(response.content)
+                    break
+                except (httpx.HTTPError, ValueError, OSError):
+                    continue
+
+    detection = detection_result(signals, final_url)
+    (args.out_dir / "detection.json").write_text(
+        json.dumps(detection, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    capture_screenshot(final_url, args.out_dir / "screenshot.webp")
+    if logo_bytes:
+        (args.out_dir / "logo.webp").write_bytes(logo_bytes)
+    return 0
+
+
 REJECTION_EXIT = 2
 ERROR_EXIT = 1
 
@@ -560,13 +712,15 @@ def cmd_validate(argv: list[str]) -> int:
     return 0
 
 
-def main() -> int:  # render/publish routing wired up in Tasks 8/11/12
+def main() -> int:  # publish routing wired up in Tasks 11/12
     if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
         print(__doc__)
         return 0
     command, *argv = sys.argv[1:]
     if command == "validate":
         return cmd_validate(argv)
+    if command == "render":
+        return cmd_render(argv)
     print(f"Unknown command: {command}", file=sys.stderr)
     return ERROR_EXIT
 
