@@ -409,10 +409,16 @@ ICON_HREF_RE = re.compile(r"href=[\"']([^\"']+)[\"']", re.IGNORECASE)
 
 
 def gather_logo_candidates(
-    client: "httpx.Client", html: str, origin: str, logo_url: str | None
+    client: "httpx.Client",
+    html: str,
+    origin: str,
+    logo_url: str | None,
+    resolver=socket.getaddrinfo,
 ) -> list[str]:
     """Candidate logo URLs: explicit submission first, then <link> icons,
-    then conventional paths. All normalized against the origin."""
+    then conventional paths. All normalized against the origin and run
+    through the same SSRF checks as page fetches — candidates from
+    attacker-controlled HTML must never bypass check_public_url."""
     import httpx
 
     candidates: list[str] = []
@@ -422,8 +428,12 @@ def gather_logo_candidates(
             absolute = str(httpx.URL(origin).join(raw))
         except ValueError:
             return
-        if absolute not in candidates:
-            candidates.append(absolute)
+        try:
+            validated = check_public_url(absolute, resolver=resolver)
+        except Exception:
+            return  # best-effort: invalid/private candidates are simply skipped
+        if validated not in candidates:
+            candidates.append(validated)
 
     if logo_url:
         add(logo_url)
