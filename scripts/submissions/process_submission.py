@@ -323,6 +323,51 @@ def assert_webp(data: bytes) -> Image.Image:
     return img
 
 
+GENERATOR_RE = re.compile(
+    r"<meta[^>]+name=[\"']generator[\"'][^>]+content=[\"'][^\"']*wagtail",
+    re.IGNORECASE,
+)
+WAGTAIL_ASSET_RE = re.compile(
+    r"(?:src|href)=[\"'][^\"']*(?:static/wagtail|wagtailadmin|django-wagtail)",
+    re.IGNORECASE,
+)
+ADMIN_PATHS = ("/admin/", "/cms/", "/cms-admin/")
+
+
+def detect_wagtail(html: str) -> list[str]:
+    """Best-effort Wagtail fingerprints from page HTML (spec: evidence, never a gate)."""
+    signals = []
+    if GENERATOR_RE.search(html):
+        signals.append("generator meta tag")
+    if WAGTAIL_ASSET_RE.search(html):
+        signals.append("Wagtail asset reference in page source")
+    return signals
+
+
+def probe_admin_pages(client: "httpx.Client", origin: str) -> list[str]:
+    """Best-effort admin probe; every failure mode is silently skipped."""
+    import httpx
+
+    signals = []
+    for path in ADMIN_PATHS:
+        try:
+            response = client.get(origin + path, follow_redirects=True, timeout=5)
+        except httpx.HTTPError:
+            continue
+        if response.status_code == 200 and "wagtail" in response.text.casefold():
+            signals.append(f"Wagtail admin page at {path}")
+    return signals
+
+
+def detection_result(signals: list[str], url: str) -> dict:
+    return {
+        "url": url,
+        "is_wagtail": bool(signals),
+        "signals": signals,
+        "checked_at": utcnow().isoformat(),
+    }
+
+
 REJECTION_EXIT = 2
 ERROR_EXIT = 1
 
