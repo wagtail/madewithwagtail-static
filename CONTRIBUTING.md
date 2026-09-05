@@ -34,6 +34,21 @@ The site is served at `http://localhost:4321/madewithwagtail-static/`.
 
 Content changes are picked up automatically by the dev server. Data is regenerated at build time — there is no database.
 
+## Site submissions
+
+Sites can be submitted through the [site submission form](https://github.com/wagtail/madewithwagtail-static/issues/new?template=site-submission.yml).
+A GitHub Actions workflow (`.github/workflows/submission.yml`) then:
+
+1. **Validates** the submission — checks the URL, generates slugs, and rejects duplicates.
+2. **Renders** the site in a sandboxed, credential-free job — detects Wagtail fingerprints
+   and takes a screenshot.
+3. **Publishes** a pull request with the new content for maintainer review.
+
+Nothing is published automatically: a maintainer reviews and merges the pull request,
+which closes the original issue. The pipeline's logic lives in
+`scripts/submissions/process_submission.py` (Python, run with `uv`), with tests under
+`tests/submissions/` (`just test-submissions`).
+
 ## Quality assurance
 
 Here are the available tooling scripts for the project:
