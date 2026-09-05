@@ -722,6 +722,55 @@ def cmd_validate(argv: list[str]) -> int:
     return 0
 
 
+def _frontmatter_block(data: dict) -> str:
+    import yaml
+
+    return "---\n" + yaml.safe_dump(data, sort_keys=False, allow_unicode=True) + "---\n"
+
+
+def _iso(dt: datetime) -> str:
+    return dt.isoformat()
+
+
+def site_markdown(p: Proposal) -> str:
+    frontmatter = {
+        "title": p.site_title,
+        "first_published_at": _iso(p.submitted_at),
+        "latest_revision_created_at": _iso(p.submitted_at),
+        "site_url": p.site_url,
+        "in_cooperation_with_slug": None,
+        "tags": p.tags,
+    }
+    return _frontmatter_block(frontmatter) + f"\n{p.site_description}\n"
+
+
+def developer_markdown(p: Proposal) -> str:
+    frontmatter = {
+        "title": p.developer_name,
+        "first_published_at": _iso(p.submitted_at),
+        "latest_revision_created_at": _iso(p.submitted_at),
+        "location": p.location,
+        "lat": p.lat,
+        "lon": p.lon,
+        "company_url": p.company_url,
+        "twitter_handler": None,
+        "github_user": p.github_user,
+        "online_profiles": [],
+    }
+    return _frontmatter_block(frontmatter)
+
+
+def output_paths(p: Proposal) -> dict[str, Path]:
+    paths = {
+        "site_md": Path(f"src/content/developers/{p.developer_slug}/{p.site_slug}/index.md"),
+        "screenshot": Path(f"public/images/{p.developer_slug}/{p.site_slug}.fill-1200x996.webp"),
+    }
+    if not p.developer_exists:
+        paths["developer_md"] = Path(f"src/content/developers/{p.developer_slug}/index.md")
+        paths["logo"] = Path(f"public/images/{p.developer_slug}.max-120x120.webp")
+    return paths
+
+
 def main() -> int:  # publish routing wired up in Tasks 11/12
     if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
         print(__doc__)
