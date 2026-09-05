@@ -81,6 +81,38 @@ def utcnow() -> datetime:
     return datetime.now(timezone.utc)
 
 
+class FormParseError(ValueError):
+    """The issue body is not one of our form submissions."""
+
+
+CHECKBOX_RE = re.compile(r"^- \[(X| )\] (.*)$", re.MULTILINE)
+
+
+def parse_issue_form_body(body: str) -> dict[str, str | list[str] | list[tuple[str, bool]]]:
+    """Parse a GitHub issue form body into {heading: content}.
+
+    GitHub renders form issues as `### <label>` sections. Multiselect
+    values arrive comma-separated; confirmations as a checkbox list.
+    """
+    if "### Submission type" not in body:
+        raise FormParseError("Issue body does not look like a site submission form.")
+
+    result: dict[str, str | list[str] | list[tuple[str, bool]]] = {}
+    for section in re.split(r"^### ", body, flags=re.MULTILINE)[1:]:
+        heading, _, content = section.partition("\n")
+        heading = heading.strip()
+        content = content.strip()
+        if heading == "Confirmations":
+            result[heading] = [
+                (label.strip(), mark == "X") for mark, label in CHECKBOX_RE.findall(content)
+            ]
+        elif heading == "Tags":
+            result[heading] = [tag.strip() for tag in content.split(",") if tag.strip()]
+        else:
+            result[heading] = content
+    return result
+
+
 def main() -> int:  # wired up in Task 5/8/11
     raise NotImplementedError
 
