@@ -6,7 +6,7 @@ Subcommands:
     render   --proposal <file> --out-dir <dir> [--url URL] -> detection.json, screenshot.webp, logo.webp
     publish prepare --proposal <file> --detection <file>
               --screenshot <file> [--logo <file>] --repo-root <dir> [--dry-run]
-    publish pr      --proposal <file> --repo-root <dir> [--dry-run]
+    publish pr      --proposal <file> --detection <file> --repo-root <dir> [--dry-run]
 
 Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
 1 unexpected error.
@@ -31,8 +31,10 @@ import difflib
 import io
 import ipaddress
 import json
+import os
 import re
 import socket
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -864,7 +866,127 @@ def build_failure_comment(stage: str, error: str, run_url: str) -> str:
     )
 
 
-def main() -> int:  # publish routing wired up in Tasks 11/12
+BRANCH_PREFIX = "submission/issue-"
+
+
+def write_content_files(
+    p: Proposal, repo_root: Path, screenshot: bytes, logo: bytes | None
+) -> list[Path]:
+    """Write validated content into the repo. Images are re-encoded through
+    Pillow and dimension-checked — artifact bytes are never trusted as-is."""
+    paths = output_paths(p)
+
+    screenshot_img = assert_webp(screenshot)
+    if screenshot_img.size != (1200, 996):
+        raise ValueError(f"Screenshot must be 1200x996, got {screenshot_img.size}")
+    reencoded_screenshot = encode_screenshot(screenshot)
+
+    logo_out: bytes | None = None
+    if not p.developer_exists:
+        if logo is None:
+            raise ValueError("New developer submission requires a logo (may be empty)")
+        if logo:
+            assert_webp(logo)  # format check; encode_logo normalizes the size
+            logo_out = encode_logo(logo)
+            if max(Image.open(io.BytesIO(logo_out)).size) > 120:
+                raise ValueError("Encoded logo exceeds the 120x120 limit")
+
+    written: list[Path] = []
+    for key in ("site_md", "developer_md"):
+        if key not in paths:
+            continue
+        target = repo_root / paths[key]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(
+            site_markdown(p) if key == "site_md" else developer_markdown(p),
+            encoding="utf-8",
+        )
+        written.append(target)
+
+    screenshot_target = repo_root / paths["screenshot"]
+    screenshot_target.parent.mkdir(parents=True, exist_ok=True)
+    screenshot_target.write_bytes(reencoded_screenshot)
+    written.append(screenshot_target)
+
+    if logo_out is not None:
+        logo_target = repo_root / paths["logo"]
+        logo_target.parent.mkdir(parents=True, exist_ok=True)
+        logo_target.write_bytes(logo_out)
+        written.append(logo_target)
+
+    return written
+
+
+def run(args: list[str]) -> None:
+    """Run a subprocess with list args (never a shell) and fail loudly."""
+    result = subprocess.run(args, check=False)
+    if result.returncode != 0:
+        raise RuntimeError(f"Command failed ({result.returncode}): {args[0]}")
+
+
+def cmd_publish(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(prog="publish")
+    parser.add_argument("stage", choices=["prepare", "pr"])
+    parser.add_argument("--proposal", type=Path)
+    parser.add_argument("--detection", type=Path)
+    parser.add_argument("--screenshot", type=Path)
+    parser.add_argument("--logo", type=Path)
+    parser.add_argument("--repo-root", type=Path, default=Path("."))
+    parser.add_argument("--dry-run", action="store_true")
+    args = parser.parse_args(argv)
+    proposal = Proposal.model_validate_json(args.proposal.read_text(encoding="utf-8"))
+
+    if args.stage == "prepare":
+        screenshot = args.screenshot.read_bytes()
+        logo = args.logo.read_bytes() if args.logo else None
+        if args.dry_run:
+            for key, rel in output_paths(proposal).items():
+                print(f"would write {rel}")
+            print(site_markdown(proposal))
+            return 0
+        written = write_content_files(proposal, args.repo_root, screenshot, logo)
+        for path in written:
+            print(path)
+        return 0
+
+    # Stage "pr": branch, commit, push, PR, issue comment.
+    # build_pr_body needs the detection dict, so the pr stage requires it too.
+    if args.detection is None:
+        parser.error("publish pr requires --detection")
+    detection = json.loads(args.detection.read_text(encoding="utf-8"))
+    repo = os.environ["GITHUB_REPOSITORY"]
+    run_url = os.environ["GITHUB_RUN_URL"]
+    branch = f"{BRANCH_PREFIX}{proposal.issue_number}"
+    body = build_pr_body(proposal, detection, repo, branch, run_url)
+
+    if args.dry_run:
+        print(f"would create branch {branch} and open a PR on {repo}")
+        print(body)
+        return 0
+
+    body_file = args.repo_root / ".git" / "PR_BODY.md"
+    body_file.write_text(body, encoding="utf-8")
+    run(["git", "checkout", "-B", branch])
+    run(["git", "add", *(str(path) for path in output_paths(proposal).values())])
+    run(["git", "commit", "-m", f"Add site submission from issue #{proposal.issue_number}"])
+    run(["git", "push", "origin", branch])
+    # The PR label may not exist yet in the repository.
+    run(["gh", "label", "create", PR_LABEL, "--color", "1d76db", "--force"])
+    # gh pr create prints the PR URL on stdout — capture it for the issue comment.
+    result = subprocess.run(
+        ["gh", "pr", "create", "--title", f"New site submission: {proposal.site_title}",
+         "--body-file", str(body_file), "--head", branch, "--label", PR_LABEL],
+        check=True, capture_output=True, text=True,
+    )
+    pr_url = result.stdout.strip().splitlines()[-1]
+    run(["gh", "issue", "comment", str(proposal.issue_number), "--body", build_pr_comment(proposal, pr_url, run_url)])
+    run(["gh", "label", "create", PR_CREATED_LABEL, "--color", "0e8a16", "--force"])
+    run(["gh", "issue", "edit", str(proposal.issue_number), "--add-label", PR_CREATED_LABEL])
+    body_file.unlink(missing_ok=True)
+    return 0
+
+
+def main() -> int:  # render/publish routing fully wired up in Task 12
     if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
         print(__doc__)
         return 0
@@ -873,6 +995,8 @@ def main() -> int:  # publish routing wired up in Tasks 11/12
         return cmd_validate(argv)
     if command == "render":
         return cmd_render(argv)
+    if command == "publish":
+        return cmd_publish(argv)
     print(f"Unknown command: {command}", file=sys.stderr)
     return ERROR_EXIT
 
