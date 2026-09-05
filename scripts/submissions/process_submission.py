@@ -26,14 +26,17 @@ Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
 
 from __future__ import annotations
 
+import difflib
 import ipaddress
 import re
 import socket
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Literal
 from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field
+from slugify import slugify
 
 SLUG_RE = r"^[a-z0-9][a-z0-9-]{0,49}$"
 
@@ -197,6 +200,69 @@ def check_public_url(raw: str, resolver=socket.getaddrinfo) -> str:
     # str(SplitResult) returns the repr on Python 3.14+; geturl() returns the
     # URL string on every supported version.
     return parts.geturl()
+
+
+def read_frontmatter(path: Path) -> dict:
+    """Minimal frontmatter reader: YAML between the first two --- lines."""
+    text = path.read_text(encoding="utf-8")
+    if not text.startswith("---"):
+        return {}
+    _, fm, _ = text.split("---", 2)
+    import yaml
+
+    data = yaml.safe_load(fm)
+    return data if isinstance(data, dict) else {}
+
+
+def make_slug(name: str) -> str:
+    slug = slugify(name, max_length=50)
+    if not re.fullmatch(SLUG_RE, slug):
+        raise ValueError(f"Cannot derive a valid slug from {name!r} (got {slug!r})")
+    if slug in RESERVED_SLUGS:
+        raise ValueError(f"Slug {slug!r} is reserved")
+    return slug
+
+
+def existing_developers(content_dir: Path) -> dict[str, str]:
+    devs = {}
+    for index in sorted(content_dir.glob("*/index.md")):
+        data = read_frontmatter(index)
+        title = data.get("title")
+        if isinstance(title, str):
+            devs[index.parent.name] = title
+    return devs
+
+
+def match_developer(name: str, devs: dict[str, str]) -> tuple[str, bool] | list[str]:
+    by_title = {title.casefold(): slug for slug, title in devs.items()}
+    hit = by_title.get(name.casefold())
+    if hit:
+        return hit, True
+    close = difflib.get_close_matches(name.casefold(), list(by_title), n=3, cutoff=0.6)
+    return sorted(by_title[c] for c in close)
+
+
+def existing_site_origins(content_dir: Path) -> set[str]:
+    origins = set()
+    for index in sorted(content_dir.glob("*/*/index.md")):
+        url = read_frontmatter(index).get("site_url")
+        if isinstance(url, str) and url:
+            try:
+                parts = urlsplit(url)
+                if parts.scheme and parts.hostname:
+                    origins.add(f"{parts.scheme}://{parts.hostname.lower()}")
+            except ValueError:
+                continue
+    return origins
+
+
+def check_slug_free(kind: str, slug: str, content_dir: Path) -> None:
+    if slug in RESERVED_SLUGS:
+        raise ValueError(f"Slug {slug!r} is reserved")
+    if kind == "developer" and (content_dir / slug).exists():
+        raise ValueError(f"Developer directory {slug!r} already exists")
+    if kind == "site" and any(p.is_dir() for p in content_dir.glob(f"*/{slug}")):
+        raise ValueError(f"Site directory {slug!r} already exists for a developer")
 
 
 def main() -> int:  # wired up in Task 5/8/11
