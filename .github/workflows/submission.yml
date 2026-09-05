@@ -1,0 +1,176 @@
+name: Process site submission
+
+on:
+  issues:
+    types: [opened]
+
+concurrency:
+  group: submission-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  ISSUE_NUMBER: ${{ github.event.issue.number }}
+
+jobs:
+  validate:
+    # Only run for issues created by our submission form (marker heading).
+    if: contains(github.event.issue.body, '### Submission type')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write # comment + close on rejection
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/submissions
+            src/content
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+      - name: Extract issue body
+        run: jq -r '.issue.body' "$GITHUB_EVENT_PATH" > issue-body.txt
+      - name: Validate submission
+        id: validate
+        run: |
+          set +e
+          uv run scripts/submissions/process_submission.py validate \
+            --issue-body issue-body.txt \
+            --issue-number "$ISSUE_NUMBER" \
+            --content-dir src/content/developers > validate-out.json
+          code=$?
+          set -e
+          if [ "$code" -eq 0 ]; then
+            echo "outcome=accepted" >> "$GITHUB_OUTPUT"
+          else
+            echo "outcome=rejected" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Handle rejection
+        if: steps.validate.outputs.outcome == 'rejected'
+        run: |
+          reasons=$(jq -r '.reasons | map("- " + .) | join("\n")' validate-out.json)
+          {
+            echo "Thanks for your submission! Unfortunately it could not be processed:"
+            echo
+            echo "$reasons"
+            echo
+            echo "Feel free to open a new submission once these points are addressed."
+          } > rejection-comment.md
+          gh issue comment "$ISSUE_NUMBER" --body-file rejection-comment.md
+          gh issue close "$ISSUE_NUMBER" --reason "not planned"
+      - name: Upload proposal
+        if: steps.validate.outputs.outcome == 'accepted'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: proposal
+          path: validate-out.json
+          if-no-files-found: error
+
+  render:
+    needs: validate
+    if: needs.validate.outputs.outcome == 'accepted'
+    runs-on: ubuntu-latest
+    # The sandboxed job: no token scopes at all. The browser loads the
+    # attacker-submitted site here, so this job must hold no credentials.
+    permissions: {}
+    container:
+      image: mcr.microsoft.com/playwright/python:v1.62.0-noble
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+          sparse-checkout: scripts/submissions
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: proposal
+      - name: Install uv
+        run: python -m pip install --quiet uv
+      - name: Render screenshots and detection
+        run: |
+          uv run scripts/submissions/process_submission.py render \
+            --proposal validate-out.json --out-dir rendered
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: rendered
+          path: rendered/
+          if-no-files-found: error
+
+  render-failure-notice:
+    needs: [validate, render]
+    if: ${{ always() && needs.validate.result == 'success' && needs.render.result == 'failure' }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # comment + label on render failure
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - name: Comment on failure
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --body "The submission pipeline failed at the **render** stage — the site couldn't be reached or screenshotted. Check the [workflow run]($GITHUB_RUN_URL) for details — a maintainer will follow up."
+          gh label create "needs-triage" --color e99695 --force
+          gh issue edit "$ISSUE_NUMBER" --add-label "needs-triage"
+
+  publish:
+    needs: render
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # push the submission branch
+      pull-requests: write # open the PR
+      issues: write # comment + label
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      # persist-credentials is required to push the submission branch with the
+      # workflow token; the pushed content comes exclusively from re-validated
+      # artifacts (spec §Security 4).
+      # zizmor: ignore[artipacked]
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: proposal
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: rendered
+          path: rendered
+      - run: npm ci
+      - name: Write content files
+        run: |
+          uv run scripts/submissions/process_submission.py publish prepare \
+            --proposal validate-out.json \
+            --detection rendered/detection.json \
+            --screenshot rendered/screenshot.webp \
+            --logo rendered/logo.webp \
+            --repo-root .
+      - name: Check the site still builds
+        run: npm run check
+      - name: Open PR
+        run: |
+          uv run scripts/submissions/process_submission.py publish pr \
+            --proposal validate-out.json \
+            --detection rendered/detection.json \
+            --repo-root .
+      - name: Comment on failure
+        if: failure()
+        run: |
+          gh issue comment "$ISSUE_NUMBER" \
+            --body "The submission pipeline failed at the **publish** stage. Check the [workflow run]($GITHUB_RUN_URL) for details — a maintainer will follow up."
+          gh label create "needs-triage" --color e99695 --force
+          gh issue edit "$ISSUE_NUMBER" --add-label "needs-triage"
