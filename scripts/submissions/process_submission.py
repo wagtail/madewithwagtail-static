@@ -26,9 +26,12 @@ Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
 
 from __future__ import annotations
 
+import ipaddress
 import re
+import socket
 from datetime import datetime, timezone
 from typing import Literal
+from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -111,6 +114,85 @@ def parse_issue_form_body(body: str) -> dict[str, str | list[str] | list[tuple[s
         else:
             result[heading] = content
     return result
+
+
+# Submissions must not point at our own hosting (self-DoS guard, spec §Security 7).
+HOST_BLOCKLIST_SUFFIXES = (
+    "github.com",
+    "github.io",
+    "githubusercontent.com",
+)
+
+
+def _is_browsable_ip(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+    if ip.is_loopback or ip.is_link_local or ip.is_multicast or ip.is_unspecified:
+        return False
+    return ip.is_global
+
+
+def check_public_url(raw: str, resolver=socket.getaddrinfo) -> str:
+    """Validate a user-supplied URL for browsing; return the normalized URL.
+
+    Enforces the spec's SSRF rules: http(s) only, default port only, no
+    userinfo, public DNS resolution, not on the host blocklist.
+    Raises pydantic ValidationError with a descriptive message otherwise.
+    """
+    from pydantic import ValidationError as _VE
+
+    def bad(reason: str) -> Exception:
+        # pydantic 2 requires a title; single-dict construction (as the plan
+        # sketched) raises TypeError. Build via from_exception_data instead.
+        return _VE.from_exception_data(
+            "URL validation",
+            [
+                {
+                    "type": "value_error",
+                    "loc": ("url",),
+                    "input": raw,
+                    "ctx": {"error": ValueError(reason)},
+                }
+            ],
+        )
+
+    try:
+        parts = urlsplit(raw)
+    except ValueError as exc:
+        raise bad(f"URL does not parse: {exc}") from exc
+
+    if parts.scheme not in ("http", "https"):
+        raise bad(f"Scheme must be http or https, got {parts.scheme!r}")
+    if parts.username or parts.password or "@" in (parts.netloc or ""):
+        raise bad("URL must not contain credentials (userinfo)")
+    if parts.port is not None:
+        raise bad("URL must use the default port")
+
+    hostname = parts.hostname or ""
+    if not hostname:
+        raise bad("URL has no hostname")
+
+    host_lower = hostname.rstrip(".").lower()
+    if any(host_lower == s or host_lower.endswith("." + s) for s in HOST_BLOCKLIST_SUFFIXES):
+        raise bad(f"Host {host_lower} is on the submission blocklist")
+
+    # IP literals: validate directly. Hostnames: resolve.
+    try:
+        ips = [ipaddress.ip_address(host_lower)]
+    except ValueError:
+        try:
+            infos = resolver(host_lower, parts.port or (443 if parts.scheme == "https" else 80))
+        except Exception as exc:
+            raise bad(f"Hostname {host_lower} does not resolve") from exc
+        try:
+            ips = [ipaddress.ip_address(info[4][0]) for info in infos]
+        except ValueError as exc:
+            raise bad(f"Resolver returned a malformed address: {exc}") from exc
+
+    if not any(_is_browsable_ip(ip) for ip in ips):
+        raise bad(f"Host {host_lower} does not resolve to a public address")
+
+    # str(SplitResult) returns the repr on Python 3.14+; geturl() returns the
+    # URL string on every supported version.
+    return parts.geturl()
 
 
 def main() -> int:  # wired up in Task 5/8/11

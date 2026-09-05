@@ -1,0 +1,83 @@
+import socket
+
+import pytest
+from pydantic import ValidationError
+
+import process_submission as ps
+
+
+class FakeResolutionError(Exception):
+    pass
+
+
+def fake_resolver(host, port, *args, **kwargs):
+    # 93.184.216.34 is genuinely global; the plan originally used a
+    # documentation-range IP (203.0.113.10), which Python 3.13+ classifies
+    # as is_global=False, so it can't stand in for a public address.
+    table = {
+        "example.com": [("93.184.216.34",)],
+        "internal.example": [("10.1.2.3",)],
+        "rebound.example": [("127.0.0.1",)],
+        "v6private.example": [("fd00::1",)],
+    }
+    if host not in table:
+        raise FakeResolutionError(f"cannot resolve {host}")
+    return [(socket.AF_INET, None, None, "", (ip, port)) for (ip,) in table[host]]
+
+
+class TestCheckPublicUrl:
+    def test_accepts_https_url(self):
+        url = ps.check_public_url("https://example.com/some/path", resolver=fake_resolver)
+        assert url == "https://example.com/some/path"
+
+    def test_downgrades_http_kept_as_http(self):
+        url = ps.check_public_url("http://example.com", resolver=fake_resolver)
+        assert url == "http://example.com"
+
+    def test_rejects_non_http_scheme(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("ftp://example.com", resolver=fake_resolver)
+
+    def test_rejects_javascript_scheme(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("javascript:alert(1)", resolver=fake_resolver)
+
+    def test_rejects_userinfo(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://user:pass@example.com", resolver=fake_resolver)
+
+    def test_rejects_explicit_port(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://example.com:8080", resolver=fake_resolver)
+
+    def test_rejects_private_ipv4(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://internal.example", resolver=fake_resolver)
+
+    def test_rejects_loopback(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://rebound.example", resolver=fake_resolver)
+
+    def test_rejects_private_ipv6(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://v6private.example", resolver=fake_resolver)
+
+    def test_rejects_unresolvable(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://nxdomain.invalid", resolver=fake_resolver)
+
+    def test_rejects_github_host(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://wagtail.github.io", resolver=fake_resolver)
+
+    def test_rejects_github_pages_subdomain(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://github.io", resolver=fake_resolver)
+
+    def test_ip_literal_private(self):
+        with pytest.raises(ValidationError):
+            ps.check_public_url("http://169.254.169.254/latest/meta-data/", resolver=fake_resolver)
+
+    def test_ip_literal_public_ok(self):
+        url = ps.check_public_url("https://93.184.216.34", resolver=fake_resolver)
+        assert url == "https://93.184.216.34"
