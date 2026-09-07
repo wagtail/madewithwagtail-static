@@ -1347,7 +1347,10 @@ def cmd_publish(argv: list[str]) -> int:
     run(["git", "checkout", "-B", branch])
     run(["git", "add", *(str(path) for path in git_add_paths(proposal, args.repo_root))])
     run(["git", "commit", "-m", f"Add site submission from issue #{proposal.issue_number}"])
-    run(["git", "push", "origin", branch])
+    # The branch is fully regenerated from validated artifacts each run, so
+    # force-with-lease keeps retries idempotent when the branch (and its PR)
+    # already exist from a previous pipeline run.
+    run(["git", "push", "--force-with-lease", "origin", branch])
 
     repo = os.environ["GITHUB_REPOSITORY"]
     run_url = os.environ["GITHUB_RUN_URL"]
@@ -1368,13 +1371,24 @@ def cmd_publish(argv: list[str]) -> int:
 
     # The PR label may not exist yet in the repository.
     run(["gh", "label", "create", PR_LABEL, "--color", "1d76db", "--force"])
-    # gh pr create prints the PR URL on stdout — capture it for the issue comment.
+    # A retried submission (issue reopened) may already have an open PR for
+    # the branch; update it in place instead of failing.
     result = subprocess.run(
-        ["gh", "pr", "create", "--title", f"New site submission: {proposal.site_title}",
-         "--body-file", str(body_file), "--head", branch, "--label", PR_LABEL],
+        ["gh", "pr", "list", "--head", branch, "--state", "open", "--json", "url"],
         check=True, capture_output=True, text=True,
     )
-    pr_url = result.stdout.strip().splitlines()[-1]
+    existing = json.loads(result.stdout or "[]")
+    if existing:
+        pr_url = existing[0]["url"]
+        run(["gh", "pr", "edit", pr_url, "--body-file", str(body_file)])
+    else:
+        # gh pr create prints the PR URL on stdout — capture it for the issue comment.
+        result = subprocess.run(
+            ["gh", "pr", "create", "--title", f"New site submission: {proposal.site_title}",
+             "--body-file", str(body_file), "--head", branch, "--label", PR_LABEL],
+            check=True, capture_output=True, text=True,
+        )
+        pr_url = result.stdout.strip().splitlines()[-1]
     run(["gh", "issue", "comment", str(proposal.issue_number), "--body", build_pr_comment(proposal, pr_url, run_url)])
     run(["gh", "label", "create", PR_CREATED_LABEL, "--color", "0e8a16", "--force"])
     run(["gh", "issue", "edit", str(proposal.issue_number), "--add-label", PR_CREATED_LABEL])
