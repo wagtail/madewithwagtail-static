@@ -14,25 +14,34 @@ def make_proposal(**overrides):
 
 
 class TestPrBody:
-    def test_intro_without_heading(self):
-        # Regression: the body opened with a duplicate of the PR title
-        # heading; it now opens with the issue link line only.
+    def test_intro_line(self):
+        # The body opens with the close-reference + workflow link; no
+        # heading duplicating the PR title.
         body = ps.build_pr_body(make_proposal(), DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run")
         assert body.splitlines()[0] == (
-            "Submission from #42, processed via the [site submission workflow]"
+            "Closes #42. Auto-generated PR via the [site submission workflow]"
             "(https://github.com/wagtail/madewithwagtail-static/blob/main/CONTRIBUTING.md#site-submissions)."
+            " Submission metadata:"
         )
         assert "## New site submission" not in body
+        # The bottom Closes section is gone; the close reference lives in
+        # the intro line only.
+        assert body.count("Closes #42") == 1
 
     def test_metadata_table_shape(self):
         body = ps.build_pr_body(
-            make_proposal(submission_type="existing-developer", developer_exists=True, developer_slug="torchbox", developer_name="Torchbox", tags=["tourism", "Education"]),
+            make_proposal(
+                submission_type="existing-developer", developer_exists=True,
+                developer_slug="torchbox", developer_name="Torchbox",
+                company_url="https://torchbox.com/", tags=["tourism", "Education"],
+            ),
             DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run",
         )
         assert "| Field | Value |" in body
         assert "| Site | <https://example.com> |" in body
+        # Developer name links to the developer's website; profile link after.
         assert (
-            "| Developer | [Torchbox](https://madewithwagtail.org/developers/torchbox/)"
+            "| Developer | [Torchbox](https://torchbox.com/)"
             " - [see profile page](https://madewithwagtail.org/developers/torchbox/) |" in body
         )
         assert (
@@ -40,29 +49,48 @@ class TestPrBody:
             " [Education](https://madewithwagtail.org/sites/tag/education/) |" in body
         )
 
-    def test_new_developer_suffix(self):
-        p = make_proposal()  # new-developer by default
-        body = ps.build_pr_body(p, DETECTION, "r/r", "b", "https://run")
-        assert "[Example Co](https://madewithwagtail.org/developers/example-co/) - new 🎉" in body
+    def test_developer_website_link_fallbacks(self):
+        # No company_url + existing profile: the name links to the profile
+        # page so the row still works.
+        existing = make_proposal(submission_type="existing-developer", developer_exists=True, developer_slug="torchbox", developer_name="Torchbox")
+        body = ps.build_pr_body(existing, DETECTION, "r/r", "b", "https://run")
+        assert (
+            "[Torchbox](https://madewithwagtail.org/developers/torchbox/)"
+            " - [see profile page](https://madewithwagtail.org/developers/torchbox/)" in body
+        )
+        # New developer without a company_url: plain name, no dead links.
+        new = make_proposal()  # new-developer, no company_url
+        body = ps.build_pr_body(new, DETECTION, "r/r", "b", "https://run")
+        assert "| Developer | Example Co - new 🎉 |" in body
 
-    def test_inline_screenshot_raw_url(self):
+    def test_screenshot_is_table_thumbnail(self):
         p = make_proposal()
         body = ps.build_pr_body(p, DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run")
         assert (
-            "https://raw.githubusercontent.com/wagtail/madewithwagtail-static/submission/issue-42/"
-            "public/images/example-co/example-site.fill-1200x996.webp" in body
+            '<img src="https://raw.githubusercontent.com/wagtail/madewithwagtail-static/submission/issue-42/'
+            'public/images/example-co/example-site.fill-1200x996.webp" width="300" height="249"'
+            ' alt="Screenshot of the new site">' in body
         )
+        assert "| Screenshot | <img" in body
+        assert "### Screenshot" not in body
 
-    def test_detection_verdict_detected(self):
+    def test_detection_in_table(self):
         body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
-        assert "✅" in body
-        assert "generator meta tag" in body
-
-    def test_detection_verdict_not_detected(self):
+        assert "| Detection | ✅ generator meta tag |" in body
+        assert "### Wagtail detection" not in body
         detection = {**DETECTION, "is_wagtail": False, "signals": []}
         body = ps.build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
-        assert "⚠️" in body
-        assert "### Wagtail detection" in body
+        assert "| Detection | ⚠️ No Wagtail signals detected |" in body
+
+    def test_multiple_signals_joined(self):
+        detection = {**DETECTION, "signals": ["generator meta tag", "Wagtail rendition URL in image sources"]}
+        body = ps.build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
+        assert "| Detection | ✅ generator meta tag; Wagtail rendition URL in image sources |" in body
+
+    def test_local_preview_in_table(self):
+        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        assert "| Local preview | `/developers/example-co/example-site` |" in body
+        assert "### How to review" not in body
 
     def test_site_entry_link_at_head_sha(self):
         sha = "a" * 40
@@ -82,22 +110,20 @@ class TestPrBody:
     def test_reviewer_checklist_and_footer(self):
         body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "- [ ]" in body
-        assert "https://run" in body
-        assert "just serve" in body
-        assert "Closes #42" in body
+        assert "<sub>View the [site submission workflow logs](https://run).</sub>" in body
 
-    def test_logo_section_gated_on_logo_committed(self):
+    def test_logo_row_gated_on_logo_committed(self):
         p = make_proposal()  # new-developer: output_paths includes the logo
         with_logo = ps.build_pr_body(p, DETECTION, "r/r", "b", "https://run", logo_committed=True)
         without_logo = ps.build_pr_body(p, DETECTION, "r/r", "b", "https://run", logo_committed=False)
-        assert "Developer logo (as committed)" in with_logo
-        assert "Developer logo (as committed)" not in without_logo
+        assert "| Logo | <img" in with_logo
+        assert "| Logo |" not in without_logo
 
-    def test_logo_section_default_keeps_backward_compatible_behavior(self):
+    def test_logo_row_default_keeps_backward_compatible_behavior(self):
         # None derives from output_paths: a new-developer proposal still
         # advertises the logo unless the caller says otherwise.
         body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
-        assert "Developer logo (as committed)" in body
+        assert "| Logo | <img" in body
 
 
 class TestComments:
