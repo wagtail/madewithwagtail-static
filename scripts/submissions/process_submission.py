@@ -542,8 +542,93 @@ def is_private_browser_host(url: str) -> bool:
         return host.casefold() == "localhost"
 
 
+
+# Consent/banner suppression for screenshots. The selector list mirrors the
+# container IDs used by the major CMP SDKs plus common home-grown banners;
+# grounded in AdGuard's maintained "Cookie Notices" filter.
+BANNER_HIDE_CSS = """\
+/* Major CMP SDK containers (grounded in AdGuard's Cookie Notices filter) */
+#onetrust-consent-sdk, #onetrust-banner-sdk, #onetrust-pc-sdk,
+#optanon-popup-bg, .optanon-show-settings,
+#CybotCookiebotDialog, #CybotCookiebotDialogBodyUnderlay, .CybotCookiebotDialogBodyOverlay,
+#usercentrics-root, #usercentrics-cmp-ui,
+#didomi-host, #didomi-popup, .didomi-host,
+#sp_message_container, .sp-message-container, #sp_privacy_manager_container,
+#qc-cmp2-container, #qc-cmp2-ui, .qc-cmp2-summary-buttons,
+#truste-consent-track, .truste-consent-track, #truste-consent-content,
+#Osano-CookieDialog, .osano-cm-window, .osano-cm-info,
+#termly-code-snippet-support, .termly-consent-banner,
+#iubenda-cs-banner, .iubenda-cs-banner,
+#cmplz-cookiebanner-container, .cmplz-cookiebanner,
+#cookie-script, .cookiescript_injected_wrapper, #cookiescript_injected,
+#klaro, .klaro, .cookie-consent:not(body):not(html),
+#klaro0, .klaro-manager-overlay,
+#tarteaucitronRoot, .tarteaucitron-root, #tarteaucitronAlertBig, .tarteaucitron-banner,
+#BorlabsCookieBox, .borlabs-hide,
+#ccm-widget, #ccm-block,
+#cky-consent-bar, .cky-consent-bar, .cky-consent-container, #cky-overlay, .cky-overlay,
+#cm, #cc-banner, .cc-window, .cc-banner, .cc-revoke,
+#cookiebanner, .cookie-banner, #cookie-banner, #cookie_consent, .cookie_consent,
+#cookie-law-info-bar, #cookie-law-info-again, .cli-bar-container, #cliSettingsPopup,
+.cli-popupbar-overlay, .cli-modal-backdrop,
+#moove_gdpr_cookie_info_bar, #moove_gdpr_cookie_modal,
+#gdpr-cookie-message, .gdpr-cookie-notice, .gdpr-banner, #gdpr-banner, .gdpr_cookie_bar,
+.eu-cookie-compliance-banner:not(body):not(html), .eu-cookie-compliance-overlay,
+.js-cookie-banner, .js-cookie-consent, .cookie-notice:not(body):not(html),
+.cookie-consent-banner, .cookie-alert:not(body):not(html), .cookie-bar:not(body):not(html),
+.cookie-warning, .cookie-policy:not(body):not(html), #cookie-policy,
+.cookie-popup, .cookie-popup-wrapper, .cookies-wrapper,
+#cookie-box, .cookie-box:not(body):not(html), #cookie-bar, .cookie-bar-overlay,
+#cookie-hint, #cookiehint, #cookie-hinweis, .cookie-hint,
+#cookies-banner, #cookies-banner-container, .cookies-banner,
+#cookie-msg, #cookie-message, .cookie-message:not(body):not(html),
+.cookies-eu-banner, #cookie-law-banner, .cookie-law-banner,
+#cookiesck, .sqs-cookie-banner-v2, .wpgdprc-consent-bar,
+.avia-cookie-consent-wrap, .fusion-privacy-bar, .woodmart-cookies-popup,
+.thb-cookie-bar, .pum-open .pum-overlay, .elementor-popup-modal:not(:empty)
+"""
+CONSENT_INIT_JS = """\
+(() => {
+  const CSS = `%s { display: none !important; }`;
+  const ID = "__mww_banner_hide";
+  const install = () => {
+    if (document.getElementById(ID)) return;
+    // Init scripts run before parsing starts: <head> and <html> are both
+    // null then. Bail quietly; the interval below retries until it exists.
+    const root = document.head || document.documentElement;
+    if (!root) return;
+    const style = document.createElement("style");
+    style.id = ID;
+    style.textContent = CSS;
+    root.appendChild(style);
+  };
+  document.addEventListener("DOMContentLoaded", install);
+  window.addEventListener("load", install);
+  // Re-assert for 12s: keeps the hide-style last in the cascade (CMPs that
+  // inject their own !important rules later lose the specificity battle)
+  // and re-installs if a CMP script strips foreign styles from <head>.
+  const interval = setInterval(install, 500);
+  setTimeout(() => clearInterval(interval), 12_000);
+  // Some banners release scroll only via their own handlers; pressing
+  // Escape dismisses dialogs that survive CSS hiding.
+  const escape = () => { try { window.top.dispatchEvent(new KeyboardEvent("keydown", {key: "Escape", keyCode: 27})); } catch (e) {} };
+  document.addEventListener("DOMContentLoaded", escape);
+  window.addEventListener("load", escape);
+  setTimeout(escape, 2000);
+})();
+""" % BANNER_HIDE_CSS
+
+
 def capture_screenshot(url: str, out_path: Path) -> None:
-    """Load the URL in headless Chromium and save an encoded WebP screenshot."""
+    """Load the URL in headless Chromium and save an encoded WebP screenshot.
+
+    Consent banners are suppressed in two layers: an init script installs a
+    hide-style before site scripts run (so banner markup often never mounts),
+    and a post-load re-application keeps the style last in the cascade —
+    CMPs that inject their own !important rules later lose the specificity
+    battle. Escapes are re-armed afterwards to release scroll locks and
+    backdrops; hiding alone can leave those behind.
+    """
     from playwright.sync_api import sync_playwright
 
     def route_guard(route):
@@ -558,11 +643,12 @@ def capture_screenshot(url: str, out_path: Path) -> None:
             viewport={"width": 1200, "height": 996}, device_scale_factor=1
         )
         context.route("**/*", route_guard)
+        context.add_init_script(CONSENT_INIT_JS)
         page = context.new_page()
         try:
             page.goto(url, timeout=30_000, wait_until="load")
             page.wait_for_timeout(2000)
-            png = page.screenshot(type="png")
+            png = page.screenshot(type="png", animations="disabled")
         finally:
             context.close()
             browser.close()
