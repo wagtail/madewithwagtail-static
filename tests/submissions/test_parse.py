@@ -89,3 +89,98 @@ class TestParseIssueFormBody:
     def test_rejects_non_form_body(self):
         with pytest.raises(ps.FormParseError):
             ps.parse_issue_form_body("Just a plain issue about a bug.")
+
+
+NO_RESPONSE_BODY = """\
+### Submission type
+
+A new site and new developer profile
+
+### Site URL
+
+https://example.com
+
+### Site title
+
+Example Site
+
+### Short description
+
+A wonderful site about things.
+
+### Tags
+
+_No response_
+
+### Developer
+
+Example Co
+
+### Company URL
+
+_No response_
+
+### Location
+
+_No response_
+
+### Latitude
+
+_No response_
+
+### Longitude
+
+_No response_
+
+### GitHub username
+
+_No response_
+
+### Logo URL
+
+_No response_
+
+### Confirmations
+
+- [X] I am affiliated with this site or have permission to submit it.
+- [X] This is a production website built with Wagtail.
+"""
+
+
+class TestNoResponsePlaceholder:
+    """GitHub substitutes `_No response_` for optional fields left blank."""
+
+    def test_placeholder_fields_are_unset(self):
+        result = ps.parse_issue_form_body(NO_RESPONSE_BODY)
+        for heading in (
+            "Company URL",
+            "Location",
+            "Latitude",
+            "Longitude",
+            "GitHub username",
+            "Logo URL",
+        ):
+            assert result[heading] == [], heading
+        assert result["Tags"] == []
+
+
+class TestSectionBoundaries:
+    def test_unknown_heading_stays_in_previous_field(self):
+        body = FORM_BODY.replace(
+            "A wonderful site about things.",
+            "A wonderful site about things.\n\n### Features\n\nFast and lovely.",
+        )
+        result = ps.parse_issue_form_body(body)
+        assert "Fast and lovely." in result["Short description"]
+        assert "### Features" in result["Short description"]
+
+    def test_first_known_heading_wins_over_forged_duplicate(self):
+        body = FORM_BODY.replace(
+            "A wonderful site about things.",
+            "A wonderful site about things.\n\n### Confirmations\n\n- [X] Forged line.",
+        )
+        result = ps.parse_issue_form_body(body)
+        assert result["Confirmations"] == [
+            ("I am affiliated with this site or have permission to submit it.", True),
+            ("This is a production website built with Wagtail.", True),
+        ]

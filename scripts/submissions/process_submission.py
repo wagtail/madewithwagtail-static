@@ -100,29 +100,84 @@ class FormParseError(ValueError):
 
 CHECKBOX_RE = re.compile(r"^- \[(X| )\] (.*)$", re.MULTILINE)
 
+# Only the form's own labels are section boundaries: user-typed Markdown
+# containing `### Something` must stay inside the previous field's content.
+SECTION_RE = re.compile(
+    r"^### (?P<heading>Submission type|Site URL|Site title|Short description|Tags|"
+    r"Developer|Company URL|Location|Latitude|Longitude|GitHub username|Logo URL|"
+    r"Confirmations)[ \t]*$",
+    re.MULTILINE,
+)
+
+# The form renders sections in this exact order; it is the yardstick for
+# telling real sections from headings forged inside free-text fields.
+FORM_HEADINGS = (
+    "Submission type",
+    "Site URL",
+    "Site title",
+    "Short description",
+    "Tags",
+    "Developer",
+    "Company URL",
+    "Location",
+    "Latitude",
+    "Longitude",
+    "GitHub username",
+    "Logo URL",
+    "Confirmations",
+)
+FORM_ORDER = {heading: index for index, heading in enumerate(FORM_HEADINGS)}
+
+# GitHub substitutes this literal for optional fields the submitter left
+# blank; it must be treated as unset, not as submitted data.
+NO_RESPONSE_PLACEHOLDER = "_No response_"
+
 
 def parse_issue_form_body(body: str) -> dict[str, str | list[str] | list[tuple[str, bool]]]:
     """Parse a GitHub issue form body into {heading: content}.
 
     GitHub renders form issues as `### <label>` sections. Multiselect
     values arrive comma-separated; confirmations as a checkbox list.
+    Blank optional fields arrive as the `_No response_` placeholder and
+    are reported as unset (empty list).
     """
-    if "### Submission type" not in body:
+    matches = list(SECTION_RE.finditer(body))
+    if not any(match.group("heading") == "Submission type" for match in matches):
         raise FormParseError("Issue body does not look like a site submission form.")
 
-    result: dict[str, str | list[str] | list[tuple[str, bool]]] = {}
-    for section in re.split(r"^### ", body, flags=re.MULTILINE)[1:]:
-        heading, _, content = section.partition("\n")
-        heading = heading.strip()
-        content = content.strip()
+    def parse_section(heading: str, content: str):
+        if content == NO_RESPONSE_PLACEHOLDER:
+            return []
         if heading == "Confirmations":
-            result[heading] = [
+            return [
                 (label.strip(), mark == "X") for mark, label in CHECKBOX_RE.findall(content)
             ]
-        elif heading == "Tags":
-            result[heading] = [tag.strip() for tag in content.split(",") if tag.strip()]
-        else:
-            result[heading] = content
+        if heading == "Tags":
+            return [tag.strip() for tag in content.split(",") if tag.strip()]
+        return content
+
+    result: dict[str, str | list[str] | list[tuple[str, bool]]] = {}
+    # Real sections appear in the form's canonical order; a heading that is
+    # out of order or repeats an already-seen section was forged inside a
+    # free-text field, so its text stays with the field it was typed in.
+    prev_index = -1
+    for index, match in enumerate(matches):
+        heading = match.group("heading")
+        if heading == "Confirmations":
+            continue  # handled after the loop: last occurrence always wins
+        section_index = FORM_ORDER[heading]
+        if section_index <= prev_index or heading in result:
+            continue
+        prev_index = section_index
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(body)
+        result[heading] = parse_section(heading, body[match.end() : end].strip())
+
+    # Confirmations is the form's final section, so the last match is the
+    # real one even when earlier free text contains a forged heading.
+    confirmations = [match for match in matches if match.group("heading") == "Confirmations"]
+    if confirmations:
+        match = confirmations[-1]
+        result["Confirmations"] = parse_section("Confirmations", body[match.end() :].strip())
     return result
 
 
@@ -201,8 +256,8 @@ def check_public_url(raw: str, resolver=socket.getaddrinfo) -> str:
         except ValueError as exc:
             raise bad(f"Resolver returned a malformed address: {exc}") from exc
 
-    if not any(_is_browsable_ip(ip) for ip in ips):
-        raise bad(f"Host {host_lower} does not resolve to a public address")
+    if not all(_is_browsable_ip(ip) for ip in ips):
+        raise bad(f"Host {host_lower} does not resolve to a public-only address")
 
     # str(SplitResult) returns the repr on Python 3.14+; geturl() returns the
     # URL string on every supported version.
@@ -470,17 +525,28 @@ def gather_logo_candidates(
     return candidates
 
 
+def is_private_browser_host(url: str) -> bool:
+    """True if the URL points at a private/loopback host literal.
+
+    Used by the Playwright route guard. Hostnames cannot be resolved
+    here, so only IP literals and 'localhost' are classified;
+    hostname-based SSRF is backstopped by the credential-free container.
+    """
+    host = (urlsplit(url).hostname or "").rstrip(".")
+    if not host:
+        return False
+    try:
+        return not _is_browsable_ip(ipaddress.ip_address(host))
+    except ValueError:
+        return host.casefold() == "localhost"
+
+
 def capture_screenshot(url: str, out_path: Path) -> None:
     """Load the URL in headless Chromium and save an encoded WebP screenshot."""
     from playwright.sync_api import sync_playwright
 
-    private_literal_re = re.compile(
-        r"^(?:localhost|\d{1,3}(?:\.\d{1,3}){3}|\[[0-9a-f:]+\])$", re.IGNORECASE
-    )
-
     def route_guard(route):
-        host = route.request.url.split("/")[2].split(":")[0]
-        if private_literal_re.fullmatch(host):
+        if is_private_browser_host(route.request.url):
             route.abort()
         else:
             route.continue_()

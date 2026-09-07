@@ -114,6 +114,29 @@ class TestBuildProposal:
             ps.build_proposal(body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver)
         assert any("already" in r for r in excinfo.value.reasons)
 
+    def test_no_response_optional_fields_accepted(self):
+        # GitHub writes "_No response_" for optional fields the submitter
+        # left blank; they must be treated as unset, not as literal data.
+        body = FORM_BODY
+        for label, value in (
+            ("Company URL", "https://example.co"),
+            ("Location", "Stockholm, Sweden"),
+            ("Latitude", "59.34"),
+            ("Longitude", "18.06"),
+            ("GitHub username", "exampleco"),
+        ):
+            body = body.replace(f"### {label}\n\n{value}\n", f"### {label}\n\n_No response_\n")
+        body = body.replace("### Tags\n\nblog, responsive\n", "### Tags\n\n_No response_\n")
+        proposal = ps.build_proposal(
+            body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
+        )
+        assert proposal.company_url is None
+        assert proposal.location is None
+        assert proposal.lat is None
+        assert proposal.lon is None
+        assert proposal.github_user is None
+        assert proposal.tags == []
+
     def test_rejects_unknown_existing_developer(self):
         body = FORM_BODY.replace("A new site and new developer profile", "A new site on an existing profile")
         with pytest.raises(ps.Rejection) as excinfo:

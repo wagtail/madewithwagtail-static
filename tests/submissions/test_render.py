@@ -164,3 +164,38 @@ class TestProbeAdminPages:
                 return resp
 
         assert ps.probe_admin_pages(HugeClient({}), "https://example.com") == []
+
+
+class TestIsPrivateBrowserHost:
+    """Route-guard classification: private/loopback IP literals and
+    localhost are blocked; hostnames pass (container isolation is the
+    hostname-SSRF backstop)."""
+
+    @pytest.mark.parametrize(
+        "url",
+        [
+            "http://[::1]/",
+            "http://[::1]:8080/",
+            "http://[fe80::1]/",
+            "http://[::ffff:127.0.0.1]/",
+            "http://127.0.0.1/",
+            "http://169.254.169.254/latest/meta-data/",
+            "http://10.0.0.1/",
+            "http://localhost/",
+            "http://LOCALHOST:8000/",
+        ],
+    )
+    def test_private_hosts_blocked(self, url):
+        assert ps.is_private_browser_host(url) is True
+
+    @pytest.mark.parametrize(
+        "url",
+        [
+            "https://example.com/page",
+            "https://93.184.216.34/",
+            "https://attacker.example/",
+            "",
+        ],
+    )
+    def test_public_hosts_allowed(self, url):
+        assert ps.is_private_browser_host(url) is False

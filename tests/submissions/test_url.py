@@ -19,6 +19,7 @@ def fake_resolver(host, port, *args, **kwargs):
         "internal.example": [("10.1.2.3",)],
         "rebound.example": [("127.0.0.1",)],
         "v6private.example": [("fd00::1",)],
+        "mixed.example": [("10.1.2.3",), ("93.184.216.34",)],
     }
     if host not in table:
         raise FakeResolutionError(f"cannot resolve {host}")
@@ -88,3 +89,10 @@ class TestCheckPublicUrl:
     def test_ip_literal_public_ok(self):
         url = ps.check_public_url("https://93.184.216.34", resolver=fake_resolver)
         assert url == "https://93.184.216.34"
+
+    def test_rejects_mixed_public_private_records(self):
+        # Attacker-controlled DNS returning one private and one public
+        # address: the client might connect to the private one, so the
+        # URL must be rejected outright.
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://mixed.example", resolver=fake_resolver)

@@ -20,9 +20,14 @@ env:
 
 jobs:
   validate:
-    # Only run for issues created by our submission form (marker heading).
-    if: contains(github.event.issue.body, '### Submission type')
+    # Only run for issues created by our submission form: the body marker
+    # plus the form's title prefix. A manually created issue that merely
+    # quotes the marker must not enter (and get closed by) the pipeline.
+    if: >-
+      contains(github.event.issue.body, '### Submission type') &&
+      startsWith(github.event.issue.title, '[Site submission]')
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       issues: write # comment + close on rejection
@@ -56,7 +61,12 @@ jobs:
       - name: Handle rejection
         if: steps.validate.outputs.outcome == 'rejected'
         run: |
-          reasons=$(jq -r '(.reasons // ["The submission could not be processed."]) | map("- " + .) | join("\n")' validate-out.json)
+          # An unexpected crash (exit 1) leaves no usable JSON; fall back
+          # to a generic message instead of failing the comment step.
+          reasons=$(jq -r '(.reasons // ["The submission could not be processed."]) | map("- " + .) | join("\n")' validate-out.json 2>/dev/null || true)
+          if [ -z "$reasons" ]; then
+            reasons="- The submission could not be processed (unexpected error)."
+          fi
           {
             echo "Thanks for your submission! Unfortunately it could not be processed:"
             echo
@@ -78,6 +88,7 @@ jobs:
     needs: validate
     if: needs.validate.outputs.outcome == 'accepted'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     # The sandboxed job: no token scopes at all. The browser loads the
     # attacker-submitted site here, so this job must hold no credentials.
     permissions: {}
@@ -107,6 +118,7 @@ jobs:
     needs: [validate, render]
     if: ${{ always() && needs.validate.result == 'success' && needs.render.result == 'failure' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       issues: write # comment + label on render failure
     env:
@@ -123,6 +135,7 @@ jobs:
   publish:
     needs: render
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: write # push the submission branch
       pull-requests: write # open the PR
