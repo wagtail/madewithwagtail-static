@@ -2,6 +2,8 @@ import pytest
 
 import process_submission as ps
 
+CONTENT = __import__("pathlib").Path(__file__).parent / "fixtures" / "content" / "developers"
+
 FORM_BODY = """\
 ### Submission type
 
@@ -89,6 +91,20 @@ class TestParseIssueFormBody:
     def test_rejects_non_form_body(self):
         with pytest.raises(ps.FormParseError):
             ps.parse_issue_form_body("Just a plain issue about a bug.")
+
+    def test_lowercase_checked_boxes(self):
+        # GitHub renders form-checked confirmations with a lowercase [x]
+        # (see issue #7); only hand-written markdown uses uppercase [X].
+        result = ps.parse_issue_form_body(FORM_BODY.replace("- [X] ", "- [x] "))
+        assert result["Confirmations"] == [
+            ("I am affiliated with this site or have permission to submit it.", True),
+            ("This is a production website built with Wagtail.", True),
+        ]
+
+    def test_build_proposal_accepts_lowercase_confirmations(self):
+        body = NO_RESPONSE_BODY.replace("- [X] ", "- [x] ")
+        proposal = ps.build_proposal(body, issue_number=7, content_dir=CONTENT)
+        assert proposal.site_title == "Example Site"
 
 
 NO_RESPONSE_BODY = """\

@@ -98,7 +98,7 @@ class FormParseError(ValueError):
     """The issue body is not one of our form submissions."""
 
 
-CHECKBOX_RE = re.compile(r"^- \[(X| )\] (.*)$", re.MULTILINE)
+CHECKBOX_RE = re.compile(r"^- \[([xX]| )\] (.*)$", re.MULTILINE)
 
 # Only the form's own labels are section boundaries: user-typed Markdown
 # containing `### Something` must stay inside the previous field's content.
@@ -150,7 +150,7 @@ def parse_issue_form_body(body: str) -> dict[str, str | list[str] | list[tuple[s
             return []
         if heading == "Confirmations":
             return [
-                (label.strip(), mark == "X") for mark, label in CHECKBOX_RE.findall(content)
+                (label.strip(), mark.casefold() == "x") for mark, label in CHECKBOX_RE.findall(content)
             ]
         if heading == "Tags":
             return [tag.strip() for tag in content.split(",") if tag.strip()]
