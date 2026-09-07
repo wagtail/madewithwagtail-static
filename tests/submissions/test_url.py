@@ -74,6 +74,15 @@ class TestCheckPublicUrl:
         with pytest.raises(ValidationError):
             ps.check_public_url("https://nxdomain.invalid", resolver=fake_resolver)
 
+    def test_rejects_empty_resolution(self):
+        # An injectable resolver may return zero records; all() over an empty
+        # list is vacuously True, so this must be rejected explicitly.
+        def empty_resolver(host, port, *args, **kwargs):
+            return []
+
+        with pytest.raises(ValidationError):
+            ps.check_public_url("https://empty.example", resolver=empty_resolver)
+
     def test_rejects_github_host(self):
         with pytest.raises(ValidationError):
             ps.check_public_url("https://wagtail.github.io", resolver=fake_resolver)

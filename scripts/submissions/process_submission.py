@@ -256,7 +256,8 @@ def check_public_url(raw: str, resolver=socket.getaddrinfo) -> str:
         except ValueError as exc:
             raise bad(f"Resolver returned a malformed address: {exc}") from exc
 
-    if not all(_is_browsable_ip(ip) for ip in ips):
+    # An empty resolution list must not pass vacuously through all().
+    if not ips or not all(_is_browsable_ip(ip) for ip in ips):
         raise bad(f"Host {host_lower} does not resolve to a public-only address")
 
     # str(SplitResult) returns the repr on Python 3.14+; geturl() returns the
