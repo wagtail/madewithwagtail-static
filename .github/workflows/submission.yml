@@ -178,6 +178,13 @@ jobs:
             --repo-root .
       - name: Check the site still builds
         run: npm run check
+      # The commit is made by the script's plain `git commit`; the runner
+      # image ships without a git identity, which fails with
+      # "empty ident name" otherwise.
+      - name: Configure git identity
+        run: |
+          git config user.name "wagtail-bot[bot]"
+          git config user.email "wagtail-bot[bot]@users.noreply.github.com"
       - name: Open PR
         run: |
           uv run scripts/submissions/process_submission.py publish pr \
