@@ -49,6 +49,22 @@ which closes the original issue. The pipeline's logic lives in
 `scripts/submissions/process_submission.py` (Python, run with `uv`), with tests under
 `tests/submissions/` (`just test-submissions`).
 
+### Optional fields and location data
+
+All fields in the submission form are optional except the submission type, site URL,
+title, description, developer name, and the two confirmations. Skipped optional fields
+(company URL, location, latitude/longitude, GitHub username, logo URL, tags) are recorded
+by GitHub as `_No response_` and treated by the pipeline as "not provided".
+
+- **New developer profiles**: skipped location fields are written to the profile's
+  frontmatter as empty values (`location: null`, `lat: null`, `lon: null`) — see the
+  schema in `src/content.config.ts`. The profile page simply omits the map and location
+  line until a maintainer fills them in by editing
+  `src/content/developers/<developer>/index.md`.
+- **Already-listed developers**: a submission only adds the new site page — the existing
+  profile (including its location) is never modified. If the site's page needs a new
+  location or corrected profile details, edit the profile in the same pull request.
+
 ## Quality assurance
 
 Here are the available tooling scripts for the project:
