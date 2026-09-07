@@ -16,12 +16,13 @@ def make_proposal(**overrides):
 class TestPrBody:
     def test_intro_line(self):
         # The body opens with the close-reference + workflow link; no
-        # heading duplicating the PR title.
+        # heading duplicating the PR title. The run link lives inline —
+        # the old bottom footer is gone.
         body = ps.build_pr_body(make_proposal(), DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run")
         assert body.splitlines()[0] == (
             "Closes #42. Auto-generated PR via the [site submission workflow]"
-            "(https://github.com/wagtail/madewithwagtail-static/blob/main/CONTRIBUTING.md#site-submissions)."
-            " Submission metadata:"
+            "(https://github.com/wagtail/madewithwagtail-static/blob/main/CONTRIBUTING.md#site-submissions)"
+            " ([view logs](https://run))."
         )
         assert "## New site submission" not in body
         # The bottom Closes section is gone; the close reference lives in
@@ -91,26 +92,58 @@ class TestPrBody:
         body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "| Local preview | `/developers/example-co/example-site` |" in body
         assert "### How to review" not in body
-
-    def test_site_entry_link_at_head_sha(self):
+    def test_site_page_raw_url_at_head_sha(self):
         sha = "a" * 40
         body = ps.build_pr_body(
             make_proposal(), DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run",
             head_sha=sha, entry_line_count=13,
         )
+        assert "### Site page" in body
+        # The URL is emitted raw — not wrapped in a markdown link — so the
+        # visible text is the URL itself.
         assert (
-            f"https://github.com/wagtail/madewithwagtail-static/blob/{sha}/"
-            "src/content/developers/example-co/example-site/index.md?plain=1#L1-L13" in body
+            f"### Site page\n\nhttps://github.com/wagtail/madewithwagtail-static/blob/{sha}/"
+            "src/content/developers/example-co/example-site/index.md?plain=1#L1-L13\n" in body
+        )
+        assert f"[Site page]({sha}" not in body
+
+    def test_developer_profile_page_section_new_developer(self):
+        sha = "b" * 40
+        body = ps.build_pr_body(
+            make_proposal(), DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run",
+            head_sha=sha, entry_line_count=13, profile_line_count=9,
+        )
+        assert "### Developer profile page" in body
+        assert (
+            f"### Developer profile page\n\nhttps://github.com/wagtail/madewithwagtail-static/blob/{sha}/"
+            "src/content/developers/example-co/index.md?plain=1#L1-L9" in body
         )
 
-    def test_site_entry_dry_run_without_sha(self):
+    def test_no_profile_page_section_existing_developer(self):
+        sha = "c" * 40
+        body = ps.build_pr_body(
+            make_proposal(
+                submission_type="existing-developer", developer_exists=True,
+                developer_slug="torchbox", developer_name="Torchbox",
+            ),
+            DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run",
+            head_sha=sha, entry_line_count=13,
+        )
+        assert "### Site page" in body
+        assert "### Developer profile page" not in body
+
+    def test_site_page_dry_run_without_sha(self):
         body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "submission/issue-42", "https://run")
         assert "SHA unavailable" in body
 
-    def test_reviewer_checklist_and_footer(self):
+
+    def test_reviewer_checklist_no_footer(self):
         body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "- [ ]" in body
-        assert "<sub>View the [site submission workflow logs](https://run).</sub>" in body
+        # The run link moved into the intro line; the standalone footer
+        # must not come back.
+        assert "<sub>View the" not in body
+
 
     def test_logo_row_gated_on_logo_committed(self):
         p = make_proposal()  # new-developer: output_paths includes the logo

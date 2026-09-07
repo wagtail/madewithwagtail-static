@@ -1070,6 +1070,11 @@ def output_paths(p: Proposal) -> dict[str, Path]:
     return paths
 
 
+def _file_line_count(path: Path) -> int:
+    """Number of lines in a committed file, for deep-link ranges."""
+    return len(path.read_text(encoding="utf-8").splitlines())
+
+
 PR_LABEL = "🤖 new site submission"
 NEEDS_TRIAGE_LABEL = "needs-triage"
 PR_CREATED_LABEL = "submission → PR created"
@@ -1121,24 +1126,23 @@ def _detection_value(detection: dict) -> str:
     return "⚠️ No Wagtail signals detected"
 
 
-def _site_entry_line(
-    p: Proposal,
+def _committed_file_url(
+    path: Path,
     repo_full_name: str,
-    branch: str,
     head_sha: str | None,
     line_count: int | None,
 ) -> str:
-    """Deep link to the committed site entry, rendered as an inline file viewer.
+    """Raw deep link to a committed file, rendered as an inline file viewer.
 
     The L1-L<last> range makes GitHub render the file directly in the PR
     description; it needs the branch's HEAD SHA and the file's line count.
+    The URL is emitted bare — reviewers asked for raw links, not markdown
+    links — so GitHub auto-links the visible URL itself.
     """
-    path = output_paths(p)["site_md"]
     if head_sha is None:
-        return f"Committed as `{path}` on `{branch}` (SHA unavailable in dry-run)."
+        return "(SHA unavailable in dry-run)"
     last = line_count if line_count is not None else 1
-    blob = f"https://github.com/{repo_full_name}/blob/{head_sha}/{path}?plain=1#L1-L{last}"
-    return f"[Site entry]({blob})"
+    return f"https://github.com/{repo_full_name}/blob/{head_sha}/{path}?plain=1#L1-L{last}"
 
 
 def build_pr_body(
@@ -1150,6 +1154,7 @@ def build_pr_body(
     logo_committed: bool | None = None,
     head_sha: str | None = None,
     entry_line_count: int | None = None,
+    profile_line_count: int | None = None,
 ) -> str:
     paths = output_paths(p)
     # Whether the logo image was actually written to the branch. None keeps
@@ -1163,8 +1168,8 @@ def build_pr_body(
     )
     lines = [
         f"Closes #{p.issue_number}. Auto-generated PR via the [site submission workflow]"
-        "(https://github.com/wagtail/madewithwagtail-static/blob/main/CONTRIBUTING.md#site-submissions)."
-        " Submission metadata:",
+        "(https://github.com/wagtail/madewithwagtail-static/blob/main/CONTRIBUTING.md#site-submissions)"
+        f" ([view logs]({run_url})).",
         "",
         "| Field | Value |",
         "|---|---|",
@@ -1183,10 +1188,23 @@ def build_pr_body(
     lines += [
         f"| Local preview | `/developers/{p.developer_slug}/{p.site_slug}` |",
         "",
-        "### Site entry",
+        "### Site page",
         "",
-        _site_entry_line(p, repo_full_name, branch, head_sha, entry_line_count),
+        _committed_file_url(
+            paths["site_md"], repo_full_name, head_sha, entry_line_count
+        ),
         "",
+    ]
+    if not p.developer_exists and "developer_md" in paths:
+        lines += [
+            "### Developer profile page",
+            "",
+            _committed_file_url(
+                paths["developer_md"], repo_full_name, head_sha, profile_line_count
+            ),
+            "",
+        ]
+    lines += [
         "### Reviewer checklist",
         "",
         "- [ ] Site is live and built with Wagtail",
@@ -1194,8 +1212,6 @@ def build_pr_body(
         "- [ ] Tags are sensible",
         "- [ ] Description reads well",
         "- [ ] Developer details are correct" + (" (new profile: check the logo)" if not p.developer_exists else ""),
-        "",
-        _run_footer(run_url),
     ]
     return "\n".join(lines)
 
@@ -1376,12 +1392,19 @@ def cmd_publish(argv: list[str]) -> int:
         ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
     )
     head_sha = head.stdout.strip()
-    entry_file = args.repo_root / paths["site_md"]
-    entry_line_count = len(entry_file.read_text(encoding="utf-8").splitlines())
+    entry_line_count = _file_line_count(args.repo_root / paths["site_md"])
+    # New-developer submissions also commit a developer profile; the PR
+    # body deep-links it with the same file-viewer range.
+    profile_line_count = (
+        _file_line_count(args.repo_root / paths["developer_md"])
+        if not proposal.developer_exists and "developer_md" in paths
+        else None
+    )
     body = build_pr_body(
         proposal, detection, repo, branch, run_url,
         logo_committed=logo_committed, head_sha=head_sha,
         entry_line_count=entry_line_count,
+        profile_line_count=profile_line_count,
     )
     body_file.write_text(body, encoding="utf-8")
 
@@ -1406,7 +1429,13 @@ def cmd_publish(argv: list[str]) -> int:
             check=True, capture_output=True, text=True,
         )
         pr_url = result.stdout.strip().splitlines()[-1]
-    run(["gh", "issue", "comment", str(proposal.issue_number), "--body", build_pr_comment(proposal, pr_url, run_url)])
+    # Retries must not stack duplicate comments on the issue: edit the
+    # bot's most recent comment, creating one only if none exists yet.
+    run([
+        "gh", "issue", "comment", str(proposal.issue_number),
+        "--body", build_pr_comment(proposal, pr_url, run_url),
+        "--edit-last", "--create-if-none",
+    ])
     run(["gh", "label", "create", PR_CREATED_LABEL, "--color", "0e8a16", "--force"])
     run(["gh", "issue", "edit", str(proposal.issue_number), "--add-label", PR_CREATED_LABEL])
     body_file.unlink(missing_ok=True)

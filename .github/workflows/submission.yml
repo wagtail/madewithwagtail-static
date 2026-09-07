@@ -78,7 +78,7 @@ jobs:
             echo
             echo "Feel free to open a new submission once these points are addressed."
           } > rejection-comment.md
-          gh issue comment "$ISSUE_NUMBER" --body-file rejection-comment.md
+          gh issue comment "$ISSUE_NUMBER" --body-file rejection-comment.md --edit-last --create-if-none
           gh issue close "$ISSUE_NUMBER" --reason "not planned"
       - name: Upload proposal
         if: steps.validate.outputs.outcome == 'accepted'
@@ -132,7 +132,8 @@ jobs:
       - name: Comment on failure
         run: |
           gh issue comment "$ISSUE_NUMBER" \
-            --body "The submission pipeline failed at the **render** stage — the site couldn't be reached or screenshotted. Check the [workflow run]($GITHUB_RUN_URL) for details — a maintainer will follow up."
+            --body "The submission pipeline failed at the **render** stage — the site couldn't be reached or screenshotted. Check the [workflow run]($GITHUB_RUN_URL) for details — a maintainer will follow up." \
+            --edit-last --create-if-none
           gh label create "needs-triage" --color e99695 --force
           gh issue edit "$ISSUE_NUMBER" --add-label "needs-triage"
 
@@ -195,6 +196,7 @@ jobs:
         if: failure()
         run: |
           gh issue comment "$ISSUE_NUMBER" \
-            --body "The submission pipeline failed at the **publish** stage. Check the [workflow run]($GITHUB_RUN_URL) for details — a maintainer will follow up."
+            --body "The submission pipeline failed at the **publish** stage. Check the [workflow run]($GITHUB_RUN_URL) for details — a maintainer will follow up." \
+            --edit-last --create-if-none
           gh label create "needs-triage" --color e99695 --force
           gh issue edit "$ISSUE_NUMBER" --add-label "needs-triage"
