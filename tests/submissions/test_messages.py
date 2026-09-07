@@ -14,12 +14,36 @@ def make_proposal(**overrides):
 
 
 class TestPrBody:
-    def test_contains_summary_and_closes(self):
-        p = make_proposal()
-        body = ps.build_pr_body(p, DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run")
-        assert "Example Site" in body
-        assert "https://example.com" in body
-        assert "Closes #42" in body
+    def test_intro_without_heading(self):
+        # Regression: the body opened with a duplicate of the PR title
+        # heading; it now opens with the issue link line only.
+        body = ps.build_pr_body(make_proposal(), DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run")
+        assert body.splitlines()[0] == (
+            "Submission from #42, processed via the [site submission workflow]"
+            "(https://github.com/wagtail/madewithwagtail-static/blob/main/CONTRIBUTING.md#site-submissions)."
+        )
+        assert "## New site submission" not in body
+
+    def test_metadata_table_shape(self):
+        body = ps.build_pr_body(
+            make_proposal(submission_type="existing-developer", developer_exists=True, developer_slug="torchbox", developer_name="Torchbox", tags=["tourism", "Education"]),
+            DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run",
+        )
+        assert "| Field | Value |" in body
+        assert "| Site | <https://example.com> |" in body
+        assert (
+            "| Developer | [Torchbox](https://madewithwagtail.org/developers/torchbox/)"
+            " - [see profile page](https://madewithwagtail.org/developers/torchbox/) |" in body
+        )
+        assert (
+            "| Tags | [tourism](https://madewithwagtail.org/sites/tag/tourism/),"
+            " [Education](https://madewithwagtail.org/sites/tag/education/) |" in body
+        )
+
+    def test_new_developer_suffix(self):
+        p = make_proposal()  # new-developer by default
+        body = ps.build_pr_body(p, DETECTION, "r/r", "b", "https://run")
+        assert "[Example Co](https://madewithwagtail.org/developers/example-co/) - new 🎉" in body
 
     def test_inline_screenshot_raw_url(self):
         p = make_proposal()
@@ -38,12 +62,29 @@ class TestPrBody:
         detection = {**DETECTION, "is_wagtail": False, "signals": []}
         body = ps.build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
         assert "⚠️" in body
+        assert "### Wagtail detection" in body
+
+    def test_site_entry_link_at_head_sha(self):
+        sha = "a" * 40
+        body = ps.build_pr_body(
+            make_proposal(), DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run",
+            head_sha=sha, entry_line_count=13,
+        )
+        assert (
+            f"https://github.com/wagtail/madewithwagtail-static/blob/{sha}/"
+            "src/content/developers/example-co/example-site/index.md?plain=1#L1-L13" in body
+        )
+
+    def test_site_entry_dry_run_without_sha(self):
+        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "submission/issue-42", "https://run")
+        assert "SHA unavailable" in body
 
     def test_reviewer_checklist_and_footer(self):
         body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "- [ ]" in body
         assert "https://run" in body
         assert "just serve" in body
+        assert "Closes #42" in body
 
     def test_logo_section_gated_on_logo_committed(self):
         p = make_proposal()  # new-developer: output_paths includes the logo

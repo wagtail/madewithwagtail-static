@@ -33,10 +33,17 @@ class TestSiteMarkdown:
             "first_published_at": "2026-08-05T00:00:00+00:00",
             "latest_revision_created_at": "2026-08-05T00:00:00+00:00",
             "site_url": "https://example.com",
-            "in_cooperation_with_slug": None,
             "tags": ["blog"],
         }
         assert text.rstrip().endswith("A wonderful site about things.")
+
+    def test_unset_optionals_are_omitted_not_null(self):
+        # Regression: committed frontmatter contained `in_cooperation_with_slug: null`;
+        # optional fields left unset must be left out entirely (the Astro
+        # schema defaults them).
+        text = ps.site_markdown(make_proposal())
+        assert "in_cooperation_with_slug" not in text
+        assert ": null" not in text
 
     def test_yaml_injection_resisted(self):
         # A title full of YAML/metacharacters must round-trip through
@@ -58,7 +65,7 @@ class TestDeveloperMarkdown:
         frontmatter = frontmatter_of(text)
         assert frontmatter["title"] == "Example Co"
         assert frontmatter["location"] == "Stockholm, Sweden"
-        assert frontmatter["twitter_handler"] is None
+        assert "twitter_handler" not in frontmatter
         assert frontmatter["github_user"] == "exampleco"
         assert frontmatter["online_profiles"] == []
 

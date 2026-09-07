@@ -389,6 +389,15 @@ WAGTAIL_ASSET_RE = re.compile(
     r"(?:src|href)=[\"'][^\"']*(?:static/wagtail|wagtailadmin|django-wagtail)",
     re.IGNORECASE,
 )
+# Wagtail rendition URLs: <original>.<hash>.<filter>.<ext>, e.g.
+# image.fill-600x450.format-webp.webp or hero.width-496.jpg. Requiring the
+# dot before the filter spec avoids WordPress-style image-600x450.jpg names
+# and versioned assets like jquery.min-3.5.1.js.
+WAGTAIL_RENDITION_RE = re.compile(
+    r"\.(?:fill-\d+x\d+|width-\d+|height-\d+|max-\d+x\d+|min-\d+x\d+|scale-\d+)"
+    r"(?:\.[a-zA-Z0-9_-]+)*\.(?:webp|jpe?g|png|avif|gif)",
+    re.IGNORECASE,
+)
 ADMIN_PATHS = ("/admin/", "/cms/", "/cms-admin/")
 
 
@@ -399,7 +408,10 @@ def detect_wagtail(html: str) -> list[str]:
         signals.append("generator meta tag")
     if WAGTAIL_ASSET_RE.search(html):
         signals.append("Wagtail asset reference in page source")
+    if WAGTAIL_RENDITION_RE.search(html):
+        signals.append("Wagtail rendition URL in image sources")
     return signals
+
 
 
 def _response_too_large(response) -> bool:
@@ -927,6 +939,10 @@ def cmd_validate(argv: list[str]) -> int:
 def _frontmatter_block(data: dict) -> str:
     import yaml
 
+    # Optional fields left unset are omitted rather than written as null:
+    # the Astro schemas default them, and `key: null` in committed content
+    # is noise reviewers shouldn't see.
+    data = {key: value for key, value in data.items() if value is not None}
     return "---\n" + yaml.safe_dump(data, sort_keys=False, allow_unicode=True) + "---\n"
 
 
@@ -976,6 +992,7 @@ def output_paths(p: Proposal) -> dict[str, Path]:
 PR_LABEL = "🤖 new site submission"
 NEEDS_TRIAGE_LABEL = "needs-triage"
 PR_CREATED_LABEL = "submission → PR created"
+LIVE_SITE_URL = "https://madewithwagtail.org"
 
 
 def _run_footer(run_url: str) -> str:
@@ -986,6 +1003,45 @@ def _run_footer(run_url: str) -> str:
     )
 
 
+
+def _profile_line(p: Proposal) -> str:
+    """Developer table cell: linked name, with new/existing suffix."""
+    if p.developer_exists:
+        suffix = f" - [see profile page]({LIVE_SITE_URL}/developers/{p.developer_slug}/)"
+    else:
+        suffix = " - new 🎉"
+    return f"[{p.developer_name}]({LIVE_SITE_URL}/developers/{p.developer_slug}/){suffix}"
+
+
+def _tag_links(p: Proposal) -> str:
+    """Tags linking to the live site's tag pages, as the site renders them."""
+    if not p.tags:
+        return "_(none)_"
+    return ", ".join(
+        f"[{tag}]({LIVE_SITE_URL}/sites/tag/{tag.lower()}/)" for tag in p.tags
+    )
+
+
+def _site_entry_line(
+    p: Proposal,
+    repo_full_name: str,
+    branch: str,
+    head_sha: str | None,
+    line_count: int | None,
+) -> str:
+    """Deep link to the committed site entry, rendered as an inline file viewer.
+
+    The L1-L<last> range makes GitHub render the file directly in the PR
+    description; it needs the branch's HEAD SHA and the file's line count.
+    """
+    path = output_paths(p)["site_md"]
+    if head_sha is None:
+        return f"Committed as `{path}` on `{branch}` (SHA unavailable in dry-run)."
+    last = line_count if line_count is not None else 1
+    blob = f"https://github.com/{repo_full_name}/blob/{head_sha}/{path}?plain=1#L1-L{last}"
+    return f"[Site entry]({blob})"
+
+
 def build_pr_body(
     p: Proposal,
     detection: dict,
@@ -993,25 +1049,33 @@ def build_pr_body(
     branch: str,
     run_url: str,
     logo_committed: bool | None = None,
+    head_sha: str | None = None,
+    entry_line_count: int | None = None,
 ) -> str:
     paths = output_paths(p)
     # Whether the logo image was actually written to the branch. None keeps
     # the default "the proposal expects one" for callers that don't know.
     logo_expected = logo_committed if logo_committed is not None else "logo" in paths
-    profile = "new developer profile" if not p.developer_exists else "existing developer profile"
     verdict = "✅ Wagtail signals detected" if detection["is_wagtail"] else "⚠️ No Wagtail signals detected"
     signal_lines = "\n".join(f"- {signal}" for signal in detection["signals"]) or "- (none found)"
     lines = [
-        f"## New site submission: {p.site_title}",
+        f"Submission from #{p.issue_number}, processed via the [site submission workflow](https://github.com/wagtail/madewithwagtail-static/blob/main/CONTRIBUTING.md#site-submissions).",
         "",
-        f"Automated submission from issue #{p.issue_number}, processed by the site submission workflow.",
+        "Submission metadata:",
         "",
-        "| | |",
+        "| Field | Value |",
         "|---|---|",
-        f"| Site | {p.site_url} |",
-        f"| Developer | {p.developer_name} ({profile}) |",
-        f"| Tags | {', '.join(p.tags) or '_(none)_'} |",
-        f"| Wagtail check | {verdict} |",
+        f"| Site | <{p.site_url}> |",
+        f"| Developer | {_profile_line(p)} |",
+        f"| Tags | {_tag_links(p)} |",
+        "",
+        "### Wagtail detection",
+        "",
+        verdict,
+        "",
+        "Evidence:",
+        "",
+        signal_lines,
         "",
         "### Screenshot (as committed)",
         "",
@@ -1026,9 +1090,9 @@ def build_pr_body(
             "",
         ]
     lines += [
-        "### Wagtail detection evidence",
+        "### Site entry",
         "",
-        signal_lines,
+        _site_entry_line(p, repo_full_name, branch, head_sha, entry_line_count),
         "",
         "### Reviewer checklist",
         "",
@@ -1173,7 +1237,8 @@ def cmd_publish(argv: list[str]) -> int:
         return 0
 
     # Stage "pr": branch, commit, push, PR, issue comment.
-    # build_pr_body needs the detection dict, so the pr stage requires it too.
+    # The PR body links the committed site entry at the pushed HEAD SHA, so
+    # the commit must exist (and be pushed) before the body is built.
     if args.detection is None:
         parser.error("publish pr requires --detection")
     detection = json.loads(args.detection.read_text(encoding="utf-8"))
@@ -1181,25 +1246,44 @@ def cmd_publish(argv: list[str]) -> int:
     paths = output_paths(proposal)
     logo_committed = "logo" in paths and (args.repo_root / paths["logo"]).exists()
 
+    body_file = args.repo_root / ".git" / "PR_BODY.md"
+
     if args.dry_run:
-        # Placeholders keep the advertised local dry-run working without CI env.
+        # Placeholders keep the advertised local dry-run working without CI
+        # env, git writes, or a real push.
         repo = os.environ.get("GITHUB_REPOSITORY", "<GITHUB_REPOSITORY>")
         run_url = os.environ.get("GITHUB_RUN_URL", "<GITHUB_RUN_URL>")
-        body = build_pr_body(proposal, detection, repo, branch, run_url, logo_committed=logo_committed)
+        head_sha = os.environ.get("GITHUB_HEAD_SHA")
+        body = build_pr_body(
+            proposal, detection, repo, branch, run_url,
+            logo_committed=logo_committed, head_sha=head_sha,
+        )
         print(f"would create branch {branch} and open a PR on {repo}")
         print(body)
         return 0
 
-    repo = os.environ["GITHUB_REPOSITORY"]
-    run_url = os.environ["GITHUB_RUN_URL"]
-    body = build_pr_body(proposal, detection, repo, branch, run_url, logo_committed=logo_committed)
-
-    body_file = args.repo_root / ".git" / "PR_BODY.md"
-    body_file.write_text(body, encoding="utf-8")
     run(["git", "checkout", "-B", branch])
     run(["git", "add", *(str(path) for path in git_add_paths(proposal, args.repo_root))])
     run(["git", "commit", "-m", f"Add site submission from issue #{proposal.issue_number}"])
     run(["git", "push", "origin", branch])
+
+    repo = os.environ["GITHUB_REPOSITORY"]
+    run_url = os.environ["GITHUB_RUN_URL"]
+    # The commit just pushed is HEAD of the current branch.
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
+    )
+    head_sha = head.stdout.strip()
+    entry_file = args.repo_root / paths["site_md"]
+    entry_line_count = len(entry_file.read_text(encoding="utf-8").splitlines())
+    body = build_pr_body(
+        proposal, detection, repo, branch, run_url,
+        logo_committed=logo_committed, head_sha=head_sha,
+        entry_line_count=entry_line_count,
+    )
+    body_file.write_text(body, encoding="utf-8")
+
+
     # The PR label may not exist yet in the repository.
     run(["gh", "label", "create", PR_LABEL, "--color", "1d76db", "--force"])
     # gh pr create prints the PR URL on stdout — capture it for the issue comment.
