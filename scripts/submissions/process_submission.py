@@ -1348,9 +1348,20 @@ def cmd_publish(argv: list[str]) -> int:
     run(["git", "add", *(str(path) for path in git_add_paths(proposal, args.repo_root))])
     run(["git", "commit", "-m", f"Add site submission from issue #{proposal.issue_number}"])
     # The branch is fully regenerated from validated artifacts each run, so
-    # force-with-lease keeps retries idempotent when the branch (and its PR)
-    # already exist from a previous pipeline run.
-    run(["git", "push", "--force-with-lease", "origin", branch])
+    # force pushing keeps retries idempotent when the branch (and its PR)
+    # already exist from a previous pipeline run. The lease expectation must
+    # be explicit: the checkout only fetched the default branch, so no
+    # remote-tracking ref exists for --force-with-lease to verify against.
+    listing = subprocess.run(
+        ["git", "ls-remote", "origin", f"refs/heads/{branch}"],
+        check=True, capture_output=True, text=True,
+    )
+    remote_sha = listing.stdout.split()[0] if listing.stdout.strip() else ""
+    run([
+        "git", "push",
+        f"--force-with-lease=refs/heads/{branch}:{remote_sha}",
+        "origin", branch,
+    ])
 
     repo = os.environ["GITHUB_REPOSITORY"]
     run_url = os.environ["GITHUB_RUN_URL"]
