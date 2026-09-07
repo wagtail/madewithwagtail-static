@@ -1,6 +1,10 @@
 """Tests for the render subcommand's fetch/logo logic (browser capture excluded)."""
 
+import io
+import json
 from pathlib import Path
+
+from PIL import Image
 
 import pytest
 
@@ -138,6 +142,187 @@ class TestGatherLogoCandidates:
             "https://example.com/apple-touch-icon.png",
             "https://example.com/favicon.ico",
         ]
+
+    def test_manifest_icons_after_link_icons(self, url_guard):
+        """Manifest icons enter after <link> icons, ranked by declared size
+        (largest first) — many sites declare only small favicons but list a
+        512x512 manifest icon."""
+        class ManifestClient(FakeClient):
+            def get(self, url, **kwargs):
+                if url == "https://example.com/manifest.webmanifest":
+                    self.requested.append(url)
+                    return FakeResponse(
+                        200,
+                        json.dumps(
+                            {
+                                "icons": [
+                                    {"src": "/icon-192.png", "sizes": "192x192"},
+                                    {"src": "/icon-512.png", "sizes": "512x512"},
+                                    {"src": "https://cdn.example/maskable.png", "sizes": "any"},
+                                ]
+                            }
+                        ),
+                        url,
+                    )
+                return super().get(url, **kwargs)
+
+        html = (
+            '<link rel="manifest" href="/manifest.webmanifest">'
+            '<link rel="icon" href="/fav.ico">'
+        )
+        candidates = ps.gather_logo_candidates(
+            ManifestClient({}), html, "https://example.com", None
+        )
+        assert candidates == [
+            "https://example.com/fav.ico",
+            "https://example.com/icon-512.png",
+            "https://example.com/icon-192.png",
+            "https://cdn.example/maskable.png",
+            "https://example.com/apple-touch-icon.png",
+            "https://example.com/favicon.ico",
+        ]
+
+    def test_manifest_urls_pass_ssrf_check(self, url_guard):
+        """A manifest icon pointing at a private IP is dropped like any
+        other candidate."""
+        class PrivateManifestClient(FakeClient):
+            def get(self, url, **kwargs):
+                if url == "https://example.com/manifest.json":
+                    self.requested.append(url)
+                    return FakeResponse(
+                        200,
+                        json.dumps(
+                            {
+                                "icons": [
+                                    {"src": "http://169.254.169.254/latest/", "sizes": "512x512"},
+                                    {"src": "/public.png", "sizes": "192x192"},
+                                ]
+                            }
+                        ),
+                        url,
+                    )
+                return super().get(url, **kwargs)
+
+        html = '<link rel="manifest" href="/manifest.json">'
+        candidates = ps.gather_logo_candidates(
+            PrivateManifestClient({}), html, "https://example.com", None
+        )
+        assert candidates == [
+            "https://example.com/public.png",
+            "https://example.com/apple-touch-icon.png",
+            "https://example.com/favicon.ico",
+        ]
+
+    def test_manifest_private_url_not_fetched(self, url_guard):
+        """The manifest itself must pass check_public_url before fetching."""
+
+        class GuardedClient(FakeClient):
+            def get(self, url, **kwargs):
+                self.requested.append(url)
+                raise AssertionError(f"unwanted fetch of {url}")
+
+        html = '<link rel="manifest" href="http://169.254.169.254/meta.json">'
+        candidates = ps.gather_logo_candidates(
+            GuardedClient({}), html, "https://example.com", None
+        )
+        assert candidates == [
+            "https://example.com/apple-touch-icon.png",
+            "https://example.com/favicon.ico",
+        ]
+
+
+class ImageClient:
+    """Serves canned image bytes; records requests."""
+
+    def __init__(self, responses: dict[str, tuple[int, bytes]]):
+        self.responses = responses
+        self.requested: list[str] = []
+
+    def get(self, url, **kwargs):
+        import httpx
+
+        self.requested.append(url)
+        status, data = self.responses.get(url, (404, b""))
+        if status >= 400:
+            raise httpx.HTTPStatusError(f"{status}", request=None, response=None)
+        return FakeImageResponse(status, data, url)
+
+
+class FakeImageResponse:
+    def __init__(self, status_code, data, url):
+        self.status_code = status_code
+        self.content = data
+        self.headers = {"content-length": str(len(data))}
+        self.url = url
+
+
+def png_bytes(size: int, color: str = "red") -> bytes:
+    buf = io.BytesIO()
+    Image.new("RGB", (size, size), color).save(buf, "PNG")
+    return buf.getvalue()
+
+
+class TestSelectLargestLogo:
+    """Selection ranks by measured pixel size, not document order."""
+
+    def test_prefers_larger_icon_declared_later(self, url_guard):
+        client = ImageClient(
+            {
+                "https://example.com/fav.ico": (200, png_bytes(32)),
+                "https://example.com/touch.png": (200, png_bytes(180)),
+            }
+        )
+        html = (
+            '<link rel="icon" href="/fav.ico">'
+            '<link rel="apple-touch-icon" href="/touch.png">'
+        )
+        candidates = ps.gather_logo_candidates(client, html, "https://example.com", None)
+        selected = Image.open(io.BytesIO(ps.select_largest_logo(client, candidates)))
+        # 180px input survives encode_logo's 120px cap; the 32px one wouldn't.
+        assert selected.format == "WEBP" and selected.size == (120, 120)
+
+    def test_first_wins_on_tie(self, url_guard):
+        client = ImageClient(
+            {
+                "https://example.com/a.png": (200, png_bytes(64, "red")),
+                "https://example.com/b.png": (200, png_bytes(64, "blue")),
+            }
+        )
+        html = (
+            '<link rel="icon" href="/a.png">'
+            '<link rel="apple-touch-icon" href="/b.png">'
+        )
+        candidates = ps.gather_logo_candidates(client, html, "https://example.com", None)
+        # Equal-size candidates: the earlier (more authoritative) one wins.
+        selected = Image.open(io.BytesIO(ps.select_largest_logo(client, candidates)))
+        assert selected.format == "WEBP" and selected.size == (64, 64)
+        # Every candidate is fetched: the winner is measured, not assumed.
+        assert client.requested == [
+            "https://example.com/a.png",
+            "https://example.com/b.png",
+            "https://example.com/apple-touch-icon.png",
+            "https://example.com/favicon.ico",
+        ]
+
+    def test_skips_undecodable_and_error_responses(self, url_guard):
+        client = ImageClient(
+            {
+                "https://example.com/broken.png": (200, b"not an image"),
+                "https://example.com/good.png": (200, png_bytes(96)),
+            }
+        )
+        html = '<link rel="icon" href="/broken.png"><link rel="icon" href="/good.png">'
+        candidates = ps.gather_logo_candidates(client, html, "https://example.com", None)
+        selected = Image.open(io.BytesIO(ps.select_largest_logo(client, candidates)))
+        assert selected.format == "WEBP" and selected.size == (96, 96)
+
+    def test_returns_none_when_nothing_usable(self, url_guard):
+        client = ImageClient(
+            {"https://example.com/broken.png": (200, b"not an image")}
+        )
+        html = '<link rel="icon" href="/broken.png">'
+        candidates = ps.gather_logo_candidates(client, html, "https://example.com", None)
+        assert ps.select_largest_logo(client, candidates) is None
 
 
 class TestProbeAdminPages:

@@ -498,7 +498,9 @@ ICON_REL_RE = re.compile(
     r"<link[^>]+rel=[\"'][^\"']*(?:apple-touch-icon|icon)[^\"']*[\"'][^>]*>", re.IGNORECASE
 )
 ICON_HREF_RE = re.compile(r"href=[\"']([^\"']+)[\"']", re.IGNORECASE)
-
+MANIFEST_HREF_RE = re.compile(
+    r"<link[^>]+rel=[\"'][^\"']*manifest[^\"']*[\"'][^>]*>", re.IGNORECASE
+)
 
 def gather_logo_candidates(
     client: "httpx.Client",
@@ -508,9 +510,10 @@ def gather_logo_candidates(
     resolver=socket.getaddrinfo,
 ) -> list[str]:
     """Candidate logo URLs: explicit submission first, then <link> icons,
-    then conventional paths. All normalized against the origin and run
-    through the same SSRF checks as page fetches — candidates from
-    attacker-controlled HTML must never bypass check_public_url."""
+    then web app manifest entries, then conventional paths. All normalized
+    against the origin and run through the same SSRF checks as page fetches
+    — candidates from attacker-controlled HTML must never bypass
+    check_public_url."""
     import httpx
 
     candidates: list[str] = []
@@ -533,9 +536,90 @@ def gather_logo_candidates(
         match = ICON_HREF_RE.search(tag)
         if match:
             add(match.group(1))
+    # Web app manifest: many sites declare only small favicon links but
+    # list large icons (commonly 512x512) in their manifest. Best-effort:
+    # an unreadable or non-JSON manifest is skipped.
+    for tag in MANIFEST_HREF_RE.findall(html):
+        match = ICON_HREF_RE.search(tag)
+        if not match:
+            continue
+        try:
+            manifest_url = check_public_url(
+                str(httpx.URL(origin).join(match.group(1))), resolver=resolver
+            )
+            manifest = json.loads(client.get(manifest_url, timeout=5).text)
+            icons = manifest.get("icons")
+            if not isinstance(icons, list):
+                continue
+        except Exception:
+            continue  # best-effort: unreachable or malformed manifest
+
+        def manifest_entry_size(entry: object) -> int:
+            """Largest dimension of a manifest icon's declared sizes.
+
+            W3C format is "sizes": "512x512"; also accepts an object with
+            width/height fields. Multiple sizes rank by the largest.
+            """
+            if not isinstance(entry, dict):
+                return 0
+            sizes = entry.get("sizes")
+            declared: list[int] = []
+            if isinstance(sizes, str):
+                for token in sizes.split():
+                    dims = token.lower().split("x")
+                    if len(dims) == 2 and dims[0].isdigit() and dims[1].isdigit():
+                        declared.extend((int(dims[0]), int(dims[1])))
+            elif isinstance(sizes, (list, dict)):
+                values = sizes if isinstance(sizes, list) else sizes.values()
+                for value in values:
+                    if isinstance(value, (int, float)):
+                        declared.append(int(value))
+            return max(declared, default=0)
+
+        sized = sorted(
+            enumerate(icons),
+            key=lambda pair: manifest_entry_size(pair[1]),
+            reverse=True,
+        )
+        for _, entry in sized:
+            if isinstance(entry, dict) and isinstance(entry.get("src"), str):
+                add(entry["src"])
     add("/apple-touch-icon.png")
     add("/favicon.ico")
     return candidates
+
+
+def select_largest_logo(
+    client: "httpx.Client", candidates: list[str]
+) -> bytes | None:
+    """Download logo candidates and return the largest decodable image.
+
+    Pages declare icons in arbitrary order (a 16px <link rel="icon">
+    commonly precedes the 180px apple-touch-icon), and sizes attributes are
+    unreliable across implementations, so every candidate is measured after
+    download. Ties keep the earlier candidate — the docstring ordering of
+    gather_logo_candidates is most-authoritative-first. Any candidate that
+    errors, is oversized, or fails to decode is skipped.
+    """
+    import httpx
+
+    measured: list[tuple[int, int, bytes]] = []
+    for index, candidate in enumerate(candidates):
+        try:
+            response = client.get(candidate, timeout=10)
+            if response.status_code != 200 or _response_too_large(response):
+                continue
+            # No magic-byte sniffing (it misses ICO favicons): try to decode
+            # + encode with Pillow; any failure means "not a usable logo".
+            # UnidentifiedImageError is an OSError.
+            data = response.content[:MAX_RESPONSE_BYTES]
+            width, height = Image.open(io.BytesIO(data)).size
+            measured.append((width * height, -index, encode_logo(data)))
+        except (httpx.HTTPError, ValueError, OSError):
+            continue
+    if not measured:
+        return None
+    return max(measured)[2]
 
 
 def is_private_browser_host(url: str) -> bool:
@@ -696,19 +780,10 @@ def cmd_render(argv: list[str]) -> int:
 
         logo_bytes: bytes | None = None
         if proposal is not None and proposal.submission_type == "new-developer":
-            for candidate in gather_logo_candidates(client, html, origin, proposal.logo_url):
-                try:
-                    response = client.get(candidate, timeout=10)
-                    if response.status_code != 200 or _response_too_large(response):
-                        continue
-                    # No magic-byte sniffing (it misses ICO favicons): try to
-                    # decode + encode with Pillow; any failure means "not a
-                    # usable logo". UnidentifiedImageError is an OSError.
-                    logo_bytes = encode_logo(response.content[:MAX_RESPONSE_BYTES])
-                    break
-                except (httpx.HTTPError, ValueError, OSError):
-                    continue
-
+            logo_bytes = select_largest_logo(
+                client,
+                gather_logo_candidates(client, html, origin, proposal.logo_url),
+            )
     detection = detection_result(signals, final_url)
     (args.out_dir / "detection.json").write_text(
         json.dumps(detection, indent=2, ensure_ascii=False), encoding="utf-8"
