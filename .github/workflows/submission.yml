@@ -2,7 +2,7 @@ name: Process site submission
 
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
 
 concurrency:
   group: submission-${{ github.event.issue.number }}
@@ -26,6 +26,10 @@ jobs:
     if: >-
       contains(github.event.issue.body, '### Submission type') &&
       startsWith(github.event.issue.title, '[Site submission]')
+    # Step outputs don't cross job boundaries; without this mapping
+    # needs.validate.outputs.outcome is empty and render/publish always skip.
+    outputs:
+      outcome: ${{ steps.validate.outputs.outcome }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
