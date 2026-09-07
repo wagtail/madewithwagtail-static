@@ -681,7 +681,13 @@ BANNER_HIDE_CSS = """\
 .cookies-eu-banner, #cookie-law-banner, .cookie-law-banner,
 #cookiesck, .sqs-cookie-banner-v2, .wpgdprc-consent-bar,
 .avia-cookie-consent-wrap, .fusion-privacy-bar, .woodmart-cookies-popup,
-.thb-cookie-bar, .pum-open .pum-overlay, .elementor-popup-modal:not(:empty)
+.thb-cookie-bar, .pum-open .pum-overlay, .elementor-popup-modal:not(:empty),
+/* Generic fallback: any container whose class mentions "cookie". Scoped to
+   banner-capable container elements — an unscoped [class*="cookie"] would
+   hide recipe content on food blogs (e.g. .cookie-recipes-grid) and blank
+   the screenshot. The i flag covers CamelCase classes. */
+div[class*="cookie" i], section[class*="cookie" i], aside[class*="cookie" i],
+footer[class*="cookie" i], header[class*="cookie" i], dialog[class*="cookie" i]
 """
 CONSENT_INIT_JS = """\
 (() => {

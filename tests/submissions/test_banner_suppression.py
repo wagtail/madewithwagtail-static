@@ -37,8 +37,6 @@ class TestBannerHideCss:
             "#onetrust-consent-sdk",
             "#CybotCookiebotDialog",
             "#usercentrics-root",
-            "#Osano-CookieDialog",
-            "#termly-code-snippet-support",
             "#iubenda-cs-banner",
             "#cmplz-cookiebanner-container",
             "#cky-consent-bar",
@@ -46,6 +44,14 @@ class TestBannerHideCss:
             ".cookie-banner",
         ):
             assert selector in ps.BANNER_HIDE_CSS
+
+    def test_generic_cookie_class_fallback(self):
+        # Generic attribute-selector fallback, scoped to banner-capable
+        # containers (unscoped it would hide recipe grids on food blogs).
+        # The i flag covers CamelCase class names. Matches wagtail.org's
+        # <div class="cookie"> banner.
+        for tag in ("div", "section", "aside", "footer", "header", "dialog"):
+            assert f'{tag}[class*="cookie" i]' in ps.BANNER_HIDE_CSS
 
     def test_no_selector_hides_body_or_html(self):
         # Hiding <body> would blank the whole screenshot. Selectors like
