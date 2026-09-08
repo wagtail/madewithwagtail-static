@@ -26,9 +26,23 @@ jobs:
         with:
           node-version-file: .node-version
       - run: npm ci
-      - run: npm run check
       - run: npm run lint
+      - run: npm run check
+      # Build for GitHub Pages on main, normal build otherwise.
+      - uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853 # v6.1.2
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
       - run: npm run build
-      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
-        with:
-          path: dist
+        if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+  deploy:
+    needs: test
+    runs-on: ubuntu-26.04-arm
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        id: deployment
