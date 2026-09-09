@@ -1,0 +1,8 @@
+---
+title: RÚV
+first_published_at: '2023-04-04 09:06:48.479736+00:00'
+latest_revision_created_at: '2023-04-04 09:06:48.479736+00:00'
+location: Reykjavík, Iceland
+company_url: https://www.ruv.is
+online_profiles: []
+---

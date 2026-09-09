@@ -381,35 +381,68 @@ def assert_webp(data: bytes) -> Image.Image:
     return img
 
 
-GENERATOR_RE = re.compile(
-    r"<meta[^>]+name=[\"']generator[\"'][^>]+content=[\"'][^\"']*wagtail",
-    re.IGNORECASE,
+RESPONSIVE_EMBED_RE = re.compile(
+    r'<div[^>]*\bclass=["\'][^"\']*\bresponsive-object\b', re.IGNORECASE
 )
-WAGTAIL_ASSET_RE = re.compile(
-    r"(?:src|href)=[\"'][^\"']*(?:static/wagtail|wagtailadmin|django-wagtail)",
-    re.IGNORECASE,
+STREAMFIELD_BLOCK_RE = re.compile(
+    r'<div[^>]*\bclass=["\'][^"\']*\bw-block-', re.IGNORECASE
 )
-# Wagtail rendition URLs: <original>.<hash>.<filter>.<ext>, e.g.
-# image.fill-600x450.format-webp.webp or hero.width-496.jpg. Requiring the
-# dot before the filter spec avoids WordPress-style image-600x450.jpg names
-# and versioned assets like jquery.min-3.5.1.js.
-WAGTAIL_RENDITION_RE = re.compile(
-    r"\.(?:fill-\d+x\d+|width-\d+|height-\d+|max-\d+x\d+|min-\d+x\d+|scale-\d+)"
-    r"(?:\.[a-zA-Z0-9_-]+)*\.(?:webp|jpe?g|png|avif|gif)",
-    re.IGNORECASE,
+RICH_TEXT_RE = re.compile(r'\bdata-block-key=["\'][a-z0-9]{5}["\']')
+
+# Rendition URL tiers, most strict first; detect_wagtail reports only the
+# most confident matching tier. Adapted from JS regexes proven against
+# real-world Wagtail sites. Character classes use [\w.-] (dash not last):
+# Python re rejects a trailing dash inside a range.
+WAGTAIL_RENDITION_TIERS: tuple[tuple[str, re.Pattern[str]], ...] = tuple(
+    (name, re.compile(pattern, re.IGNORECASE))
+    for name, pattern in (
+        (
+            "strictest",
+            r"\/media\/(?:original_images\/[\w-]+\.|images\/[\w.-]+\.((?:fill|max|min)-\d+x\d+(?:-c\d+)?|(?:width|height|scale)-\d+|original)\.)",
+        ),
+        (
+            "strict",
+            r"(?:\.[a-z]+|\/media)(?:\/[\w-]+)?\/(?:original_images\/[\w-]+\.|images\/[\w.-]+\.((?:fill|max|min|width|height|scale)-\d|original))",
+        ),
+        (
+            "less_strict_but_long",
+            r"(?:\.[a-z]+|\/media)(?:\/[\w-]+)?\/(?:images\/[\w.-]+\.original|original_images\/[\w-]+\.)|\/images\/[\w.-]+\.(?:fill|max|min|width|height|scale)-\d",
+        ),
+        (
+            "lax",
+            r"\/(?:original_images\/[\w-]+\.|images\/[\w.-]+\.((?:fill|max|min|width|height|scale)-\d|original))",
+        ),
+        (
+            "laxest",
+            r"\/original_images\/|\/[\w.-]+\.((?:fill|max|min|width|height|scale)-\d|original)",
+        ),
+    )
 )
+
+
 ADMIN_PATHS = ("/admin/", "/cms/", "/cms-admin/")
+
+
+def rendition_tier(html: str) -> str | None:
+    """Most strict rendition tier matching anywhere in the page, if any."""
+    for name, pattern in WAGTAIL_RENDITION_TIERS:
+        if pattern.search(html):
+            return name
+    return None
 
 
 def detect_wagtail(html: str) -> list[str]:
     """Best-effort Wagtail fingerprints from page HTML (spec: evidence, never a gate)."""
     signals = []
-    if GENERATOR_RE.search(html):
-        signals.append("generator meta tag")
-    if WAGTAIL_ASSET_RE.search(html):
-        signals.append("Wagtail asset reference in page source")
-    if WAGTAIL_RENDITION_RE.search(html):
-        signals.append("Wagtail rendition URL in image sources")
+    tier = rendition_tier(html)
+    if tier is not None:
+        signals.append(f"Wagtail rendition URL in image sources ({tier} tier)")
+    if RICH_TEXT_RE.search(html):
+        signals.append("Rich text data-block-key attribute")
+    if RESPONSIVE_EMBED_RE.search(html):
+        signals.append("Responsive embed container (responsive-object)")
+    if STREAMFIELD_BLOCK_RE.search(html):
+        signals.append("StreamField block classes (w-block-*)")
     return signals
 
 
@@ -647,7 +680,7 @@ BANNER_HIDE_CSS = """\
 #onetrust-consent-sdk, #onetrust-banner-sdk, #onetrust-pc-sdk,
 #optanon-popup-bg, .optanon-show-settings,
 #CybotCookiebotDialog, #CybotCookiebotDialogBodyUnderlay, .CybotCookiebotDialogBodyOverlay,
-#usercentrics-root, #usercentrics-cmp-ui,
+#usercentrics-root, #usercentrics-cmp-ui, #fc-consent-root,
 #didomi-host, #didomi-popup, .didomi-host,
 #sp_message_container, .sp-message-container, #sp_privacy_manager_container,
 #qc-cmp2-container, #qc-cmp2-ui, .qc-cmp2-summary-buttons,
@@ -687,7 +720,10 @@ BANNER_HIDE_CSS = """\
    hide recipe content on food blogs (e.g. .cookie-recipes-grid) and blank
    the screenshot. The i flag covers CamelCase classes. */
 div[class*="cookie" i], section[class*="cookie" i], aside[class*="cookie" i],
-footer[class*="cookie" i], header[class*="cookie" i], dialog[class*="cookie" i]
+footer[class*="cookie" i], header[class*="cookie" i], dialog[class*="cookie" i],
+/* Same scoping for id-based banners: id attribute mentioning "cookie". */
+div[id*="cookie" i], section[id*="cookie" i], aside[id*="cookie" i],
+footer[id*="cookie" i], header[id*="cookie" i], dialog[id*="cookie" i]
 """
 CONSENT_INIT_JS = """\
 (() => {
