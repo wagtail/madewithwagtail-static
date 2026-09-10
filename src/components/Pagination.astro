@@ -19,6 +19,12 @@ const { page } = Astro.props;
 
 const showPagination = page.lastPage > 1;
 
+const numberedPageUrl = (n: number) => {
+  if (n === 1) return page.url.first ?? page.url.current;
+  // Numbered pages live at /page/N; derive the pattern from the last page's URL.
+  return (page.url.last ?? page.url.current).replace(/\/\d+$/, `/${n}`);
+};
+
 const paginationWindow = Array.from({ length: page.lastPage }, (_, i) => i + 1).filter((n) => {
   const start = Math.max(1, page.currentPage - 2);
   const end = Math.min(page.lastPage, page.currentPage + 2);
@@ -46,7 +52,7 @@ const paginationWindow = Array.from({ length: page.lastPage }, (_, i) => i + 1).
           <span class="pagination__current">{n}</span>
         ) : (
           <a
-            href={page.url.first && n === 1 ? page.url.first : page.url.current.replace(/\/\d+$/, `/${n}`)}
+            href={numberedPageUrl(n)}
             class="pagination__link"
           >
             {n}
