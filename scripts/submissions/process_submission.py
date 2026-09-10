@@ -76,7 +76,7 @@ class Proposal(BaseModel):
     submission_type: Literal["existing-developer", "new-developer"]
     site_url: str = Field(min_length=1, max_length=2000)
     site_title: str = Field(min_length=1, max_length=80)
-    site_description: str = Field(min_length=1, max_length=500)
+    site_description: str = Field(min_length=1, max_length=800)
     tags: list[str] = Field(max_length=5)
     developer_name: str = Field(min_length=1, max_length=80)
     developer_slug: str = Field(pattern=SLUG_RE)
@@ -1389,7 +1389,7 @@ def build_proposal(
             submitted_at=now or utcnow(),
         )
     except ValidationError as exc:
-        # Model-level caps (title > 80, description > 500, ...) are reachable
+        # Model-level caps (title > 80, description > 800, ...) are reachable
         # through the real form — they must surface as a structured rejection,
         # not an exit-1 traceback that silently drops the submission.
         raise Rejection(*(_proposal_error_reason(error) for error in exc.errors())) from exc
@@ -1398,7 +1398,7 @@ def build_proposal(
 # Model-level constraints on user-editable fields, mapped to rejection copy.
 PROPOSAL_ERROR_REASONS = {
     "site_title": "The site title must be at most 80 characters.",
-    "site_description": "The short description must be at most 500 characters.",
+    "site_description": "The short description must be at most 800 characters.",
     "developer_name": "The developer name must be at most 80 characters.",
     "tags": "Choose at most 5 tags.",
     "location": "The location must be at most 100 characters.",

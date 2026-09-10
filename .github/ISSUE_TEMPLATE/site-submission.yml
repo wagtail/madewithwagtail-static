@@ -1,6 +1,6 @@
 name: Site submission
 description: Propose a site built with Wagtail for the showcase
-title: "[Site submission] "
+title: '[Site submission] '
 body:
   - type: dropdown
     id: submission-type
@@ -22,14 +22,14 @@ body:
     id: site-title
     attributes:
       label: Site title
-      description: The site's name, as it should appear in the showcase
+      description: The site's name, as it should appear in the showcase (max 80 characters)
     validations:
       required: true
   - type: textarea
     id: site-description
     attributes:
       label: Short description
-      description: 2–3 sentences describing the site
+      description: 2–3 sentences describing the site (max 800 characters)
     validations:
       required: true
   - type: dropdown
@@ -69,49 +69,49 @@ body:
     id: developer
     attributes:
       label: Developer
-      description: "The agency or developer that built the site. For an existing profile, use the name exactly as it appears on the site."
+      description: 'The agency or developer that built the site. For an existing profile, use the name exactly as it appears on the site, skip all other fields. (max 80 characters)'
     validations:
       required: true
   - type: input
     id: company-url
     attributes:
       label: Company URL
-      description: The developer's website (skip if the developer is already listed)
+      description: Optional the developer's website
     validations:
       required: false
   - type: input
     id: location
     attributes:
       label: Location
-      description: e.g. Stockholm, Sweden (skip if the developer is already listed)
+      description: Optional - For example 'Stockholm, Sweden', max 100 characters
     validations:
       required: false
   - type: input
     id: latitude
     attributes:
       label: Latitude
-      description: Decimal degrees, e.g. 59.3427 (skip if the developer is already listed)
+      description: Optional - Decimal degrees, e.g. 59.3427
     validations:
       required: false
   - type: input
     id: longitude
     attributes:
       label: Longitude
-      description: Decimal degrees, e.g. 18.0612 (skip if the developer is already listed)
+      description: Optional - Decimal degrees, e.g. 18.0612
     validations:
       required: false
   - type: input
     id: github-user
     attributes:
       label: GitHub username
-      description: The developer's GitHub username (skip if the developer is already listed)
+      description: Optional - the developer's GitHub username
     validations:
       required: false
   - type: input
     id: logo-url
     attributes:
       label: Logo URL
-      description: Optional direct URL to the developer's logo (we'll try the site's favicon otherwise)
+      description: Optional - direct URL to the developer's logo (we'll try the site's favicon otherwise)
     validations:
       required: false
   - type: checkboxes

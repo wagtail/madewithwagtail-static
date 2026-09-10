@@ -192,10 +192,10 @@ class TestModelLevelRejections:
 
     def test_over_long_description_rejected(self):
         body = FORM_BODY.replace(
-            "A wonderful site about things.", "y" * 501
+            "A wonderful site about things.", "y" * 801
         )
         with pytest.raises(ps.Rejection) as excinfo:
             ps.build_proposal(
                 body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
             )
-        assert any("500" in reason for reason in excinfo.value.reasons)
+        assert any("800" in reason for reason in excinfo.value.reasons)
