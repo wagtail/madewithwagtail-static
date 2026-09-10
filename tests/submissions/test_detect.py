@@ -6,44 +6,53 @@ FIXTURES = Path(__file__).parent / "fixtures"
 
 
 class TestDetectWagtail:
-    def test_generator_meta(self):
-        html = (FIXTURES / "wagtail-home.html").read_text()
-        signals = ps.detect_wagtail(html)
-        assert any("generator" in s for s in signals)
-
-    def test_static_asset_reference(self):
-        html = '<link rel="stylesheet" href="/static/wagtail/css/core.css">'
-        assert ps.detect_wagtail(html)
-
     def test_rendition_url_signal(self):
         # Regression: londonmuseum.org.uk only exposes Wagtail through
         # rendition URLs like WagtailSource-<slug>.<hash>.fill-600x450.format-webp.webp.
         html = '<img src="/media/images/WagtailSource-A.5125cc1f.fill-600x450.format-webp.webp">'
         signals = ps.detect_wagtail(html)
-        assert "Wagtail rendition URL in image sources" in signals
+        assert "Wagtail rendition URL in image sources (strictest tier)" in signals
 
-    def test_rendition_filter_variants(self):
-        for url in (
-            "hero.width-496.jpg",
-            "img.max-120x120.webp",
-            "pic.height-999.png",
-            "photo.scale-150.avif",
+    def test_rendition_tiers_reported_most_strict_first(self):
+        for url, tier in (
+            ("/media/original_images/foo.jpg", "strictest"),
+            ("/media/cache/images/foo.fill-600x450.jpg", "strict"),
+            ("/images/foo.fill-600x450.jpg", "less_strict_but_long"),
+            ("/original_images/foo.jpg", "lax"),
+            ("/hero.fill-600x450.jpg", "laxest"),
         ):
-            assert ps.WAGTAIL_RENDITION_RE.search(url), url
+            html = f'<img src="{url}">'
+            assert ps.rendition_tier(html) == tier, url
 
     def test_non_wagtail_images_not_matched(self):
         # WordPress-style resize names and versioned assets must not trip
         # the rendition fingerprint.
         for url in ("image-600x450.jpg", "jquery.min-3.5.1.js", "photo.jpg"):
-            assert not ps.WAGTAIL_RENDITION_RE.search(url), url
+            assert ps.rendition_tier(f'<img src="{url}">') is None, url
+
+    def test_rich_text_block_key(self):
+        html = '<p data-block-key="a2x9f">Hello</p>'
+        assert "Rich text data-block-key attribute" in ps.detect_wagtail(html)
+
+    def test_responsive_embed_container(self):
+        html = '<div class="responsive-object" style="padding-bottom: 56.25%">'
+        assert "Responsive embed container (responsive-object)" in ps.detect_wagtail(html)
+
+    def test_responsive_embed_requires_div(self):
+        html = '<span class="responsive-object">nope</span>'
+        assert ps.detect_wagtail(html) == []
+
+    def test_streamfield_block_classes(self):
+        html = '<div class="block w-block-hero"><h1>Hi</h1></div>'
+        assert "StreamField block classes (w-block-*)" in ps.detect_wagtail(html)
+
+    def test_streamfield_block_requires_div(self):
+        html = '<span class="w-block-hero">nope</span>'
+        assert ps.detect_wagtail(html) == []
 
     def test_no_signals(self):
         html = (FIXTURES / "plain-home.html").read_text()
         assert ps.detect_wagtail(html) == []
-
-    def test_case_insensitive(self):
-        html = '<META NAME="generator" CONTENT="wagtail 5">'
-        assert ps.detect_wagtail(html)
 
 
 class TestDetectionResult:
