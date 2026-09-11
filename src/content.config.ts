@@ -15,7 +15,7 @@ const developers = defineCollection({
     latest_revision_created_at: z
       .union([z.string(), z.date(), z.null()])
       .transform((v) => (v instanceof Date ? v.toISOString() : (v ?? ''))),
-    // The logo lives at public/images/<id>.max-120x120.webp, derived from
+    // The logo lives at public/images/<id>/<id>.max-120x120.webp, derived from
     // the entry ID in code — no frontmatter needed.
     location: z.string().nullable().default(null),
     lat: z.string().nullable().default(null),

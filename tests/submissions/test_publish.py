@@ -29,7 +29,7 @@ class TestWriteContentFiles:
         assert "src/content/developers/example-co/example-site/index.md" in rel
         assert "src/content/developers/example-co/index.md" in rel
         assert "public/images/example-co/example-site.fill-1200x996.webp" in rel
-        assert "public/images/example-co.max-120x120.webp" in rel
+        assert "public/images/example-co/example-co.max-120x120.webp" in rel
 
     def test_existing_developer_writes_less(self, tmp_path):
         (tmp_path / "src" / "content" / "developers").mkdir(parents=True)
@@ -65,7 +65,7 @@ class TestGitAddPaths:
         (tmp_path / "src" / "content" / "developers" / "example-co" / "index.md").touch()
         (tmp_path / "public" / "images" / "example-co" / "example-site.fill-1200x996.webp").touch()
         paths = ps.git_add_paths(p, tmp_path)
-        assert tmp_path / "public/images/example-co.max-120x120.webp" not in paths
+        assert tmp_path / "public/images/example-co/example-co.max-120x120.webp" not in paths
         assert len(paths) == 3
 
     def test_includes_logo_when_written(self, tmp_path):
@@ -135,6 +135,8 @@ class TestCmdPublishPrepare:
         assert code == 0
         out = capsys.readouterr().out
         written = {line for line in out.splitlines() if line.startswith("src/") or line.startswith("public/")}
-        assert "public/images/example-co.max-120x120.webp" not in written
+        assert "public/images/example-co/example-co.max-120x120.webp" not in written
         assert (tmp_path / "repo" / "public" / "images" / "example-co" / "example-site.fill-1200x996.webp").exists()
-        assert not (tmp_path / "repo" / "public" / "images" / "example-co.max-120x120.webp").exists()
+        assert not (
+            tmp_path / "repo" / "public" / "images" / "example-co" / "example-co.max-120x120.webp"
+        ).exists()

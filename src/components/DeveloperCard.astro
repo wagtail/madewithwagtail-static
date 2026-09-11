@@ -5,7 +5,7 @@ import { withBase } from '../helpers.ts';
 interface Props {
   title: string;
   url: string;
-  // Developer entry ID: the logo lives at public/images/<id>.max-120x120.webp
+  // Developer entry ID: the logo lives at public/images/<id>/<id>.max-120x120.webp
   // when the developer has one.
   id: string;
   location: string | null;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const { title, url, id, location, sitesCount } = Astro.props;
-const logoFile = `images/${id}.max-120x120.webp`;
+const logoFile = `images/${id}/${id}.max-120x120.webp`;
 const hasLogo = existsSync(`./public/${logoFile}`);
 ---
 

@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
-import { readdirSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
@@ -10,15 +10,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
   const developers = await getCollection('developers');
-  const logoFiles = new Set(readdirSync('./public/images'));
   return developers.map((d) => ({
     // A developer's slug is their directory name, i.e. the entry ID.
     params: { slug: d.id },
     props: {
       developer: d,
-      // Logos live at public/images/<id>.max-120x120.webp when the
+      // Logos live at public/images/<id>/<id>.max-120x120.webp when the
       // developer has one.
-      logoFile: logoFiles.has(`${d.id}.max-120x120.webp`),
+      logoFile: existsSync(`./public/images/${d.id}/${d.id}.max-120x120.webp`),
     },
   }));
 }) satisfies GetStaticPaths;
@@ -53,7 +52,7 @@ function getCooperator(cooperatorSlug: string) {
         <div>
           <div class="company__logo">
             <img
-              src={withBase(`/images/${developer.id}.max-120x120.webp`)}
+              src={withBase(`/images/${developer.id}/${developer.id}.max-120x120.webp`)}
               alt={developer.data.title}
               title={developer.data.title}
             />

@@ -1636,7 +1636,7 @@ def output_paths(p: Proposal) -> dict[str, Path]:
     }
     if not p.developer_exists:
         paths["developer_md"] = Path(f"src/content/developers/{p.developer_slug}/index.md")
-        paths["logo"] = Path(f"public/images/{p.developer_slug}.max-120x120.webp")
+        paths["logo"] = Path(f"public/images/{p.developer_slug}/{p.developer_slug}.max-120x120.webp")
     return paths
 
 
