@@ -21,6 +21,7 @@ Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
 #   "pillow>=11",
 #   "pydantic>=2.10",
 #   "python-slugify>=8",
+#   "pyyaml>=6",
 #   "wappalyzer>=2,<3",
 # ]
 # ///
