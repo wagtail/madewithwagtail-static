@@ -1131,11 +1131,11 @@ BANNER_HIDE_CSS = """\
    banner-capable container elements — an unscoped [class*="cookie"] would
    hide recipe content on food blogs (e.g. .cookie-recipes-grid) and blank
    the screenshot. The i flag covers CamelCase classes. */
-div[class*="cookie" i], section[class*="cookie" i], aside[class*="cookie" i],
-footer[class*="cookie" i], header[class*="cookie" i], dialog[class*="cookie" i],
+dialog, [role="dialog"], div[class*="cookie" i], section[class*="cookie" i],
+aside[class*="cookie" i], footer[class*="cookie" i], header[class*="cookie" i],
 /* Same scoping for id-based banners: id attribute mentioning "cookie". */
 div[id*="cookie" i], section[id*="cookie" i], aside[id*="cookie" i],
-footer[id*="cookie" i], header[id*="cookie" i], dialog[id*="cookie" i]
+footer[id*="cookie" i], header[id*="cookie" i]
 """
 CONSENT_INIT_JS = """\
 (() => {
