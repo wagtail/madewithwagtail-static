@@ -55,19 +55,21 @@ jobs:
             --content-dir src/content/developers > validate-out.json
           code=$?
           set -e
+          # The script's contract: 0 accepted, 2 form rejection, anything
+          # else an unexpected error (crash) we must not close the issue on.
           if [ "$code" -eq 0 ]; then
             echo "outcome=accepted" >> "$GITHUB_OUTPUT"
-          else
+          elif [ "$code" -eq 2 ]; then
             echo "outcome=rejected" >> "$GITHUB_OUTPUT"
+          else
+            echo "outcome=error" >> "$GITHUB_OUTPUT"
           fi
       - name: Handle rejection
         if: steps.validate.outputs.outcome == 'rejected'
         run: |
-          # An unexpected crash (exit 1) leaves no usable JSON; fall back
-          # to a generic message instead of failing the comment step.
           reasons=$(jq -r '(.reasons // ["The submission could not be processed."]) | map("- " + .) | join("\n")' validate-out.json 2>/dev/null || true)
           if [ -z "$reasons" ]; then
-            reasons="- The submission could not be processed (unexpected error)."
+            reasons="- The submission could not be processed."
           fi
           {
             echo "Thanks for your submission! Unfortunately it could not be processed:"
@@ -78,6 +80,27 @@ jobs:
           } > rejection-comment.md
           gh issue comment "$ISSUE_NUMBER" --body-file rejection-comment.md --edit-last --create-if-none
           gh issue close "$ISSUE_NUMBER" --reason "not planned"
+      - name: Handle unexpected error
+        # A crashed validation is our bug, not the submitter's: tell them a
+        # maintainer will follow up and leave the issue open for triage.
+        if: steps.validate.outputs.outcome == 'error'
+        env:
+          # github.job is the numeric job ID set by the runner, so this URL
+          # points straight at the failed job's log rather than the run's
+          # job list.
+          GITHUB_JOB_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ github.job }}
+        run: |
+          {
+            echo "The submission could not be processed because of an unexpected error — likely a problem on our side rather than with your submission."
+            echo
+            echo "Check the [job log]($GITHUB_JOB_URL) for details — a maintainer will follow up."
+          } > error-comment.md
+          gh issue comment "$ISSUE_NUMBER" --body-file error-comment.md --edit-last --create-if-none
+          gh label create "needs-triage" --color e99695 --force
+          gh issue edit "$ISSUE_NUMBER" --add-label "needs-triage"
+          # Mark the run red now that the issue is labelled: the pipeline
+          # must be fixed and the submission re-run, not resubmitted.
+          exit 1
       - name: Upload proposal
         if: steps.validate.outputs.outcome == 'accepted'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

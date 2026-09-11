@@ -9,8 +9,8 @@ Subcommands:
     publish pr      --proposal <file> --detection <file> --repo-root <dir>
                     [--co-author <login> --co-author-id <id>] [--dry-run]
 
-Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
-1 unexpected error.
+Exit codes: 0 success, 2 rejection (reasons JSON printed to stdout by
+`validate`), 1 unexpected error.
 """
 
 # /// script
@@ -39,6 +39,7 @@ import socket
 import subprocess
 import sys
 import time
+import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal
@@ -2084,6 +2085,12 @@ def main() -> int:
     except Rejection as rejection:  # defensive: cmd_validate already handles it
         print(json.dumps({"reasons": rejection.reasons}), file=sys.stderr)
         return REJECTION_EXIT
+    except Exception:
+        # Unexpected errors must stay distinguishable from a form rejection:
+        # exit 1 with the traceback on stderr (never 2, never partial JSON on
+        # stdout) so callers can triage crashes instead of closing on them.
+        traceback.print_exc()
+        return ERROR_EXIT
     print(f"Unknown command: {command}", file=sys.stderr)
     return ERROR_EXIT
 
