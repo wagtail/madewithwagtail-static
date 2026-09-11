@@ -99,6 +99,16 @@ class TestClassifyTechnologies:
         classified = ps.classify_technologies(technologies)
         assert classified == {"incompatible": [], "complementary": [], "other": []}
 
+    def test_django_python_never_reported(self):
+        # Django/Python are implied for every Wagtail site, so they add no
+        # signal to the technology report.
+        technologies = {
+            "Django": {"version": "5.2", "categories": ["Web frameworks"]},
+            "Python": {"version": "3.12", "categories": ["Programming languages"]},
+        }
+        classified = ps.classify_technologies(technologies)
+        assert classified == {"incompatible": [], "complementary": [], "other": []}
+
     def test_no_categories_entry_tolerated(self):
         assert ps.classify_technologies({"Mystery": {"version": "1"}}) == {
             "incompatible": [],

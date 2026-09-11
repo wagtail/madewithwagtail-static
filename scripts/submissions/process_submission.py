@@ -486,6 +486,11 @@ COMPLEMENTARY_TECHNOLOGIES = frozenset(
     }
 )
 
+# Technologies never reported in the "Detected technologies" section:
+# Wagtail detection stays with our own HTML heuristics above, and
+# Django/Python are implied for every Wagtail site.
+UNREPORTED_TECHNOLOGIES = frozenset({"wagtail", "django", "python"})
+
 # Wappalyzer categories whose detections are relevant at all; anything else
 # (analytics, CDNs, widgets, ...) is noise for a technology report. The
 # library reports category *names* in each technology's "categories" list.
@@ -548,8 +553,7 @@ def classify_technologies(technologies: dict[str, dict]) -> dict[str, list[str]]
             for name in reportable
             if name not in INCOMPATIBLE_TECHNOLOGIES
             and name not in COMPLEMENTARY_TECHNOLOGIES
-            # Wagtail detection stays with our own heuristics above.
-            and name.casefold() != "wagtail"
+            and name.casefold() not in UNREPORTED_TECHNOLOGIES
         ),
     }
 
