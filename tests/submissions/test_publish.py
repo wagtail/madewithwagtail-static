@@ -85,6 +85,30 @@ class TestGitAddPaths:
         assert {path.name for path in paths} == {"index.md", "example-site.fill-1200x996.webp"}
 
 
+class TestCommitMessage:
+    def test_credits_issue_author(self):
+        message = ps.commit_message(make_proposal(), "thibaudcolas", "1234567")
+        assert message.startswith("Add site submission from issue #42")
+        assert (
+            "Co-authored-by: thibaudcolas <1234567+thibaudcolas@users.noreply.github.com>"
+            in message
+        )
+
+    def test_trailer_set_off_by_blank_line(self):
+        message = ps.commit_message(make_proposal(), "thibaudcolas", "1234567")
+        assert message.endswith(
+            "\n\nCo-authored-by: thibaudcolas <1234567+thibaudcolas@users.noreply.github.com>"
+        )
+
+    def test_no_co_author_omits_trailer(self):
+        message = ps.commit_message(make_proposal(), None, None)
+        assert "Co-authored-by" not in message
+
+    def test_missing_id_omits_trailer(self):
+        message = ps.commit_message(make_proposal(), "thibaudcolas", None)
+        assert "Co-authored-by" not in message
+
+
 class TestCmdPublishPrepare:
     def test_missing_logo_file_writes_without_logo(self, tmp_path, capsys):
         """The render job only writes logo.webp when one is discoverable, so

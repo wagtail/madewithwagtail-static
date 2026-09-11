@@ -6,7 +6,8 @@ Subcommands:
     render   --proposal <file> --out-dir <dir> [--url URL] -> detection.json, screenshot.webp, logo.webp
     publish prepare --proposal <file> --detection <file>
               --screenshot <file> [--logo <file>] --repo-root <dir> [--dry-run]
-    publish pr      --proposal <file> --detection <file> --repo-root <dir> [--dry-run]
+    publish pr      --proposal <file> --detection <file> --repo-root <dir>
+                    [--co-author <login> --co-author-id <id>] [--dry-run]
 
 Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
 1 unexpected error.
@@ -1728,6 +1729,19 @@ def write_content_files(
     return written
 
 
+def commit_message(
+    proposal: Proposal, co_author: str | None, co_author_id: str | None
+) -> str:
+    """Commit subject plus a Co-authored-by trailer crediting the issue author."""
+    message = f"Add site submission from issue #{proposal.issue_number}"
+    if co_author and co_author_id:
+        message += (
+            f"\n\nCo-authored-by: {co_author} "
+            f"<{co_author_id}+{co_author}@users.noreply.github.com>"
+        )
+    return message
+
+
 def run(args: list[str]) -> None:
     """Run a subprocess with list args (never a shell) and fail loudly."""
     result = subprocess.run(args, check=False)
@@ -1744,6 +1758,8 @@ def cmd_publish(argv: list[str]) -> int:
     parser.add_argument("--logo", type=Path)
     parser.add_argument("--repo-root", type=Path, default=Path("."))
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--co-author")
+    parser.add_argument("--co-author-id")
     args = parser.parse_args(argv)
     proposal = Proposal.model_validate_json(args.proposal.read_text(encoding="utf-8"))
 
@@ -1790,7 +1806,7 @@ def cmd_publish(argv: list[str]) -> int:
 
     run(["git", "checkout", "-B", branch])
     run(["git", "add", *(str(path) for path in git_add_paths(proposal, args.repo_root))])
-    run(["git", "commit", "-m", f"Add site submission from issue #{proposal.issue_number}"])
+    run(["git", "commit", "-m", commit_message(proposal, args.co_author, args.co_author_id)])
     # The branch is fully regenerated from validated artifacts each run, so
     # force pushing keeps retries idempotent when the branch (and its PR)
     # already exist from a previous pipeline run. The lease expectation must

@@ -187,11 +187,19 @@ jobs:
           git config user.name "wagtail-bot[bot]"
           git config user.email "wagtail-bot[bot]@users.noreply.github.com"
       - name: Open PR
+        # Credit the issue author as a co-author of the submission commit.
+        # The noreply email is built from the user ID so attribution keeps
+        # working even if the login changes.
+        env:
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_AUTHOR_ID: ${{ github.event.issue.user.id }}
         run: |
           uv run scripts/submissions/process_submission.py publish pr \
             --proposal validate-out.json \
             --detection rendered/detection.json \
-            --repo-root .
+            --repo-root . \
+            --co-author "$ISSUE_AUTHOR" \
+            --co-author-id "$ISSUE_AUTHOR_ID"
       - name: Comment on failure
         if: failure()
         run: |
