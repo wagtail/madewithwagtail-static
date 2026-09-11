@@ -25,15 +25,15 @@ A wonderful site about things.
 
 blog, responsive
 
-### Developer
+### Developer name
 
 Example Co
 
-### Company URL
+### Developer URL
 
 https://example.co
 
-### Location
+### Developer location
 
 Stockholm, Sweden
 
@@ -128,15 +128,15 @@ A wonderful site about things.
 
 _No response_
 
-### Developer
+### Developer name
 
 Example Co
 
-### Company URL
+### Developer URL
 
 _No response_
 
-### Location
+### Developer location
 
 _No response_
 
@@ -156,6 +156,10 @@ _No response_
 
 _No response_
 
+### Other notes
+
+_No response_
+
 ### Confirmations
 
 - [X] I am affiliated with this site or have permission to submit it.
@@ -169,12 +173,13 @@ class TestNoResponsePlaceholder:
     def test_placeholder_fields_are_unset(self):
         result = ps.parse_issue_form_body(NO_RESPONSE_BODY)
         for heading in (
-            "Company URL",
-            "Location",
+            "Developer URL",
+            "Developer location",
             "Latitude",
             "Longitude",
             "GitHub username",
             "Logo URL",
+            "Other notes",
         ):
             assert result[heading] == [], heading
         assert result["Tags"] == []

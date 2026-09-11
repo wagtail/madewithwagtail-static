@@ -114,12 +114,12 @@ class TestGatherLogoCandidates:
         )
         assert candidates[0] == "https://cdn.example/logo.png"
 
-    def test_no_company_url_yields_no_candidates(self, url_guard):
-        """Without a Company URL, only the explicit Logo URL is a candidate —
+    def test_no_developer_url_yields_no_candidates(self, url_guard):
+        """Without a Developer URL, only the explicit Logo URL is a candidate —
         the submitted site's icons are never used."""
         assert ps.gather_logo_candidates(FakeClient({}), "", None, None) == []
 
-    def test_company_page_link_icons(self, url_guard):
+    def test_developer_page_link_icons(self, url_guard):
         html = '<link rel="apple-touch-icon" href="/touch.png"><link rel="icon" href="/fav.ico">'
         candidates = ps.gather_logo_candidates(
             FakeClient({}), html, "https://example.com", None
@@ -132,7 +132,7 @@ class TestGatherLogoCandidates:
         ]
 
     def test_private_ip_absolute_link_excluded(self, url_guard):
-        # RFC 3986 join: an absolute reference in the company page wins over
+        # RFC 3986 join: an absolute reference in the developer page wins over
         # the origin — it must still pass check_public_url before fetching.
         html = '<link rel="icon" href="http://169.254.169.254/latest/meta-data/">'
         candidates = ps.gather_logo_candidates(

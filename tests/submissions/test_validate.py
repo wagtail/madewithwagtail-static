@@ -34,15 +34,15 @@ A wonderful site about things.
 
 blog, responsive
 
-### Developer
+### Developer name
 
 Example Co
 
-### Company URL
+### Developer URL
 
 https://example.co
 
-### Location
+### Developer location
 
 Stockholm, Sweden
 
@@ -66,7 +66,7 @@ exampleco
 
 
 def fake_resolver(host, port, *args, **kwargs):
-    # FORM_BODY also contains example.co (Company URL), and the duplicate-origin
+    # FORM_BODY also contains example.co (Developer URL), and the duplicate-origin
     # test rewrites the site URL to www.visitsweden.com — resolve those too.
     table = {
         "example.com": "93.184.216.34",
@@ -93,9 +93,25 @@ class TestBuildProposal:
         assert proposal.tags == ["blog", "responsive"]
         assert proposal.lat == "59.34"
 
+    def test_other_notes_captured(self):
+        body = FORM_BODY.replace(
+            "### Confirmations",
+            "### Other notes\n\nLaunched in 2024, redesign of an older site.\n\n### Confirmations",
+        )
+        proposal = ps.build_proposal(
+            body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
+        )
+        assert proposal.other_notes == "Launched in 2024, redesign of an older site."
+
+    def test_other_notes_absent_is_none(self):
+        proposal = ps.build_proposal(
+            FORM_BODY, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
+        )
+        assert proposal.other_notes is None
+
     def test_existing_developer_path(self):
         body = FORM_BODY.replace("A new site and new developer profile", "A new site on an existing profile")
-        body = body.replace("### Developer\n\nExample Co", "### Developer\n\nFröjd")
+        body = body.replace("### Developer name\n\nExample Co", "### Developer name\n\nFröjd")
         proposal = ps.build_proposal(
             body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
@@ -119,8 +135,8 @@ class TestBuildProposal:
         # left blank; they must be treated as unset, not as literal data.
         body = FORM_BODY
         for label, value in (
-            ("Company URL", "https://example.co"),
-            ("Location", "Stockholm, Sweden"),
+            ("Developer URL", "https://example.co"),
+            ("Developer location", "Stockholm, Sweden"),
             ("Latitude", "59.34"),
             ("Longitude", "18.06"),
             ("GitHub username", "exampleco"),
@@ -130,8 +146,8 @@ class TestBuildProposal:
         proposal = ps.build_proposal(
             body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
-        assert proposal.company_url is None
-        assert proposal.location is None
+        assert proposal.developer_url is None
+        assert proposal.developer_location is None
         assert proposal.lat is None
         assert proposal.lon is None
         assert proposal.github_user is None

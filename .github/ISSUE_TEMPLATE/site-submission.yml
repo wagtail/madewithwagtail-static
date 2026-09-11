@@ -1,6 +1,5 @@
 name: Site submission
 description: Propose a site built with Wagtail for the showcase
-title: '[Site submission] '
 body:
   - type: dropdown
     id: submission-type
@@ -66,23 +65,23 @@ body:
     validations:
       required: false
   - type: input
-    id: developer
+    id: developer-name
     attributes:
-      label: Developer
+      label: Developer name
       description: 'The agency or developer that built the site. For an existing profile, use the name exactly as it appears on the site, skip all other fields. (max 80 characters)'
     validations:
       required: true
   - type: input
-    id: company-url
+    id: developer-url
     attributes:
-      label: Company URL
-      description: Optional the developer's website
+      label: Developer URL
+      description: Optional - the developer's website
     validations:
       required: false
   - type: input
-    id: location
+    id: developer-location
     attributes:
-      label: Location
+      label: Developer location
       description: Optional - For example 'Stockholm, Sweden', max 100 characters
     validations:
       required: false
@@ -111,7 +110,14 @@ body:
     id: logo-url
     attributes:
       label: Logo URL
-      description: Optional - direct URL to the developer's logo (otherwise we'll look on the developer's site from the Company URL)
+      description: Optional - direct URL to the developer's logo (otherwise we'll look on the developer's site from the Developer URL)
+    validations:
+      required: false
+  - type: textarea
+    id: other-notes
+    attributes:
+      label: Other notes
+      description: Optional - anything else you'd like us to know about this submission
     validations:
       required: false
   - type: checkboxes

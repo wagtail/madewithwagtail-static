@@ -57,7 +57,8 @@ which closes the original issue. The pipeline's logic lives in
 
 All fields in the submission form are optional except the submission type, site URL,
 title, description, developer name, and the two confirmations. Skipped optional fields
-(company URL, location, latitude/longitude, GitHub username, logo URL, tags) are recorded
+(developer URL, developer location, latitude/longitude, GitHub username, logo URL,
+other notes, tags) are recorded
 by GitHub as `_No response_` and treated by the pipeline as "not provided".
 
 - **New developer profiles**: skipped location fields are written to the profile's
@@ -66,7 +67,7 @@ by GitHub as `_No response_` and treated by the pipeline as "not provided".
   line until a maintainer fills them in by editing
   `src/content/developers/<developer>/index.md`.
 - **Developer logo (new profiles)**: taken from the Logo URL field if provided,
-  otherwise discovered from the developer's own site (the Company URL) — the
+  otherwise discovered from the developer's own site (the Developer URL) — the
   submitted site's favicon is never used. If neither is available, the profile
   is committed without a logo and a maintainer adds one manually.
 - **Already-listed developers**: a submission only adds the new site page — the existing

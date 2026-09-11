@@ -84,12 +84,13 @@ class Proposal(BaseModel):
     developer_slug: str = Field(pattern=SLUG_RE)
     site_slug: str = Field(pattern=SLUG_RE)
     developer_exists: bool
-    company_url: str | None = Field(default=None, max_length=2000)
-    location: str | None = Field(default=None, max_length=100)
+    developer_url: str | None = Field(default=None, max_length=2000)
+    developer_location: str | None = Field(default=None, max_length=100)
     lat: str | None = Field(default=None)
     lon: str | None = Field(default=None)
     github_user: str | None = Field(default=None, pattern=r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$")
     logo_url: str | None = Field(default=None, max_length=2000)
+    other_notes: str | None = Field(default=None, max_length=2000)
     submitted_at: datetime
 
 
@@ -107,8 +108,8 @@ CHECKBOX_RE = re.compile(r"^- \[([xX]| )\] (.*)$", re.MULTILINE)
 # containing `### Something` must stay inside the previous field's content.
 SECTION_RE = re.compile(
     r"^### (?P<heading>Submission type|Site URL|Site title|Short description|Tags|"
-    r"Developer|Company URL|Location|Latitude|Longitude|GitHub username|Logo URL|"
-    r"Confirmations)[ \t]*$",
+    r"Developer name|Developer URL|Developer location|Latitude|Longitude|GitHub username|"
+    r"Logo URL|Other notes|Confirmations)[ \t]*$",
     re.MULTILINE,
 )
 
@@ -120,13 +121,14 @@ FORM_HEADINGS = (
     "Site title",
     "Short description",
     "Tags",
-    "Developer",
-    "Company URL",
-    "Location",
+    "Developer name",
+    "Developer URL",
+    "Developer location",
     "Latitude",
     "Longitude",
     "GitHub username",
     "Logo URL",
+    "Other notes",
     "Confirmations",
 )
 FORM_ORDER = {heading: index for index, heading in enumerate(FORM_HEADINGS)}
@@ -644,17 +646,17 @@ MANIFEST_HREF_RE = re.compile(
 def gather_logo_candidates(
     client: "httpx.Client",
     html: str,
-    company_url: str | None,
+    developer_url: str | None,
     logo_url: str | None,
     resolver=socket.getaddrinfo,
 ) -> list[str]:
     """Candidate developer-logo URLs, most authoritative first: the explicit
-    Logo URL submission, then icons declared by the Company URL's site
+    Logo URL submission, then icons declared by the Developer URL's site
     (<link> icons, web app manifest entries, conventional paths).
 
     The submitted site is deliberately NOT a logo source: the developer's
-    brand lives on their company site, and the submitter controls both the
-    Logo URL and Company URL fields. All normalized URLs run through the
+    brand lives on their own site, and the submitter controls both the
+    Logo URL and Developer URL fields. All normalized URLs run through the
     same SSRF checks as page fetches — candidates from attacker-controlled
     HTML must never bypass check_public_url."""
     import httpx
@@ -675,15 +677,15 @@ def gather_logo_candidates(
 
     if logo_url:
         add(logo_url, logo_url)
-    if not company_url:
+    if not developer_url:
         return candidates
 
-    company_parts = urlsplit(company_url)
-    company_origin = f"{company_parts.scheme}://{company_parts.netloc}"
+    developer_parts = urlsplit(developer_url)
+    developer_origin = f"{developer_parts.scheme}://{developer_parts.netloc}"
     for tag in ICON_REL_RE.findall(html):
         match = ICON_HREF_RE.search(tag)
         if match:
-            add(match.group(1), company_origin)
+            add(match.group(1), developer_origin)
     # Web app manifest: many sites declare only small favicon links but
     # list large icons (commonly 512x512) in their manifest. Best-effort:
     # an unreadable or non-JSON manifest is skipped.
@@ -693,7 +695,7 @@ def gather_logo_candidates(
             continue
         try:
             manifest_url = check_public_url(
-                str(httpx.URL(company_origin).join(match.group(1))), resolver=resolver
+                str(httpx.URL(developer_origin).join(match.group(1))), resolver=resolver
             )
             manifest = json.loads(client.get(manifest_url, timeout=5).text)
             icons = manifest.get("icons")
@@ -731,9 +733,9 @@ def gather_logo_candidates(
         )
         for _, entry in sized:
             if isinstance(entry, dict) and isinstance(entry.get("src"), str):
-                add(entry["src"], company_origin)
-    add("/apple-touch-icon.png", company_origin)
-    add("/favicon.ico", company_origin)
+                add(entry["src"], developer_origin)
+    add("/apple-touch-icon.png", developer_origin)
+    add("/favicon.ico", developer_origin)
     return candidates
 
 
@@ -1325,19 +1327,19 @@ def cmd_render(argv: list[str]) -> int:
 
         logo_bytes: bytes | None = None
         if proposal is not None and proposal.submission_type == "new-developer":
-            # Logo candidates come from the developer's own site (Company
+            # Logo candidates come from the developer's own site (Developer
             # URL), never the submitted site. Best-effort: an unreachable
-            # company page simply yields no icon candidates.
-            company_html = ""
-            if proposal.company_url:
+            # developer page simply yields no icon candidates.
+            developer_html = ""
+            if proposal.developer_url:
                 try:
-                    _, company_html = fetch_page(client, proposal.company_url)
+                    _, developer_html = fetch_page(client, proposal.developer_url)
                 except Exception:
                     pass
             logo_bytes = select_largest_logo(
                 client,
                 gather_logo_candidates(
-                    client, company_html, proposal.company_url, proposal.logo_url
+                    client, developer_html, proposal.developer_url, proposal.logo_url
                 ),
             )
     # Wappalyzer scan (headless Chromium): technology fingerprints that
@@ -1428,7 +1430,7 @@ def build_proposal(
     site_description = field("Short description")
     if not site_description:
         reasons.append("Fill in the short description.")
-    developer_name = field("Developer")
+    developer_name = field("Developer name")
     if not developer_name:
         reasons.append("Fill in the developer name.")
 
@@ -1473,12 +1475,12 @@ def build_proposal(
             reasons.append(f"{origin_key} is already in the showcase.")
 
     # Optional fields.
-    company_url = ""
-    if field("Company URL"):
+    developer_url = ""
+    if field("Developer URL"):
         try:
-            company_url = check_public_url(field("Company URL"), resolver=resolver)
+            developer_url = check_public_url(field("Developer URL"), resolver=resolver)
         except Exception as exc:
-            reasons.append(f"The company URL was rejected: {_validation_message(exc)}")
+            reasons.append(f"The developer URL was rejected: {_validation_message(exc)}")
 
     logo_url = ""
     if field("Logo URL"):
@@ -1487,7 +1489,7 @@ def build_proposal(
         except Exception as exc:
             reasons.append(f"The logo URL was rejected: {_validation_message(exc)}")
 
-    location = field("Location") or None
+    location = field("Developer location") or None
     lat = field("Latitude") or None
     lon = field("Longitude") or None
     if lat and not LAT_RE.fullmatch(lat):
@@ -1498,6 +1500,7 @@ def build_proposal(
         lon = None
 
     github_user = field("GitHub username") or None
+    other_notes = field("Other notes") or None
 
     if reasons:
         raise Rejection(*reasons)
@@ -1515,12 +1518,13 @@ def build_proposal(
             developer_slug=developer_slug,
             site_slug=site_slug,
             developer_exists=developer_exists,
-            company_url=company_url or None,
-            location=location,
+            developer_url=developer_url or None,
+            developer_location=location,
             lat=lat,
             lon=lon,
             github_user=github_user,
             logo_url=logo_url or None,
+            other_notes=other_notes,
             submitted_at=now or utcnow(),
         )
     except ValidationError as exc:
@@ -1536,7 +1540,7 @@ PROPOSAL_ERROR_REASONS = {
     "site_description": "The short description must be at most 800 characters.",
     "developer_name": "The developer name must be at most 80 characters.",
     "tags": "Choose at most 5 tags.",
-    "location": "The location must be at most 100 characters.",
+    "developer_location": "The developer location must be at most 100 characters.",
 }
 
 
@@ -1609,10 +1613,10 @@ def developer_markdown(p: Proposal) -> str:
         "title": p.developer_name,
         "first_published_at": _iso(p.submitted_at),
         "latest_revision_created_at": _iso(p.submitted_at),
-        "location": p.location,
+        "location": p.developer_location,
         "lat": p.lat,
         "lon": p.lon,
-        "company_url": p.company_url,
+        "company_url": p.developer_url,
         "twitter_handler": None,
         "github_user": p.github_user,
         "online_profiles": [],
@@ -1649,8 +1653,8 @@ def _profile_line(p: Proposal) -> str:
     new and existing profiles; the profile-page link only exists once the
     profile is live.
     """
-    if p.company_url:
-        name = f"[{p.developer_name}]({p.company_url})"
+    if p.developer_url:
+        name = f"[{p.developer_name}]({p.developer_url})"
     elif p.developer_exists:
         name = f"[{p.developer_name}]({LIVE_SITE_URL}/developers/{p.developer_slug}/)"
     else:
@@ -1763,6 +1767,13 @@ def build_pr_body(
             _committed_file_url(
                 paths["developer_md"], repo_full_name, head_sha, profile_line_count
             ),
+            "",
+        ]
+    if p.other_notes:
+        lines += [
+            "### Submitter notes",
+            "",
+            p.other_notes,
             "",
         ]
     lines += [*_detected_technologies_section(detection)]

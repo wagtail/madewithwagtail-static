@@ -35,7 +35,7 @@ class TestPrBody:
             make_proposal(
                 submission_type="existing-developer", developer_exists=True,
                 developer_slug="torchbox", developer_name="Torchbox",
-                company_url="https://torchbox.com/", tags=["tourism", "Education"],
+                developer_url="https://torchbox.com/", tags=["tourism", "Education"],
             ),
             DETECTION, "wagtail/madewithwagtail-static", "submission/issue-42", "https://run",
         )
@@ -52,7 +52,7 @@ class TestPrBody:
         )
 
     def test_developer_website_link_fallbacks(self):
-        # No company_url + existing profile: the name links to the profile
+        # No developer_url + existing profile: the name links to the profile
         # page so the row still works.
         existing = make_proposal(submission_type="existing-developer", developer_exists=True, developer_slug="torchbox", developer_name="Torchbox")
         body = ps.build_pr_body(existing, DETECTION, "r/r", "b", "https://run")
@@ -60,10 +60,23 @@ class TestPrBody:
             "[Torchbox](https://madewithwagtail.org/developers/torchbox/)"
             " - [see profile page](https://madewithwagtail.org/developers/torchbox/)" in body
         )
-        # New developer without a company_url: plain name, no dead links.
-        new = make_proposal()  # new-developer, no company_url
+        # New developer without a developer_url: plain name, no dead links.
+        new = make_proposal()  # new-developer, no developer_url
         body = ps.build_pr_body(new, DETECTION, "r/r", "b", "https://run")
         assert "| Developer | Example Co - new 🎉 |" in body
+
+    def test_submitter_notes_section_when_provided(self):
+        p = make_proposal(other_notes="Launched in 2024, redesign of an older site.")
+        body = ps.build_pr_body(p, DETECTION, "r/r", "b", "https://run")
+        assert "### Submitter notes" in body
+        assert "Launched in 2024, redesign of an older site." in body
+        # Notes sit before the detected-technologies section and checklist.
+        assert body.index("### Submitter notes") < body.index("### Detected technologies")
+        assert body.index("### Submitter notes") < body.index("### Reviewer checklist")
+
+    def test_submitter_notes_omitted_when_none(self):
+        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        assert "### Submitter notes" not in body
 
     def test_screenshot_is_table_thumbnail(self):
         p = make_proposal()

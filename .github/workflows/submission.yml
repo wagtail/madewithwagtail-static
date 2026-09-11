@@ -20,12 +20,10 @@ env:
 
 jobs:
   validate:
-    # Only run for issues created by our submission form: the body marker
-    # plus the form's title prefix. A manually created issue that merely
-    # quotes the marker must not enter (and get closed by) the pipeline.
-    if: >-
-      contains(github.event.issue.body, '### Submission type') &&
-      startsWith(github.event.issue.title, '[Site submission]')
+    # Only run for issues created by our submission form, detected by the
+    # body alone (the form's rendered headings). A manually created issue
+    # that merely quotes the marker must not enter (and get closed by) the
+    if: contains(github.event.issue.body, '### Submission type')
     # Step outputs don't cross job boundaries; without this mapping
     # needs.validate.outputs.outcome is empty and render/publish always skip.
     outputs:

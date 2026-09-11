@@ -75,7 +75,7 @@ class TestSiteMarkdown:
 
 class TestDeveloperMarkdown:
     def test_frontmatter(self):
-        p = make_proposal(location="Stockholm, Sweden", github_user="exampleco")
+        p = make_proposal(developer_location="Stockholm, Sweden", github_user="exampleco")
         text = ps.developer_markdown(p)
         frontmatter = frontmatter_of(text)
         assert frontmatter["title"] == "Example Co"
