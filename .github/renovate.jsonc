@@ -17,7 +17,7 @@
   // Periodically refresh lockfiles to catch transitive dependency updates.
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true,
+    "automerge": true
   },
 
   "packageRules": [
