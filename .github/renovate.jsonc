@@ -10,13 +10,14 @@
 
   "labels": ["dependencies"],
 
+  "dependencyDashboard": false,
+
   "minimumReleaseAge": "7 days",
 
   // Periodically refresh lockfiles to catch transitive dependency updates.
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,
-    "schedule": ["before 6am on monday"]
   },
 
   "packageRules": [
