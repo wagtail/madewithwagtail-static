@@ -540,20 +540,24 @@ MANIFEST_HREF_RE = re.compile(
 def gather_logo_candidates(
     client: "httpx.Client",
     html: str,
-    origin: str,
+    company_url: str | None,
     logo_url: str | None,
     resolver=socket.getaddrinfo,
 ) -> list[str]:
-    """Candidate logo URLs: explicit submission first, then <link> icons,
-    then web app manifest entries, then conventional paths. All normalized
-    against the origin and run through the same SSRF checks as page fetches
-    — candidates from attacker-controlled HTML must never bypass
-    check_public_url."""
+    """Candidate developer-logo URLs, most authoritative first: the explicit
+    Logo URL submission, then icons declared by the Company URL's site
+    (<link> icons, web app manifest entries, conventional paths).
+
+    The submitted site is deliberately NOT a logo source: the developer's
+    brand lives on their company site, and the submitter controls both the
+    Logo URL and Company URL fields. All normalized URLs run through the
+    same SSRF checks as page fetches — candidates from attacker-controlled
+    HTML must never bypass check_public_url."""
     import httpx
 
     candidates: list[str] = []
 
-    def add(raw: str) -> None:
+    def add(raw: str, origin: str) -> None:
         try:
             absolute = str(httpx.URL(origin).join(raw))
         except ValueError:
@@ -566,11 +570,16 @@ def gather_logo_candidates(
             candidates.append(validated)
 
     if logo_url:
-        add(logo_url)
+        add(logo_url, logo_url)
+    if not company_url:
+        return candidates
+
+    company_parts = urlsplit(company_url)
+    company_origin = f"{company_parts.scheme}://{company_parts.netloc}"
     for tag in ICON_REL_RE.findall(html):
         match = ICON_HREF_RE.search(tag)
         if match:
-            add(match.group(1))
+            add(match.group(1), company_origin)
     # Web app manifest: many sites declare only small favicon links but
     # list large icons (commonly 512x512) in their manifest. Best-effort:
     # an unreadable or non-JSON manifest is skipped.
@@ -580,7 +589,7 @@ def gather_logo_candidates(
             continue
         try:
             manifest_url = check_public_url(
-                str(httpx.URL(origin).join(match.group(1))), resolver=resolver
+                str(httpx.URL(company_origin).join(match.group(1))), resolver=resolver
             )
             manifest = json.loads(client.get(manifest_url, timeout=5).text)
             icons = manifest.get("icons")
@@ -618,9 +627,9 @@ def gather_logo_candidates(
         )
         for _, entry in sized:
             if isinstance(entry, dict) and isinstance(entry.get("src"), str):
-                add(entry["src"])
-    add("/apple-touch-icon.png")
-    add("/favicon.ico")
+                add(entry["src"], company_origin)
+    add("/apple-touch-icon.png", company_origin)
+    add("/favicon.ico", company_origin)
     return candidates
 
 
@@ -1200,7 +1209,10 @@ def cmd_render(argv: list[str]) -> int:
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
-    with httpx.Client() as client:
+    # follow_redirects=True for image/manifest GETs: candidate URLs 301
+    # between www/apex origins routinely. fetch_page and probe_admin_pages
+    # manage redirects manually with per-hop SSRF checks and are unaffected.
+    with httpx.Client(follow_redirects=True) as client:
         final_url, html = fetch_page(client, target_url)
         signals = detect_wagtail(html)
         final_parts = urlsplit(final_url)
@@ -1209,9 +1221,20 @@ def cmd_render(argv: list[str]) -> int:
 
         logo_bytes: bytes | None = None
         if proposal is not None and proposal.submission_type == "new-developer":
+            # Logo candidates come from the developer's own site (Company
+            # URL), never the submitted site. Best-effort: an unreachable
+            # company page simply yields no icon candidates.
+            company_html = ""
+            if proposal.company_url:
+                try:
+                    _, company_html = fetch_page(client, proposal.company_url)
+                except Exception:
+                    pass
             logo_bytes = select_largest_logo(
                 client,
-                gather_logo_candidates(client, html, origin, proposal.logo_url),
+                gather_logo_candidates(
+                    client, company_html, proposal.company_url, proposal.logo_url
+                ),
             )
     detection = detection_result(signals, final_url)
     (args.out_dir / "detection.json").write_text(

@@ -111,7 +111,7 @@ body:
     id: logo-url
     attributes:
       label: Logo URL
-      description: Optional - direct URL to the developer's logo (we'll try the site's favicon otherwise)
+      description: Optional - direct URL to the developer's logo (otherwise we'll look on the developer's site from the Company URL)
     validations:
       required: false
   - type: checkboxes

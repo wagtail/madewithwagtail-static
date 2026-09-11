@@ -61,6 +61,10 @@ by GitHub as `_No response_` and treated by the pipeline as "not provided".
   schema in `src/content.config.ts`. The profile page simply omits the map and location
   line until a maintainer fills them in by editing
   `src/content/developers/<developer>/index.md`.
+- **Developer logo (new profiles)**: taken from the Logo URL field if provided,
+  otherwise discovered from the developer's own site (the Company URL) — the
+  submitted site's favicon is never used. If neither is available, the profile
+  is committed without a logo and a maintainer adds one manually.
 - **Already-listed developers**: a submission only adds the new site page — the existing
   profile (including its location) is never modified. If the site's page needs a new
   location or corrected profile details, edit the profile in the same pull request.
