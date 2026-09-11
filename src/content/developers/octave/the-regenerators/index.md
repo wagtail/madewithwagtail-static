@@ -1,7 +1,7 @@
 ---
 title: The Regenerators
-first_published_at: '2023-11-28 03:32:15.774108+00:00'
-latest_revision_created_at: '2023-11-28 03:32:15.774108+00:00'
+first_published_at: "2023-11-28T03:32:15.774108+00:00"
+latest_revision_created_at: "2023-11-28T03:32:15.774108+00:00"
 site_url: https://theregenerators.org/
 tags: []
 ---

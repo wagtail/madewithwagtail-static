@@ -4,7 +4,7 @@ first_published_at: "2015-12-07T10:46:24.551161+13:00"
 latest_revision_created_at: "2016-05-18T17:43:40.409090+12:00"
 location: Durham, North Carolina, US
 lat: "35.99726649999999"
-lon: " -78.90356409999998"
+lon: "-78.90356409999998"
 company_url: https://www.caktusgroup.com
 twitter_handler: "@CaktusGroup"
 github_user: caktus

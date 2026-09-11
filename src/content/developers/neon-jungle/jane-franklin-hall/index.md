@@ -2,35 +2,25 @@
 title: Jane Franklin Hall
 first_published_at: "2019-10-23T14:17:12.253323+13:00"
 latest_revision_created_at: "2019-10-23T14:17:12.113105+13:00"
-site_url: http://jane.edu.au
+site_url: https://jane.edu.au
 tags:
-  - responsive
-  - forms
-  - Education
+  - education
   - engagement
-  - ux
   - developer
-  - website
-  - python
-  - wagtail
-  - CMS
   - bookings
   - academia
   - community
   - studying
   - culture
-  - Digital Transformation
-  - design
+  - digital transformation
   - knowledge
   - courses
   - open source
-  - development
-  - Diversity
+  - diversity
   - people
   - accessibility
   - images
   - university
-  - django
   - cultural
   - school
 ---

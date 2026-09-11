@@ -5,13 +5,11 @@ latest_revision_created_at: "2022-01-11T22:43:01.641175+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://stationspatiale.com/
 tags:
-  - responsive
   - freelance
-  - plateform
+  - platform
   - algorithm
   - blog
   - matching
-  - CMS
 ---
 
 **Creation of networking platform between freelancers and companies**

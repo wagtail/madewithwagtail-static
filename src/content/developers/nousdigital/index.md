@@ -5,7 +5,7 @@ latest_revision_created_at: "2017-11-15T12:59:01.952400+13:00"
 location: Vienna, Austria
 lat: "48.208174"
 lon: "16.373819"
-company_url: http://www.nousdigital.net/
+company_url: https://www.nousdigital.net/
 twitter_handler: "@NOUSdigital"
 github_user: NOUSguide
 ---

@@ -4,8 +4,8 @@ first_published_at: "2016-09-07T22:15:33.919532+12:00"
 latest_revision_created_at: "2016-09-07T22:15:33.889348+12:00"
 location: Honolulu, Hawaii, U.S.
 lat: "21.3038056"
-lon: " -157.8599794"
-company_url: http://hawaii.edu/
+lon: "-157.8599794"
+company_url: https://hawaii.edu/
 twitter_handler: "@uhawaiinews"
 ---
 

@@ -1,11 +1,11 @@
 ---
 title: ArsitekHR
-first_published_at: '2026-09-10T08:10:47.918864+00:00'
-latest_revision_created_at: '2026-09-10T08:10:47.918864+00:00'
+first_published_at: "2026-09-10T08:10:47.918864+00:00"
+latest_revision_created_at: "2026-09-10T08:10:47.918864+00:00"
 site_url: https://www.arsitekhr.com/
 tags:
-- business
-- Education
+  - business
+  - education
 ---
 
 ArsitekHR is a human resource consultant business site with the addition of course programs, including workshops, webinars, and masterclasses.

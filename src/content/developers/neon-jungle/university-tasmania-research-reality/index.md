@@ -2,9 +2,9 @@
 title: University of Tasmania - Research to Reality
 first_published_at: "2016-02-17T21:05:09.341229+13:00"
 latest_revision_created_at: "2016-02-17T21:05:57.809804+13:00"
-site_url: http://www.utas.edu.au/news/research
+site_url: https://www.utas.edu.au/news/research
 tags:
-  - Education
+  - education
 ---
 
 The University of Tasmania needed to revamp the way they were spreading the word about the amazing research taking place on the tiny island at the bottom of the world.

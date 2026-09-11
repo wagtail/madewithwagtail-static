@@ -8,7 +8,7 @@ tags:
   - headless
   - space
   - vue
-  - GraphQL
+  - graphql
   - science
 ---
 

@@ -7,8 +7,7 @@ tags:
   - recycling
   - waste management
   - environment
-  - User-friendly
-  - responsive
+  - user-friendly
 ---
 
 Sorpa is a waste management company in the Capital Region of Iceland. Sorpa's role is to manage waste, which includes operating a reception and sorting station, landfills, gas and composting stations, six recycling stations, as well as second-hand markets.

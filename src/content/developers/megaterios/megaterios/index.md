@@ -3,11 +3,10 @@ title: Megaterios
 first_published_at: "2017-02-23T04:06:16.659424+13:00"
 latest_revision_created_at: "2017-02-23T04:06:16.621737+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://megaterios.co/
+site_url: https://megaterios.co/
 tags:
   - portfolio
   - business
-  - responsive
   - developer
 ---
 

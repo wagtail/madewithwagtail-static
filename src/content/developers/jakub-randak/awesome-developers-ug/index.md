@@ -7,7 +7,6 @@ site_url: https://awesomedevelopers.eu/
 tags:
   - portfolio
   - business
-  - responsive
 ---
 
 Delivering High-performance Cloud Integrated Platforms & Applications, from the Simple to the Complex.

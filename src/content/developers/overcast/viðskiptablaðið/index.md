@@ -6,7 +6,6 @@ site_url: https://vb.is/
 tags:
   - journalist
   - newspaper
-  - responsive
   - business news
 ---
 

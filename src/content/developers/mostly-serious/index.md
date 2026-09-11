@@ -4,7 +4,7 @@ first_published_at: "2017-03-14T04:45:27.238530+13:00"
 latest_revision_created_at: "2017-03-14T04:45:27.197163+13:00"
 location: Springfield, Missouri, United States
 lat: "37.206881"
-lon: " -93.29014949999998"
+lon: "-93.29014949999998"
 company_url: https://mostlyserious.io/
 twitter_handler: "@mostly_serious"
 ---

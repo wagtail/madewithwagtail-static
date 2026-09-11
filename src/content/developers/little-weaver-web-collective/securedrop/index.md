@@ -5,7 +5,6 @@ latest_revision_created_at: "2018-05-01T17:21:50.849464+12:00"
 site_url: https://securedrop.org/
 tags:
   - technology
-  - responsive
   - journalism
   - blog
   - security

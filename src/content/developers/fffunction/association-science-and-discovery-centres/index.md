@@ -5,8 +5,8 @@ latest_revision_created_at: "2019-09-23T11:05:51.358886+12:00"
 site_url: https://www.sciencecentres.org.uk
 tags:
   - events
-  - Training
-  - Education
+  - training
+  - education
   - science
 ---
 

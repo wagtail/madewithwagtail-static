@@ -6,7 +6,6 @@ site_url: https://www.meistaramanudur.is/
 tags:
   - snippets
   - events
-  - responsive
 ---
 
 Small event specific site for one of the largest banks in Iceland. Called Championship month, this month long event focuses on making goals and completing them, becoming a champion of your own life.

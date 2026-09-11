@@ -5,7 +5,6 @@ latest_revision_created_at: "2022-01-18T20:25:45.443144+13:00"
 site_url: https://arsskyrsla2019.sfs.is/
 tags:
   - annual report
-  - responsive
 ---
 
 Annual report 2019 for SFS.

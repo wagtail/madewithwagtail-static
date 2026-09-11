@@ -6,7 +6,6 @@ site_url: https://www.hhi.is/
 tags:
   - lottery tickets
   - electronic credentials
-  - responsive
 ---
 
 Selling lottery tickets and handle all information about winning tickets was the main goal of the website for HHÍ. We built on the latest standards, utilized electronic credentials and made all transactions as easy for participants as possible.

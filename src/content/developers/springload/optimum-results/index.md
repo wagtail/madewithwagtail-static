@@ -2,9 +2,8 @@
 title: Optimum Results
 first_published_at: "2017-04-27T19:56:59.342720+12:00"
 latest_revision_created_at: "2018-02-27T09:13:52.691128+13:00"
-site_url: http://optimumresults.co.nz/
+site_url: https://optimumresults.co.nz/
 tags:
-  - responsive
   - blog
   - marketing
 ---

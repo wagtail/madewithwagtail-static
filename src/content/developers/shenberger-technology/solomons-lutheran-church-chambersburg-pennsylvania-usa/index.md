@@ -4,8 +4,7 @@ first_published_at: "2022-01-11T04:56:01.717867+13:00"
 latest_revision_created_at: "2025-09-10T05:12:03.949932+12:00"
 site_url: https://solomonslutheran.org
 tags:
-  - Church Chambersburg Pennsylvania
-  - Lutheran Church
+  - lutheran church
 ---
 
 In 1736, the first Germans from Lancaster and York counties settled in the southern part of Franklin County. One of the earliest of these German settlements was just south of Chambersburg, known as the "Grindstone Hill" settlement. After 1764, the ingress of the Germans was so great that they soon owned the better part of Guilford Township.

@@ -5,12 +5,8 @@ latest_revision_created_at: "2025-05-19T22:50:41.074876+12:00"
 site_url: https://thehugo.co.uk/
 tags:
   - canterbury
-  - responsive
-  - webdesign
-  - website
   - data
   - hotels
-  - development
   - business
   - api
 ---

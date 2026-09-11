@@ -4,8 +4,8 @@ first_published_at: "2015-04-19T22:15:29.393985+12:00"
 latest_revision_created_at: "2018-01-03T05:56:57.562098+13:00"
 location: Leicester, UK
 lat: "52.6323686"
-lon: " -1.1338018999999804"
-company_url: http://www.rkh.co.uk/
+lon: "-1.1338018999999804"
+company_url: https://www.rkh.co.uk/
 twitter_handler: "@rkhleicester"
 github_user: rkhleics
 ---

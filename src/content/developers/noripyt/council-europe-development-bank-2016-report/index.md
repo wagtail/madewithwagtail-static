@@ -6,7 +6,6 @@ archived_at: "2022-01-14T00:02:07.630627+13:00"
 in_cooperation_with_slug: torchbox
 tags:
   - bank
-  - responsive
   - public sector
 ---
 

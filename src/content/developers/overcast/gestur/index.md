@@ -2,10 +2,9 @@
 title: Gestur
 first_published_at: "2016-10-12T13:24:43.654681+13:00"
 latest_revision_created_at: "2016-10-12T13:24:43.610969+13:00"
-site_url: http://gestur.is/en/
+site_url: https://gestur.is/en/
 tags:
   - news
-  - responsive
   - travel
 ---
 

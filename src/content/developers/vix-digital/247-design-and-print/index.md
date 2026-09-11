@@ -3,10 +3,9 @@ title: 247 Design and Print
 first_published_at: "2018-05-01T17:10:09.610994+12:00"
 latest_revision_created_at: "2018-05-01T17:10:09.565150+12:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://www.247print.net
+site_url: https://www.247print.net
 tags:
   - festival
-  - design
   - music
   - print
 ---

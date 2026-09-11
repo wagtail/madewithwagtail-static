@@ -4,7 +4,6 @@ first_published_at: "2017-11-15T12:35:29.229784+13:00"
 latest_revision_created_at: "2017-11-15T12:55:05.101542+13:00"
 site_url: https://drawn.agency
 tags:
-  - design
   - business
 ---
 

@@ -5,7 +5,6 @@ latest_revision_created_at: "2018-06-28T20:31:19.785340+12:00"
 site_url: https://intergamma.nl/
 in_cooperation_with_slug: four-digits
 tags:
-  - responsive
   - corporate
 ---
 

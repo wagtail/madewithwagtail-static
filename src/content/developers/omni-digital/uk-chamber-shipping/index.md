@@ -4,8 +4,7 @@ first_published_at: "2016-03-31T09:52:07.962892+13:00"
 latest_revision_created_at: "2016-10-06T03:57:24.103713+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.ukchamberofshipping.com
-tags:
-  - StreamField
+tags: []
 ---
 
 The UK Chamber of Shipping works with policy makers and international organisations to champion and protect the UK's shipping industry.

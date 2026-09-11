@@ -5,7 +5,7 @@ latest_revision_created_at: "2021-10-13T16:55:09.408153+13:00"
 site_url: https://fcefyn.unc.edu.ar/
 tags:
   - university
-  - Education
+  - education
   - institute
   - communication
 ---

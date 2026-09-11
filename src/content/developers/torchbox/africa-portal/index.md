@@ -5,7 +5,6 @@ latest_revision_created_at: "2018-01-16T11:01:16.361082+13:00"
 site_url: https://www.africaportal.org/
 tags:
   - news
-  - StreamField
   - non-profit
 ---
 

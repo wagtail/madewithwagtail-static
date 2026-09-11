@@ -7,7 +7,7 @@ site_url: https://leeneenfries.nl/
 tags:
   - gaining
   - sharing
-  - Friesland
+  - friesland
   - knowledge
 ---
 

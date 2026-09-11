@@ -4,9 +4,8 @@ first_published_at: "2018-03-09T17:00:28.242121+13:00"
 latest_revision_created_at: "2018-03-09T17:00:28.185218+13:00"
 site_url: https://catalystcloud.nz
 tags:
-  - responsive
-  - OpenStack
-  - IaaS
+  - openstack
+  - iaas
   - cloud
   - consultancy
   - technology

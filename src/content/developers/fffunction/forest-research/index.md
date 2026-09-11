@@ -7,11 +7,10 @@ site_url: https://forestresearch.gov.uk
 tags:
   - forestry
   - publications
-  - Research
+  - research
   - non-profit
-  - Climate Change
+  - climate change
   - public sector
-  - human-centred design
 ---
 
 A site for the principal forestry and trees research organisation of Great Britain, Forest Research. Internationally renowned for the provision of evidence and scientific services in support of sustainable forestry, they work for and with many Government departments, the devolved UK administrations, forestry and land management stakeholders and environmental NGOs at home and internationally.

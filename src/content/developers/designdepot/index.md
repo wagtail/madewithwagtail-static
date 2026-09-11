@@ -4,8 +4,8 @@ first_published_at: "2016-01-19T19:45:57.046707+13:00"
 latest_revision_created_at: "2021-02-02T11:37:25.502547+13:00"
 location: Moscow, Russia
 lat: "55.74160440000001"
-lon: " 37.60984789999998"
-company_url: http://designdepot.ru/
+lon: "37.60984789999998"
+company_url: https://designdepot.ru/
 twitter_handler: "@DesignDepot_"
 ---
 

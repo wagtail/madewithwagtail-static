@@ -8,7 +8,6 @@ tags:
   - blog
   - multilingual
   - events
-  - responsive
 ---
 
 Learn to sing or speak with an experienced voice coach, near your home or office, and leave with enormous confidence!

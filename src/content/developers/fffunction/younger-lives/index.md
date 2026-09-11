@@ -6,7 +6,6 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.youngerlives.com
 tags:
   - health
-  - human-centred design
 ---
 
 This site was created for Younger Lives, a lifestyle guidance organisation which provides support and advice on living healthily and a test applying nutrition and health expertise to assess customer's Life Age score.

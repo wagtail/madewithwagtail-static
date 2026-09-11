@@ -6,7 +6,6 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.nescode.com
 tags:
   - portfolio
-  - responsive
   - blog
 ---
 

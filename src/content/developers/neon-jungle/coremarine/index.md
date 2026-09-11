@@ -4,14 +4,13 @@ first_published_at: "2023-09-19T17:27:10.579582+12:00"
 latest_revision_created_at: "2023-09-19T17:29:15.172156+12:00"
 site_url: https://core-marine.com/
 tags:
-  - Grapple
-  - design
-  - Vercel
-  - Lottie
+  - grapple
+  - vercel
+  - lottie
   - construction
   - business
-  - GraphQL
-  - Animations
+  - graphql
+  - animations
 ---
 
 CoreMarine are mashing industry-leading software together with ocean construction and we love what they're about.

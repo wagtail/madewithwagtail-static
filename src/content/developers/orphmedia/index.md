@@ -4,7 +4,7 @@ first_published_at: "2019-09-24T11:09:36.842490+12:00"
 latest_revision_created_at: "2019-09-24T11:09:36.809466+12:00"
 location: New York, NY USA
 lat: "40.730610"
-lon: " -73.935242"
+lon: "-73.935242"
 company_url: https://orphmedia.com
 twitter_handler: "@orphmedia"
 ---

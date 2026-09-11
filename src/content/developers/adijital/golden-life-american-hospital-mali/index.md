@@ -5,7 +5,6 @@ latest_revision_created_at: "2021-12-12T04:37:46.331937+13:00"
 site_url: https://goldenlifehospital.com
 tags:
   - health
-  - responsive
   - medical
   - business
 ---

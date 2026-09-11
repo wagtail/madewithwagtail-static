@@ -5,7 +5,6 @@ latest_revision_created_at: "2018-02-27T10:51:39.605149+13:00"
 site_url: https://www.wellingtonairport.co.nz/
 tags:
   - business
-  - responsive
   - airport
   - travel
 ---

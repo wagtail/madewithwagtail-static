@@ -6,7 +6,7 @@ site_url: https://utswmed.org
 tags:
   - healthcare
   - medicine
-  - Education
+  - education
 ---
 
 UTSW Medicine in Dallas is one of the world's top academic medical centers, known for our innovative, patient-oriented medical services.

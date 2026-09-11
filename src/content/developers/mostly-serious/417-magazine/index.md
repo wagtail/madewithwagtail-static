@@ -2,7 +2,7 @@
 title: 417 Magazine
 first_published_at: "2018-03-06T15:27:27.862743+13:00"
 latest_revision_created_at: "2018-03-06T15:27:27.820279+13:00"
-site_url: http://www.417mag.com
+site_url: https://www.417mag.com
 tags:
   - news
   - media

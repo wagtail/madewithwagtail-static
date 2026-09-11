@@ -8,7 +8,7 @@ tags:
   - react
   - arts
   - maker
-  - Education
+  - education
 ---
 
 A detailed, interactive directory of all Shops and Services offered to students, faculty and staff at the California College of the arts. The front page is Wagtail + React, inner pages are pure Wagtail.

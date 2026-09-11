@@ -6,7 +6,6 @@ site_url: https://archi-bds.fr
 tags:
   - portfolio
   - agency
-  - responsive
   - blog
   - architecture
 ---

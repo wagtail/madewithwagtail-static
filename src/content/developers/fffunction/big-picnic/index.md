@@ -4,9 +4,8 @@ first_published_at: "2019-09-23T11:08:37.464486+12:00"
 latest_revision_created_at: "2024-09-17T02:58:05.790263+12:00"
 site_url: https://www.bigpicnic.net
 tags:
-  - human-centred design
   - sustainability
-  - Research
+  - research
   - events
   - food
 ---

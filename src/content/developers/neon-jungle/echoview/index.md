@@ -8,8 +8,6 @@ tags:
   - business
   - marine
   - corporate
-  - responsive
-  - design
 ---
 
 Echoview is the world’s premier software package for hydroacoustic data processing, offering an impressive suite of products and services for marine organisations.

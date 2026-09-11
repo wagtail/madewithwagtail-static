@@ -4,11 +4,10 @@ first_published_at: "2022-01-18T20:32:04.655810+13:00"
 latest_revision_created_at: "2022-01-18T20:32:04.575997+13:00"
 site_url: https://www.aka.is/
 tags:
-  - Driving school
-  - Instructor
-  - Study material
-  - Tests
-  - responsive
+  - driving school
+  - instructor
+  - study material
+  - tests
 ---
 
 Iceland Driving Instructors' Association´s website has a list of all driving instructors in the association where students can search for an instructor in their area. As well the site offers students to buy access to study materials and tests.

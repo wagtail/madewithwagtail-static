@@ -6,7 +6,6 @@ site_url: https://www.paradiseestates.ca/
 tags:
   - construction
   - luxury homes
-  - responsive
 ---
 
 Located in picturesque West Kelowna, in the heart of wine country, Paradise Estates is an exclusive gated community featuring 21 stunningly designed homes.

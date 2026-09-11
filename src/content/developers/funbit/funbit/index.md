@@ -6,7 +6,6 @@ site_url: https://funbit.no/
 tags:
   - blog
   - business
-  - design
 ---
 
 Our own agency website funbit.no.

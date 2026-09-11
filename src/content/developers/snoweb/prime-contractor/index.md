@@ -6,10 +6,7 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.maitre-oeuvre-morbihan.fr/fr/
 tags:
   - portfolio
-  - ux
-  - website
   - multilingual
-  - CMS
 ---
 
 **Creation of a prime contractor website in Morbihan**

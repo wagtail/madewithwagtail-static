@@ -6,12 +6,12 @@ site_url: https://ruralindiaonline.org/
 tags:
   - journalism
   - school
-  - Diversity
+  - diversity
   - people
-  - India
-  - Poverty
+  - india
+  - poverty
   - rural
-  - Farming
+  - farming
   - agriculture
 ---
 

@@ -5,7 +5,6 @@ latest_revision_created_at: "2017-07-21T12:13:14.723797+12:00"
 site_url: https://evonove.it/
 tags:
   - portfolio
-  - responsive
   - blog
 ---
 

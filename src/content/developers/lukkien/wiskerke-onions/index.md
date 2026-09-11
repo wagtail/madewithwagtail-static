@@ -5,7 +5,6 @@ latest_revision_created_at: "2017-02-07T13:52:10.613104+13:00"
 site_url: https://www.wiskerke-onions.nl
 tags:
   - food
-  - responsive
   - video
 ---
 

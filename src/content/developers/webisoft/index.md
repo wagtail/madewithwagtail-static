@@ -1,10 +1,10 @@
 ---
 title: Webisoft
-first_published_at: '2017-07-31T17:22:15.499117+12:00'
-latest_revision_created_at: '2017-07-31T17:22:15.471767+12:00'
+first_published_at: "2017-07-31T17:22:15.499117+12:00"
+latest_revision_created_at: "2017-07-31T17:22:15.471767+12:00"
 location: Montreal, Canada
-lat: '45.501689'
-lon: ' -73.567256'
+lat: "45.501689"
+lon: "-73.567256"
 company_url: https://webisoft.com
 ---
 

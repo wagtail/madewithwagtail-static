@@ -1,10 +1,10 @@
 ---
 title: Auguried World
-first_published_at: '2019-09-24T10:31:40.102454+12:00'
-latest_revision_created_at: '2019-09-24T10:31:40.074282+12:00'
+first_published_at: "2019-09-24T10:31:40.102454+12:00"
+latest_revision_created_at: "2019-09-24T10:31:40.074282+12:00"
 location: Singapore
-lat: '1.3344271'
-lon: '103.8845659'
+lat: "1.3344271"
+lon: "103.8845659"
 company_url: https://www.auguried.com
 github_user: mengchoontan
 ---

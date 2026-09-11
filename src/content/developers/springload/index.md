@@ -4,7 +4,7 @@ first_published_at: "2015-04-18T21:19:46.509051+12:00"
 latest_revision_created_at: "2019-09-25T10:18:03.191113+12:00"
 location: Wellington, NZ
 lat: "-41.29244389999999"
-lon: " 174.77836619999994"
+lon: "174.77836619999994"
 company_url: https://www.springload.co.nz/
 twitter_handler: "@springloadnz"
 github_user: springload

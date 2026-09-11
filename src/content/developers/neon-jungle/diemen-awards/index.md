@@ -8,8 +8,6 @@ tags:
   - creative industries
   - animation
   - awards
-  - responsive
-  - design
 ---
 
 The Diemen Awards celebrates Tasmania's best and brightest talent in commercial creativity.

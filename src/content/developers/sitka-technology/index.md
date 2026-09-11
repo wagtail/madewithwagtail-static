@@ -4,8 +4,8 @@ first_published_at: "2015-05-13T21:49:20.913067+12:00"
 latest_revision_created_at: "2016-05-18T16:37:32.496017+12:00"
 location: Portland, US
 lat: "45.5216356"
-lon: " -122.67758860000004"
-company_url: http://www.sitkatech.com/
+lon: "-122.67758860000004"
+company_url: https://www.sitkatech.com/
 twitter_handler: "@sitkatech"
 github_user: sitkatech
 ---

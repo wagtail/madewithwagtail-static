@@ -1,10 +1,8 @@
 ---
 title: Wirebox
-first_published_at: '2020-05-13T17:34:05.640253+12:00'
-latest_revision_created_at: '2020-05-13T17:34:05.596383+12:00'
+first_published_at: "2020-05-13T17:34:05.640253+12:00"
+latest_revision_created_at: "2020-05-13T17:34:05.596383+12:00"
 location: Watford, UK
-lat: 3 Leavesden Rd
-lon: ' Watford WD24 5EB'
 company_url: https://wirebox.co.uk
 twitter_handler: '@wirebox'
 ---

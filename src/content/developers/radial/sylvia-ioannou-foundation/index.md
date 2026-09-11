@@ -10,7 +10,7 @@ tags:
   - history
   - cyprus
   - digital library
-  - Typography
+  - typography
 ---
 
 Sylvia Ioannou Foundation is Celebrating its 10 years anniversary with a new website by RADIAL. The Foundation’s mission is to preserve and disseminate the historical and cultural heritage of Cyprus through research programs based on items in its collection, publications, conferences, and scholarships related to the island of Cyprus.

@@ -2,10 +2,9 @@
 title: Rummin Productions
 first_published_at: "2016-10-03T07:49:45.455178+13:00"
 latest_revision_created_at: "2018-10-24T12:07:00.170515+13:00"
-site_url: http://rummin.com/
+site_url: https://rummin.com/
 tags:
-  - Photography
-  - responsive
+  - photography
   - video
 ---
 

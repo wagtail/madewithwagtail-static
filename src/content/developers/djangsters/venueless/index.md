@@ -1,11 +1,10 @@
 ---
 title: Venueless
-first_published_at: '2026-04-28 07:40:56.630049+00:00'
-latest_revision_created_at: '2026-04-28 07:40:56.630049+00:00'
+first_published_at: "2026-04-28T07:40:56.630049+00:00"
+latest_revision_created_at: "2026-04-28T07:40:56.630049+00:00"
 site_url: https://venueless.org/de/
 tags:
-- responsive
-- events
+  - events
 ---
 
 Tailor-made website using Wagtail CMS. We created everything, from the design of the site to the custom content structure that perfectly fit their needs, allowing them to easily showcase features, prices, about us, and more.

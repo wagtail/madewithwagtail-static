@@ -5,7 +5,6 @@ latest_revision_created_at: "2018-01-16T11:25:42.504620+13:00"
 site_url: https://www.jireh.com/
 tags:
   - robots
-  - responsive
   - video
   - industrial
 ---

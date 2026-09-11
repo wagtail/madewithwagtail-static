@@ -5,7 +5,6 @@ latest_revision_created_at: "2017-03-30T00:25:41.635173+13:00"
 site_url: https://rmsanitair.nl/
 tags:
   - multilingual
-  - responsive
   - industry
 ---
 

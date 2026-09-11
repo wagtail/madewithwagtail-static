@@ -2,14 +2,13 @@
 title: JWN Energy
 first_published_at: "2016-09-01T08:21:50.324802+12:00"
 latest_revision_created_at: "2016-09-01T08:21:50.265946+12:00"
-site_url: http://www.jwnenergy.com/
+site_url: https://www.jwnenergy.com/
 tags:
-  - responsive
   - industry
   - events
   - news
   - data
-  - Research
+  - research
 ---
 
 A source for oil & gas news, data, research reports and event information—updated daily. The JWN Energy team are energy professionals who provide the information, insight and analysis people need to stay informed and understand what’s happening in the oil and gas industry.

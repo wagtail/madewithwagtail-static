@@ -5,7 +5,7 @@ latest_revision_created_at: "2016-04-19T09:56:33.572772+12:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.gebaerdensprache-lernen.ch
 tags:
-  - Education
+  - education
 ---
 
 This is a site for learning the Swiss German sign language. It also has a search engine which can be used as a dictionary for translations.

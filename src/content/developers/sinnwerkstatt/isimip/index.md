@@ -6,7 +6,6 @@ site_url: https://www.isimip.org/
 tags:
   - news
   - data
-  - responsive
 ---
 
 ISIMIP offers a framework for consistently projecting the impacts of climate change across affected sectors and spatial scales. An international network of climate-impact modellers contribute to a comprehensive and consistent picture of the world under different climate-change scenarios.

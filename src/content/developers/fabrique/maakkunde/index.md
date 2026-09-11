@@ -6,8 +6,7 @@ site_url: https://maakkunde.nl/
 in_cooperation_with_slug: four-digits
 tags:
   - museum
-  - responsive
-  - Education
+  - education
   - science
 ---
 

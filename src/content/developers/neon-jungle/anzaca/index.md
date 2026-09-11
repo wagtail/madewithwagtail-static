@@ -2,37 +2,27 @@
 title: ANZACA
 first_published_at: "2019-10-28T13:48:03.094171+13:00"
 latest_revision_created_at: "2019-10-28T13:48:02.937601+13:00"
-site_url: http://anzaca.org
+site_url: https://anzaca.org
 tags:
-  - responsive
-  - forms
-  - Education
+  - education
   - engagement
   - events
-  - ux
   - people
-  - website
   - non-profit
   - news
-  - python
-  - wagtail
   - payments
-  - CMS
   - media
   - bookings
   - booking
   - medicine
   - community
-  - Digital Transformation
-  - design
+  - digital transformation
   - open source
   - medical
-  - development
   - developer
   - accessibility
   - subscription
   - conference
-  - django
   - science
   - technology
 ---

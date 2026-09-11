@@ -3,17 +3,13 @@ title: Tas Cann
 first_published_at: "2017-11-22T11:23:27.809844+13:00"
 latest_revision_created_at: "2018-01-16T16:56:08.149364+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://tascann.com/
+site_url: https://tascann.com/
 tags:
-  - design
-  - responsive
   - industry
   - knowledge
   - company
-  - Research
-  - ux
-  - Education
-  - website
+  - research
+  - education
   - blog
   - consultancy
   - medical

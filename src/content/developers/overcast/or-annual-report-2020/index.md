@@ -6,7 +6,6 @@ site_url: https://annualreport2020.or.is/
 tags:
   - energy
   - annual report
-  - responsive
 ---
 
 A new annual report website for The Reykjavik Energy Group.

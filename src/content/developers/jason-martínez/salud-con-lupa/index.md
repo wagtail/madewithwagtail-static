@@ -6,9 +6,7 @@ site_url: https://saludconlupa.com/
 tags:
   - news
   - media
-  - responsive
   - health
-  - CMS
 ---
 
 Salud con lupa is a collaborative journalism digital platform aimed at public health. In defense of a fundamental human right, and by working in various formats, we report failures and abuse of power by the State and the market, and we create antidotes—in the form of research that we promote and develop—to the epidemic of misinformation.

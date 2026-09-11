@@ -4,7 +4,7 @@ first_published_at: "2017-01-16T16:40:08.430616+13:00"
 latest_revision_created_at: "2017-01-16T16:40:08.400320+13:00"
 location: Berlin, Germany
 lat: "52.491453"
-lon: " 13.4211373"
+lon: "13.4211373"
 company_url: https://www.acolorbright.com
 twitter_handler: "@acolorbright"
 github_user: acolorbright

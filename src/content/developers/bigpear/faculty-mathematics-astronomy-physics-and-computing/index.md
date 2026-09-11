@@ -5,7 +5,7 @@ latest_revision_created_at: "2021-10-13T16:53:05.309825+13:00"
 site_url: https://www.famaf.unc.edu.ar
 tags:
   - university
-  - Education
+  - education
   - institute
   - communication
 ---

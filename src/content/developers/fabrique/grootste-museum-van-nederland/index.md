@@ -5,7 +5,6 @@ latest_revision_created_at: "2018-01-31T13:15:40.299898+13:00"
 site_url: https://www.grootstemuseum.nl
 tags:
   - art
-  - responsive
   - multilingual
   - cultural
 ---

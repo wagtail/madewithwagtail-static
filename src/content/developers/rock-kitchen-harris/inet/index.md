@@ -5,8 +5,7 @@ latest_revision_created_at: "2017-07-17T20:29:29.287716+12:00"
 site_url: https://www.the-inet.org.uk/
 tags:
   - university
-  - responsive
-  - Education
+  - education
 ---
 
 Based at Loughborough University, The iNet runs a number of business support programmes helping SMEs across various locations.

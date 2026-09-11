@@ -5,7 +5,6 @@ latest_revision_created_at: "2017-04-20T01:36:36.345445+12:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://fydiz.com
 tags:
-  - design
   - 3d
   - marketplace
 ---

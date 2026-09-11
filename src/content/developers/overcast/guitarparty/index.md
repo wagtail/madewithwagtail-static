@@ -12,7 +12,6 @@ tags:
   - lyrics
   - piano
   - songs
-  - responsive
 ---
 
 Most popular guitar website in Iceland was rewritten from scratch using Wagtail and react.js. With over 16.000 songs, all data is managed through the Wagtail interface using ModelAdmin.

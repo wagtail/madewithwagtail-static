@@ -5,9 +5,6 @@ latest_revision_created_at: "2022-01-11T23:08:04.734929+13:00"
 site_url: https://www.brasserie-carquefou-cbs.com/
 tags:
   - seo
-  - website
-  - webdesign
-  - CMS
 ---
 
 **Creation of the website CB'S Réseau**

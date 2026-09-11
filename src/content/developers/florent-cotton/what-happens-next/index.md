@@ -5,9 +5,8 @@ latest_revision_created_at: "2016-08-31T12:30:59.246842+12:00"
 site_url: https://nrkn.fr/
 tags:
   - portfolio
-  - responsive
   - blog
-  - Photography
+  - photography
 ---
 
 A simple good ol' personal website.

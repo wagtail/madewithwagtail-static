@@ -4,7 +4,7 @@ first_published_at: "2019-09-19T19:25:01.671958+12:00"
 latest_revision_created_at: "2019-09-19T19:25:01.602921+12:00"
 location: Kansas City, United States of America
 lat: "39.136030"
-lon: " -94.577960"
+lon: "-94.577960"
 company_url: https://sjc.marketing
 ---
 

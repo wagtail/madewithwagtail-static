@@ -1,11 +1,11 @@
 ---
 title: Nerdy Trust
-first_published_at: '2017-07-07T16:08:06.899986+12:00'
-latest_revision_created_at: '2017-07-07T16:08:06.865095+12:00'
+first_published_at: "2017-07-07T16:08:06.899986+12:00"
+latest_revision_created_at: "2017-07-07T16:08:06.865095+12:00"
 location: México
-lat: '19.6620678'
-lon: ' -99.2101012'
-company_url: http://nerdytrust.com/
+lat: "19.6620678"
+lon: "-99.2101012"
+company_url: https://nerdytrust.com/
 twitter_handler: '@nerdytrust'
 ---
 

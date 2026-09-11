@@ -5,9 +5,8 @@ latest_revision_created_at: "2018-01-31T13:27:30.992866+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://wellant.nl/
 tags:
-  - responsive
   - school
-  - Education
+  - education
 ---
 
 Website for Wellantcollege, a leading, professional and green educational institution with schools in the west and the middle of the Netherlands.

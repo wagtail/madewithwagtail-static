@@ -4,7 +4,7 @@ first_published_at: "2021-12-22T15:58:30.208968+13:00"
 latest_revision_created_at: "2021-12-23T10:09:33.789116+13:00"
 site_url: https://scool.styria.hr/
 tags:
-  - Switzerland
+  - switzerland
   - public transport
   - biel
 ---

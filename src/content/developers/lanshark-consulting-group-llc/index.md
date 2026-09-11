@@ -4,7 +4,7 @@ first_published_at: "2019-09-19T19:08:58.972685+12:00"
 latest_revision_created_at: "2019-09-19T19:08:58.939706+12:00"
 location: Troy, Ohio USA
 lat: "40.006090"
-lon: " -84.231379"
+lon: "-84.231379"
 company_url: https://lanshark.com
 online_profiles:
   - https://gitlab.com/lansharkconsulting

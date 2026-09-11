@@ -1,10 +1,10 @@
 ---
 title: Nitric Software Laboratory
-first_published_at: '2022-03-01T09:52:43.964637+13:00'
-latest_revision_created_at: '2022-03-01T09:52:43.907755+13:00'
+first_published_at: "2022-03-01T09:52:43.964637+13:00"
+latest_revision_created_at: "2022-03-01T09:52:43.907755+13:00"
 location: Cape Town, South Africa
-lat: '-33.923935'
-lon: '18.413945'
+lat: "-33.923935"
+lon: "18.413945"
 company_url: https://nitric.co.za/
 github_user: nickyspag
 ---

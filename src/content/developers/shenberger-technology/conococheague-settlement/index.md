@@ -4,11 +4,10 @@ first_published_at: "2019-09-19T17:49:40.574996+12:00"
 latest_revision_created_at: "2022-01-11T04:45:52.681678+13:00"
 site_url: https://cimlg.org/
 tags:
-  - Education
+  - education
   - local history
-  - Conococheague Institute
   - library
-  - Pennsylvania history
+  - pennsylvania history
   - history
 ---
 

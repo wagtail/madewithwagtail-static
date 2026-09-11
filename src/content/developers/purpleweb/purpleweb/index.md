@@ -5,7 +5,6 @@ latest_revision_created_at: "2016-08-31T12:31:29.438947+12:00"
 site_url: https://purpleweb.fr/
 tags:
   - portfolio
-  - responsive
 ---
 
 Purpleweb is a freelance developer website. Specialised in Python, Django and Wordpress.

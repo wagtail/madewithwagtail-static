@@ -1,7 +1,7 @@
 ---
 title: Rape Crisis England & Wales
-first_published_at: '2022-06-15 13:03:59.524501+00:00'
-latest_revision_created_at: '2022-06-15 13:03:59.524501+00:00'
+first_published_at: "2022-06-15T13:03:59.524501+00:00"
+latest_revision_created_at: "2022-06-15T13:03:59.524501+00:00"
 site_url: https://rapecrisis.org.uk
 tags:
 - non-profit

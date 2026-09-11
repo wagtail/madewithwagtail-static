@@ -2,7 +2,7 @@
 title: Eric Legnini
 first_published_at: "2017-07-31T17:13:20.220073+12:00"
 latest_revision_created_at: "2017-07-31T17:13:20.186734+12:00"
-site_url: http://www.ericlegnini.com
+site_url: https://www.ericlegnini.com
 tags:
   - react
   - music

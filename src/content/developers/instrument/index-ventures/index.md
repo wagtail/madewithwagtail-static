@@ -8,9 +8,9 @@ tags:
   - fintech
   - e-commerce
   - mobility
-  - infrastructure/AI
-  - Venture capital
-  - Gaming
+  - infrastructure/ai
+  - venture capital
+  - gaming
 ---
 
 Partnering with exceptional entrepreneurs from SF to NY, London to Tel Aviv, from Seed to IPO.

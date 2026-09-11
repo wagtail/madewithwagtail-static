@@ -5,7 +5,6 @@ latest_revision_created_at: "2019-09-26T20:13:24.736484+12:00"
 site_url: https://highbiza.nl/
 tags:
   - business
-  - responsive
   - e-commerce
 ---
 

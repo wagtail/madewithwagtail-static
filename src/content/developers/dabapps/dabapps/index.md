@@ -6,8 +6,6 @@ site_url: https://www.dabapps.com
 tags:
   - portfolio
   - agency
-  - responsive
-  - ux
   - business
 ---
 

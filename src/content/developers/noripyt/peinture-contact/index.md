@@ -3,10 +3,9 @@ title: Peinture contact
 first_published_at: "2017-07-18T06:48:50.518716+12:00"
 latest_revision_created_at: "2017-11-06T09:25:29.867166+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://peinturecontact.fr/
+site_url: https://peinturecontact.fr/
 tags:
   - portfolio
-  - responsive
 ---
 
 NoriPyt made this house painter site during July 2016.

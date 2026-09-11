@@ -5,8 +5,8 @@ latest_revision_created_at: "2025-09-10T05:08:07.908274+12:00"
 site_url: https://shenbergertech.com
 tags:
   - incident response
-  - IT consulting
-  - Application development
+  - it consulting
+  - application development
   - physical security
   - digital security
 ---

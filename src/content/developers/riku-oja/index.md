@@ -4,8 +4,8 @@ first_published_at: "2017-01-16T16:20:37.361649+13:00"
 latest_revision_created_at: "2017-01-28T03:33:21.206899+13:00"
 location: Helsinki, Finland
 lat: "60.1637088"
-lon: " 24.7600957"
-company_url: http://dev.hel.fi
+lon: "24.7600957"
+company_url: https://dev.hel.fi
 github_user: City-of-Helsinki
 ---
 

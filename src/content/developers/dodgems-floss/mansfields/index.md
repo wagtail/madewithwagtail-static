@@ -5,15 +5,11 @@ latest_revision_created_at: "2025-05-19T21:38:42.419283+12:00"
 site_url: https://mansfields.net
 tags:
   - food
-  - responsive
   - industry
   - fruit
-  - Kent
-  - webdesign
-  - website
-  - development
+  - kent
   - business
-  - Farming
+  - farming
   - agriculture
 ---
 

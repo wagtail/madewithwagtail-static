@@ -6,7 +6,6 @@ site_url: https://dbportafolio-demo.herokuapp.com/
 tags:
   - portfolio
   - portafolio de contacto
-  - CMS
 ---
 
 Welcome to the portfolio project with Wagtail! For this project, create a personal web page to display your work; You can configure the entire site from an Administrator in a professional manner if you have no knowledge in programming languages.

@@ -4,7 +4,7 @@ first_published_at: "2015-12-21T18:02:19.573902+13:00"
 latest_revision_created_at: "2023-11-09T01:18:17.958855+13:00"
 location: Arnhem, The Netherlands
 lat: "51.9839248"
-lon: " 5.910747799999967"
+lon: "5.910747799999967"
 company_url: https://www.fourdigits.nl
 twitter_handler: "@fourdigits"
 github_user: fourdigits

@@ -6,7 +6,6 @@ site_url: https://www.gsdesign.com
 tags:
   - engagement
   - agency
-  - ux
   - strategy
 ---
 

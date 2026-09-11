@@ -4,8 +4,8 @@ first_published_at: "2016-03-31T09:47:42.344539+13:00"
 latest_revision_created_at: "2018-05-28T15:56:51.431641+12:00"
 location: Bristol, UK
 lat: "51.4616586"
-lon: " -2.5815373000000363"
-company_url: http://www.omni-digital.co.uk
+lon: "-2.5815373000000363"
+company_url: https://www.omni-digital.co.uk
 twitter_handler: "@digital_omni"
 ---
 

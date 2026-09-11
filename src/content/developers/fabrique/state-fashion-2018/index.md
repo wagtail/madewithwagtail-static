@@ -7,7 +7,6 @@ site_url: https://stateoffashion.org
 tags:
   - festival
   - art
-  - responsive
   - multilingual
   - cultural
 ---

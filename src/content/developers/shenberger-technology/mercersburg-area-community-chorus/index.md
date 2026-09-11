@@ -3,8 +3,7 @@ title: Mercersburg Area Community Chorus
 first_published_at: "2022-01-11T04:41:46.776881+13:00"
 latest_revision_created_at: "2025-09-10T05:15:59.224022+12:00"
 site_url: https://mercersburgchorus.org
-tags:
-  - Mercersburg Community Chorus
+tags: []
 ---
 
 The Mercersburg Area Community Chorus was established in the fall of 1975 with a performance of Handel's Messiah on Sunday, December 7. Since then the Chorus has become an important part of the regional music scene and performs a December series of 4 concerts and a spring series of 3 concerts each year at the beautiful [Irvine Memorial Chapel](https://mercersburgchorus.org/chapel/) on the campus of the [Mercersburg Academy](https://www.mercersburg.edu) in Mercersburg, Pennsylvania.

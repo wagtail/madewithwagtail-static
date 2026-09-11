@@ -1,7 +1,7 @@
 ---
 title: Samaritans
-first_published_at: '2021-09-27 14:27:04.806067+00:00'
-latest_revision_created_at: '2021-09-27 14:27:04.806067+00:00'
+first_published_at: "2021-09-27T14:27:04.806067+00:00"
+latest_revision_created_at: "2021-09-27T14:27:04.806067+00:00"
 site_url: https://www.samaritans.org/
 tags:
 - charity

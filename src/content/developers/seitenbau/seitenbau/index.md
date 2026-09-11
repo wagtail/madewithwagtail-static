@@ -3,10 +3,9 @@ title: Seitenbau
 first_published_at: "2016-09-01T08:06:31.866889+12:00"
 latest_revision_created_at: "2016-09-01T08:06:31.774273+12:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://www.seitenbau.com
+site_url: https://www.seitenbau.com
 tags:
   - portfolio
-  - responsive
   - blog
 ---
 

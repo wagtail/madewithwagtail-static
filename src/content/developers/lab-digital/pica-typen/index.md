@@ -6,7 +6,7 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.picatypen.nl/
 tags:
   - e-learning
-  - Education
+  - education
 ---
 
 Lab Digital realised a fun and interactive e-learning tool for Pica Typen which is used by thousands of children. Smart software and personal controls make this product unique. Pica Typen utilizes Wagtail to create and manage all content pages, it is an innovative platform and usable on all devices.

@@ -5,9 +5,8 @@ latest_revision_created_at: "2018-07-14T00:31:29.428695+12:00"
 site_url: https://www.paleisamsterdam.nl/en/
 tags:
   - tourism
-  - responsive
   - multilingual
-  - Amsterdam
+  - amsterdam
   - cultural
 ---
 

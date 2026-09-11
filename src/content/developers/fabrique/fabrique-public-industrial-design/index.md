@@ -5,10 +5,9 @@ latest_revision_created_at: "2018-01-31T13:07:19.387900+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.fabrique3d.com/
 tags:
-  - responsive
   - multilingual
   - industrial design
-  - portofolio
+  - portfolio
 ---
 
 Fabrique Public & Industrial Design is a sister company of Fabrique, focusing more on the real world rather than the digital one. Their varied portfolio ranges from bus shelters, interior design for public buildings to glass roof awnings and lighting solutions.

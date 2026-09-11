@@ -6,7 +6,6 @@ site_url: https://annualreport2020.icelandairgroup.is/
 tags:
   - icelandair
   - flight
-  - responsive
   - annual report
 ---
 

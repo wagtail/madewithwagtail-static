@@ -4,10 +4,8 @@ first_published_at: "2021-10-05T18:04:13.948271+13:00"
 latest_revision_created_at: "2021-10-05T18:04:13.863511+13:00"
 site_url: https://daniellewood.com.au/
 tags:
-  - Multisite
+  - multisite
   - author
-  - responsive
-  - design
 ---
 
 A versatile wordsmith, Danielle Wood writes fiction, non-fiction, essays and prose poetry, and has a growing stable of _noms-de-plume_, under which she also writes children's fiction and romantic comedies.

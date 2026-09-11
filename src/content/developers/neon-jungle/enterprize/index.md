@@ -4,32 +4,23 @@ first_published_at: "2019-10-23T17:41:26.835448+13:00"
 latest_revision_created_at: "2020-08-18T12:50:23.835521+12:00"
 site_url: https://enterprize.space/
 tags:
-  - responsive
-  - forms
-  - Education
+  - education
   - engagement
   - events
-  - ux
-  - website
   - non-profit
   - news
-  - python
-  - CMS
   - community
   - culture
   - startup
-  - design
   - company
   - open source
   - government
-  - development
   - coworking
   - developer
   - people
   - accessibility
   - subscription
   - images
-  - django
   - nonprofit
   - technology
   - cultural

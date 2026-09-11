@@ -5,9 +5,8 @@ latest_revision_created_at: "2016-09-07T23:37:18.446137+12:00"
 site_url: https://ndptc.hawaii.edu
 tags:
   - news
-  - responsive
   - social media
-  - Education
+  - education
 ---
 
 The National Disaster Preparedness Training Center deliveries FEMA training across the United States of America, to better prepare our country in the case of natural disasters. We use Wagtail to keep our users informed of the going ons of our organization.

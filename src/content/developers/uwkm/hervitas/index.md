@@ -6,7 +6,6 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.hervitas.nl/
 tags:
   - business
-  - responsive
 ---
 
 Hervitas is an organisation that specialises in the treatment of game and gamble addicts. Their site is a leadgenerator for their organisation.

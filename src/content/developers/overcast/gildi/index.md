@@ -10,7 +10,6 @@ tags:
   - pension fund
   - graphs
   - wagtail translation
-  - responsive
 ---
 
 Gildi is a progressive and dynamic pension fund that emphasizes responsible practices and good service. The Fund is the largest in Iceland, with around 250,000 fund members.

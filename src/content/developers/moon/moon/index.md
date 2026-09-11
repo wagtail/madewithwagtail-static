@@ -6,8 +6,7 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://tothemoon.uy
 tags:
   - agency
-  - responsive
-  - Latin America
+  - latin america
   - creative studio
 ---
 

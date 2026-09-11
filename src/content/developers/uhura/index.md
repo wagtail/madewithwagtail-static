@@ -4,8 +4,8 @@ first_published_at: "2016-01-19T19:55:06.699625+13:00"
 latest_revision_created_at: "2016-05-18T17:38:30.976389+12:00"
 location: Berlin, Germany
 lat: "52.5017024"
-lon: " 13.448968799999989"
-company_url: http://www.uhura.de
+lon: "13.448968799999989"
+company_url: https://www.uhura.de
 twitter_handler: "@UhuraCreative"
 github_user: uhuramedia
 ---

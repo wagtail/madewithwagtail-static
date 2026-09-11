@@ -1,14 +1,10 @@
 ---
 title: Charles Darwin Foundation
-first_published_at: '2026-03-26 11:17:13.946469+00:00'
-latest_revision_created_at: '2026-03-26 11:17:13.946469+00:00'
+first_published_at: "2026-03-26T11:17:13.946469+00:00"
+latest_revision_created_at: "2026-03-26T11:17:13.946469+00:00"
 site_url: https://www.darwinfoundation.org/en/
 tags:
-- non-profit
-- responsive
-- cms
-- django
-- wagtail
+  - non-profit
 ---
 
 The Charles Darwin Foundation has been a leading environmental research organisation in the Galápagos since 1959, and they needed a website that could better tell the story of their work and support donations from an international audience. This project mattered because the site plays an important role in communicating their scientific work and funding conservation.

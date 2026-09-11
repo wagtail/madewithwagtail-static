@@ -4,7 +4,7 @@ first_published_at: "2019-09-19T19:14:57.721169+12:00"
 latest_revision_created_at: "2019-09-19T19:14:57.686822+12:00"
 location: Cleveland, Ohio, USA
 lat: "41.500180"
-lon: " -81.696032"
+lon: "-81.696032"
 company_url: https://www.coderedcorp.com/
 twitter_handler: "@coderedcorp"
 github_user: coderedcorp

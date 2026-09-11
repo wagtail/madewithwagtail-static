@@ -5,7 +5,6 @@ latest_revision_created_at: "2022-01-10T21:58:53.188495+13:00"
 site_url: https://www.garri.is
 tags:
   - b2b
-  - responsive
   - wholesale
   - e-commerce
 ---

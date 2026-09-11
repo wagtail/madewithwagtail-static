@@ -6,7 +6,6 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://centralkitchen.nl/
 tags:
   - business
-  - responsive
 ---
 
 Central Kitchen is the standard for Sushi in the Netherlands. Fresh, healthy and delicious!

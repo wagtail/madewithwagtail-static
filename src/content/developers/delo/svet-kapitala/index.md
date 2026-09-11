@@ -10,7 +10,7 @@ tags:
   - legal
   - management
   - sales
-  - Finance
+  - finance
 ---
 
 Svet kapitala is a business magazine from Slovenia, focusing on news from economy, legal, marketing, sales, management, stocks and finance.

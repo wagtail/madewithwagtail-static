@@ -2,14 +2,12 @@
 title: Keystone Tasmania
 first_published_at: "2022-07-13T11:55:25.586572+12:00"
 latest_revision_created_at: "2022-07-13T11:55:25.500448+12:00"
-site_url: http://keystone.com.au
+site_url: https://keystone.com.au
 tags:
   - accessibility
   - e-learning
-  - ux
-  - Portal
+  - portal
   - industry
-  - responsive
 ---
 
 Keystone is the go-to organisation for facilitating building and construction industry workforce development in Tasmania. Their work is funded by a levy on building and construction projects, which then funds workforce development projects via a training subsidy across all sectors of the industry.

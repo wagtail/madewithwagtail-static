@@ -3,8 +3,6 @@ title: TechEquipt
 first_published_at: "2020-02-05T12:41:40.145822+13:00"
 latest_revision_created_at: "2020-02-05T12:41:40.096528+13:00"
 location: Narellan, Australia
-lat: 74 Alamein Ave
-lon: " Smeaton Grange NSW 2567"
 company_url: https://www.techequipt.com.au
 twitter_handler: "@TechEquipt"
 github_user: techequipt

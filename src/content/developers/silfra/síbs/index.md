@@ -7,7 +7,7 @@ site_url: https://sibs.is
 tags:
   - nonprofit
   - lifestyle
-  - Education
+  - education
   - non-profit
 ---
 

@@ -2,7 +2,7 @@
 title: Optimist Hill Campaign
 first_published_at: "2016-02-09T08:55:26.827516+13:00"
 latest_revision_created_at: "2016-02-09T08:55:26.800585+13:00"
-site_url: http://optimisthillcampaign.ca
+site_url: https://optimisthillcampaign.ca
 tags:
   - non-profit
 ---

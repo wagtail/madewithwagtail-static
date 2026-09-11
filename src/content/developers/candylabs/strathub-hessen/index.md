@@ -1,7 +1,7 @@
 ---
 title: StratHub Hessen
-first_published_at: '2021-10-12 09:40:59.012315+00:00'
-latest_revision_created_at: '2021-10-12 09:40:59.012315+00:00'
+first_published_at: "2021-10-12T09:40:59.012315+00:00"
+latest_revision_created_at: "2021-10-12T09:40:59.012315+00:00"
 site_url: https://www.starthub-hessen.de/de/
 tags: []
 ---

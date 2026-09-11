@@ -6,7 +6,6 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://ntforibd.org
 tags:
   - non-profit
-  - responsive
 ---
 
 Nutritional Therapy for IBD is a volunteer-led non-profit organization dedicated to improving the outcomes of patients with IBD through the use of nutrition. Many of our team members are individuals or family members of individuals with IBD. Our passion for this work stems from our successful experience utilizing nutritional therapy, alone or in combination with meds, to achieve remission, both clinically in resolution of symptoms and objectively via reduction of inflammatory markers and mucosal healing.

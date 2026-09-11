@@ -5,7 +5,6 @@ latest_revision_created_at: "2024-08-07T03:37:51.537408+12:00"
 site_url: https://orkuveitan.is/
 tags:
   - energy
-  - responsive
   - sustainability
 ---
 

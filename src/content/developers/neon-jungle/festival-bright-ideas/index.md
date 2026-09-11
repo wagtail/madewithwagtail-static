@@ -2,22 +2,19 @@
 title: Festival of Bright Ideas
 first_published_at: "2017-07-27T17:15:11.653471+12:00"
 latest_revision_created_at: "2018-01-16T16:56:46.971374+13:00"
-site_url: http://www.festivalofbrightideas.com.au/
+site_url: https://www.festivalofbrightideas.com.au/
 tags:
-  - responsive
-  - Education
+  - education
   - engagement
   - events
-  - ux
   - non-profit
   - city innovation
-  - Photography
-  - Research
+  - photography
+  - research
   - bookings
   - culture
   - science
-  - Network
-  - design
+  - network
   - festival
   - art
   - government

@@ -3,11 +3,11 @@ title: Nawroz University
 first_published_at: "2019-09-19T18:44:37.899638+12:00"
 latest_revision_created_at: "2019-09-19T18:44:37.855030+12:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://nawroz.edu.krd
+site_url: https://nawroz.edu.krd
 tags:
   - university
   - school
-  - Education
+  - education
 ---
 
 Nawroz University was initially named "College of Duhok University" when it was founded in 2004 by the Syndicate of Economists in Duhok Governorate, with the approval of the Prime Minister of the Iraqi Kurdistan Region on July 20, 2004.

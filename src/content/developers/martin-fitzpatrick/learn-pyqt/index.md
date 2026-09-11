@@ -5,7 +5,6 @@ latest_revision_created_at: "2019-09-23T11:55:30.864557+12:00"
 site_url: https://www.learnpyqt.com
 tags:
   - gui
-  - python
   - programming
 ---
 

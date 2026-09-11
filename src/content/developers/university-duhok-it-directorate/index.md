@@ -4,8 +4,8 @@ first_published_at: "2016-03-13T10:36:23.313269+13:00"
 latest_revision_created_at: "2016-05-18T17:28:02.462441+12:00"
 location: Duhok, Iraq
 lat: "36.8526198"
-lon: " 43.00551829999995"
-company_url: http://web.uod.ac/facilities/it-services/it-directorate
+lon: "43.00551829999995"
+company_url: https://web.uod.ac/facilities/it-services/it-directorate
 twitter_handler: "@UniDuhok"
 ---
 

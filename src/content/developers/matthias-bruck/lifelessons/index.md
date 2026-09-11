@@ -1,12 +1,10 @@
 ---
 title: lifelessons
-first_published_at: '2024-09-20 07:11:54.301099+00:00'
-latest_revision_created_at: '2024-09-20 07:11:54.301099+00:00'
+first_published_at: "2024-09-20T07:11:54.301099+00:00"
+latest_revision_created_at: "2024-09-20T07:11:54.301099+00:00"
 site_url: https://www.lifelessons.de
 tags:
-- responsive
-- e-commerce
-- cms
+  - e-commerce
 ---
 
 lifelessons.de is a specialized online platform designed to support and empower professionals in therapeutic fields. Tailored specifically for psychologists, counselors, social workers, and other mental health practitioners, the site offers online video courses, continuing education opportunities, and practical tools to enhance their professional practice.

@@ -1,11 +1,9 @@
 ---
 title: Evangelische Kirche Frankfurt und Offenbach
-first_published_at: '2021-10-12 09:31:06.492374+00:00'
-latest_revision_created_at: '2021-10-12 09:31:06.492374+00:00'
+first_published_at: "2021-10-12T09:31:06.492374+00:00"
+latest_revision_created_at: "2021-10-12T09:31:06.492374+00:00"
 site_url: https://www.efo-magazin.de/magazin/
-tags:
-- design
-- development
+tags: []
 ---
 
 The website www.efo-magazin.de is the digital magazine and website of the Evangelische Kirche Frankfurt & Offenbach all in one.

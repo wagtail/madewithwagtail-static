@@ -3,9 +3,8 @@ title: The International Luxembourg Forum on preventing nuclear catastrophe
 first_published_at: "2017-01-16T14:57:42.163942+13:00"
 latest_revision_created_at: "2017-01-16T14:57:42.120922+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://www.luxembourgforum.org/en
+site_url: https://www.luxembourgforum.org/en
 tags:
-  - responsive
   - non-profit
 ---
 

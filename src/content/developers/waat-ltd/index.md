@@ -5,7 +5,7 @@ latest_revision_created_at: "2018-05-28T16:08:04.418354+12:00"
 location: London, United Kingdom
 lat: "51.5287352"
 lon: "-0.3817799"
-company_url: http://www.waat.eu
+company_url: https://www.waat.eu
 twitter_handler: "@waateu"
 ---
 

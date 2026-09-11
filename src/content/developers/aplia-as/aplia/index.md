@@ -1,13 +1,11 @@
 ---
 title: Aplia
-first_published_at: '2022-07-06 07:47:38.293552+00:00'
-latest_revision_created_at: '2022-07-06 07:47:38.293552+00:00'
+first_published_at: "2022-07-06T07:47:38.293552+00:00"
+latest_revision_created_at: "2022-07-06T07:47:38.293552+00:00"
 site_url: https://www.aplia.no/
 tags:
-- developers
-- devops
-- ux
-- webdesign
+  - developers
+  - devops
 ---
 
 We off course use Wagtail CMS on our own websites. Aplia.no is a simple and easy site with information of our company and employees, showcase of some of our costumers, a blog section and job listings of available jobs at our company.

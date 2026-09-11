@@ -4,8 +4,8 @@ first_published_at: "2016-09-28T12:27:21.162663+13:00"
 latest_revision_created_at: "2016-09-28T12:27:21.132828+13:00"
 location: Rockville, Maryland, U.S
 lat: "39.0474745"
-lon: " -77.12499029999998"
-company_url: http://www.insidearm.com/
+lon: "-77.12499029999998"
+company_url: https://www.insidearm.com/
 twitter_handler: "@insidearm"
 ---
 

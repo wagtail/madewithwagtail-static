@@ -5,7 +5,7 @@ latest_revision_created_at: "2021-10-13T16:17:51.183164+13:00"
 site_url: https://www.pbs.org/wgbh/nova/
 tags:
   - science
-  - Education
+  - education
   - non-profit
   - news
 ---

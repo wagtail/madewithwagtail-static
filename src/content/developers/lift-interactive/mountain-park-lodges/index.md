@@ -5,7 +5,6 @@ latest_revision_created_at: "2017-11-15T13:07:52.903924+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://mpljasper.com/
 tags:
-  - responsive
   - hotels
 ---
 

@@ -4,7 +4,7 @@ first_published_at: "2016-11-18T02:44:10.003952+13:00"
 latest_revision_created_at: "2016-11-18T02:57:12.885652+13:00"
 location: Magione, Italy
 lat: "43.1428299"
-lon: " 12.223799999999983"
+lon: "12.223799999999983"
 company_url: https://evonove.it/
 twitter_handler: "@evonove"
 github_user: evonove

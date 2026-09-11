@@ -8,8 +8,7 @@ tags:
   - cars
   - tires
   - wholesale
-  - User-friendly
-  - responsive
+  - user-friendly
 ---
 
 Mítra is a wholesale company that provides customers with quality tires.

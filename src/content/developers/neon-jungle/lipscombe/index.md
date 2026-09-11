@@ -6,8 +6,6 @@ site_url: https://lipscombechildcare.asn.au/
 tags:
   - non-profit
   - images
-  - responsive
-  - design
   - business
 ---
 

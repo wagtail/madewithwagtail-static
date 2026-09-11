@@ -5,7 +5,6 @@ latest_revision_created_at: "2017-10-02T19:50:06.083511+13:00"
 site_url: https://flinthillsparanormal.com/
 tags:
   - paranormal
-  - responsive
   - non-profit
 ---
 

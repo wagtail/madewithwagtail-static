@@ -3,18 +3,14 @@ title: Poco People
 first_published_at: "2017-07-27T17:39:12.137561+12:00"
 latest_revision_created_at: "2024-09-17T03:02:09.440835+12:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://pocopeople.com.au/
+site_url: https://pocopeople.com.au/
 tags:
-  - Photography
-  - responsive
-  - design
+  - photography
   - industry
   - firm
   - gallery
   - portfolio
   - agency
-  - ux
-  - website
   - developer
   - culture
   - business

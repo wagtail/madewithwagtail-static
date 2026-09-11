@@ -4,8 +4,7 @@ first_published_at: "2016-08-31T12:25:29.802291+12:00"
 latest_revision_created_at: "2018-02-07T18:47:51.172029+13:00"
 site_url: https://www.tidetech.org/
 tags:
-  - responsive
-  - Research
+  - research
   - data
   - gis
   - maps

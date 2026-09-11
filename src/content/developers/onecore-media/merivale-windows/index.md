@@ -5,7 +5,6 @@ latest_revision_created_at: "2019-12-11T16:05:07.097765+13:00"
 site_url: https://merivalewindows.com/
 tags:
   - windows
-  - responsive
   - services
 ---
 

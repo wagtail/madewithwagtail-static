@@ -1,9 +1,9 @@
 ---
 title: dhanishvijayan
-first_published_at: '2019-11-01T12:49:13.334800+13:00'
-latest_revision_created_at: '2019-11-01T12:49:13.307560+13:00'
+first_published_at: "2019-11-01T12:49:13.334800+13:00"
+latest_revision_created_at: "2019-11-01T12:49:13.307560+13:00"
 location: Trivandrum
-company_url: http://www.elementzonline.org
+company_url: https://www.elementzonline.org
 github_user: elementzonline
 ---
 

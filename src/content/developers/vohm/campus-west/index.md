@@ -8,7 +8,6 @@ tags:
   - entertainment
   - events
   - film
-  - responsive
 ---
 
 Campus West is a cinema, theatre, arts and entertainment venue in Welwyn Garden City. We created their new Wagtail website with API integration to SeatGeek for movie and session ticketing. The Wagtail CMS gives them lots of control of their pages and presentation.

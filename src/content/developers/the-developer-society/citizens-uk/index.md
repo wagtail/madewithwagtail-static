@@ -1,14 +1,10 @@
 ---
 title: Citizens UK
-first_published_at: '2026-03-26 11:34:29.416535+00:00'
-latest_revision_created_at: '2026-03-26 11:34:29.416535+00:00'
+first_published_at: "2026-03-26T11:34:29.416535+00:00"
+latest_revision_created_at: "2026-03-26T11:34:29.416535+00:00"
 site_url: https://www.citizensuk.org
 tags:
-- non-profit
-- design
-- responsive
-- cms
-- django
+  - non-profit
 ---
 
 Citizens UK is a community organising charity made up of local chapters and campaigns across the country, so the website needed to support a wide range of groups while still feeling like one organisation. This project mattered because many of these groups are volunteer-led, and they needed to be able to manage their own content easily.

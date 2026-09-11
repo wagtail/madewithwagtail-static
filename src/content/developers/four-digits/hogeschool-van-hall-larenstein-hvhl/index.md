@@ -4,7 +4,7 @@ first_published_at: "2024-07-03T00:34:03.186973+12:00"
 latest_revision_created_at: "2024-07-03T00:34:30.457613+12:00"
 site_url: https://www.vhluas.com/
 tags:
-  - Education
+  - education
   - school
   - multilingual
 ---

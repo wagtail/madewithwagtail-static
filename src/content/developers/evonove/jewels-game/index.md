@@ -5,8 +5,7 @@ latest_revision_created_at: "2017-01-16T11:51:20.730835+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://jewels.game
 tags:
-  - responsive
-  - Gaming
+  - gaming
 ---
 
 A site for Jewels, a game for anyone who loves board games, cards, and gems.

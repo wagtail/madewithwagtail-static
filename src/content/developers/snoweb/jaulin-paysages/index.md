@@ -3,10 +3,7 @@ title: Jaulin Paysages
 first_published_at: "2022-01-11T22:33:28.355090+13:00"
 latest_revision_created_at: "2022-01-11T23:08:11.882487+13:00"
 site_url: https://www.jaulin-paysages.com/
-tags:
-  - website
-  - webdesign
-  - CMS
+tags: []
 ---
 
 **Creation of a landscape architect website Jaulin Paysages.**

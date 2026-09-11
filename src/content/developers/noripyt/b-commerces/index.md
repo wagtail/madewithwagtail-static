@@ -5,7 +5,6 @@ latest_revision_created_at: "2018-02-26T11:20:42.558469+13:00"
 site_url: https://b-commerces.fr
 tags:
   - real estate
-  - responsive
   - commerce
 ---
 

@@ -2,14 +2,12 @@
 title: University of Tasmania
 first_published_at: "2016-06-01T09:41:06.519353+12:00"
 latest_revision_created_at: "2023-09-14T16:07:40.615447+12:00"
-site_url: http://www.utas.edu.au
+site_url: https://www.utas.edu.au
 tags:
-  - responsive
-  - forms
   - images
   - video
-  - Education
-  - Research
+  - education
+  - research
   - articles
   - science
 ---

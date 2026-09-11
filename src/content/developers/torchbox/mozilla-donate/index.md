@@ -5,7 +5,7 @@ latest_revision_created_at: "2022-01-13T23:02:14.578066+13:00"
 site_url: https://donate.mozilla.org/en-GB/
 tags:
   - multilingual
-  - Wagtail localize
+  - wagtail localize
   - non-profit
 ---
 

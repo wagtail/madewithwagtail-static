@@ -3,9 +3,8 @@ title: Keraban CMS
 first_published_at: "2018-06-29T16:03:24.481057+12:00"
 latest_revision_created_at: "2018-06-29T16:03:24.447460+12:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://keraban.marcanuy.com
-tags:
-  - CMS
+site_url: https://keraban.marcanuy.com
+tags: []
 ---
 
 A website showing how a typical Keraban CMS website looks.

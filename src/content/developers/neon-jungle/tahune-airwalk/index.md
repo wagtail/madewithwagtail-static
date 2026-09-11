@@ -5,21 +5,17 @@ latest_revision_created_at: "2018-02-07T17:48:32.878515+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://tahuneadventures.com.au/
 tags:
-  - responsive
   - industry
-  - Education
+  - education
   - engagement
-  - ux
-  - website
   - maps
-  - Photography
+  - photography
   - booking
   - hotels
   - national park
   - nature
   - culture
   - travel
-  - design
   - tickets
   - developer
   - sustainability

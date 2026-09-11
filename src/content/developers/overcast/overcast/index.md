@@ -5,8 +5,7 @@ latest_revision_created_at: "2022-01-18T20:18:38.869390+13:00"
 site_url: https://www.overcast.is/
 tags:
   - clean design
-  - Overcast
-  - responsive
+  - overcast
   - portfolio
 ---
 

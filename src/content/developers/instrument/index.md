@@ -4,8 +4,8 @@ first_published_at: "2019-09-19T19:03:53.498848+12:00"
 latest_revision_created_at: "2019-09-19T19:03:53.464492+12:00"
 location: Portland, OR
 lat: "45.512231"
-lon: " 122.658719"
-company_url: http://www.instrument.com/
+lon: "122.658719"
+company_url: https://www.instrument.com/
 github_user: Instrument
 ---
 

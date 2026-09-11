@@ -8,7 +8,6 @@ tags:
   - community
   - sports club
   - news
-  - responsive
 ---
 
 It’s not every day you get to build a website that you know will be a huge part of Tasmanian cultural and sporting history.

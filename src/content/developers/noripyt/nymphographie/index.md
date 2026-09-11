@@ -3,9 +3,8 @@ title: Nymphographie
 first_published_at: "2017-07-18T06:43:15.856203+12:00"
 latest_revision_created_at: "2017-11-21T03:37:58.398024+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://nymphographie.com/
+site_url: https://nymphographie.com/
 tags:
-  - responsive
   - arts
 ---
 

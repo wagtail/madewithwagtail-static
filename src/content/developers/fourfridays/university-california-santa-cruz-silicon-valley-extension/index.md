@@ -6,7 +6,7 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.ucsc-extension.edu/
 tags:
   - silicon valley
-  - Education
+  - education
   - non-profit
 ---
 

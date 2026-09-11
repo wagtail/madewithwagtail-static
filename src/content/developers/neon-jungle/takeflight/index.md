@@ -4,21 +4,17 @@ first_published_at: "2017-11-22T11:08:58.366368+13:00"
 latest_revision_created_at: "2018-01-16T16:56:36.562209+13:00"
 site_url: https://takeflight.com.au/
 tags:
-  - responsive
   - industry
   - engagement
   - agency
-  - ux
   - people
-  - website
   - consultancy
   - chatbot
   - small-business
   - corporate
   - foundation
   - studio
-  - Digital Agency
-  - design
+  - digital agency
   - knowledge
   - company
   - developer

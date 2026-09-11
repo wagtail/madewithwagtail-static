@@ -6,7 +6,6 @@ site_url: https://www.vbpr.co.uk
 tags:
   - culture
   - music
-  - responsive
   - business
 ---
 

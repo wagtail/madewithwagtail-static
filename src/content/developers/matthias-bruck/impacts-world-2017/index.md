@@ -5,7 +5,7 @@ latest_revision_created_at: "2017-11-21T18:57:08.997338+13:00"
 site_url: https://www.impactsworld2017.org/
 tags:
   - conference
-  - Climate Change
+  - climate change
   - science
 ---
 

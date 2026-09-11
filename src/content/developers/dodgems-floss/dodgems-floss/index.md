@@ -4,15 +4,10 @@ first_published_at: "2025-02-04T04:15:46.128629+13:00"
 latest_revision_created_at: "2025-05-19T21:37:45.813195+12:00"
 site_url: https://dodgemsandfloss.com/
 tags:
-  - design
-  - responsive
-  - Kent
+  - kent
   - agency
-  - website
-  - webdesign
-  - development
   - business
-  - Digital Agency
+  - digital agency
 ---
 
 Revamping the D&F website was a labour of love, and one that we took our time over. It was a project that offered numerous learning opportunities for the whole team, many of which we will pass on to our lovely clients.

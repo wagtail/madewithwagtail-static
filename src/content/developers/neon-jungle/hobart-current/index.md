@@ -5,8 +5,6 @@ latest_revision_created_at: "2020-06-25T12:26:30.152326+12:00"
 site_url: https://hobartcurrent.com/
 tags:
   - local
-  - design
-  - responsive
   - arts
 ---
 

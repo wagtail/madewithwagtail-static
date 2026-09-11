@@ -3,20 +3,12 @@ title: Earthling
 first_published_at: "2019-10-23T18:24:41.267723+13:00"
 latest_revision_created_at: "2019-10-23T18:24:41.191103+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://earthlingcup.com/
+site_url: https://earthlingcup.com/
 tags:
-  - design
-  - responsive
-  - ux
-  - website
   - open source
-  - python
-  - wagtail
   - nature
   - sustainability
-  - CMS
   - e-commerce
-  - development
 ---
 
 Earthlings are handcrafted, sustainable, reusable cups made in Tasmania.

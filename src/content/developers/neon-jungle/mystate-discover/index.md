@@ -5,17 +5,12 @@ latest_revision_created_at: "2018-01-16T16:56:00.342742+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://discover.mystate.com.au/
 tags:
-  - design
-  - responsive
-  - Finance
+  - finance
   - industry
-  - Education
-  - ux
+  - education
   - developer
-  - website
   - it
   - accounting
-  - forms
   - commerce
   - e-learning
   - business

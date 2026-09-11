@@ -2,7 +2,7 @@
 title: Freefolk
 first_published_at: "2019-09-23T11:26:03.668885+12:00"
 latest_revision_created_at: "2019-09-23T11:26:03.629175+12:00"
-site_url: http://freefolk.com
+site_url: https://freefolk.com
 tags:
   - portfolio
   - catalog

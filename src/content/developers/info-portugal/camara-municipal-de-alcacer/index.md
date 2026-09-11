@@ -3,7 +3,7 @@ title: Câmara Municipal de Alcácer
 first_published_at: "2016-03-31T11:01:03.966637+13:00"
 latest_revision_created_at: "2016-03-31T11:01:03.929599+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: http://www.cm-alcacerdosal.pt
+site_url: https://www.cm-alcacerdosal.pt
 ---
 
 Wagtail-based website for the town hall of Alcácer.

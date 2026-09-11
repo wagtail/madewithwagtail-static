@@ -6,7 +6,7 @@ archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.goaltrainingen.nl/
 tags:
   - blog
-  - Education
+  - education
 ---
 
 Corporate site of the high quality training organisation Goaltrainingen. They are experts in personal and team development.

@@ -4,7 +4,6 @@ first_published_at: "2022-01-13T22:55:33.948920+13:00"
 latest_revision_created_at: "2022-01-13T23:12:27.737884+13:00"
 site_url: https://bloodcancer.org.uk/
 tags:
-  - responsive
   - charity
 ---
 

@@ -4,11 +4,10 @@ first_published_at: "2019-09-23T11:43:32.264621+12:00"
 latest_revision_created_at: "2019-09-23T11:43:32.219205+12:00"
 site_url: https://www.lingovo.com
 tags:
-  - responsive
   - working
   - agency
   - multilingual
-  - Multisite
+  - multisite
   - e-commerce
   - business
 ---

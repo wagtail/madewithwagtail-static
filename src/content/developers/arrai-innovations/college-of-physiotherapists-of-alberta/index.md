@@ -1,11 +1,10 @@
 ---
 title: College of Physiotherapists of Alberta
-first_published_at: '2023-03-02 21:08:44.178551+00:00'
-latest_revision_created_at: '2023-03-02 21:08:44.178551+00:00'
+first_published_at: "2023-03-02T21:08:44.178551+00:00"
+latest_revision_created_at: "2023-03-02T21:08:44.178551+00:00"
 site_url: https://www.cpta.ab.ca
 tags:
-- non-profit
-- responsive
+  - non-profit
 ---
 
 The College of Physiotherapists of Alberta (CPTA) exists to safeguard the public by regulating the practice of physiotherapy in Alberta. We continually strive for excellence in the delivery of physiotherapy services through establishing performance standards for our regulated members to ensure that all Albertans receive quality physiotherapy, regardless of age, condition or location.

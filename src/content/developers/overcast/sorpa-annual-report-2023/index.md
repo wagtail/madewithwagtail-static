@@ -5,7 +5,6 @@ latest_revision_created_at: "2024-08-07T21:41:29.475628+12:00"
 site_url: https://arsskyrsla2023.sorpa.is/
 tags:
   - annual report
-  - responsive
   - recycle
 ---
 

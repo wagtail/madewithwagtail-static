@@ -3,11 +3,8 @@ title: Made with Wagtail
 first_published_at: "2015-05-14T09:03:48.326016+12:00"
 latest_revision_created_at: "2018-02-27T09:14:54.134071+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
-site_url: ../../../index.html
-tags:
-  - design
-  - responsive
-  - forms
+site_url: https://madewithwagtail.org/
+tags: []
 ---
 
 Made with Wagtail is a showcase of sites and apps built on [Torchbox](https://torchbox.com/)'s Wagtail CMS.

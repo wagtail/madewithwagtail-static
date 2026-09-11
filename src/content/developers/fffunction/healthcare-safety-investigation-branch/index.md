@@ -5,7 +5,6 @@ latest_revision_created_at: "2019-09-23T11:07:27.693544+12:00"
 site_url: https://www.hsib.org.uk
 tags:
   - healthcare
-  - human-centred design
   - public sector
 ---
 

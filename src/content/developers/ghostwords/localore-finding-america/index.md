@@ -4,7 +4,6 @@ first_published_at: "2016-05-18T11:24:16.767667+12:00"
 latest_revision_created_at: "2016-05-18T11:24:16.719752+12:00"
 site_url: https://findingamerica.airmedia.org
 tags:
-  - responsive
   - video
   - social media
 ---

@@ -5,7 +5,6 @@ latest_revision_created_at: "2017-08-07T15:11:23.981819+12:00"
 site_url: https://fpcbozeman.org
 tags:
   - foundation
-  - responsive
   - non-profit
 ---
 

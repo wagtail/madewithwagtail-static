@@ -7,7 +7,6 @@ tags:
   - content
   - institute
   - podcasts
-  - responsive
 ---
 
 The role of the Institute of International Affairs (IIA) is to provide education, promote research, and carry out service projects in the field of international relations.

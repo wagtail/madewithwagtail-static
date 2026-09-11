@@ -1,9 +1,9 @@
 ---
 title: Hactar
-first_published_at: '2019-09-23T11:22:38.686761+12:00'
-latest_revision_created_at: '2019-09-23T11:22:38.657781+12:00'
+first_published_at: "2019-09-23T11:22:38.686761+12:00"
+latest_revision_created_at: "2019-09-23T11:22:38.657781+12:00"
 location: London
-company_url: http://www.hactar.is
+company_url: https://www.hactar.is
 twitter_handler: '@hactar'
 ---
 

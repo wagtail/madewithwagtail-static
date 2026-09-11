@@ -5,7 +5,6 @@ latest_revision_created_at: "2024-08-07T21:44:14.257384+12:00"
 site_url: https://arsskyrsla2023.or.is/
 tags:
   - energy
-  - repsonsive
   - annual report
 ---
 

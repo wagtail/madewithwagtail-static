@@ -4,8 +4,6 @@ first_published_at: "2018-03-14T16:29:40.481410+13:00"
 latest_revision_created_at: "2018-03-14T16:29:40.438623+13:00"
 site_url: https://looox.nl/nl/
 tags:
-  - design
-  - responsive
   - business
 ---
 

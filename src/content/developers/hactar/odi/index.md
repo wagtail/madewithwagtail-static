@@ -1,7 +1,7 @@
 ---
 title: ODI
-first_published_at: '2022-06-15 13:16:13.139985+00:00'
-latest_revision_created_at: '2022-06-15 13:16:13.139985+00:00'
+first_published_at: "2022-06-15T13:16:13.139985+00:00"
+latest_revision_created_at: "2022-06-15T13:16:13.139985+00:00"
 site_url: https://odi.org/en/
 tags:
 - non-profit

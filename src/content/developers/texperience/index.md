@@ -1,10 +1,8 @@
 ---
 title: texperience
-first_published_at: '2021-10-13T16:39:37.245885+13:00'
-latest_revision_created_at: '2021-10-13T16:39:37.201582+13:00'
+first_published_at: "2021-10-13T16:39:37.245885+13:00"
+latest_revision_created_at: "2021-10-13T16:39:37.201582+13:00"
 location: Aalen, Germany
-lat: Im Grosso-Markt
-lon: ' 73430 Aalen'
 company_url: https://www.texperience.de
 twitter_handler: '@texperience'
 ---

@@ -7,7 +7,7 @@ tags:
   - care
   - companies
   - organisation
-  - Education
+  - education
 ---
 
 With the 360 Playfield program we help people and organizations to implement the desired change in practice. How it works? We are happy to explain!

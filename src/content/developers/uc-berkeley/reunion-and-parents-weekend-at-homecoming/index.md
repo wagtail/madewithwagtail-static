@@ -1,7 +1,7 @@
 ---
 title: Reunion and Parents Weekend at Homecoming
-first_published_at: '2021-10-27 17:31:38.716091+00:00'
-latest_revision_created_at: '2021-10-27 17:31:38.716091+00:00'
+first_published_at: "2021-10-27T17:31:38.716091+00:00"
+latest_revision_created_at: "2021-10-27T17:31:38.716091+00:00"
 site_url: https://homecoming.berkeley.edu
 tags:
 - university

@@ -2,11 +2,10 @@
 title: Little Truffles Photography
 first_published_at: "2017-02-23T04:15:34.097621+13:00"
 latest_revision_created_at: "2017-02-23T04:16:27.126197+13:00"
-site_url: http://www.littletruffles.com
+site_url: https://www.littletruffles.com
 tags:
   - portfolio
-  - Photography
-  - responsive
+  - photography
   - gallery
 ---
 

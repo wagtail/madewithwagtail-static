@@ -4,9 +4,9 @@ first_published_at: "2019-09-19T15:12:12.630066+12:00"
 latest_revision_created_at: "2019-09-19T15:14:49.072332+12:00"
 location: Leeds
 lat: "53.801747"
-lon: " -1.547782"
-company_url: http://numiko.com
-twitter_handler: "@numiko?lang=en"
+lon: "-1.547782"
+company_url: https://numiko.com
+twitter_handler: "@numiko"
 ---
 
 Numiko are an award-winning digital agency, solving problems for our clients through user research, design and technology.

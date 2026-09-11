@@ -1,7 +1,7 @@
 ---
 title: qrcodego
-first_published_at: '2017-05-18T02:26:14.848948+12:00'
-latest_revision_created_at: '2017-05-18T02:26:14.819655+12:00'
+first_published_at: "2017-05-18T02:26:14.848948+12:00"
+latest_revision_created_at: "2017-05-18T02:26:14.819655+12:00"
 location: Krakow, Poland
 twitter_handler: '@QrCodeGo'
 ---

@@ -5,7 +5,6 @@ latest_revision_created_at: "2018-03-14T16:40:17.196839+13:00"
 site_url: https://erick.nl/
 tags:
   - business
-  - responsive
 ---
 
 Erick is an organisation that brings flexibility in your working capacity, temporarily or permanently.

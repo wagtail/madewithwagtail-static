@@ -7,7 +7,6 @@ site_url: https://www.coventry-homes.com/
 tags:
   - portfolio
   - real estate
-  - responsive
 ---
 
 As we worked closely with Coventry, we uncovered the importance of users being able to quickly find a showhome or quick possession built in the home design they'd been eyeing... or vice versa.

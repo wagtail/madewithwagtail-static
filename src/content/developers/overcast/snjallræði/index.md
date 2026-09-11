@@ -6,8 +6,6 @@ site_url: https://www.snjallraedi.is/
 tags:
   - innovation
   - start-up
-  - responsive
-  - design
 ---
 
 Snjallræði is a growth space or an incubator for innovation projects from powerful teams that are passionate about solutions to contemporary challenges and support the United Nations' global goals. There may be solutions related to healthcare, welfare technology, improved education systems, and equality issues, for example.

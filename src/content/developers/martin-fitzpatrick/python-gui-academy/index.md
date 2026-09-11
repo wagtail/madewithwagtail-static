@@ -6,7 +6,6 @@ site_url: https://pythonguis.com
 tags:
   - windows
   - gui
-  - python
 ---
 
 Python GUI Academy is a video course and tutorial site to support a book. It uses Wagtail as the base for a simple LMS (Learning Management System) allowing for group-limited access to different content. Users are added to groups following purchases.

@@ -5,9 +5,8 @@ latest_revision_created_at: "2016-04-04T18:00:18.210968+12:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://apps.wharton.upenn.edu/techblog
 tags:
-  - responsive
   - blog
-  - Education
+  - education
 ---
 
 This is a Wharton School of Business of the University of Pennsylvania blog focused on technology, with an emphasis on the tech team’s current technology stack and the experience of using that stack for building applications for Wharton.

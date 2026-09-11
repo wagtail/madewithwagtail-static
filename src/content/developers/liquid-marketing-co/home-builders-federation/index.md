@@ -2,7 +2,7 @@
 title: Home Builders Federation
 first_published_at: "2021-12-12T05:03:39.252483+13:00"
 latest_revision_created_at: "2021-12-12T05:03:39.191169+13:00"
-site_url: http://www.hbf.co.uk
+site_url: https://www.hbf.co.uk
 tags:
   - membership portal
   - trade association

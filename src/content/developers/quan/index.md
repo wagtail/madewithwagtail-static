@@ -5,6 +5,6 @@ latest_revision_created_at: "2018-01-16T10:46:53.880152+13:00"
 location: Ho Chi Minh City, Viet Nam
 lat: "10.855451"
 lon: "106.788665"
-company_url: http://quan.hoabinh.vn/
+company_url: https://quan.hoabinh.vn/
 github_user: hongquan
 ---

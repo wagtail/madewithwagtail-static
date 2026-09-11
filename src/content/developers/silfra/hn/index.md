@@ -7,7 +7,7 @@ site_url: https://hn.is
 tags:
   - agency
   - advertising
-  - Digital Agency
+  - digital agency
 ---
 
 H:N is one of Iceland's most prestigious advertising agencies. Established in 1990, H:N has been leading in design, strategic thinking and results oriented advertising.

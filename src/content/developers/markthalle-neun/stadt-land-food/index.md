@@ -6,7 +6,6 @@ site_url: https://stadtlandfood.com
 tags:
   - festival
   - food
-  - responsive
 ---
 
 Good Food for Everyone!

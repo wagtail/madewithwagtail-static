@@ -2,11 +2,10 @@
 title: Royal Alexandra Hospital Foundation
 first_published_at: "2016-09-01T08:46:42.234235+12:00"
 latest_revision_created_at: "2016-09-01T08:46:42.189233+12:00"
-site_url: http://www.royalalex.org/
+site_url: https://www.royalalex.org/
 tags:
   - news
   - events
-  - responsive
   - healthcare
   - non-profit
 ---

@@ -3,8 +3,8 @@ title: Radial
 first_published_at: "2021-12-08T15:33:25.561328+13:00"
 latest_revision_created_at: "2021-12-08T15:33:25.507345+13:00"
 location: Athens, Greece
-lat: Lat Long (37.983810
-lon: " 23.727539)"
+lat: "37.983810"
+lon: "23.727539"
 company_url: https://radial.gr/en/
 twitter_handler: "@RADIALize"
 ---

@@ -7,7 +7,6 @@ site_url: https://hermitage.nl/
 tags:
   - museum
   - art
-  - responsive
   - multilingual
   - cultural
 ---

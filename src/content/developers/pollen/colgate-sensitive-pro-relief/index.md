@@ -5,7 +5,7 @@ latest_revision_created_at: "2018-03-14T16:54:01.655274+13:00"
 archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.colgatesensitiveprorelief.com.au
 tags:
-  - FMCG
+  - fmcg
 ---
 
 A brand and sampling website for the Colgate Palmolive company and a toothpaste site that doesn't leave a bad taste in your mouth.

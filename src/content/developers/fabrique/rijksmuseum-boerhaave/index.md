@@ -7,7 +7,6 @@ site_url: https://rijksmuseumboerhaave.nl
 tags:
   - museum
   - art
-  - responsive
   - cultural
 ---
 

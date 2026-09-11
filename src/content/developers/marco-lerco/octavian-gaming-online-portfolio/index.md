@@ -5,8 +5,7 @@ latest_revision_created_at: "2016-10-12T13:38:21.592109+13:00"
 site_url: https://portfolio.octaviangaming.com/en/
 tags:
   - portfolio
-  - responsive
-  - Gaming
+  - gaming
 ---
 
 Welcome to the Octavian Online Portfolio! Here you will find technical information about Octavian games.

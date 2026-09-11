@@ -8,9 +8,7 @@ tags:
   - government
   - tourism
   - video
-  - responsive
   - images
-  - design
 ---
 
 The Brand Tasmania showcase website was designed by The20 and built in partnership by Neon Jungle. This beautiful website features an array of rich video content that takes audiences on a journey through the stories of real Tasmanians doing great things.

@@ -5,8 +5,6 @@ latest_revision_created_at: "2021-12-04T12:08:19.327605+13:00"
 site_url: https://australianmuseum.net.au/
 tags:
   - culture
-  - responsive
-  - design
   - museum
 ---
 

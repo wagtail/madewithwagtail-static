@@ -5,7 +5,6 @@ latest_revision_created_at: "2024-08-07T00:22:17.193721+12:00"
 site_url: https://www.budget.is/en/
 tags:
   - car rental
-  - responsive
   - booking
 ---
 

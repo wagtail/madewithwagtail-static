@@ -2,7 +2,7 @@
 title: MAMaSe
 first_published_at: "2016-02-09T08:45:39.566527+13:00"
 latest_revision_created_at: "2016-02-09T08:45:39.527942+13:00"
-site_url: http://mamase.org
+site_url: https://mamase.org
 tags:
   - data
   - gis

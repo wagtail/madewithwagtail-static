@@ -6,7 +6,6 @@ site_url: https://www.allianz.is/
 tags:
   - allianz
   - insurance
-  - responsive
 ---
 
 Overcast partnered with the Icelandic branch of Allianz, one of the largest insurance companies in the world, to enhance their sales operation presence on the web.The goal was to allow insurance advisors to sell Allianz services online, completing the whole process without ever putting ink on paper.

@@ -5,7 +5,6 @@ latest_revision_created_at: "2020-05-13T18:29:06.341307+12:00"
 site_url: https://salebox.io
 tags:
   - business
-  - responsive
   - multilingual
   - retail
 ---

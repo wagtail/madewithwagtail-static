@@ -3,8 +3,6 @@ title: Goldmund, Wyldebeast & Wunderliebe
 first_published_at: "2021-12-23T11:34:36.999969+13:00"
 latest_revision_created_at: "2021-12-23T11:34:36.940470+13:00"
 location: Groningen, The Netherlands
-lat: Schuitendiep 3A
-lon: " 9712 KD Groningen"
 company_url: https://goldmund-wyldebeast-wunderliebe.nl/
 twitter_handler: "@gw20e"
 github_user: Goldmund-Wyldebeast-Wunderliebe

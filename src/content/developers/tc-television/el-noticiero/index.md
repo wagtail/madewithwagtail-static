@@ -2,7 +2,7 @@
 title: El Noticiero
 first_published_at: "2016-03-13T10:21:49.577911+13:00"
 latest_revision_created_at: "2016-03-13T10:21:49.545435+13:00"
-site_url: http://www.elnoticiero.com.ec/
+site_url: https://www.elnoticiero.com.ec/
 tags:
   - news
   - blog

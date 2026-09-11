@@ -5,8 +5,6 @@ latest_revision_created_at: "2017-12-05T11:17:19.748967+13:00"
 site_url: https://sarahkugel.com
 tags:
   - portfolio
-  - design
-  - responsive
 ---
 
 Sarah Kügel is a talented freelance graphic designer with whom we often work – she’s by the way the creator of the NoriPyt logo.

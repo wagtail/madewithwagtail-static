@@ -7,7 +7,7 @@ site_url: https://academ.school/
 tags:
   - business
   - school
-  - Education
+  - education
 ---
 
 Private separate school "Dobrinya and Avrora" located in Novosibirsk, Siberia. It provides best practices in private educational for your children.

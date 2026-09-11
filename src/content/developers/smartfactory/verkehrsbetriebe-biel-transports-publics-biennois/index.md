@@ -4,7 +4,7 @@ first_published_at: "2021-12-23T10:13:29.785198+13:00"
 latest_revision_created_at: "2021-12-23T10:13:29.705886+13:00"
 site_url: https://www.vb-tpb.ch/
 tags:
-  - Switzerland
+  - switzerland
   - public transport
   - biel
 ---

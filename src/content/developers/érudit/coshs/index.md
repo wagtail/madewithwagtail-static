@@ -7,7 +7,7 @@ tags:
   - social sciences
   - opendata
   - humanities
-  - Research
+  - research
   - academia
 ---
 

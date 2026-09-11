@@ -4,7 +4,7 @@ first_published_at: "2019-09-19T18:51:57.611764+12:00"
 latest_revision_created_at: "2019-09-19T18:51:57.577135+12:00"
 location: Dallas, USA
 lat: "32.820981"
-lon: " -96.802865"
+lon: "-96.802865"
 company_url: https://insite.net
 twitter_handler: "@insitedallas"
 ---

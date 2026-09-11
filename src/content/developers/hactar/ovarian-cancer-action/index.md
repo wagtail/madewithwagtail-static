@@ -4,7 +4,7 @@ first_published_at: "2019-09-23T11:27:27.416786+12:00"
 latest_revision_created_at: "2019-09-24T10:38:06.245434+12:00"
 site_url: https://ovarian.org.uk
 tags:
-  - Research
+  - research
   - charity
   - cancer
   - non-profit

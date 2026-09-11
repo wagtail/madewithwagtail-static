@@ -7,7 +7,6 @@ tags:
   - animation
   - print
   - modern
-  - design
 ---
 
 Mercury Walch is at the top of the Tasmanian printing industry, with a reputation for providing timely and quality service for the last 20 years.

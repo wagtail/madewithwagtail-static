@@ -9,8 +9,7 @@ tags:
   - mobile-first design
   - recycle
   - products
-  - User-friendly
-  - responsive
+  - user-friendly
 ---
 
 Góði Hirðirinn is a nonprofit secondhand market owned by Sorpa, a waste management and recycling center.

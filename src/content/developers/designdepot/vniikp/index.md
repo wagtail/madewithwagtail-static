@@ -6,7 +6,7 @@ site_url: https://www.vniikp.ru/
 tags:
   - industry
   - institute
-  - Education
+  - education
 ---
 
 All-Russian Scientific Research Design and Technological Institute of the Cable Industry.

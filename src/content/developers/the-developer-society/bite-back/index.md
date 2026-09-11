@@ -1,14 +1,10 @@
 ---
 title: Bite Back
-first_published_at: '2026-03-26 11:01:06.451964+00:00'
-latest_revision_created_at: '2026-03-26 11:01:06.451964+00:00'
+first_published_at: "2026-03-26T11:01:06.451964+00:00"
+latest_revision_created_at: "2026-03-26T11:01:06.451964+00:00"
 site_url: https://www.biteback2030.com
 tags:
-- non-profit
-- responsive
-- cms
-- django
-- wagtail
+  - non-profit
 ---
 
 Bite Back is a youth-led food justice movement campaigning for a fairer food system, and this was a brilliant project to be part of. The website was designed as a vibrant, mobile-first platform that puts young people’s voices and actions at the centre of the organisation’s work.

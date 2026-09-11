@@ -2,9 +2,8 @@
 title: Helsinki Loves Developers
 first_published_at: "2017-01-16T16:24:42.951653+13:00"
 latest_revision_created_at: "2017-01-16T16:24:42.908244+13:00"
-site_url: http://dev.hel.fi
+site_url: https://dev.hel.fi
 tags:
-  - responsive
   - open source
   - government
 ---

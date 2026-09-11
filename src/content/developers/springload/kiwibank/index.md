@@ -4,11 +4,10 @@ first_published_at: "2018-02-19T18:13:32.296278+13:00"
 latest_revision_created_at: "2019-09-24T10:28:42.228117+12:00"
 site_url: https://www.kiwibank.co.nz/
 tags:
-  - AWS
+  - aws
   - static
-  - Finance
+  - finance
   - bank
-  - responsive
   - corporate
 ---
 

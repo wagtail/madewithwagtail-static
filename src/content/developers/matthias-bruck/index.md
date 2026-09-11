@@ -5,7 +5,7 @@ latest_revision_created_at: "2017-11-21T19:03:01.764725+13:00"
 location: Berlin, Germany
 lat: "52.485339"
 lon: "13.425923"
-company_url: http://brueck.io
+company_url: https://brueck.io
 github_user: bruecksen
 ---
 

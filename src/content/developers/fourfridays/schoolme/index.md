@@ -4,9 +4,8 @@ first_published_at: "2017-11-22T10:54:20.605392+13:00"
 latest_revision_created_at: "2017-11-22T10:54:20.557163+13:00"
 site_url: https://www.schoolme.org.uk
 tags:
-  - Tunisia
-  - responsive
-  - Education
+  - tunisia
+  - education
   - charity
   - non-profit
 ---
