@@ -2,6 +2,7 @@
 title: Unmade
 first_published_at: "2016-04-27T16:25:16.713795+12:00"
 latest_revision_created_at: "2016-04-27T16:25:16.685354+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.unmade.com/
 tags:
   - e-commerce

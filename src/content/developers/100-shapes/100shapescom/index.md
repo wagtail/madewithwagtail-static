@@ -2,6 +2,7 @@
 title: 100Shapes.com
 first_published_at: "2015-04-19T21:55:19.936632+12:00"
 latest_revision_created_at: "2015-04-22T21:47:14.810422+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: http://www.100shapes.com/
 ---
 

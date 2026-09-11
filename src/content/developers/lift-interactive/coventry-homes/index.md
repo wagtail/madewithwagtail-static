@@ -2,6 +2,7 @@
 title: Coventry Homes
 first_published_at: "2017-11-22T09:53:18.589601+13:00"
 latest_revision_created_at: "2017-11-22T09:55:07.692077+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.coventry-homes.com/
 tags:
   - portfolio

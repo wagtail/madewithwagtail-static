@@ -2,6 +2,7 @@
 title: Parrano
 first_published_at: "2017-01-28T04:33:29.048801+13:00"
 latest_revision_created_at: "2017-01-28T04:33:29.001191+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: http://www.parrano.nl
 tags:
   - food

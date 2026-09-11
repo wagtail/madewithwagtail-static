@@ -2,6 +2,7 @@
 title: BNI Utopia
 first_published_at: "2017-11-06T09:17:05.449765+13:00"
 latest_revision_created_at: "2018-04-20T01:27:01.151598+12:00"
+archived_at: "2018-04-20T01:27:01.151598+12:00"
 tags:
   - Network
   - business

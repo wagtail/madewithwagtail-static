@@ -2,6 +2,7 @@
 title: One Floor
 first_published_at: "2019-10-23T11:47:28.023821+13:00"
 latest_revision_created_at: "2019-10-23T11:47:27.990404+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.onefloor.co.uk
 tags:
   - flooring

@@ -2,6 +2,7 @@
 title: Moving Cube
 first_published_at: "2022-03-01T09:54:41.830964+13:00"
 latest_revision_created_at: "2022-06-10T00:12:49.036510+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://movingcube.uj.ac.za/
 tags:
   - university

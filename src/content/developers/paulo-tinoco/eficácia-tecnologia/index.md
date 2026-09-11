@@ -2,6 +2,7 @@
 title: Eficácia Tecnologia
 first_published_at: "2022-03-01T09:48:13.497929+13:00"
 latest_revision_created_at: "2022-03-01T09:48:13.410839+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://eficacia.me
 tags:
   - chatbot

@@ -2,6 +2,7 @@
 title: Cadence
 first_published_at: "2016-09-07T21:03:28.494825+12:00"
 latest_revision_created_at: "2016-09-07T21:03:28.454441+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: http://www.cadenceperformance.com
 tags:
   - news

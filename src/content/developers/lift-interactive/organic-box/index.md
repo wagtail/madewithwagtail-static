@@ -2,6 +2,7 @@
 title: The Organic Box
 first_published_at: "2016-09-01T08:14:54.636036+12:00"
 latest_revision_created_at: "2016-09-01T08:14:54.599865+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.theorganicbox.ca/
 tags:
   - responsive

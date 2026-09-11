@@ -2,6 +2,7 @@
 title: Vale Vintage Wedding Cars
 first_published_at: "2017-11-22T11:48:25.938329+13:00"
 latest_revision_created_at: "2017-11-22T11:48:25.899992+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.vintage-weddingcars.com/
 tags:
   - wedding

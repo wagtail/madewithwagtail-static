@@ -2,6 +2,7 @@
 title: KidZania Moscow
 first_published_at: "2017-04-26T23:26:46.434847+12:00"
 latest_revision_created_at: "2017-04-26T23:26:46.384029+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://kidzania.ru/en/
 tags:
   - responsive

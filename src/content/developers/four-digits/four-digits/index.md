@@ -2,6 +2,7 @@
 title: Four Digits
 first_published_at: "2022-11-15T05:23:07.749388+13:00"
 latest_revision_created_at: "2022-11-15T05:36:20.878027+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.fourdigits.nl/
 ---
 

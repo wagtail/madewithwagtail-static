@@ -2,6 +2,7 @@
 title: Halifax Academy
 first_published_at: "2022-03-01T09:57:01.264672+13:00"
 latest_revision_created_at: "2022-03-01T09:57:01.180671+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://halifaxacademy.com.mx
 tags:
   - Education

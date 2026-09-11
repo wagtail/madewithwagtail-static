@@ -2,6 +2,7 @@
 title: DTank
 first_published_at: "2019-09-19T17:09:28.719566+12:00"
 latest_revision_created_at: "2019-09-19T17:09:28.680849+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.dtank.com/
 tags:
   - responsive

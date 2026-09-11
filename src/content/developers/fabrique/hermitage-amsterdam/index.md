@@ -2,6 +2,7 @@
 title: Hermitage Amsterdam
 first_published_at: "2018-01-31T13:09:11.684860+13:00"
 latest_revision_created_at: "2018-01-31T13:09:11.633741+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://hermitage.nl/
 tags:
   - museum

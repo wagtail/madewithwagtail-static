@@ -2,6 +2,7 @@
 title: Chakib Khelil
 first_published_at: "2016-11-19T01:01:17.508393+13:00"
 latest_revision_created_at: "2016-11-19T01:01:17.465792+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://chakibkhelil.com/
 tags:
   - responsive

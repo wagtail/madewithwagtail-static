@@ -2,6 +2,7 @@
 title: Barbarians
 first_published_at: "2017-04-20T01:41:21.549398+12:00"
 latest_revision_created_at: "2017-04-20T01:44:52.590213+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://barbarians.tabula.games/
 tags:
   - kickstarter

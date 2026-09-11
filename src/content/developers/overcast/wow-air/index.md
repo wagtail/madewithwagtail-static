@@ -2,6 +2,7 @@
 title: WOW air
 first_published_at: "2016-08-31T12:14:23.528675+12:00"
 latest_revision_created_at: "2016-08-31T12:30:40.794468+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://wowair.co.uk/
 tags:
   - responsive

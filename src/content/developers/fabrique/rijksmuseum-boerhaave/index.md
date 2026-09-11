@@ -2,6 +2,7 @@
 title: Rijksmuseum Boerhaave
 first_published_at: "2018-01-31T13:22:38.712376+13:00"
 latest_revision_created_at: "2018-01-31T13:22:38.664240+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://rijksmuseumboerhaave.nl
 tags:
   - museum

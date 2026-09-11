@@ -2,6 +2,7 @@
 title: RapidPro
 first_published_at: "2015-12-07T10:49:57.141325+13:00"
 latest_revision_created_at: "2015-12-07T10:49:57.115650+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://community.rapidpro.io
 tags:
   - non-profit

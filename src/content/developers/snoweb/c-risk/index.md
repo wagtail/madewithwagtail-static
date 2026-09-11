@@ -2,6 +2,7 @@
 title: C-Risk
 first_published_at: "2022-01-11T21:39:38.741185+13:00"
 latest_revision_created_at: "2022-01-11T23:07:41.875061+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.c-risk.com/en/
 tags:
   - ux

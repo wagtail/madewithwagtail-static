@@ -2,6 +2,7 @@
 title: Veerman
 first_published_at: "2022-01-08T14:00:39.555688+13:00"
 latest_revision_created_at: "2022-01-08T14:00:39.486638+13:00"
+archived_at: "2022-01-08T14:00:39.486638+13:00"
 tags:
   - industry
   - oil

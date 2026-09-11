@@ -2,6 +2,7 @@
 title: Jewels the Game
 first_published_at: "2017-01-16T11:51:20.762486+13:00"
 latest_revision_created_at: "2017-01-16T11:51:20.730835+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://jewels.game
 tags:
   - responsive

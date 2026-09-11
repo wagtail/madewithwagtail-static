@@ -2,6 +2,7 @@
 title: Lewin Clinic
 first_published_at: "2022-01-21T00:05:59.892263+13:00"
 latest_revision_created_at: "2022-01-21T00:05:59.843460+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.lewinclinic.co.uk/
 ---
 

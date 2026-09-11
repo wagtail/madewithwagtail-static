@@ -2,6 +2,7 @@
 title: Coffeepard
 first_published_at: "2021-12-12T04:10:23.776171+13:00"
 latest_revision_created_at: "2021-12-12T04:10:23.697107+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://coffeepard.com
 tags:
   - coffee

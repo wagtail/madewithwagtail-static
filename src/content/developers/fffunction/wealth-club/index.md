@@ -2,6 +2,7 @@
 title: Wealth Club
 first_published_at: "2017-01-28T04:22:34.194428+13:00"
 latest_revision_created_at: "2017-01-28T04:22:34.152903+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.wealthclub.co.uk/
 tags:
   - articles

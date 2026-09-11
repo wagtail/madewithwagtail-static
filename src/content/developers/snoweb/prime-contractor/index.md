@@ -2,6 +2,7 @@
 title: Prime contractor
 first_published_at: "2022-01-11T22:40:21.813336+13:00"
 latest_revision_created_at: "2022-01-11T23:08:35.281303+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.maitre-oeuvre-morbihan.fr/fr/
 tags:
   - portfolio

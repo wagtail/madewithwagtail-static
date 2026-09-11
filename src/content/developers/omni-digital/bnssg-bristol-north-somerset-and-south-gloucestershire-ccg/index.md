@@ -2,6 +2,7 @@
 title: BNSSG - Bristol, North Somerset and South Gloucestershire CCG
 first_published_at: "2018-05-28T15:51:03.385965+12:00"
 latest_revision_created_at: "2018-05-28T15:54:00.726025+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://bnssgccg.nhs.uk/
 tags:
   - healthcare

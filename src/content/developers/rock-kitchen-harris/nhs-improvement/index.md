@@ -2,6 +2,7 @@
 title: NHS Improvement
 first_published_at: "2017-07-11T10:55:46.781317+12:00"
 latest_revision_created_at: "2017-07-11T10:55:46.743260+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://improvement.nhs.uk
 tags:
   - responsive

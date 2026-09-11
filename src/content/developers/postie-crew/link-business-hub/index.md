@@ -2,6 +2,7 @@
 title: Link Business Hub
 first_published_at: "2019-09-24T13:55:18.097525+12:00"
 latest_revision_created_at: "2019-09-24T13:55:18.059199+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.linkbusinesshub.com.au/
 tags:
   - business

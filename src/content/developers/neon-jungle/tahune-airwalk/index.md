@@ -2,6 +2,7 @@
 title: Tahune Airwalk
 first_published_at: "2017-07-27T17:43:12.737637+12:00"
 latest_revision_created_at: "2018-02-07T17:48:32.878515+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://tahuneadventures.com.au/
 tags:
   - responsive

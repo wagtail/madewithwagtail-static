@@ -2,6 +2,7 @@
 title: Sitka Technology
 first_published_at: "2015-05-13T21:52:02.040774+12:00"
 latest_revision_created_at: "2016-05-06T10:03:22.150830+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: http://www.sitkatech.com/
 ---
 

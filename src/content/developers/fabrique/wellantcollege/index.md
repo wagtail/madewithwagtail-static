@@ -2,6 +2,7 @@
 title: Wellantcollege
 first_published_at: "2018-01-31T13:27:31.052424+13:00"
 latest_revision_created_at: "2018-01-31T13:27:30.992866+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://wellant.nl/
 tags:
   - responsive

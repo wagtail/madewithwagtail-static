@@ -2,6 +2,7 @@
 title: RACT 100 Year Website
 first_published_at: "2024-06-12T17:45:16.179109+12:00"
 latest_revision_created_at: "2024-06-12T17:45:16.081167+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://100.ract.com.au/
 tags:
   - parallax

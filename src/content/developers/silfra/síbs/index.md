@@ -2,6 +2,7 @@
 title: SÍBS
 first_published_at: "2019-09-26T19:24:14.056000+12:00"
 latest_revision_created_at: "2019-09-26T19:24:14.014591+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://sibs.is
 tags:
   - nonprofit

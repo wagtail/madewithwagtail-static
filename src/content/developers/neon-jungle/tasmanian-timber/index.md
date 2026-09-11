@@ -2,6 +2,7 @@
 title: Tasmanian Timber
 first_published_at: "2018-02-07T17:55:37.297688+13:00"
 latest_revision_created_at: "2024-09-17T03:00:16.610768+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://tasmaniantimber.com.au/
 ---
 

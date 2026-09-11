@@ -2,6 +2,7 @@
 title: BenQ Latam
 first_published_at: '2024-05-27 23:18:23.740922+00:00'
 latest_revision_created_at: '2024-05-27 23:18:23.740922+00:00'
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://benq-latam.com/
 tags:
 - cms

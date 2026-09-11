@@ -2,6 +2,7 @@
 title: Founders and Survivors
 first_published_at: "2020-06-30T12:51:41.568334+12:00"
 latest_revision_created_at: "2020-06-30T13:15:06.919748+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://foundersandsurvivors.com/
 tags:
   - design

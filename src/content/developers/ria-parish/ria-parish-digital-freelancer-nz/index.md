@@ -2,6 +2,7 @@
 title: Ria Parish | Digital Freelancer NZ
 first_published_at: "2021-12-12T05:00:14.473331+13:00"
 latest_revision_created_at: "2021-12-12T05:00:14.389630+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://riaparish.co.nz
 tags:
   - freelancer

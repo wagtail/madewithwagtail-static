@@ -2,6 +2,7 @@
 title: La Cascade Insolite
 first_published_at: "2018-07-09T22:01:14.268922+12:00"
 latest_revision_created_at: "2024-09-17T02:58:55.567075+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://la-cascade-insolite.com
 tags:
   - responsive

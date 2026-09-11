@@ -2,6 +2,7 @@
 title: WakaWaka
 first_published_at: "2017-07-07T11:08:08.559116+12:00"
 latest_revision_created_at: "2018-01-16T16:58:10.893127+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://waka-waka.com/
 tags:
   - sustainability

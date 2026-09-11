@@ -2,6 +2,7 @@
 title: No Smoking Day
 first_published_at: "2015-04-19T22:06:07.794762+12:00"
 latest_revision_created_at: "2015-05-15T09:47:04.216617+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: http://www.nosmokingday.org.uk/
 ---
 

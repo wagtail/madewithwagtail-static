@@ -2,6 +2,7 @@
 title: Elmbridge Holiday Cottages
 first_published_at: "2017-08-07T14:44:14.837495+12:00"
 latest_revision_created_at: "2017-08-07T14:51:53.358235+12:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: http://www.elmbridgeholidaycottages.co.uk/
 tags:
   - tourism

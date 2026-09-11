@@ -2,6 +2,7 @@
 title: Regieorgaan SIA
 first_published_at: "2021-12-23T11:36:12.450422+13:00"
 latest_revision_created_at: "2021-12-23T11:36:12.396618+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://regieorgaan-sia.nl/
 tags:
   - non-profit

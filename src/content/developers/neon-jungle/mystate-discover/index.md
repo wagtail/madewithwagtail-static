@@ -2,6 +2,7 @@
 title: MyState 'Discover'
 first_published_at: "2017-07-27T17:47:02.016208+12:00"
 latest_revision_created_at: "2018-01-16T16:56:00.342742+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://discover.mystate.com.au/
 tags:
   - design

@@ -2,6 +2,7 @@
 title: Burgtheater Wien
 first_published_at: "2017-11-15T13:00:52.390234+13:00"
 latest_revision_created_at: "2017-11-15T13:01:37.888495+13:00"
+archived_at: "2026-09-11T14:17:39.532625+00:00"
 site_url: https://www.burgtheater.at/
 tags:
   - theatre
