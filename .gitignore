@@ -23,3 +23,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Local agent workspace (exports, venv, scratch)
+local/
+.venv/
