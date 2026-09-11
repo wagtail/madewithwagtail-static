@@ -22,6 +22,7 @@ Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
 #   "pydantic>=2.10",
 #   "python-slugify>=8",
 #   "wappalyzer>=2,<3",
+# ]
 # ///
 
 from __future__ import annotations
