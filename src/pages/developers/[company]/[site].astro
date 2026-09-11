@@ -1,10 +1,10 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
-import { existsSync } from 'node:fs';
 import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Icon from '../../../components/Icon.astro';
 import { withBase } from '../../../helpers.ts';
+import { lookupImage } from '../../../images.ts';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
@@ -22,6 +22,10 @@ export const getStaticPaths = (async () => {
 
 const { siteEntry } = Astro.props;
 const { Content } = await render(siteEntry);
+// The screenshot is colocated at
+// src/content/developers/<company>/<site>/<site>.fill-1200x996.webp
+// when the site has one.
+const screenshot = lookupImage(siteEntry.id, '.fill-1200x996.webp');
 
 const developers = await getCollection('developers');
 const devMap = new Map(developers.map((d) => [d.id, d]));
@@ -47,9 +51,9 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
       <div class="two-thirds--medium">
         <div class="card">
           <div class="project-big-image">
-            {existsSync(`./public/images/${siteEntry.id}.fill-1200x996.webp`) && (
+            {screenshot && (
               <img
-                src={withBase(`/images/${siteEntry.id}.fill-1200x996.webp`)}
+                src={screenshot.src}
                 alt={siteEntry.data.title}
                 title={siteEntry.data.title}
                 class="img--responsive"

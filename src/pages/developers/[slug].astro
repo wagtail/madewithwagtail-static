@@ -1,11 +1,11 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
-import { existsSync } from 'node:fs';
 import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
 import SiteCard from '../../components/SiteCard.astro';
 import { withBase } from '../../helpers.ts';
+import { lookupImage } from '../../images.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export const getStaticPaths = (async () => {
@@ -15,14 +15,15 @@ export const getStaticPaths = (async () => {
     params: { slug: d.id },
     props: {
       developer: d,
-      // Logos live at public/images/<id>/<id>.max-120x120.webp when the
+      // The logo is colocated at
+      // src/content/developers/<id>/<id>.max-120x120.webp when the
       // developer has one.
-      logoFile: existsSync(`./public/images/${d.id}/${d.id}.max-120x120.webp`),
+      logo: lookupImage(d.id, '.max-120x120.webp'),
     },
   }));
 }) satisfies GetStaticPaths;
 
-const { developer, logoFile } = Astro.props;
+const { developer, logo } = Astro.props;
 
 // A developer's sites: those in their own directory, plus sites they
 // contributed to via in_cooperation_with_slug.
@@ -48,11 +49,11 @@ function getCooperator(cooperatorSlug: string) {
     <Breadcrumbs ancestors={[{ title: 'Developers', url: withBase('/developers/') }]} />
 
     <div class="company grid-float">
-      {logoFile && (
+      {logo && (
         <div>
           <div class="company__logo">
             <img
-              src={withBase(`/images/${developer.id}/${developer.id}.max-120x120.webp`)}
+              src={logo.src}
               alt={developer.data.title}
               title={developer.data.title}
             />

@@ -1,11 +1,11 @@
 ---
-import { existsSync } from 'node:fs';
-import { withBase } from '../helpers.ts';
+import { lookupImage } from '../images.ts';
 import Icon from './Icon.astro';
 
 interface Props {
-  // Site entry ID '<company>/<site>': the screenshot lives at
-  // public/images/<company>/<site>.fill-1200x996.webp when the site has one.
+  // Site entry ID '<company>/<site>': the screenshot is colocated at
+  // src/content/developers/<company>/<site>/<site>.fill-1200x996.webp
+  // when the site has one.
   id: string;
   title: string;
   url: string;
@@ -26,15 +26,14 @@ const {
   inCooperationWith,
   inCooperationWithUrl,
 } = Astro.props;
-const screenshotFile = `images/${id}.fill-1200x996.webp`;
-const hasScreenshot = existsSync(`./public/${screenshotFile}`);
+const screenshot = lookupImage(id, '.fill-1200x996.webp');
 ---
 
 <div class="one-half--medium one-third--large">
   <div class="card card--link">
     <a href={url} class="project-image">
-      {hasScreenshot && (
-        <img src={withBase(`/${screenshotFile}`)} alt={title} loading="lazy" />
+      {screenshot && (
+        <img src={screenshot.src} alt={title} loading="lazy" />
       )}
     </a>
     <div class="project__links">
