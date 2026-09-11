@@ -99,6 +99,11 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
             </a>
           ))}
         </div>
+        {siteEntry.data.technologies.length > 0 && (
+          <p class="project-technologies">
+            Built with {siteEntry.data.technologies.join(', ')}
+          </p>
+        )}
       </div>
     </div>
   </div>

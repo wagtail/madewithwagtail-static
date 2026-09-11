@@ -40,8 +40,12 @@ Sites can be submitted through the [site submission form](https://github.com/wag
 A GitHub Actions workflow (`.github/workflows/submission.yml`) then:
 
 1. **Validates** the submission — checks the URL, generates slugs, and rejects duplicates.
-2. **Renders** the site in a sandboxed, credential-free job — detects Wagtail fingerprints
-   and takes a screenshot.
+2. **Renders** the site in a sandboxed, credential-free job — detects Wagtail fingerprints,
+   scans the page's technologies with Wappalyzer, and takes a screenshot.
+   Submissions detected as running incompatible technologies (PHP, ASP.NET, Java,
+   Wix, Webflow, Squarespace — i.e. not Wagtail sites) are closed with an explanatory
+   comment; complementary technologies (React, Vue, Next.js, Astro, Tailwind, …)
+   are recorded on the site page and listed in the PR.
 3. **Publishes** a pull request with the new content for maintainer review.
 
 Nothing is published automatically: a maintainer reviews and merges the pull request,

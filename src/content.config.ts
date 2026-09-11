@@ -59,6 +59,10 @@ const sites = defineCollection({
     // derived from the entry ID in code — no frontmatter needed.
     in_cooperation_with_slug: z.string().nullable().default(null),
     tags: z.array(z.string()).default([]),
+    // Front-end technologies detected in the submission pipeline
+    // (Wappalyzer scan), e.g. ['React', 'Tailwind CSS']. Legacy entries
+    // predate the field; the site page omits it when empty.
+    technologies: z.array(z.string()).default([]),
   }),
 });
 

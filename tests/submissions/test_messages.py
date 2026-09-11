@@ -5,6 +5,7 @@ DETECTION = {
     "url": "https://example.com",
     "is_wagtail": True,
     "signals": ["generator meta tag"],
+    "technologies": {},
     "checked_at": "2026-08-05T00:00:00+00:00",
 }
 
@@ -157,6 +158,34 @@ class TestPrBody:
         # advertises the logo unless the caller says otherwise.
         body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "| Logo | <img" in body
+
+    def test_detected_technologies_section_all_kinds(self):
+        detection = {
+            **DETECTION,
+            "technologies": {
+                "incompatible": ["PHP"],
+                "complementary": ["React", "Tailwind CSS"],
+                "other": ["jQuery"],
+            },
+        }
+        body = ps.build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
+        assert "### Detected technologies" in body
+        assert "- ✅ Complementary: React, Tailwind CSS" in body
+        assert "- Other: jQuery" in body
+        # Incompatible technologies never reach a PR: the workflow's
+        # reject-technologies job closes those submissions first.
+        assert "PHP" not in body
+        # The section sits before the reviewer checklist.
+        assert body.index("### Detected technologies") < body.index("### Reviewer checklist")
+
+    def test_detected_technologies_section_empty(self):
+        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        assert "### Detected technologies" in body
+        assert "None detected" in body
+
+    def test_detected_technologies_omitted_from_metadata_table(self):
+        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        assert "| Detected technologies" not in body
 
 
 class TestComments:

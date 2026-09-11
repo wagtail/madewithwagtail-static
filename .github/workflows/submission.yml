@@ -109,6 +109,9 @@ jobs:
       - name: Install uv
         run: python -m pip install --quiet uv
       - name: Render screenshots and detection
+        # The playwright base image ships the Chromium build wappalyzer's
+        # extension scan runs in; wappalyzer itself comes from the script's
+        # PEP 723 dependencies.
         run: |
           uv run scripts/submissions/process_submission.py render \
             --proposal validate-out.json --out-dir rendered
@@ -117,6 +120,43 @@ jobs:
           name: rendered
           path: rendered/
           if-no-files-found: error
+
+  reject-technologies:
+    needs: render
+    # Sites running Wix, Webflow, Squarespace, PHP, ASP.NET or Java are not
+    # Wagtail sites; close the submission instead of opening a PR. The
+    # sandboxed render job holds no credentials, so the gate lives here.
+    if: needs.render.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write # comment + close on rejection
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: rendered
+          path: rendered
+      - name: Check detected technologies
+        run: |
+          incompatible=$(jq -r '.technologies.incompatible // [] | join(", ")' rendered/detection.json)
+          if [ -z "$incompatible" ]; then
+            echo "No incompatible technologies detected."
+            exit 0
+          fi
+          echo "Incompatible technologies: $incompatible"
+          {
+            echo "Thanks for your submission! Unfortunately it could not be processed:"
+            echo
+            echo "- Our scan detected incompatible technologies (${incompatible});"
+            echo "  the showcase only lists sites built with Wagtail."
+            echo
+            echo "Feel free to open a new submission once these points are addressed."
+          } > rejection-comment.md
+          gh issue comment "$ISSUE_NUMBER" --body-file rejection-comment.md --edit-last --create-if-none
+          gh issue close "$ISSUE_NUMBER" --reason "not planned"
+          exit 1
 
   render-failure-notice:
     needs: [validate, render]
@@ -138,7 +178,8 @@ jobs:
           gh issue edit "$ISSUE_NUMBER" --add-label "needs-triage"
 
   publish:
-    needs: render
+    needs: [render, reject-technologies]
+    if: ${{ !failure() && !cancelled() && needs.render.result == 'success' && needs.reject-technologies.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:

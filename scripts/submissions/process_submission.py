@@ -21,8 +21,7 @@ Exit codes: 0 success, 2 rejection (rejection.json written to cwd),
 #   "pillow>=11",
 #   "pydantic>=2.10",
 #   "python-slugify>=8",
-#   "pyyaml>=6",
-# ]
+#   "wappalyzer>=2,<3",
 # ///
 
 from __future__ import annotations
@@ -448,6 +447,107 @@ def detect_wagtail(html: str) -> list[str]:
     return signals
 
 
+# Wappalyzer-next (https://github.com/s0md3v/wappalyzer-next) fingerprints
+# the page in headless Chromium, complementing the Wagtail HTML heuristics
+# above (which stay authoritative for Wagtail itself).
+
+# Sites built on these are not Wagtail sites; the Wappalyzer report gates
+# the submission (spec: the showcase only lists Wagtail sites). PHP-hosted
+# frameworks mostly imply PHP, so PHP itself covers most of them.
+INCOMPATIBLE_TECHNOLOGIES = frozenset(
+    {
+        "PHP",
+        "Microsoft ASP.NET",
+        "Java",
+        "Wix",
+        "Webflow",
+        "Squarespace",
+    }
+)
+
+# Front-end stacks worth surfacing on the site page: Wagtail sites routinely
+# pair with one of these, and the showcase's tags/series benefit from knowing.
+COMPLEMENTARY_TECHNOLOGIES = frozenset(
+    {
+        "React",
+        "Vue.js",
+        "Next.js",
+        "Nuxt.js",
+        "Astro",
+        "Svelte",
+        "Alpine.js",
+        "Bootstrap",
+        "Tailwind CSS",
+    }
+)
+
+# Wappalyzer categories whose detections are relevant at all; anything else
+# (analytics, CDNs, widgets, ...) is noise for a technology report. The
+# library reports category *names* in each technology's "categories" list.
+WAPPALYZER_CATEGORIES = frozenset(
+    {
+        "CMS",
+        "Blogs",
+        "JavaScript frameworks",
+        "Web frameworks",
+        "Programming languages",
+        "Page builders",
+        "Static site generator",
+        "UI frameworks",
+        "JavaScript libraries",
+    }
+)
+
+WAPPALYZER_SCAN_TIMEOUT_S = 45
+
+
+def wappalyzer_technologies(url: str) -> dict[str, dict]:
+    """Detect technologies with the Wappalyzer extension in Chromium.
+
+    Returns {name: {"version": str, "categories": [str]}} — filtered to the
+    categories we report on — or {} when the scan fails for any reason: a
+    failed technology scan must never fail the render stage (the Wagtail
+    detection above remains the gate for showcase-worthiness).
+    """
+    try:
+        from wappalyzer import Wappalyzer as _Wappalyzer
+
+        with _Wappalyzer(timeout=WAPPALYZER_SCAN_TIMEOUT_S) as scanner:
+            results = scanner.analyze(url)
+        # analyze() keys the result by the scanner's own final URL, which
+        # may differ from the input (redirect, trailing slash) — take the
+        # single value regardless of key.
+        return next(iter(results.values()), {})
+    except Exception as exc:
+        print(f"wappalyzer scan failed for {url}: {exc}", file=sys.stderr)
+        return {}
+
+
+def classify_technologies(technologies: dict[str, dict]) -> dict[str, list[str]]:
+    """Split detected technologies into incompatible / complementary / other.
+
+    Only technologies in a reportable Wappalyzer category are considered;
+    classification is by exact fingerprint name (Wappalyzer DB names, e.g.
+    "Vue.js" not "Vue").
+    """
+    reportable = {
+        name: data
+        for name, data in technologies.items()
+        if any(cat in WAPPALYZER_CATEGORIES for cat in data.get("categories", []))
+    }
+    return {
+        "incompatible": sorted(INCOMPATIBLE_TECHNOLOGIES & reportable.keys()),
+        "complementary": sorted(COMPLEMENTARY_TECHNOLOGIES & reportable.keys()),
+        "other": sorted(
+            name
+            for name in reportable
+            if name not in INCOMPATIBLE_TECHNOLOGIES
+            and name not in COMPLEMENTARY_TECHNOLOGIES
+            # Wagtail detection stays with our own heuristics above.
+            and name.casefold() != "wagtail"
+        ),
+    }
+
 
 def _response_too_large(response) -> bool:
     """Best-effort size gate: honor content-length when present."""
@@ -486,14 +586,16 @@ def probe_admin_pages(client: "httpx.Client", origin: str) -> list[str]:
     return signals
 
 
-def detection_result(signals: list[str], url: str) -> dict:
+def detection_result(
+    signals: list[str], url: str, technologies: dict[str, list[str]] | None = None
+) -> dict:
     return {
         "url": url,
         "is_wagtail": bool(signals),
         "signals": signals,
+        "technologies": technologies or {},
         "checked_at": utcnow().isoformat(),
     }
-
 
 MAX_REDIRECTS = 5
 MAX_RESPONSE_BYTES = 3_000_000
@@ -1236,7 +1338,14 @@ def cmd_render(argv: list[str]) -> int:
                     client, company_html, proposal.company_url, proposal.logo_url
                 ),
             )
-    detection = detection_result(signals, final_url)
+    # Wappalyzer scan (headless Chromium): technology fingerprints that
+    # complement the Wagtail HTML detection above, which stays authoritative
+    # for Wagtail itself. Best-effort: a failed scan yields no technologies.
+    # Incompatible technologies are reported in "technologies" and gated by
+    # a dedicated workflow job — never merged into "signals": is_wagtail
+    # must stay a pure Wagtail-detection verdict.
+    classified = classify_technologies(wappalyzer_technologies(final_url))
+    detection = detection_result(signals, final_url, classified)
     (args.out_dir / "detection.json").write_text(
         json.dumps(detection, indent=2, ensure_ascii=False), encoding="utf-8"
     )
@@ -1476,8 +1585,8 @@ def _frontmatter_block(data: dict) -> str:
 def _iso(dt: datetime) -> str:
     return dt.isoformat()
 
-
-def site_markdown(p: Proposal) -> str:
+def site_markdown(p: Proposal, technologies: dict[str, list[str]] | None = None) -> str:
+    complementary = (technologies or {}).get("complementary", [])
     frontmatter = {
         "title": p.site_title,
         "first_published_at": _iso(p.submitted_at),
@@ -1485,6 +1594,10 @@ def site_markdown(p: Proposal) -> str:
         "site_url": p.site_url,
         "in_cooperation_with_slug": None,
         "tags": p.tags,
+        # Complementary technologies from the Wappalyzer scan, e.g.
+        # ["React", "Tailwind CSS"]. Omitted when nothing was detected:
+        # the Astro schema defaults to [].
+        **({"technologies": complementary} if complementary else {}),
     }
     return _frontmatter_block(frontmatter) + f"\n{p.site_description}\n"
 
@@ -1650,6 +1763,7 @@ def build_pr_body(
             ),
             "",
         ]
+    lines += [*_detected_technologies_section(detection)]
     lines += [
         "### Reviewer checklist",
         "",
@@ -1660,6 +1774,32 @@ def build_pr_body(
         "- [ ] Developer details are correct" + (" (new profile: check the logo)" if not p.developer_exists else ""),
     ]
     return "\n".join(lines)
+
+
+def _detected_technologies_section(detection: dict) -> list[str]:
+    """'Detected technologies' PR section listing the Wappalyzer findings.
+
+    Incompatible technologies never reach a PR: the workflow's
+    reject-technologies job closes those submissions first, so only
+    complementary and unclassified findings are reportable here.
+    """
+    technologies = detection.get("technologies") or {}
+    complementary = technologies.get("complementary") or []
+    other = technologies.get("other") or []
+    if not (complementary or other):
+        return [
+            "### Detected technologies",
+            "",
+            "_None detected — the Wappalyzer scan found no reportable technologies._",
+            "",
+        ]
+    lines = ["### Detected technologies", ""]
+    if complementary:
+        lines.append("- ✅ Complementary: " + ", ".join(complementary))
+    if other:
+        lines.append("- Other: " + ", ".join(other))
+    lines.append("")
+    return lines
 
 
 def git_add_paths(p: Proposal, repo_root: Path) -> list[Path]:
@@ -1705,7 +1845,11 @@ BRANCH_PREFIX = "submission/issue-"
 
 
 def write_content_files(
-    p: Proposal, repo_root: Path, screenshot: bytes, logo: bytes | None
+    p: Proposal,
+    repo_root: Path,
+    screenshot: bytes,
+    logo: bytes | None,
+    technologies: dict[str, list[str]] | None = None,
 ) -> list[Path]:
     """Write validated content into the repo. Images are re-encoded through
     Pillow and dimension-checked — artifact bytes are never trusted as-is."""
@@ -1733,7 +1877,9 @@ def write_content_files(
         target = repo_root / paths[key]
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(
-            site_markdown(p) if key == "site_md" else developer_markdown(p),
+            site_markdown(p, technologies)
+            if key == "site_md"
+            else developer_markdown(p),
             encoding="utf-8",
         )
         written.append(target)
@@ -1791,12 +1937,19 @@ def cmd_publish(argv: list[str]) -> int:
         # A missing logo artifact is a legitimate no-logo outcome, not an
         # error: write_content_files treats empty bytes as "no logo".
         logo = args.logo.read_bytes() if args.logo and args.logo.exists() else b""
+        technologies = {}
+        if args.detection and args.detection.exists():
+            technologies = json.loads(args.detection.read_text(encoding="utf-8")).get(
+                "technologies"
+            ) or {}
         if args.dry_run:
             for key, rel in output_paths(proposal).items():
                 print(f"would write {rel}")
-            print(site_markdown(proposal))
+            print(site_markdown(proposal, technologies))
             return 0
-        written = write_content_files(proposal, args.repo_root, screenshot, logo)
+        written = write_content_files(
+            proposal, args.repo_root, screenshot, logo, technologies
+        )
         for path in written:
             print(path)
         return 0

@@ -57,6 +57,21 @@ class TestSiteMarkdown:
         text = ps.site_markdown(p)
         assert "- blog" in text  # tags as a YAML list
 
+    def test_technologies_written_when_detected(self):
+        text = ps.site_markdown(
+            make_proposal(),
+            {"incompatible": ["PHP"], "complementary": ["React"], "other": ["jQuery"]},
+        )
+        assert frontmatter_of(text)["technologies"] == ["React"]
+
+    def test_technologies_omitted_when_none(self):
+        text = ps.site_markdown(make_proposal())
+        assert "technologies" not in text
+
+    def test_technologies_omitted_when_empty_list(self):
+        text = ps.site_markdown(make_proposal(), {"complementary": []})
+        assert "technologies" not in text
+
 
 class TestDeveloperMarkdown:
     def test_frontmatter(self):

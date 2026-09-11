@@ -61,8 +61,54 @@ class TestDetectionResult:
         assert result["is_wagtail"] is True
         assert result["url"] == "https://example.com"
         assert result["signals"] == ["generator meta tag"]
+        assert result["technologies"] == {}
         assert "checked_at" in result
 
     def test_no_signals_is_false_not_error(self):
         result = ps.detection_result([], "https://example.com")
         assert result["is_wagtail"] is False
+
+
+class TestClassifyTechnologies:
+    def test_splits_incompatible_complementary_other(self):
+        technologies = {
+            "PHP": {"version": "8.2", "categories": ["Programming languages"]},
+            "React": {"version": "18", "categories": ["JavaScript frameworks"]},
+            "jQuery": {"version": "3.7", "categories": ["JavaScript libraries"]},
+        }
+        classified = ps.classify_technologies(technologies)
+        assert classified["incompatible"] == ["PHP"]
+        assert classified["complementary"] == ["React"]
+        assert classified["other"] == ["jQuery"]
+
+    def test_non_reportable_categories_dropped(self):
+        # Analytics/CDN detections are noise for the technology report.
+        technologies = {
+            "Google Analytics": {"version": "", "categories": ["Analytics"]},
+            "Cloudflare": {"version": "", "categories": ["CDN"]},
+        }
+        assert ps.classify_technologies(technologies) == {
+            "incompatible": [],
+            "complementary": [],
+            "other": [],
+        }
+
+    def test_wagtail_never_reported(self):
+        # Wagtail detection stays with our own HTML heuristics.
+        technologies = {"Wagtail": {"version": "6", "categories": ["CMS"]}}
+        classified = ps.classify_technologies(technologies)
+        assert classified == {"incompatible": [], "complementary": [], "other": []}
+
+    def test_no_categories_entry_tolerated(self):
+        assert ps.classify_technologies({"Mystery": {"version": "1"}}) == {
+            "incompatible": [],
+            "complementary": [],
+            "other": [],
+        }
+
+    def test_empty_input(self):
+        assert ps.classify_technologies({}) == {
+            "incompatible": [],
+            "complementary": [],
+            "other": [],
+        }
